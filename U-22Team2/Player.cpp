@@ -16,5 +16,5 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//バグ多すぎ！！！！！！！！！！！！１
 	//Why!?
-
+	//kkk
 }
