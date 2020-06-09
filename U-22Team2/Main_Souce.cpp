@@ -1,4 +1,8 @@
 #include "DxLib.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "Map.h"
+
 
 /************************************************************************
 
@@ -83,8 +87,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 int Main(void) {
 
-	DrawPixel(320, 240, 0xffffff);  //点を打つ
-	DrawBox(100,100,300,300,0xffffff,TRUE);//白い四角
+	Map();
 
 	WaitKey();					//キー入力待ち
 
