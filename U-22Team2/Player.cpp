@@ -15,4 +15,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	return 0;					//ソフトの終了
 
 	//バグ多すぎ！！！！！！！！！！！！１
+	//Why!?
+
 }
