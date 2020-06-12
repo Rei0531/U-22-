@@ -1,3 +1,3 @@
 #pragma once
 
-int Enemy(void);
+int Enemy(void);		//ŠÖ”‚Ì’è‹`

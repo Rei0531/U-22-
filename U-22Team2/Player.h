@@ -1,2 +1,2 @@
 #pragma once
-int Player(void);
+int Player(void);	//ŠÖ”‚Ì’è‹`

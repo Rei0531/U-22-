@@ -1,7 +1,8 @@
-#include "DxLib.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "Map.h"
+//#include "DxLib.h"
+//#include "Player.h"		//ヘッダファイルの読み込み：プレイヤー処理のプロトタイプ宣言
+//#include "Enemy.h"		//ヘッダファイルの読み込み：敵処理のプロトタイプ宣言
+#include "LoadPic.h"		//ヘッダファイルの読み込み：構造体での画像の定義
+#include "Map.h"			//ヘッダファイルの読み込み：マップ処理のプロトタイプ宣言
 
 
 /************************************************************************
@@ -9,7 +10,7 @@
 *列挙体の宣言
 
 *************************************************************************/
-typedef enum GAME_MODE {
+typedef enum GAME_MODE {		//ゲームの状態
 	GAME_TITLE,
 	GAME_MENU,
 	GAME_INIT,
@@ -24,7 +25,7 @@ typedef enum GAME_MODE {
 *変数の宣言
 
 ****************************************************************/
-int GameState = GAME_TITLE;
+int GameState = GAME_TITLE;		//ゲームの状態を格納する変数
 
 
 /***************************************************************
@@ -32,8 +33,13 @@ int GameState = GAME_TITLE;
 *関数プロトタイプの宣言
 
 ****************************************************************/
-int Main(void);
-
+int Main(void);		//メイン処理
+int Title(void);	//タイトル処理
+int Menu(void);		//メニュー処理
+int Init(void);		//初期化処理
+int Clear(void);	//クリア処理
+int Over(void);		//オーバー処理
+int End(void);		//エンド処理
 /*******************************
 *プログラムの開始
 ********************************/
@@ -47,7 +53,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetGraphMode(1280, 768, 32);		//ゲーム画面自体のサイズ
 
 	/*****画像の読み込み*****/
-	//if (LoadImages() == -1)return -1;		//画像読み込み関数を呼び出し
+	if (LoadPictue() == -1)return -1;		//画像読み込み関数を呼び出し/失敗したらエラー
 	//if (LoadVoice() == -1)return -1;		//音声読み込み関数を呼び出し
 
 	//ゲームループ
@@ -66,9 +72,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		case GAME_INIT:
 			//ゲーム初期処理
 			break;
-		case GAME_END:
-			//エンド描画処理
-			break;
 		case GAME_MAIN:
 			//ゲームメイン処理
 			break;
@@ -78,18 +81,38 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		case GAME_OVER:
 			//ゲームオーバー描画処理
 			break;
+		case GAME_END:
+			//エンド描画処理
+			break;
 		}
 		ScreenFlip();		//裏画面の内容を表画面に反映
 	}
 	DxLib_End();			//DXライブラリ使用の終了処理
 	return 0;				//ソフトの処理
 }
-
+int Title(void) {
+	return 0;
+}
+int Menu(void) {
+	return 0;
+}
+int Init(void) {
+	return 0;
+}
 int Main(void) {
 
 	Map();
 
 	WaitKey();					//キー入力待ち
 
+	return 0;
+}
+int Clear(void) {
+	return 0;
+}
+int Over(void) {
+	return 0;
+}
+int End(void) {
 	return 0;
 }
