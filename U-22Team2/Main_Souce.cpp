@@ -3,6 +3,7 @@
 //#include "Enemy.h"		//ヘッダファイルの読み込み：敵処理のプロトタイプ宣言
 #include "LoadPic.h"		//ヘッダファイルの読み込み：構造体での画像の定義
 #include "Map.h"			//ヘッダファイルの読み込み：マップ処理のプロトタイプ宣言
+#include "Controller.h"
 
 
 /************************************************************************
@@ -100,10 +101,8 @@ int Init(void) {
 	return 0;
 }
 int Main(void) {
-
+	ControllerVlue();
 	Map();
-
-	WaitKey();					//キー入力待ち
 
 	return 0;
 }
