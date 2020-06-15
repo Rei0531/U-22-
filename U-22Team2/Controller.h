@@ -6,5 +6,7 @@ public:
 	int NowKey  = GetJoypadInputState(DX_INPUT_KEY_PAD1);;		//現在のキー情報
 	int OldKey = NowKey;		//前のキーの情報
 	int KeyFlg = NowKey & ~OldKey;	//キーフラグ
+	int MouseX;
+	int MouseY;
 };
 void ControllerVlue(void);

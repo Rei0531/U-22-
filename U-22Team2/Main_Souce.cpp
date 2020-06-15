@@ -4,6 +4,8 @@
 #include "LoadPic.h"		//ヘッダファイルの読み込み：構造体での画像の定義
 #include "Map.h"			//ヘッダファイルの読み込み：マップ処理のプロトタイプ宣言
 #include "Controller.h"
+#include "Player.h"
+#include "Controller.h"
 
 
 /************************************************************************
@@ -27,7 +29,8 @@ typedef enum GAME_MODE {		//ゲームの状態
 
 ****************************************************************/
 int GameState = GAME_TITLE;		//ゲームの状態を格納する変数
-
+Controller g_Pad;
+extern Controller g_Pad;
 
 /***************************************************************
 
@@ -61,6 +64,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	while (ProcessMessage() == 0 && GameState != END) {
 
 		ClearDrawScreen();		//画面の初期化
+
+		//マウスの位置を取得
+		GetMousePoint(&g_Pad.MouseX, &g_Pad.MouseY);		//デバッグ用とか、画像配置用にマウス座標取得
+		DrawString(0, 100, "%d", g_Pad.MouseX,0xFF0000);
+		DrawString(20, 100, "%d", g_Pad.MouseY, 0xFF0000);
 
 		switch (GameState) {
 		case GAME_TITLE:
@@ -103,7 +111,7 @@ int Init(void) {
 int Main(void) {
 	ControllerVlue();
 	Map();
-
+	Player();
 	return 0;
 }
 int Clear(void) {

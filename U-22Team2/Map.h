@@ -8,6 +8,6 @@ public:
 	int X2 = 5120;
 	int Y1 = -1536;
 	int Y2 = 768;
-}; extern MapCoordinate MapC;
+}; extern MapCoordinate g_MapC;
 
 int Map(void);		//ŠÖ”‚Ì’è‹`

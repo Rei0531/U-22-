@@ -2,28 +2,26 @@
 #include "Map.h"
 
 //int PadInput = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-extern Controller g_Pad;
-Controller g_Pad;
+//extern Controller g_Pad;
 //MapCoordinate MapC;
 
-void ControllerVlue(void) {
-    //if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_LEFT) != 0)
-    //{
-    //    MapC.X1 += 4;
-    //    MapC.X2 += 4;
-    //    DrawString(100,100,"値は来ています",0xFF0000);
-    //}
-    //if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_RIGHT) != 0)
-    //{
-    //    MapC.X1 -= 4;
-    //    MapC.X2 -= 4;
-    //}
-    if (CheckHitKey(KEY_INPUT_RIGHT) != 0) {
-        MapC.X1 -= 8;
-        MapC.X2 -= 8;
+void ControllerVlue(void) {         //プレイヤーの移動処理関数
+    if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_LEFT) != 0)     //コントローラーがあるときにちゃんと使えます
+    {
+        g_MapC.X1 += 4;
+        g_MapC.X2 += 4;
     }
-    if (CheckHitKey(KEY_INPUT_LEFT) != 0) {
-        MapC.X1 += 8;
-        MapC.X2 += 8;
+    if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_RIGHT) != 0)
+    {
+        g_MapC.X1 -= 4;
+        g_MapC.X2 -= 4;
     }
+    //if (CheckHitKey(KEY_INPUT_RIGHT) != 0) {          //コントローラーない時はこの処理でキーボードの十字キーで操作
+    //    g_MapC.X1 -= 8;
+    //    g_MapC.X2 -= 8;
+    //}
+    //if (CheckHitKey(KEY_INPUT_LEFT) != 0) {
+    //    g_MapC.X1 += 8;
+    //    g_MapC.X2 += 8;
+    //}
 }

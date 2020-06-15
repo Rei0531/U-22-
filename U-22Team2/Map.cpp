@@ -1,14 +1,12 @@
 #include "DxLib.h"
 #include "Map.h"
 
-extern MapCoordinate MapC;
-MapCoordinate MapC;
+extern MapCoordinate g_MapC;
+MapCoordinate g_MapC;
 image g_pic;
 
-int Map(void) {
-	DrawBox(0, 0, 1280, 768, 0xffffff, TRUE);//”’‚¢ŽlŠp
-	//DrawRotaGraph(1280/2, 768/2,1.0,0,g_pic.Map,TRUE,FALSE);//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
-	DrawExtendGraph(MapC.X1, MapC.Y1, MapC.X2, MapC.Y2, g_pic.Map, TRUE);
-	//DrawPixel(320, 240, 0xffffff);  //“_‚ð‘Å‚Â
+int Map(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
+	DrawBox(0, 0, 1280, 768, 0xffffff, TRUE);//”’‚¢ŽlŠp(”wŒi)
+	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);
 	return 0;
 }
