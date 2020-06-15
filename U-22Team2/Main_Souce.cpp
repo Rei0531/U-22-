@@ -6,7 +6,7 @@
 #include "Controller.h"
 #include "Player.h"
 #include "Controller.h"
-
+#include "constant.h"
 
 /************************************************************************
 
@@ -54,7 +54,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetWindowSizeChangeEnableFlag(TRUE, 1);
 	if (DxLib_Init() == -1)  return -1;		//DXライブラリ初期化処理
 	SetDrawScreen(DX_SCREEN_BACK);	// 描画先画面を裏にする
-	SetGraphMode(1280, 768, 32);		//ゲーム画面自体のサイズ
+	SetGraphMode(SCREEN_WIDHT, SCREEN_HEIGHT, 32);		//ゲーム画面自体のサイズ
 
 	/*****画像の読み込み*****/
 	if (LoadPictue() == -1)return -1;		//画像読み込み関数を呼び出し/失敗したらエラー
