@@ -7,7 +7,7 @@ struct MapCoordinate {			//マップのデフォルトの座標
 public:
 	int X1 = 0;	
 	int X2 = MAP_WIDHT;
-	int Y1 = -MAP_HEIGHT;
+	int Y1 = -SCREEN_HEIGHT;
 	int Y2 = SCREEN_HEIGHT;
 }; extern MapCoordinate g_MapC;
 
