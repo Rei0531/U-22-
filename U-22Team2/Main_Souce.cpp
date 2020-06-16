@@ -67,8 +67,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		//マウスの位置を取得
 		GetMousePoint(&g_Pad.MouseX, &g_Pad.MouseY);		//デバッグ用とか、画像配置用にマウス座標取得
-		DrawString(0, 100, "%d", g_Pad.MouseX,0xFF0000);
-		DrawString(20, 100, "%d", g_Pad.MouseY, 0xFF0000);
 
 		switch (GameState) {
 		case GAME_TITLE:
@@ -94,6 +92,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			//エンド描画処理
 			break;
 		}
+
+		DrawFormatString(0, 0, 0xff0000, "X %d ", g_Pad.MouseX);
+		DrawFormatString(0, 30, 0xff0000, "Y %d ", g_Pad.MouseY);
 		ScreenFlip();		//裏画面の内容を表画面に反映
 	}
 	DxLib_End();			//DXライブラリ使用の終了処理
