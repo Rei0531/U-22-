@@ -29,8 +29,11 @@ typedef enum GAME_MODE {		//ゲームの状態
 
 ****************************************************************/
 int GameState = GAME_TITLE;		//ゲームの状態を格納する変数
+
+
 Controller g_Pad;
 extern Controller g_Pad;
+
 
 /***************************************************************
 
@@ -94,7 +97,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 
 		DrawFormatString(0, 0, 0xff0000, "X %d ", g_Pad.MouseX);
-		DrawFormatString(0, 30, 0xff0000, "Y %d ", g_Pad.MouseY);
+		DrawFormatString(0, 10, 0xff0000, "Y %d ", g_Pad.MouseY);
+		DrawFormatString(0, 20, 0xff0000, "NowKey %d ", g_Pad.NowKey);
 		ScreenFlip();		//裏画面の内容を表画面に反映
 	}
 	DxLib_End();			//DXライブラリ使用の終了処理
