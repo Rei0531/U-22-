@@ -1,7 +1,7 @@
 #include "DxLib.h"
 #include "Player.h"
 #include "Controller.h"
-
+//—ˆ‚Ä‚¢‚Ü‚·‚©
 extern image g_pic;
 extern Controller g_Pad;
 
