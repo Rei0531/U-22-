@@ -17,8 +17,12 @@ public:
 		KEY_B = FALSE,		//Bボタン入力
 		KEY_X = FALSE,		//Xボタン入力
 		KEY_Y = FALSE,		//Yボタン入力
-		KEY_LR = FALSE;	//L1,R1ボタン入力
-	void KEY_Init() {
+		KEY_LR = FALSE,	//L1,R1ボタン入力
+
+		PLAYER_DIRECTION,//プレイヤーの今の向き//TRUEが左/FALSEが右
+		PLAYER_JUMP;		//プレイヤーがジャンプしたか
+
+	void KEY_Init() {			//キー入力状態をすべてリセットする
 			KEY_LEFT = FALSE,	//左入力
 			KEY_RIGHT = FALSE, //右入力
 			KEY_DOWN = FALSE,	//下入力
