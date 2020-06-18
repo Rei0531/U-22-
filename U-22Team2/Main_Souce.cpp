@@ -7,30 +7,12 @@
 #include "Player.h"
 #include "Controller.h"
 #include "constant.h"
+#include "Enemy.h"
 
-/************************************************************************
-
-*列挙体の宣言
-
-*************************************************************************/
-typedef enum GAME_MODE {		//ゲームの状態
-	GAME_TITLE,
-	GAME_MENU,
-	GAME_INIT,
-	GAME_END,
-	GAME_MAIN,
-	GAME_CLEAR,
-	GAME_OVER,
-	END = 99
-};
-/****************************************************************
-
-*変数の宣言
-
-****************************************************************/
-int GameState = GAME_TITLE;		//ゲームの状態を格納する変数
+//デバッグ用のマウス座標取得変数宣言
 Controller g_Pad;
 extern Controller g_Pad;
+
 
 /***************************************************************
 
@@ -67,8 +49,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		//マウスの位置を取得
 		GetMousePoint(&g_Pad.MouseX, &g_Pad.MouseY);		//デバッグ用とか、画像配置用にマウス座標取得
-		DrawString(0, 100, "%d", g_Pad.MouseX,0xFF0000);
-		DrawString(20, 100, "%d", g_Pad.MouseY, 0xFF0000);
 
 		switch (GameState) {
 		case GAME_TITLE:
@@ -94,6 +74,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			//エンド描画処理
 			break;
 		}
+
+		DrawFormatString(0, 0, 0xff0000, "X %d ", g_Pad.MouseX);
+		DrawFormatString(0, 10, 0xff0000, "Y %d ", g_Pad.MouseY);
+		DrawFormatString(0, 20, 0xff0000, "NowKey %s ", g_Pad.NowKey);
 		ScreenFlip();		//裏画面の内容を表画面に反映
 	}
 	DxLib_End();			//DXライブラリ使用の終了処理
@@ -112,6 +96,7 @@ int Main(void) {
 	ControllerVlue();
 	Map();
 	Player();
+	Enemy();
 	return 0;
 }
 int Clear(void) {
