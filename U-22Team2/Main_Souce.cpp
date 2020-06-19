@@ -12,6 +12,7 @@
 //デバッグ用のマウス座標取得変数宣言
 Controller g_Pad;
 extern Controller g_Pad;
+extern Rat g_Rat;
 
 
 /***************************************************************
@@ -50,6 +51,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		//マウスの位置を取得
 		GetMousePoint(&g_Pad.MouseX, &g_Pad.MouseY);		//デバッグ用とか、画像配置用にマウス座標取得
 
+		ControllerVlue();//コントローラーの入力状態を取得
+
 		switch (GameState) {
 		case GAME_TITLE:
 			Main();
@@ -76,8 +79,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 
 		DrawFormatString(0, 0, 0xff0000, "X %d ", g_Pad.MouseX);
-		DrawFormatString(0, 10, 0xff0000, "Y %d ", g_Pad.MouseY);
-		DrawFormatString(0, 20, 0xff0000, "NowKey %s ", g_Pad.NowKey);
+		DrawFormatString(0, 20, 0xff0000, "Y %d ", g_Pad.MouseY); 
+		DrawFormatString(0, 40, 0xff0000, "g_MapC.MAP_MAX %d ", g_MapC.MAP_MAX);
+		DrawFormatString(0, 60, 0xff0000, "g_Rat.x %d ", g_Rat.x);
 		ScreenFlip();		//裏画面の内容を表画面に反映
 	}
 	DxLib_End();			//DXライブラリ使用の終了処理
@@ -93,10 +97,16 @@ int Init(void) {
 	return 0;
 }
 int Main(void) {
-	ControllerVlue();
 	Map();
 	Player();
 	Enemy();
+
+	////****************************マップの夜用に画面を暗くする仮の置き場****************************
+	///**/SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		//ブレンドモードをα(128/255)に設定
+	///**/DrawBox(0, 0, 1280, 768, 0x000000, TRUE);
+	///**/SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		//ブレンドモードをオフ
+	///**************************************************************************************************/
+
 	return 0;
 }
 int Clear(void) {

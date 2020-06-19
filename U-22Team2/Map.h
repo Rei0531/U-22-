@@ -9,6 +9,8 @@ public:
 	int X2 = MAP_WIDHT;
 	int Y1 = -SCREEN_HEIGHT;
 	int Y2 = SCREEN_HEIGHT;
+
+	bool MAP_MAX;
 }; extern MapCoordinate g_MapC;
 
 int Map(void);		//ŠÖ”‚Ì’è‹`
