@@ -8,7 +8,7 @@ MapCoordinate g_MapC;
 image g_pic;
 
 int Map(void) {			//マップ画像の描画
-	if (g_Pad.KEY_RIGHT == TRUE) {
+	if (g_Pad.KEY_RIGHT == TRUE) {	//プレイヤーの移動に合わせたスクロール処理
 		g_MapC.X1 -= PLAYERX;
 		g_MapC.X2 -= PLAYERX;
 	}
@@ -16,7 +16,6 @@ int Map(void) {			//マップ画像の描画
 		g_MapC.X1 += PLAYERX;
 		g_MapC.X2 += PLAYERX;
 	}
-	DrawBox(0, 0, 1280, 768, 0xffffff, TRUE);//白い四角(背景)
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);
+	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	return 0;
 }
