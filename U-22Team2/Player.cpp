@@ -2,48 +2,46 @@
 #include "Player.h"
 #include "Controller.h"
 #include "Map.h"
+#include "Color.h"
 
 extern image g_pic;
 extern Controller g_Pad;
 extern MapCoordinate g_MapC;
-extern Rat g_Rat;
+extern Player g_Player;
 
-int Player(void) {
-	static int cnt = 0;	//ネズミアニメーション用カウント変数
+int PlayerDraw(void) {
+	static int cnt = 0;	//スポイントマンアニメーション用カウント変数
 	static int Jumpcnt;			//ジャンプ処理のカウント
-	static int JumpMax = 46;	//ジャンプ処理全体にかかる最大時間//60フレームで1秒だからこの処理は1秒で合わる
-
+	static int JumpMax = 36;	//ジャンプ処理全体にかかる最大時間
 
 
 	//プレイヤーの移動処理_____________________________________________________________________________________________________________________
 	if (g_Pad.KEY_RIGHT == TRUE || g_Pad.KEY_LEFT == TRUE)	//右か左に入力されていたら
 	{
-		if (g_Rat.x < g_MapC.X1) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、左端に到達
-			g_Rat.x = g_MapC.X1;
+		if (g_Player.x < g_MapC.X1) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、左端に到達
+			g_Player.x = g_MapC.X1;
 		}
-		if (g_Rat.x > g_MapC.X2) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、右端に到達
-			g_Rat.x = g_MapC.X2;
+		if (g_Player.x > g_MapC.X2) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、右端に到達
+			g_Player.x = g_MapC.X2;
 		}
 
-		if (g_MapC.MAP_MAX == TRUE && g_MapC.X1 <= g_Rat.x && g_MapC.X2 >= g_Rat.x) {		//マップ端かつプレイヤーが画面内にいる時
-			g_Rat.x += (g_Pad.KEY_RIGHT) ? PLAYERX : -PLAYERX;		//プレイヤー自身のX軸を加減算
-		}
-		DrawRotaGraph(g_Rat.x, g_Rat.y, 1.0, 0, g_pic.Player[cnt++ / 10 % 2 + 1], TRUE, g_Rat.PLAYER_DIRECTION);//ネズミ画像の描画
+		g_Player.x += (g_Pad.KEY_RIGHT) ? PLAYERX : -PLAYERX;		//プレイヤー自身のX軸を加減算
 
-		g_MapC.MAP_MAX = (g_Rat.x == 640) ? FALSE : TRUE;
+		cnt++;//アニメーション用のカウントプラス
 	}
-	else {													//何も入力されていないとき待機モーション
-		DrawRotaGraph(g_Rat.x, g_Rat.y, 1.0, 0, g_pic.Player[0], TRUE, g_Rat.PLAYER_DIRECTION);//ネズミ画像の描画
-	}
+	CC.Change(2);//引数に色の名前/数字を入れて値を変更
+	DrawRotaGraph(g_Player.x, g_Player.y, 1.0, 0, g_pic.Player[cnt / 10 % 5], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
+	CC.ColorReset();//画面全体の変色を元に戻す
+
 	//プレイヤーのジャンプ処理_____________________________________________________________________________________________________________________
-	if (g_Rat.PLAYER_JUMP == TRUE) {	//ジャンプボタンが押されたら
+	if (g_Player.PLAYER_JUMP == TRUE) {	//ジャンプボタンが押されたら
 
 		Jumpcnt++;		//ジャンプアニメーションのカウント開始
 
-		g_Rat.y += (Jumpcnt <= JumpMax / 2) ? -Jumpcnt : Jumpcnt - JumpMax / 2;
+		g_Player.y += (Jumpcnt <= JumpMax / 2) ? -Jumpcnt : Jumpcnt - JumpMax / 2;
 
 		if (Jumpcnt >= JumpMax) {		//ジャンプアニメーションが決められた時間になったとき
-			g_Rat.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
+			g_Player.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
 			Jumpcnt = 0;				//ジャンプアニメーションのカウントを0にする
 		}
 	}

@@ -1,10 +1,10 @@
 #pragma once
 #include "LoadPic.h"
 
-struct Rat {
+struct Player {
 public:
 	int x = 110;			//ゲーム開始座標
-	int y = 645;			//ゲーム開始座標
+	int y = 581;			//ゲーム開始座標
 	bool PLAYER_DIRECTION,	//プレイヤーの向き
 		PLAYER_JUMP,		//プレイヤーがジャンプしたか
 		PLAYER_SQUAT,		//しゃがみ
@@ -12,4 +12,5 @@ public:
 		PLAYER_MENU;		//メニュー
 };
 
-int Player(void);	//関数の定義
+
+int PlayerDraw(void);	//関数の定義

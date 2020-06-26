@@ -4,7 +4,7 @@
 #include "Player.h"
 
 extern Controller g_Pad;
-Rat g_Rat;
+Player g_Player;
 
 void ControllerVlue(void) {         //プレイヤーの移動処理関数
     //左入力_____________________________________________________________________________________________________________________
@@ -12,7 +12,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     {
         g_Pad.KEY_LEFT = TRUE;
         if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Rat.PLAYER_DIRECTION = TRUE;  //プレイヤーの向きフラグを左にする
+            g_Player.PLAYER_DIRECTION = TRUE;  //プレイヤーの向きフラグを左にする
         }
     }
     else { g_Pad.KEY_LEFT = FALSE; }
@@ -21,7 +21,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     {
         g_Pad.KEY_RIGHT = TRUE;
         if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Rat.PLAYER_DIRECTION = FALSE;  //プレイヤーの向きフラグを右にする
+            g_Player.PLAYER_DIRECTION = FALSE;  //プレイヤーの向きフラグを右にする
         }
     }
     else { g_Pad.KEY_RIGHT = FALSE; }
@@ -36,7 +36,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     {
         g_Pad.KEY_DOWN = TRUE;
         if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Rat.PLAYER_SQUAT = TRUE;      //プレイヤーのしゃがみフラグ
+            g_Player.PLAYER_SQUAT = TRUE;      //プレイヤーのしゃがみフラグ
         }
     }
     else { g_Pad.KEY_DOWN = FALSE; }
@@ -44,8 +44,8 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_B) != 0)//ジャンプ処理
     {
         g_Pad.KEY_B = TRUE;
-        if (GameState == GAME_TITLE && g_Rat.PLAYER_JUMP == FALSE) {//ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Rat.PLAYER_JUMP = TRUE;
+        if (GameState == GAME_TITLE && g_Player.PLAYER_JUMP == FALSE) {//ゲームがプレイ中だったら//今はタイトルで動かしている
+            g_Player.PLAYER_JUMP = TRUE;
         }
     }
     else { g_Pad.KEY_B = FALSE; }
@@ -54,7 +54,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     {
         g_Pad.KEY_A = TRUE;
         if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Rat.PLAYER_SQUAT = TRUE;      //プレイヤーのしゃがみフラグ
+            g_Player.PLAYER_SQUAT = TRUE;      //プレイヤーのしゃがみフラグ
         }
     }
     else { g_Pad.KEY_A = FALSE; }
@@ -63,7 +63,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     {
         g_Pad.KEY_X = TRUE;
         if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Rat.PLAYER_ACTION = TRUE;      //プレイヤーのアクションフラグ
+            g_Player.PLAYER_ACTION = TRUE;      //プレイヤーのアクションフラグ
         }
     }
     else { g_Pad.KEY_X = FALSE; }
@@ -72,7 +72,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     {
         g_Pad.KEY_Y = TRUE;
         if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Rat.PLAYER_MENU = TRUE;      //プレイヤーのメニューフラグ
+            g_Player.PLAYER_MENU = TRUE;      //プレイヤーのメニューフラグ
         }
     }
     else { g_Pad.KEY_Y = FALSE; }
