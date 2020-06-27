@@ -77,9 +77,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			//エンド描画処理
 			break;
 		}
-
 		DrawFormatString(0, 0, 0xff0000, "X %d ", g_Pad.MouseX);
-		DrawFormatString(0, 20, 0xff0000, "Y %d ", g_Pad.MouseY); 
+		DrawFormatString(0, 20, 0xff0000, "Y %d ", g_Pad.MouseY);
+		//DrawFormatString(0, 40, 0xff0000, "Color %d ", c);
 		DrawFormatString(0, 60, 0xff0000, "g_Player.x %d ", g_Player.x);
 		ScreenFlip();		//裏画面の内容を表画面に反映
 	}

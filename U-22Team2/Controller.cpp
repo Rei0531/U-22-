@@ -35,17 +35,14 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_DOWN) != 0)
     {
         g_Pad.KEY_DOWN = TRUE;
-        if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Player.PLAYER_SQUAT = TRUE;      //プレイヤーのしゃがみフラグ
-        }
     }
     else { g_Pad.KEY_DOWN = FALSE; }
     //Bボタン_____________________________________________________________________________________________________________________
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_B) != 0)//ジャンプ処理
     {
         g_Pad.KEY_B = TRUE;
-        if (GameState == GAME_TITLE && g_Player.PLAYER_JUMP == FALSE) {//ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Player.PLAYER_JUMP = TRUE;
+        if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
+            g_Player.PLAYER_ACTION = TRUE;      //プレイヤーのアクションフラグ
         }
     }
     else { g_Pad.KEY_B = FALSE; }
@@ -53,8 +50,8 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_A) != 0)
     {
         g_Pad.KEY_A = TRUE;
-        if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Player.PLAYER_SQUAT = TRUE;      //プレイヤーのしゃがみフラグ
+        if (GameState == GAME_TITLE && g_Player.PLAYER_JUMP == FALSE) {//ゲームがプレイ中だったら//今はタイトルで動かしている
+            g_Player.PLAYER_JUMP = TRUE;
         }
     }
     else { g_Pad.KEY_A = FALSE; }
@@ -63,7 +60,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     {
         g_Pad.KEY_X = TRUE;
         if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
-            g_Player.PLAYER_ACTION = TRUE;      //プレイヤーのアクションフラグ
+            g_Player.PLAYER_PICKUP = TRUE;      //プレイヤーのスポイトフラグ
         }
     }
     else { g_Pad.KEY_X = FALSE; }

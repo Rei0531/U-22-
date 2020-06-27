@@ -3,6 +3,7 @@
 #include "Controller.h"
 #include "Map.h"
 #include "Color.h"
+#include "Object.h"
 
 extern image g_pic;
 extern Controller g_Pad;
@@ -10,7 +11,7 @@ extern MapCoordinate g_MapC;
 extern Player g_Player;
 
 int PlayerDraw(void) {
-	static int cnt = 0;	//スポイントマンアニメーション用カウント変数
+	static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
 	static int Jumpcnt;			//ジャンプ処理のカウント
 	static int JumpMax = 36;	//ジャンプ処理全体にかかる最大時間
 
@@ -27,11 +28,8 @@ int PlayerDraw(void) {
 
 		g_Player.x += (g_Pad.KEY_RIGHT) ? PLAYERX : -PLAYERX;		//プレイヤー自身のX軸を加減算
 
-		cnt++;//アニメーション用のカウントプラス
+		animecnt++;//アニメーション用のカウントプラス
 	}
-	CC.Change(2);//引数に色の名前/数字を入れて値を変更
-	DrawRotaGraph(g_Player.x, g_Player.y, 1.0, 0, g_pic.Player[cnt / 10 % 5], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
-	CC.ColorReset();//画面全体の変色を元に戻す
 
 	//プレイヤーのジャンプ処理_____________________________________________________________________________________________________________________
 	if (g_Player.PLAYER_JUMP == TRUE) {	//ジャンプボタンが押されたら
@@ -45,6 +43,15 @@ int PlayerDraw(void) {
 			Jumpcnt = 0;				//ジャンプアニメーションのカウントを0にする
 		}
 	}
+	//スポイト_____________________________________________________________________________________________________________________
+	static int NowColor = 99;//デフォで白色
+	if (g_Player.PLAYER_PICKUP == TRUE) //この関数呼び出しで色を取得
+		NowColor = GetObjectFlag();//変数にスポイトした色を格納する
+
+	CC.Change(NowColor);//引数に色の名前/数字を入れて値を変更
+
+	DrawRotaGraph(g_Player.x, g_Player.y, 1.0, 0, g_pic.Player[animecnt / 10 % 5], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
+	CC.ColorReset();//画面全体の変色を元に戻す
 	//_____________________________________________________________________________________________________________________
 	return 0;
 }
