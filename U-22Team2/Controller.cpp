@@ -4,7 +4,7 @@
 #include "Player.h"
 
 extern Controller g_Pad;
-Player g_Player;
+extern Player g_Player;
 
 void ControllerVlue(void) {         //ƒvƒŒƒCƒ„[‚ÌˆÚ“®ˆ—ŠÖ”
     //¶“ü—Í_____________________________________________________________________________________________________________________
