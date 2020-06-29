@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "Map.h"
 #include "Controller.h"
+#include "Stage_All.h"
 
 extern MapCoordinate g_MapC;
 extern Controller g_Pad;
@@ -10,8 +11,16 @@ extern Controller g_Pad;
 
 int Map(void) {			//マップ画像の描画___________________________________________________________________________________________________________________
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
+	//switch (g_MapC.StageNumber) {
+	//case 1:
+	//	Stage1();
+	//	break;
+	//default:
+	//	break;
+	//}
 
+
+	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	//テスト用虹色のブロック
 	DrawBox(100, 0, 200, 668, GetColor(255, 0, 0), TRUE);//赤

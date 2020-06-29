@@ -9,6 +9,8 @@ public:
 	int X2 = MAP_WIDHT;
 	int Y1 = 0;
 	int Y2 = MAP_HEIGHT;
+
+	int StageNumber = 1;
 }; extern MapCoordinate g_MapC;
 
 int Map(void);		//ŠÖ”‚Ì’è‹`
