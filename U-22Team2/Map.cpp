@@ -11,16 +11,35 @@ extern Controller g_Pad;
 
 int Map(void) {			//マップ画像の描画___________________________________________________________________________________________________________________
 
+	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
+
 	//switch (g_MapC.StageNumber) {
 	//case 1:
 	//	Stage1();
+	//case 2:
+	//	Stage2();
+	//case 3:
+	//	Stage3();
+	//case 4:
+	//	Stage4();
+	//case 5:
+	//	Stage5();
+	//case 6:
+	//	Stage6();
+	//case 7:
+	//	Stage7();
+	//case 8:
+	//	Stage8();
+	//case 9:
+	//	Stage9();
+	//case 10:
+	//	Stage10();
 	//	break;
 	//default:
 	//	break;
 	//}
 
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	//テスト用虹色のブロック
 	DrawBox(100, 0, 200, 668, GetColor(255, 0, 0), TRUE);//赤
