@@ -8,6 +8,7 @@
 
 extern image g_pic;
 extern Controller g_Pad;
+extern MapCoordinate g_MapC;
 
 int PlayerDraw(void) {
 	static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
