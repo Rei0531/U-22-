@@ -4,11 +4,12 @@
 #include "Map.h"
 #include "Color.h"
 #include "Object.h"
-//#include "Hit.h"
+
 
 extern image g_pic;
 extern Controller g_Pad;
 extern MapCoordinate g_MapC;
+extern Player g_Player;
 
 int PlayerDraw(void) {
 	static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
@@ -64,12 +65,12 @@ int PlayerDraw(void) {
 		}
 
 		//当たり判定処理未完成
-		//if (g_Player.NowColor != g_Player.Hit_RightUp) {
-		//	g_Player.x += PLAYERX;
-		//}
-		//if (g_Player.NowColor != g_Player.Hit_LeftUp) {
-		//	g_Player.x -= PLAYERX;
-		//}
+		if (g_Player.NowColor != g_Player.Hit_RightUp && g_Player.NowColor != g_Player.Hit_RightUnder) {
+			g_Player.x += PLAYERX;
+		}
+		if (g_Player.NowColor != g_Player.Hit_LeftUp && g_Player.NowColor != g_Player.Hit_LeftUnder) {
+			g_Player.x -= PLAYERX;
+		}
 
 		g_Player.x += (g_Pad.KEY_RIGHT) ? PLAYERX : -PLAYERX;		//プレイヤー自身のX軸を加減算
 
@@ -89,9 +90,9 @@ int PlayerDraw(void) {
 		}
 	}
 	//プレイヤーの描画_____________________________________________________________________________________________________________________
-	CC.Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
+	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
 	DrawRotaGraph(g_Player.x, g_Player.y, 1.0, 0, g_pic.Player[animecnt / 10 % 5], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
-	CC.ColorReset();//画面全体の変色を元に戻す
+	ColorReset();//画面全体の変色を元に戻す
 	//_____________________________________________________________________________________________________________________
 	return 0;
 }

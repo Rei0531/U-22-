@@ -1,6 +1,6 @@
 #pragma once
 
-//void Stage1(void);
+int Stage1(void);
 //void Stage2(void);
 //void Stage3(void);
 //void Stage4(void);
