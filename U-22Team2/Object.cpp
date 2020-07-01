@@ -29,6 +29,9 @@ int GetPointColor(int Point_x, int Point_y) {	//“n‚³‚ê‚½À•W‚ÌF‚ğæ“¾‚µ‚Ä•Ô‚·
 	case 256:
 		return PURPLE;
 		break;
+	case 0:
+		return BLACK;
+		break;
 	default:
 		return 99;
 		break;

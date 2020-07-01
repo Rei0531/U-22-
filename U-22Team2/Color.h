@@ -8,7 +8,8 @@ enum Color {
 	GREEN,			//3
 	LIGHTBLUE,		//4
 	BLUE,			//5
-	PURPLE			//6
+	PURPLE,			//6
+	BLACK			//7
 };
 
 void Change(int Color);
