@@ -6,15 +6,16 @@ public:
 	int x = 110;			//ゲーム開始座標
 	int y = 581;			//ゲーム開始座標
 	int PickUpPixel;		//スポイトしている場所
-	int NowColor = 99;		//デフォで白色
+	int NowColor = 5;		//デフォで白色
 
 	//当たり判定用の色を格納する変数
 	int Hit_Up,						// ___。__
 		Hit_RightUp,				// 。     。
 		Hit_LeftUp,					// |      |
 		Hit_RightUnder,				// 。     。
-		Hit_LeftUnder,				// L__。__l
-		Hit_Under;					//四角形の６点で当たり判定を取得
+		Hit_LeftUnder,				// L_。_。_l
+		Hit_Under,					//四角形の７点で当たり判定を取得
+		Hit_Under2;					//
 
 	bool PLAYER_DIRECTION = FALSE,	//プレイヤーの向き//TRUE左向き/FALSE右向き
 		PLAYER_JUMP = FALSE,		//プレイヤーがジャンプしたか
