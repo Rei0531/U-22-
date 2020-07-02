@@ -11,7 +11,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_LEFT) != 0)    //画面左側制限
     {
         g_Pad.KEY_LEFT = TRUE;
-        if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
+        if (GameState == GAME_MAIN) { //ゲームがプレイ中だったら
             g_Player.PLAYER_DIRECTION = TRUE;  //プレイヤーの向きフラグを左にする
         }
     }
@@ -20,7 +20,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_RIGHT) != 0)
     {
         g_Pad.KEY_RIGHT = TRUE;
-        if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
+        if (GameState == GAME_MAIN) { //ゲームがプレイ中だったら
             g_Player.PLAYER_DIRECTION = FALSE;  //プレイヤーの向きフラグを右にする
         }
     }
@@ -41,7 +41,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_B) != 0)//ジャンプ処理
     {
         g_Pad.KEY_B = TRUE;
-        if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
+        if (GameState == GAME_MAIN) { //ゲームがプレイ中だったら
             g_Player.PLAYER_ACTION = TRUE;      //プレイヤーのアクションフラグ
         }
     }
@@ -50,7 +50,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_A) != 0)
     {
         g_Pad.KEY_A = TRUE;
-        if (GameState == GAME_TITLE && g_Player.PLAYER_JUMP == FALSE) {//ゲームがプレイ中だったら//今はタイトルで動かしている
+        if (GameState == GAME_MAIN && g_Player.PLAYER_JUMP == FALSE) {//ゲームがプレイ中だったら
             g_Player.PLAYER_JUMP = TRUE;
         }
     }
@@ -59,7 +59,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_3) != 0)//アクション処理
     {
         g_Pad.KEY_X = TRUE;
-        if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
+        if (GameState == GAME_MAIN) { //ゲームがプレイ中だったら
             g_Player.PLAYER_PICKUP = TRUE;      //プレイヤーのスポイトフラグ
         }
     }
@@ -68,7 +68,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_4) != 0)//オプションボタン    //オプション処理
     {
         g_Pad.KEY_Y = TRUE;
-        if (GameState == GAME_TITLE) { //ゲームがプレイ中だったら//今はタイトルで動かしている
+        if (GameState == GAME_MAIN) { //ゲームがプレイ中だったら
             g_Player.PLAYER_MENU = TRUE;      //プレイヤーのメニューフラグ
         }
     }

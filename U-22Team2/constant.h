@@ -28,5 +28,5 @@ const int MAP_HEIGHT = SCREEN_HEIGHT;	//マップ画像の縦のサイズ
 *変数の宣言
 
 ****************************************************************/
-static int GameState = GAME_TITLE;		//ゲームの状態を格納する変数
+extern int GameState;		//ゲームの状態を格納する変数
 
