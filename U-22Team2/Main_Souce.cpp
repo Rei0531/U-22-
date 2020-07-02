@@ -7,14 +7,14 @@
 #include "Player.h"
 #include "constant.h"
 #include "Enemy.h"
-#include "Title.h"
+//#include "Title.h"
 
 //デバッグ用のマウス座標取得変数宣言
 Controller g_Pad;
 Player g_Player;
 extern Controller g_Pad;
 extern Player g_Player;
-extern  int GameState=0;
+extern  int GameState= GAME_MAIN;
 
 
 /***************************************************************
@@ -90,7 +90,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	return 0;				//ソフトの処理
 }
 int Title(void) {
-	GameTitle();
+	//GameTitle();
 	return 0;
 }
 int Menu(void) {
