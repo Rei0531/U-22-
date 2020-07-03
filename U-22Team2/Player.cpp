@@ -29,7 +29,7 @@ int PlayerDraw(void) {
 		Hit_L_x = g_Player.x - 40,		//左の中心からのx座標
 		Hit_R_x = g_Player.x + 40,		//右の中心からのx座標
 		Hit_UpLR_y = g_Player.y - ((g_Player.y - Hit_Up_y) / 2),		//上側左右の中心からのy座標
-		Hit_Under_y = g_Player.y + 90,		//プレイヤーの足元	y軸
+		Hit_Under_y = g_Player.y + 100,		//プレイヤーの足元	y軸
 		Hit_Under_x = 20,		//プレイヤーの足元  x軸
 		Hit_UnderLR_y = g_Player.y - ((g_Player.y - Hit_Under_y) / 2);		//下側左右の中心からのy座標
 

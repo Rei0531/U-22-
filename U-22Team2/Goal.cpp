@@ -16,7 +16,7 @@ int Goal(void) {
 	if ((1150 < g_Player.x && 1250 > g_Player.x - 20) && (400 < g_Player.y && 668 > g_Player.y)) {
 		g_MapC.StageNumber += 1;
 		g_Player.x = 110;			//ゲーム開始座標
-		g_Player.y = 581;			//ゲーム開始座標
+		g_Player.y = 571;			//ゲーム開始座標
 	}
 
 	return 0;

@@ -4,7 +4,7 @@
 struct Player {
 public:
 	int x = 110;			//ゲーム開始座標
-	int y = 581;			//ゲーム開始座標
+	int y = 571;			//ゲーム開始座標
 	int PickUpPixel;		//スポイトしている場所
 	int NowColor = 5;		//デフォで白色
 
