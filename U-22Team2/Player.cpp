@@ -82,32 +82,24 @@ int PlayerDraw(void) {
 		//_________________________________________________________________________________________
 		animecnt++;//アニメーション用のカウントプラス
 	}
-	//重力_____________________________________________________________________________________________
-	if ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) || 
-		(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor)) {
-	}
-	else {
+	//重力の処理_____________________________________________________________________________________________
+	//プレイヤーが地面についていないとき
+	if (!((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) || 
+		(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {
 		g_Player.y += Gravity;		//プレイヤーに重力を追加
 	}
+
 	//プレイヤーのジャンプ処理_____________________________________________________________________________________________________________________
 	if (g_Player.PLAYER_JUMP == TRUE) {	//ジャンプボタンが押されたら
-		//if (g_Player.PLAYER_JUMP == TRUE && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
-		//	(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {	//ジャンプボタンが押されたら
-
 		Jumpcnt++;		//ジャンプアニメーションのカウント開始
-		//g_Player.NowColor != g_Player.Hit_Under
-		//g_Player.y += (Jumpcnt <= JumpMax / 2) ? -Jumpcnt : Jumpcnt - JumpMax / 2;
-		if (Jumpcnt <= JumpMax) {
+		if (Jumpcnt <= JumpMax) {//決められた時間までプレイヤーを上にあげる
 			g_Player.y -= Jumpcnt;
 		}
-		if (Jumpcnt >= JumpMax) {		//ジャンプアニメーションが決められた時間になったとき
+		if (Jumpcnt >= JumpMax && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
+			(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {		//ジャンプアニメーションが決められた時間になったとき
 			g_Player.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
 			Jumpcnt = 0;				//ジャンプアニメーションのカウントを0にする
 		}
-		//if ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
-		//	(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor) && Jumpcnt == 0) {
-		//	g_Player.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
-		//}
 	}
 	//プレイヤーの描画_____________________________________________________________________________________________________________________
 	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
