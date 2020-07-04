@@ -59,11 +59,15 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_3) != 0)//アクション処理
     {
         g_Pad.KEY_X = TRUE;
-        if (GameState == GAME_MAIN) { //ゲームがプレイ中だったら
+        if ((GameState == GAME_MAIN) & (g_Pad.KEY_FLG == TRUE)) { //ゲームがプレイ中だったら
             g_Player.PLAYER_PICKUP = TRUE;      //プレイヤーのスポイトフラグ
+            g_Pad.KEY_FLG = FALSE;      //ボタンが離されるまでFLGをFALSEにする
         }
     }
-    else { g_Pad.KEY_X = FALSE; }
+    else {
+        g_Pad.KEY_X = FALSE;
+        g_Pad.KEY_FLG = TRUE;
+    }
     //Yボタン_____________________________________________________________________________________________________________________
     if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_4) != 0)//オプションボタン    //オプション処理
     {

@@ -4,12 +4,14 @@
 #include "Map.h"
 #include "Color.h"
 #include "Object.h"
-
+#include"Door.h"
 
 extern image g_pic;
 extern Controller g_Pad;
 extern MapCoordinate g_MapC;
 extern Player g_Player;
+extern DoorAll g_Door;
+
 
 int PlayerDraw(void) {
 	static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
@@ -20,8 +22,11 @@ int PlayerDraw(void) {
 		
 
 	//スポイト_____________________________________________________________________________________________________________________
-	if (g_Player.PLAYER_PICKUP == TRUE) //この関数呼び出しで色を取得
+	if (g_Player.PLAYER_PICKUP == TRUE) { //この関数呼び出しで色を取得
+
+		g_Door.Picupflg = TRUE;				//ドアのローテーションためのスポイトのフラグをTRUEにする
 		g_Player.NowColor = GetObjectColor();//変数にスポイトした色を格納する
+	}
 
 	//当たり判定処理_____________________________________________________________________________________________________________________
 	//当たり判定取得する座標

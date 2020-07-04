@@ -1,7 +1,9 @@
 #include "Player.h"
 #include "Color.h"
+#include"Door.h"
 
 extern Player g_Player;
+extern DoorAll g_Door;
 static int SaveColor = 99;		//一時変数に現在の色を格納する
 
 int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
@@ -41,6 +43,7 @@ int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
 	}
 	if (g_Player.PLAYER_PICKUP == TRUE) {//スポイトされたとき
 		g_Player.PLAYER_PICKUP = FALSE;			//TRUEになってこの関数に入るから一度だけの処理にするためにスポイトフラグをFALSEにする
+		if ((g_Player.Hit_Up == GetColor) | (SaveColor == GetColor))	g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
 		if (g_Player.Hit_Up == GetColor)return SaveColor; //プレイヤーの頭の位置の色と取得した色が同じだった時//現在の色を返す
 	}
 	if (SaveColor != GetColor) {//現在の色と取得した色が違うとき

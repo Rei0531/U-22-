@@ -10,4 +10,4 @@ int Stage2(void);
 //void Stage8(void);
 //void Stage9(void);
 //void Stage10(void);
-int Goal(void);
+

@@ -1,6 +1,7 @@
 #include "Map.h"
 #include"Stage_ALL.h"
 #include "Color.h"
+#include"Door.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -15,7 +16,7 @@ int Stage2(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 	DrawBox(500, 0, 900, 668, GetColor(255, 255, 255), TRUE);//Â
 	Change(RED);
 	DrawBox(700, 550, 750, 668, GetColor(255, 255, 255), TRUE);//Ô
-	Goal();
+	Door();
 	ColorReset();
 
 	return 0;
