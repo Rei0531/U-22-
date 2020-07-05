@@ -28,6 +28,9 @@ void Change(int Color) {								//“n‚³‚ê‚½F‚Ì‹P“x‚Éİ’è‚·‚é
 	case PURPLE:
 		SetDrawBright(128, 0, 128);
 		break;
+	case NONCOLOR:
+		SetDrawBright(0, 0, 0);
+		break;
 	default:
 		break;
 	}

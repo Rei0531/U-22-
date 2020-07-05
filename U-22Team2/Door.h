@@ -9,21 +9,27 @@
 struct DoorAll {			//ドアに必要な変数
 public:
 
+	//ドアの座標
 	int x = 1150;		//横座標
 	int y = 400;		//縦座標
 	int w = 1250;		//横幅座標
 	int h = 668;		//縦幅座標
 
-	int Rotation[1][3]{			//ドアのローテーション
+	int Rotation[1][4]{			//ステージごとのドアのローテーション
 
-		{RED,BLUE,PURPLE}		//ステージ１のドアのローテーションの順番
+		{GREEN,BLUE,RED}		//ステージ１のドアのローテーションの順番
 
 	};		//ローテーションの配列
-	int RotationNumber = 0;			//ローテーション位置
+
+	int ColorNumber[1]{ 3 };			//ステージごとのドアのローテーションの数
+
+	int RotationNumber = 0;			//現在のローテーション位置
+	
 
 	bool
 		Picupflg = FALSE;			//スポイトフラグ
 };
+
 
 
 int Door(void);					//ドアに関するすべての関数をまとめる関数(定義）

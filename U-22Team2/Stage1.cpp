@@ -2,6 +2,7 @@
 #include"Stage_ALL.h"
 #include "Color.h"
 #include"Door.h"
+#include "Lock.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -15,6 +16,7 @@ int Stage1(void) {			//マップ画像の描画
 	Change(RED);
 	DrawBox(700, 550, 750, 668, GetColor(255, 255, 255), TRUE);//赤
 	Door();			//ステージゴール処理
+	Lock();
 	ColorReset();
 
 	return 0;
