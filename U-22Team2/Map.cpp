@@ -17,7 +17,7 @@ int Map(void) {			//マップ画像の描画____________________________________________
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
-	if (g_Lock.clearflg == FALSE) {
+
 		switch (g_MapC.StageNumber) {
 		case 1:
 			Stage1();
@@ -45,13 +45,11 @@ int Map(void) {			//マップ画像の描画____________________________________________
 		default:
 			break;
 		}
-	}
-	else {
+	
 
-		Goal();
-
-	}
-
+		if ((g_Lock.clearflg == TRUE)&(g_Pad.KEY_B==FALSE)) {
+			GameState = GAME_CLEAR;
+		}
 
 
 

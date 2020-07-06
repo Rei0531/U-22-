@@ -15,10 +15,14 @@ extern LockALL g_Lock;
 
 int Goal(void) {
 
+	ControllerVlue();
+
 	DrawRotaGraph(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, 1.4, 0, g_pic.StageClear, TRUE, FALSE); //ƒ^ƒCƒgƒ‹‰æ‘œ•`‰æ
 
-	if (g_Player.PLAYER_ACTION == TRUE) {
+	if (g_Pad.KEY_B == TRUE) {
+
 		g_MapC.StageNumber += 1;
+		GameState = GAME_MAIN;
 		g_Lock.clearflg = FALSE;
 	}
 

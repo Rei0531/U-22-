@@ -8,6 +8,7 @@
 #include "constant.h"
 #include "Enemy.h"
 #include "Title.h"
+#include "Lock.h"
 
 //デバッグ用のマウス座標取得変数宣言
 Controller g_Pad;
@@ -71,6 +72,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			//ゲームメイン処理
 			break;
 		case GAME_CLEAR:
+			Clear();
 			//ゲームクリア処理
 			break;
 		case GAME_OVER:
@@ -105,6 +107,7 @@ int Main(void) {
 	return 0;
 }
 int Clear(void) {
+	Goal();
 	return 0;
 }
 int Over(void) {
