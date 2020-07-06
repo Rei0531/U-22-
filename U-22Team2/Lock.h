@@ -12,8 +12,11 @@ public:
 	int n[1]{ 3 };	//ƒmƒu‚ÆŒ®ŒŠ‚Ì”
 	int Release = 0; //Œ®ŒŠ‚Ì‰ğœ”
 
+	bool
+		clearflg = FALSE;
 
 };
 
 int Lock(void);
 int UnLock(void);
+int Goal(void);

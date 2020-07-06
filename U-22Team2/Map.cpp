@@ -2,44 +2,56 @@
 #include "Map.h"
 #include "Controller.h"
 #include "Stage_All.h"
+#include "Lock.h"
+#include"Player.h"
 
 extern MapCoordinate g_MapC;
 extern Controller g_Pad;
 MapCoordinate g_MapC;
 image g_pic;
 extern Controller g_Pad;
+extern LockALL g_Lock;
+extern Player g_Player;
 
 int Map(void) {			//マップ画像の描画___________________________________________________________________________________________________________________
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
-	switch (g_MapC.StageNumber) {
-	case 1:
-		Stage1();
-		break;
-	case 2:
-		Stage2();
-		break;
-	//case 3:
-	//	Stage3();
-	//case 4:
-	//	Stage4();
-	//case 5:
-	//	Stage5();
-	//case 6:
-	//	Stage6();
-	//case 7:
-	//	Stage7();
-	//case 8:
-	//	Stage8();
-	//case 9:
-	//	Stage9();
-	//case 10:
-	//	Stage10();
-	//	break;
-	default:
-		break;
+	if (g_Lock.clearflg == FALSE) {
+		switch (g_MapC.StageNumber) {
+		case 1:
+			Stage1();
+			break;
+		case 2:
+			Stage2();
+			break;
+			//case 3:
+			//	Stage3();
+			//case 4:
+			//	Stage4();
+			//case 5:
+			//	Stage5();
+			//case 6:
+			//	Stage6();
+			//case 7:
+			//	Stage7();
+			//case 8:
+			//	Stage8();
+			//case 9:
+			//	Stage9();
+			//case 10:
+			//	Stage10();
+			//	break;
+		default:
+			break;
+		}
 	}
+	else {
+
+		Goal();
+
+	}
+
 
 
 

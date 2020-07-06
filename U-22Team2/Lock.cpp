@@ -17,7 +17,7 @@ LockALL g_Lock;
 
 int Lock(void) {
 
-	g_Player.PLAYER_ACTION = FALSE;
+	//g_Player.PLAYER_ACTION = FALSE;
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 
@@ -41,17 +41,18 @@ int UnLock(void) {
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		if (i == 0) {
-			
-			if((g_Lock.n[g_MapC.StageNumber - 1] - 1 == g_Lock.Release)&(g_Lock.color[g_MapC.StageNumber - 1][i] == g_Player.NowColor)){//ƒmƒu‚Ì‰ğœˆ—
-				g_Lock.color[g_MapC.StageNumber - 1][i] = 8;		
-				}
-	g_Player.PLAYER_ACTION = FALSE;
-		}
-		else if (g_Lock.color[g_MapC.StageNumber-1][i] == g_Player.NowColor) {		//Œ®ŒŠ‰ğœˆ—
 
-			g_Lock.color[g_MapC.StageNumber-1][i] = 8;
+			if ((g_Lock.n[g_MapC.StageNumber - 1] - 1 == g_Lock.Release) & (g_Lock.color[g_MapC.StageNumber - 1][i] == g_Player.NowColor)) {//ƒmƒu‚Ì‰ğœˆ—
+				g_Lock.color[g_MapC.StageNumber - 1][i] = 8;
+				g_Lock.clearflg = TRUE;
+
+			}
+		}
+		else if (g_Lock.color[g_MapC.StageNumber - 1][i] == g_Player.NowColor) {		//Œ®ŒŠ‰ğœˆ—
+
+			g_Lock.color[g_MapC.StageNumber - 1][i] = 8;
 			g_Lock.Release += 1;
-			
+
 		}
 	}
 

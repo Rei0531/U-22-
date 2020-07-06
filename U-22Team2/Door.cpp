@@ -20,13 +20,16 @@ int Door(void) {
 	Change(g_Door.Rotation[g_MapC.StageNumber - 1][g_Door.RotationNumber % 3]);
 	DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(255, 255, 255), TRUE);//ê¬
 
-	if (((g_Door.x < g_Player.x && g_Door.w > g_Player.x - 20) &&
-		(g_Door.y < g_Player.y && g_Door.h > g_Player.y))&&
-		(g_Player.PLAYER_ACTION == TRUE))
-	{
-		UnLock();
-	}
+	if (g_Player.PLAYER_ACTION == TRUE) {
+		g_Player.PLAYER_ACTION = FALSE;
+		if ((g_Door.x < g_Player.x && g_Door.w > g_Player.x - 20) &&
+			(g_Door.y < g_Player.y && g_Door.h > g_Player.y))
+		{
 
+			UnLock();
+
+		}
+	}
 	return 0;
 }
 
