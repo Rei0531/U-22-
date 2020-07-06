@@ -31,6 +31,9 @@ void Change(int Color) {								//“n‚³‚ê‚½F‚Ì‹P“x‚Éİ’è‚·‚é
 	case NONCOLOR:
 		SetDrawBright(0, 0, 0);
 		break;
+	case WHITE:
+		SetDrawBright(255, 255, 255);
+		break;
 	default:
 		break;
 	}

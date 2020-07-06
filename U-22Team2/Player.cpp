@@ -15,11 +15,11 @@ extern DoorAll g_Door;
 
 int PlayerDraw(void) {
 	static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
-	static int Jumpcnt;			//ジャンプ処理のカウント
-	static int JumpMax = 20;	//ジャンプ処理全体にかかる最大時間
+	static int Jumpcnt = 20;			//ジャンプ処理のカウント
+	static int JumpMax = 0;	//ジャンプ処理全体にかかる最大時間
 	static int Gravity = 5;		//毎フレーム下に落とす
 	static int NoMove = 0;		//0の時動いていない1の時動いている/プレイヤーの歩くモーション待機モーション切り替えよう変数
-		
+	static int JumpOkflag = 0;	//空中ジャンプ防止変数/0がジャンプしていない/1がジャンプ中
 	
 	//スポイト_____________________________________________________________________________________________________________________
 	if (g_Player.PLAYER_PICKUP == TRUE) { //この関数呼び出しで色を取得
@@ -97,17 +97,22 @@ int PlayerDraw(void) {
 		(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {
 		g_Player.y += Gravity;		//プレイヤーに重力を追加
 	}
+	else {
+		JumpOkflag = 0;	//地面についているのでジャンプしていない
+	}
 
 	//プレイヤーのジャンプ処理_____________________________________________________________________________________________________________________
-	if (g_Player.PLAYER_JUMP == TRUE) {	//ジャンプボタンが押されたら
-		Jumpcnt++;		//ジャンプアニメーションのカウント開始
-		if (Jumpcnt <= JumpMax) {//決められた時間までプレイヤーを上にあげる
+	if ((g_Player.PLAYER_JUMP == TRUE && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
+		(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) || JumpOkflag == 1) {	//ジャンプボタンが押されたら
+		Jumpcnt--;		//ジャンプアニメーションのカウント開始
+		JumpOkflag = 1;	//一度ジャンプしたので終わるまでジャンプ処理
+		if (Jumpcnt >= JumpMax) {//決められた時間までプレイヤーを上にあげる
 			g_Player.y -= Jumpcnt;
 		}
-		if (Jumpcnt >= JumpMax && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
+		if (Jumpcnt <= JumpMax && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
 			(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {		//ジャンプアニメーションが決められた時間になったとき
 			g_Player.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
-			Jumpcnt = 0;				//ジャンプアニメーションのカウントを0にする
+			Jumpcnt = 20;				//ジャンプアニメーションのカウントを0にする
 		}
 	}
 	//プレイヤーの描画_____________________________________________________________________________________________________________________

@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Color.h"
 #include"Door.h"
+#include"Interact.h"
 
 extern Player g_Player;
 extern DoorAll g_Door;
@@ -8,47 +9,62 @@ static int SaveColor = 99;		//一時変数に現在の色を格納する
 
 int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
 	int color, r, g, b;
-	int GetColor = 99;		//今取得する色格納変数
+	int getcolor = 99;		//今取得する色格納変数
 
 	color = GetPixel(Point_x, Point_y);		//スポイトする/引数はスポイトする場所
 	GetColor2(color, &r, &g, &b);							//スポイトした色をR,G,B値に直す
 	SaveColor;
 	switch (r + g + b) {		//R,G,Bの合計で区別する/スポイトした色をreturnで返す
 	case 255:
-		GetColor = RED;
+		getcolor = RED;
 		break;
 	case 420:
-		GetColor = ORENGE;
+		getcolor = ORENGE;
 		break;
 	case 510:
-		GetColor = YELLOW;
+		getcolor = YELLOW;
 		break;
 	case 128:
-		GetColor = GREEN;
+		getcolor = GREEN;
 		break;
 	case 509:
-		GetColor = LIGHTBLUE;
+		getcolor = LIGHTBLUE;
 		break;
 	case 254:
-		GetColor = BLUE;
+		getcolor = BLUE;
 		break;
 	case 256:
-		GetColor = PURPLE;
+		getcolor = PURPLE;
 		break;
 	case 0:
-		GetColor = BLACK;
+		getcolor = BLACK;
+		break;
+	case WHITE:
+		getcolor = WHITE;
 		break;
 	default:
 		break;
 	}
 	if (g_Player.PLAYER_PICKUP == TRUE) {//スポイトされたとき
 		g_Player.PLAYER_PICKUP = FALSE;			//TRUEになってこの関数に入るから一度だけの処理にするためにスポイトフラグをFALSEにする
-		if ((g_Player.Hit_Up == GetColor) | (SaveColor == GetColor))	g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
-		if (g_Player.Hit_Up == GetColor)return SaveColor; //プレイヤーの頭の位置の色と取得した色が同じだった時//現在の色を返す
+		if ((g_Player.Hit_Up == getcolor) | (SaveColor == getcolor)) {
+			g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
+		}
+		if (g_Player.Hit_Up == getcolor) {
+			Interact(FALSE);
+			return SaveColor; //プレイヤーが重なっている置の色と取得した色が同じだった時//現在の色を返す
+		}
+		if (SaveColor != getcolor) {
+			Interact(TRUE);
+		}
+		else {
+			Interact(FALSE);
+		}
 	}
-	if (SaveColor != GetColor) {//現在の色と取得した色が違うとき
+
+	if (SaveColor != getcolor) {//現在の色と取得した色が違うとき
 		//インタラクトした処理を描く
-		return GetColor;		//取得した色を返す
+		return getcolor;		//取得した色を返す
 	}
 	else {
 		//インタラクトしていない処理を描く
