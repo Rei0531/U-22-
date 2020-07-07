@@ -24,12 +24,16 @@ int Lock(void) {
 		if (i == 0) {
 			Change(g_Lock.color[g_MapC.StageNumber - 1][0]);
 			DrawBox(1200, 580, 1230, 600, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
+			Change(NONCOLOR);
+			DrawBox(1200, 580, 1230, 600, GetColor(255, 255, 255), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
 
 		}
 		else {
 
 			Change(g_Lock.color[g_MapC.StageNumber - 1][i]);
 			DrawBox(1165 + i * 10, 580, 1175 + i * 10, 600, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
+			Change(NONCOLOR);
+			DrawBox(1165 + i * 10, 580, 1175 + i * 10, 600, GetColor(255, 255, 255), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
 		}
 	}
 

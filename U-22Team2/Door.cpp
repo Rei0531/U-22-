@@ -15,10 +15,12 @@ DoorAll g_Door;
 
 int Door(void) {
 
-	DoorRotation();
+	//DoorRotation();
 
 	Change(g_Door.Rotation[g_MapC.StageNumber - 1][g_Door.RotationNumber % 3]);
 	DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(255, 255, 255), TRUE);//ê¬
+	Change(NONCOLOR);
+	DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(255, 255, 255), FALSE);//ògê¸
 
 	if (g_Player.PLAYER_ACTION == TRUE) {
 		g_Player.PLAYER_ACTION = FALSE;

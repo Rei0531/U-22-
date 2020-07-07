@@ -6,7 +6,7 @@ struct LockALL {		//ノブも含めた鍵穴に必要な変数
 public:
 	int color[1][3]{		//ノブと鍵の穴
 
-		{GREEN,BLUE, RED}		//0：ノブ　１、２：鍵穴
+		{LIGHTBLUE,BLUE, RED}		//0：ノブ　１、２：鍵穴
 
 	};
 	int n[1]{ 3 };	//ノブと鍵穴の数

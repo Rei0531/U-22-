@@ -6,7 +6,7 @@ public:
 	int x = 110;			//ゲーム開始座標
 	int y = 571;			//ゲーム開始座標
 	int PickUpPixel;		//スポイトしている場所
-	int NowColor = 5;		//デフォで白色
+	int NowColor = 4;		//デフォで白色
 
 	//当たり判定用の色を格納する変数
 	int Hit_Up,						// ___。__
