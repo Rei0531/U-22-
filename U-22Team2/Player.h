@@ -7,6 +7,7 @@ public:
 	int y = 571;			//ゲーム開始座標
 	int PickUpPixel;		//スポイトしている場所
 	int NowColor = 4;		//デフォで白色
+	int Interact = 0;		//プレイヤーのスポイトできる回数/ステージごとに値を入れる
 
 	//当たり判定用の色を格納する変数
 	int Hit_Up,						// ___。__

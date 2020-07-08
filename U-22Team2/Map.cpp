@@ -45,6 +45,9 @@ int Map(void) {			//マップ画像の描画____________________________________________
 		default:
 			break;
 		}
+
+		//残り回数の表示
+		DrawFormatString(g_Player.x-30,g_Player.y - 150,g_Player.NowColor,"残り%d",g_Player.Interact);
 	
 
 		if ((g_Lock.clearflg == TRUE)&(g_Pad.KEY_B==FALSE)) {

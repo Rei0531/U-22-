@@ -22,8 +22,7 @@ int PlayerDraw(void) {
 	static int JumpOkflag = 0;	//空中ジャンプ防止変数/0がジャンプしていない/1がジャンプ中
 	
 	//スポイト_____________________________________________________________________________________________________________________
-	if (g_Player.PLAYER_PICKUP == TRUE) { //この関数呼び出しで色を取得
-
+	if (g_Player.PLAYER_PICKUP == TRUE && g_Player.Interact > 0) { //この関数呼び出しで色を取得
 		g_Door.Picupflg = TRUE;				//ドアのローテーションためのスポイトのフラグをTRUEにする
 		g_Player.NowColor = GetObjectColor();//変数にスポイトした色を格納する
 	}

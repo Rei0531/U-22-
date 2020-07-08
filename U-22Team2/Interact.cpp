@@ -6,6 +6,7 @@ extern Player g_Player;
 
 void Interact(int OK) {
 	if (OK == TRUE) {		//インタラクト成功
+		g_Player.Interact--;
 		DrawBox(g_Player.x - 5, g_Player.y - 125, g_Player.x + 5, g_Player.y - 115, GetColor(100, 100, 255), TRUE);
 	}
 	else {		//インタラクト失敗
