@@ -19,8 +19,9 @@ public:
 		KEY_X = FALSE,		//Xボタン入力
 		KEY_Y = FALSE,		//Yボタン入力
 		KEY_LR = FALSE,	//L1,R1ボタン入力
-		KEY_FLG = FALSE,		//キー入力フラグ
-		KEY_FLG_B = FALSE;		//キー入力フラグ
+		KEY_FLG = FALSE,		//Xキー入力フラグ
+		KEY_FLG_B = FALSE,     //Bキー入力フラグ
+		KEY_FLG_Y = FALSE;	  //Yキー入力フラグ
 
 	void KEY_Init() {			//キー入力状態をすべてリセットする
 		KEY_LEFT = FALSE,	//左入力

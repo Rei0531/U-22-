@@ -14,3 +14,4 @@ public:
 }; extern MapCoordinate g_MapC;
 
 int Map(void);		//ŠÖ”‚Ì’è‹`
+int GameInit(void);		//ŠÖ”‚Ì’è‹`@‰Šú‰»
