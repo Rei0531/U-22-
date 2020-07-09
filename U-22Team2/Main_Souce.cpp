@@ -9,10 +9,12 @@
 #include "Enemy.h"
 #include "Title.h"
 #include "Lock.h"
+#include "LoadSound.h"
 
 //デバッグ用のマウス座標取得変数宣言
 Controller g_Pad;
 Player g_Player;
+Sound g_Snd;
 extern Controller g_Pad;
 extern Player g_Player;
 extern  int GameState= GAME_TITLE;
@@ -44,7 +46,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	/*****画像の読み込み*****/
 	if (LoadPictue() == -1)return -1;		//画像読み込み関数を呼び出し/失敗したらエラー
-	//if (LoadVoice() == -1)return -1;		//音声読み込み関数を呼び出し
+	if (LoadSound() == -1)return -1;		//音声読み込み関数を呼び出し
 
 	//ゲームループ
 	while (ProcessMessage() == 0 && GameState != END) {
