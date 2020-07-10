@@ -51,7 +51,7 @@ int PlayerDraw(void) {
 	g_Player.Hit_Under = GetPointColor(g_Player.x + Hit_Under_x, Hit_Under_y);		//‰E‘«Œ³
 	g_Player.Hit_Under2 = GetPointColor(g_Player.x - Hit_Under_x, Hit_Under_y);		//¶‘«Œ³
 
-	////“–‚½‚è”»’è‚Ì‰Â‹‰»_____________________________________________________________________
+	//“–‚½‚è”»’è‚Ì‰Â‹‰»_____________________________________________________________________
 	//DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xff00ff, FALSE);	//“ªã
 	//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//‰Eã
 	//DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//‰E‰º
