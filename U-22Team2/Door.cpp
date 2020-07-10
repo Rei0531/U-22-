@@ -5,11 +5,14 @@
 #include "LoadPic.h"
 #include "Door.h"
 #include "Lock.h"
+#include "LoadSound.h"
 
 extern Player g_Player;
 extern MapCoordinate g_MapC;
 extern Player g_Player;
 DoorAll g_Door;
+extern Sound g_Snd;
+
 
 
 

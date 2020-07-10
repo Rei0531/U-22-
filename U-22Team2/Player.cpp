@@ -51,16 +51,16 @@ int PlayerDraw(void) {
 	g_Player.Hit_Under = GetPointColor(g_Player.x + Hit_Under_x, Hit_Under_y);		//右足元
 	g_Player.Hit_Under2 = GetPointColor(g_Player.x - Hit_Under_x, Hit_Under_y);		//左足元
 
-	//当たり判定の可視化_____________________________________________________________________
-	DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xff00ff, FALSE);	//頭上
-	DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//右上
-	DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//右下
-	DrawBox(Hit_L_x - 5, Hit_UpLR_y - 5, Hit_L_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//左上
-	DrawBox(Hit_L_x - 5, Hit_UnderLR_y - 5, Hit_L_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//左下
-	DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元右
-	DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元左
-	//スポイトしている場所の四角表示
-	DrawBox(g_Player.PickUpPixel - 5, g_Player.y - 5, g_Player.PickUpPixel + 5, g_Player.y + 5, 0xff00ff, FALSE);
+	////当たり判定の可視化_____________________________________________________________________
+	//DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xff00ff, FALSE);	//頭上
+	//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//右上
+	//DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//右下
+	//DrawBox(Hit_L_x - 5, Hit_UpLR_y - 5, Hit_L_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//左上
+	//DrawBox(Hit_L_x - 5, Hit_UnderLR_y - 5, Hit_L_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//左下
+	//DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元右
+	//DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元左
+	////スポイトしている場所の四角表示
+	//DrawBox(g_Player.PickUpPixel - 5, g_Player.y - 5, g_Player.PickUpPixel + 5, g_Player.y + 5, 0xff00ff, FALSE);
 
 
 	//プレイヤーの移動処理_____________________________________________________________________________________________________________________

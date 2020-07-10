@@ -74,7 +74,7 @@ int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
 
 int GetObjectColor(void) {
 	//プレイヤーの向いている方向より+-50したところか色を取得する
-	g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 50 : g_Player.x + 50;//スポイトする場所
+	g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 70 : g_Player.x + 70;//スポイトする場所
 	SaveColor = g_Player.NowColor;		//一時変数に現在の色を格納する
 
 	return GetPointColor(g_Player.PickUpPixel, g_Player.y);

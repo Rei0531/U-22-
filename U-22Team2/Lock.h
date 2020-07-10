@@ -4,18 +4,21 @@
 
 struct LockALL {		//ノブも含めた鍵穴に必要な変数
 public:
-	int color[1][3]{		//ノブと鍵の穴
+	int color[2][3]{		//ノブと鍵の穴		//0：ノブ　１～鍵穴
 
-		{LIGHTBLUE,BLUE, RED}		//0：ノブ　１、２：鍵穴
-
-	};
-	int colorback[1][3]{		//鍵穴のバックアップバックアップ
-
+		{BLUE},		//ステージ１
 		{LIGHTBLUE,BLUE, RED}
 
 	};
+	int colorback[2][3]{		//鍵穴のバックアップバックアップ
 
-	int n[1]{ 3 };	//ノブと鍵穴の数
+		{BLUE},
+		{LIGHTBLUE,BLUE, RED}
+
+
+	};
+
+	int n[2]{ 1,3 };	//ノブと鍵穴の数
 	int Release = 0; //鍵穴の解除数
 
 	bool
