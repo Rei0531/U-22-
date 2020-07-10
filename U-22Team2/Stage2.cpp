@@ -42,11 +42,11 @@ int Stage2(void) {			//マップ画像の描画
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	//色ブロック描画
 	Change(BLUE);
-	DrawExtendGraph(400, 468, 550, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(400, 518, 550, 668, g_pic.Box, TRUE);
 	Change(RED);
-	DrawExtendGraph(550, 468, 700, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(550, 518, 700, 668, g_pic.Box, TRUE);
 	Change(LIGHTBLUE);
-	DrawExtendGraph(700, 468, 850, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(700, 518, 850, 668, g_pic.Box, TRUE);
 	Door();			//ステージゴール処理
 	Lock();
 

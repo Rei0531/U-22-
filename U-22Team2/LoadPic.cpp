@@ -10,6 +10,7 @@ int LoadPictue(void) {		//‰æ‘œ‚Ì“Ç‚İ‚İ
 	if ((g_pic.StageClear = LoadGraph("image/stageimage(‰¼j.png")) == -1)return -1;
 
 	if ((g_pic.Box = LoadGraph("image/Box2.png")) == -1)return -1;
+	if ((g_pic.Pin = LoadGraph("image/Pin.png")) == -1)return -1;
 
 	if (LoadDivGraph("image/All_Object.png", 10, 10, 1, 150, 150, g_pic.Object) == -1) return -1;
 

@@ -45,6 +45,7 @@ int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
 	default:
 		break;
 	}
+	DrawRotaGraph(g_Player.PickUpPixel, g_Player.PickUpPixely,1.0,0,g_pic.Pin,TRUE,FALSE);
 	if (g_Player.PLAYER_PICKUP == TRUE) {//スポイトされたとき
 		g_Player.PLAYER_PICKUP = FALSE;			//TRUEになってこの関数に入るから一度だけの処理にするためにスポイトフラグをFALSEにする
 		if ((g_Player.Hit_Up == getcolor) | (SaveColor == getcolor)) {
@@ -75,6 +76,7 @@ int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
 int GetObjectColor(void) {
 	//プレイヤーの向いている方向より+-50したところか色を取得する
 	g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 70 : g_Player.x + 70;//スポイトする場所
+	g_Player.PickUpPixely = g_Player.y;
 	SaveColor = g_Player.NowColor;		//一時変数に現在の色を格納する
 
 	return GetPointColor(g_Player.PickUpPixel, g_Player.y);

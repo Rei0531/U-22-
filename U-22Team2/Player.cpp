@@ -29,13 +29,14 @@ int PlayerDraw(void) {
 
 	//当たり判定処理_____________________________________________________________________________________________________________________
 	//当たり判定取得する座標
-	int Hit_Up_y = g_Player.y - 90,			//プレイヤーの頭上
+	int Hit_Up_y = g_Player.y - 50,			//プレイヤーの頭上
 		Hit_L_x = g_Player.x - 40,		//左の中心からのx座標
 		Hit_R_x = g_Player.x + 40,		//右の中心からのx座標
-		Hit_UpLR_y = g_Player.y - ((g_Player.y - Hit_Up_y) / 2),		//上側左右の中心からのy座標
+		Hit_UpLR_y = g_Player.y - ((g_Player.y - (g_Player.y - 90)) / 2),		//上側左右の中心からのy座標
 		Hit_Under_y = g_Player.y + 100,		//プレイヤーの足元	y軸
 		Hit_Under_x = 20,		//プレイヤーの足元  x軸
-		Hit_UnderLR_y = g_Player.y - ((g_Player.y - Hit_Under_y) / 2);		//下側左右の中心からのy座標
+		//Hit_UnderLR_y = g_Player.y - ((g_Player.y - Hit_Under_y) / 2);		//下側左右の中心からのy座標
+		Hit_UnderLR_y = g_Player.y + 80;
 
 	//マジックナンバーの解説
 	//Hit_Up_yの90はプレイヤー画像の真ん中から上下の端っこまでの距離
@@ -52,15 +53,14 @@ int PlayerDraw(void) {
 	g_Player.Hit_Under2 = GetPointColor(g_Player.x - Hit_Under_x, Hit_Under_y);		//左足元
 
 	//当たり判定の可視化_____________________________________________________________________
-	//DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xff00ff, FALSE);	//頭上
-	//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//右上
-	//DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//右下
-	//DrawBox(Hit_L_x - 5, Hit_UpLR_y - 5, Hit_L_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//左上
-	//DrawBox(Hit_L_x - 5, Hit_UnderLR_y - 5, Hit_L_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//左下
-	//DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元右
-	//DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元左
-	////スポイトしている場所の四角表示
-	//DrawBox(g_Player.PickUpPixel - 5, g_Player.y - 5, g_Player.PickUpPixel + 5, g_Player.y + 5, 0xff00ff, FALSE);
+	DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xff00ff, FALSE);	//頭上
+	DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//右上
+	DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//右下
+	DrawBox(Hit_L_x - 5, Hit_UpLR_y - 5, Hit_L_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//左上
+	DrawBox(Hit_L_x - 5, Hit_UnderLR_y - 5, Hit_L_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//左下
+	DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元右
+	DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元左
+	DrawBox(g_Player.PickUpPixel - 5, g_Player.PickUpPixely - 5, g_Player.PickUpPixel + 5, g_Player.PickUpPixely + 5, 0xff00ff, FALSE);
 
 
 	//プレイヤーの移動処理_____________________________________________________________________________________________________________________
