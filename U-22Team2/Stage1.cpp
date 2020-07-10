@@ -48,11 +48,14 @@ int Stage1(void) {			//マップ画像の描画
 	//Change(GREEN);
 	//DrawBox(1000, 550, 1050, 668, GetColor(255, 255, 255), TRUE);//緑
 	Change(BLUE);
-	DrawBox(400, 0, 500, 668, GetColor(255, 255, 255), TRUE);//青
+	DrawExtendGraph(400, 468, 500, 668, g_pic.Box, TRUE);
+	//DrawBox(, GetColor(255, 255, 255), TRUE);//青
 	Change(RED);
-	DrawBox(500, 0, 600, 668, GetColor(255, 255, 255), TRUE);//赤
+	DrawExtendGraph(500, 468, 600, 668, g_pic.Box, TRUE);
+	//DrawBox(500, 0, 600, 668, GetColor(255, 255, 255), TRUE);//赤
 	Change(LIGHTBLUE);
-	DrawBox(600, 0, 700, 668, GetColor(255, 255, 255), TRUE);//緑
+	DrawExtendGraph(600, 468, 700, 668, g_pic.Box, TRUE);
+	//DrawBox(600, 0, 700, 668, GetColor(255, 255, 255), TRUE);//緑
 	Door();			//ステージゴール処理
 	Lock();
 
