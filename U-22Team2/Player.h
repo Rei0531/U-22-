@@ -6,6 +6,7 @@ public:
 	int x = 110;			//ゲーム開始座標
 	int y = 571;			//ゲーム開始座標
 	int PickUpPixel;		//スポイトしている場所
+	int PickUpPixely;		//スポイトしている場所
 	int NowColor = 4;		//デフォで白色
 	int Interact = 0;		//プレイヤーのスポイトできる回数/ステージごとに値を入れる
 

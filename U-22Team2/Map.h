@@ -14,4 +14,4 @@ public:
 }; extern MapCoordinate g_MapC;
 
 int Map(void);		//関数の定義
-int GameInit(void);		//関数の定義　初期化
+//int GameInit(void);		//関数の定義　初期化
