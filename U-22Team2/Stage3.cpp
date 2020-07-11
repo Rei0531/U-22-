@@ -13,7 +13,7 @@ extern LockALL g_Lock;
 extern Object g_Object;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
-
+//オブジェクトの初期位置
 static int obj1x1 = 400,
 obj1x2 = obj1x1 + 150,
 obj2x1 = 550,
@@ -40,6 +40,7 @@ void Stage3Init() {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
 
+	//箱の位置リセット
 	obj1x1 = 400;
 	obj1x2 = obj1x1 + 150;
 	obj2x1 = 550;
@@ -48,7 +49,7 @@ void Stage3Init() {
 	obj3x2 = obj3x1 + 150;
 	objALLy1 = 518;
 	objALLy2 = 668;
-	g_Object.Init();
+	g_Object.Init();//オブジェクトの移動量リセット
 }
 
 int Stage3(void) {			//マップ画像の描画
