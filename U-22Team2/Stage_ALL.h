@@ -2,12 +2,12 @@
 
 int Stage1(void);
 int Stage2(void);
-//void Stage3(void);
-//void Stage4(void);
-//void Stage5(void);
-//void Stage6(void);
-//void Stage7(void);
-//void Stage8(void);
-//void Stage9(void);
-//void Stage10(void);
+int Stage3(void);
+//int Stage4(void);
+//int Stage5(void);
+//int Stage6(void);
+//int Stage7(void);
+//int Stage8(void);
+//int Stage9(void);
+//int Stage10(void);
 

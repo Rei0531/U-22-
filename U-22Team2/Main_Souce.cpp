@@ -10,11 +10,13 @@
 #include "Title.h"
 #include "Lock.h"
 #include "LoadSound.h"
+#include "Object.h"
 
 //デバッグ用のマウス座標取得変数宣言
 Controller g_Pad;
 Player g_Player;
 Sound g_Snd;
+Object g_Object;
 extern Controller g_Pad;
 extern Player g_Player;
 extern  int GameState= GAME_TITLE;

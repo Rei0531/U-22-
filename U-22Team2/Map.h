@@ -10,8 +10,8 @@ public:
 	int Y1 = 0;
 	int Y2 = MAP_HEIGHT;
 
-	int StageNumber = 1;
+	int StageNumber = 3;
 }; extern MapCoordinate g_MapC;
 
 int Map(void);		//関数の定義
-int GameInit(void);		//関数の定義　初期化
+//int GameInit(void);		//関数の定義　初期化

@@ -5,6 +5,7 @@
 #include "Color.h"
 #include "Object.h"
 #include"Door.h"
+#include "Object.h"
 
 extern image g_pic;
 extern Controller g_Pad;
@@ -62,7 +63,6 @@ int PlayerDraw(void) {
 	DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元左
 	DrawBox(g_Player.PickUpPixel - 5, g_Player.PickUpPixely - 5, g_Player.PickUpPixel + 5, g_Player.PickUpPixely + 5, 0xff00ff, FALSE);
 
-
 	//プレイヤーの移動処理_____________________________________________________________________________________________________________________
 	if (g_Pad.KEY_RIGHT == TRUE || g_Pad.KEY_LEFT == TRUE)	//右か左に入力されていたら
 	{
@@ -77,8 +77,16 @@ int PlayerDraw(void) {
 		if (g_Player.NowColor != g_Player.Hit_RightUp && g_Player.NowColor != g_Player.Hit_RightUnder) {//右側の色当たり判定とプレイヤーの色が違うとき右に行ける
 			g_Player.x += PLAYERX;
 		}
+		else {
+			if (g_Pad.KEY_B == TRUE)
+				MoveObjectValue(g_Player.NowColor);
+		}
 		if (g_Player.NowColor != g_Player.Hit_LeftUp && g_Player.NowColor != g_Player.Hit_LeftUnder) {//左側の色当たり判定とプレイヤーの色が違うとき左に行ける
 			g_Player.x -= PLAYERX;
+		}
+		else {
+			if (g_Pad.KEY_B == TRUE)
+				MoveObjectValue(g_Player.NowColor);
 		}
 
 		g_Player.x += (g_Pad.KEY_RIGHT) ? PLAYERX : -PLAYERX;		//プレイヤー自身のX軸を加減算
@@ -114,6 +122,7 @@ int PlayerDraw(void) {
 			Jumpcnt = 20;				//ジャンプアニメーションのカウントを0にする
 		}
 	}
+
 	//プレイヤーの描画_____________________________________________________________________________________________________________________
 	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
 	DrawRotaGraph(g_Player.x, g_Player.y, 1.0, 0, g_pic.Player[animecnt / 10 % 4 + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画

@@ -18,41 +18,42 @@ int Map(void) {			//マップ画像の描画____________________________________________
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 
-		switch (g_MapC.StageNumber) {
-		case 1:
-			Stage1();
-			break;
-		case 2:
-			Stage2();
-			break;
-			//case 3:
-			//	Stage3();
-			//case 4:
-			//	Stage4();
-			//case 5:
-			//	Stage5();
-			//case 6:
-			//	Stage6();
-			//case 7:
-			//	Stage7();
-			//case 8:
-			//	Stage8();
-			//case 9:
-			//	Stage9();
-			//case 10:
-			//	Stage10();
-			//	break;
-		default:
-			break;
-		}
+	switch (g_MapC.StageNumber) {
+	case 1:
+		Stage1();
+		break;
+	case 2:
+		Stage2();
+		break;
+	case 3:
+		Stage3();
+		break;
+		//case 4:
+		//	Stage4();
+		//case 5:
+		//	Stage5();
+		//case 6:
+		//	Stage6();
+		//case 7:
+		//	Stage7();
+		//case 8:
+		//	Stage8();
+		//case 9:
+		//	Stage9();
+		//case 10:
+		//	Stage10();
+		//	break;
+	default:
+		break;
+	}
 
-		//残り回数の表示
-		DrawFormatString(g_Player.x-30,g_Player.y - 150,g_Player.NowColor,"残り%d",g_Player.Interact);
-	
+	//残り回数の表示
+	DrawFormatString(g_Player.x - 30, g_Player.y - 150, g_Player.NowColor, "残り%d", g_Player.Interact);
 
-		if ((g_Lock.clearflg == TRUE)&(g_Pad.KEY_B==FALSE)) {
-			GameState = GAME_CLEAR;
-		}
+
+	if ((g_Lock.clearflg == TRUE) & (g_Pad.KEY_B == FALSE)) {
+		GameState = GAME_CLEAR;
+	}
 
 	////テスト用虹色のブロック
 	//DrawBox(100, 0, 200, 668, GetColor(255, 0, 0), TRUE);//赤

@@ -15,10 +15,11 @@ public:
 	int w = 1250;		//横幅座標
 	int h = 668;		//縦幅座標
 
-	int Rotation[2][4]{			//ステージごとのドアのローテーション
+	int Rotation[3][4]{			//ステージごとのドアのローテーション
 
 		{BLUE,LIGHTBLUE,RED},		//ステージ１のドアのローテーションの順番
-		{BLUE,LIGHTBLUE,RED}		//ステージ１のドアのローテーションの順番
+		{BLUE,LIGHTBLUE,RED},		//ステージ2のドアのローテーションの順番
+		{ORENGE,YELLOW,PURPLE}		//ステージ3のドアのローテーションの順番
 
 	};		//ローテーションの配列
 
