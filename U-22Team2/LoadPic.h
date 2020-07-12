@@ -11,6 +11,8 @@ public:
 	int Box;//オブジェクトの木の箱
 	int Pin;//色取った場所のピン
 	int Box_Move;//動く箱
+
+	int syawa;//シャワーの画像
 };
 
 int LoadPictue(void);	//関数の定義

@@ -20,7 +20,7 @@ int Door(void) {
 
 	DoorRotation();
 
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][g_Door.RotationNumber % 3]);
+	Change(g_Door.Rotation[g_MapC.StageNumber - 1][g_Door.RotationNumber % g_Door.ColorNumber[g_MapC.StageNumber - 1]]);
 	DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(255, 255, 255), TRUE);//ê¬
 	Change(NONCOLOR);
 	DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(255, 255, 255), FALSE);//ògê¸
