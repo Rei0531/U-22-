@@ -21,7 +21,7 @@ public:
 		{BLUE,LIGHTBLUE,RED},		//ステージ2のドアのローテーションの順番
 		{ORENGE,YELLOW,PURPLE},		//ステージ3のドアのローテーションの順番
 		{BLUE},
-		{BLUE,LIGHTBLUE,RED}
+		{BLUE}
 	};		//ローテーションの配列
 
 	int ColorNumber[5]{ 3,3,3,1,1 };			//ステージごとのドアのローテーションの数
