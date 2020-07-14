@@ -47,11 +47,7 @@ int Stage5(void) {			//マップ画像の描画
 	Door();			//ステージゴール処理
 	Lock();
 
-	if (g_Player.NowColor == (RED))
-	{
-		Change(WHITE);
-		DrawExtendGraph(700, 518, 850, 668, g_pic.Box, TRUE);
-	}
+	DrawExtendGraph(600, 518, 750, 668, g_pic.Reba, TRUE);
 
 	Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
 	DrawBox(1150, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
