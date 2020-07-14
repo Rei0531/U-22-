@@ -10,7 +10,7 @@ public:
 	int Y1 = 0;
 	int Y2 = MAP_HEIGHT;
 
-	int StageNumber = 1;
+	int StageNumber = 7;		//最初に読み込むステージ
 }; extern MapCoordinate g_MapC;
 
 int Map(void);		//関数の定義
