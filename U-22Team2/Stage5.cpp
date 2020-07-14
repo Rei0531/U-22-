@@ -3,14 +3,19 @@
 #include "Color.h"
 #include"Door.h"
 #include "Lock.h"
+#include "Object.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
 extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
+extern Controller g_Pad;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
+
+int g_SwitchFlag = 0;		//レバーのON、OFF
+int g_SwitchWait = 0;		//レバーの待機時間
 
 void Stage5Init() {
 	//プレイヤーの初期位置
@@ -24,6 +29,8 @@ void Stage5Init() {
 
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
+
+	g_SwitchFlag = 0;			//スイッチ初期化
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
@@ -41,12 +48,35 @@ int Stage5(void) {			//マップ画像の描画
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	//色ブロック描画
+
 	Change(LIGHTBLUE);
-	DrawExtendGraph(550, 548, 700, 698, g_pic.Reba, TRUE);
+	if ((g_Player.x > 424) & (g_Player.x < 575) & (g_Pad.KEY_B == TRUE)
+		& (g_SwitchFlag == 0) & (g_SwitchWait == 0) & (g_Player.NowColor == 4)) { //スイッチフラグがOFFであり待機時間が０でありスイッチと重なってあり
+		g_SwitchFlag = 1;														  //レバーの色と主人公が同じである状態でインタラクトを押すと箱が消える
+		g_SwitchWait = 10;
+	}
+	else if ((g_Player.x > 424) & (g_Player.x < 575) & (g_Pad.KEY_B == TRUE)	  //スイッチがONの場合はOFFに切り替える
+		& (g_SwitchFlag == 1) & (g_SwitchWait == 0) & (g_Player.NowColor == 4)){  //レバーがONまたはOFFになった場合待機時間が加わる
+		g_SwitchFlag = 0;
+		g_SwitchWait = 10;
+	}
+
+	if (g_SwitchFlag == 0) {													  
+		DrawRotaGraph(500, 623, 1.0, 0, g_pic.Reba, TRUE, FALSE);
+	}
+	else if (g_SwitchFlag == 1) {
+		DrawRotaGraph(500, 623, 1.0, 0, g_pic.Reba, TRUE, TRUE);
+		Change(WHITE);
+		DrawExtendGraph(700, 518, 850, 668, g_pic.Box, TRUE);
+	}
 	DrawExtendGraph(700, 518, 850, 668, g_pic.Box, TRUE);
+	if (g_SwitchWait != 0) {													//待機時間がある場合減らし続ける
+		g_SwitchWait--;
+	}
+	//DrawFormatString(0, 400, 0x000000, "g_SwitchFlag = %d", g_SwitchFlag);
 	Door();			//ステージゴール処理
 	Lock();
-
+	
 	Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
 	DrawBox(1150, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
 
