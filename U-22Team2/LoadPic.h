@@ -13,6 +13,7 @@ public:
 	int Box_Move;//動く箱
 
 	int syawa;//シャワーの画像
+	int Reba;//レバー
 };
 
 int LoadPictue(void);	//関数の定義
