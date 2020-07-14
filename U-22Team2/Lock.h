@@ -11,7 +11,7 @@ public:
 		{LIGHTBLUE,BLUE, RED},			//ステージ２
 		{BLUE,YELLOW,PURPLE},			//ステージ３
 		{RED},							//ステージ４
-		{RED},							//ステージ５
+		{LIGHTBLUE},					//ステージ５
 		{RED},							//ステージ６
 		{YELLOW,BLUE,RED}				//ステージ７
 
@@ -22,7 +22,7 @@ public:
 		{LIGHTBLUE,BLUE, RED},			//ステージ２
 		{ORENGE,YELLOW,PURPLE},			//ステージ３
 		{RED},							//ステージ４
-		{RED},							//ステージ５
+		{LIGHTBLUE},					//ステージ５
 		{RED},							//ステージ６
 		{YELLOW,BLUE,RED}				//ステージ７
 	};
