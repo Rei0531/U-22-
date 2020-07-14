@@ -20,7 +20,7 @@ objALLy1 = 518,
 objALLy2 = 668;
 
 int MoveFlag = 1;
-int Speed = 3;
+int Speed = 10;
 
 void Stage6Init() {
 	//移動方向のフラグ
@@ -30,7 +30,7 @@ void Stage6Init() {
 
 	g_Player.x = 110;			//プレイヤー座標初期化
 	g_Player.y = 571;			//プレイヤー座標初期化
-	g_Player.NowColor = 4;		//プレイヤーの色初期化
+	g_Player.NowColor = BLUE;		//プレイヤーの色初期化
 
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
@@ -62,6 +62,8 @@ int Stage6(void) {			//マップ画像の描画
 		Speed = Speed * (-1);
 	}
 	DrawExtendGraph(obj2x1, objALLy1, obj2x2, objALLy2, g_pic.Box, TRUE);
+	Change(BLUE);
+	DrawExtendGraph(550, 518, 700, 668, g_pic.Box, TRUE);
 	Door();			//ステージゴール処理
 	Lock();
 
