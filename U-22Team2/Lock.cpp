@@ -7,6 +7,7 @@
 #include "Object.h"
 #include"Lock.h"
 #include"LoadSound.h"
+#include "Door.h"
 
 
 
@@ -15,6 +16,7 @@ extern MapCoordinate g_MapC;
 extern Controller g_Pad;
 LockALL g_Lock;
 extern Sound g_Snd;
+extern DoorAll g_Door;
 
 
 int Lock(void) {
@@ -25,7 +27,7 @@ int Lock(void) {
 
 		if (i == 0) {
 			Change(g_Lock.color[g_MapC.StageNumber - 1][0]);
-			DrawBox(1200, 580, 1230, 600, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
+			DrawBox(g_Door.x+50, g_Door.y+120, g_Door.x + 75, g_Door.y + 150, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
 			Change(NONCOLOR);
 			DrawBox(1200, 580, 1230, 600, GetColor(255, 255, 255), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
 
@@ -33,9 +35,9 @@ int Lock(void) {
 		else {
 
 			Change(g_Lock.color[g_MapC.StageNumber - 1][i]);
-			DrawBox(1165 + i * 10, 580, 1175 + i * 10, 600, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
+			DrawBox(g_Door.x +15 + i * 10, g_Door.y + 120, g_Door.x + 25 + i * 10, g_Door.y + 150, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
 			Change(NONCOLOR);
-			DrawBox(1165 + i * 10, 580, 1175 + i * 10, 600, GetColor(255, 255, 255), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
+			DrawBox(g_Door.x + 15 + i * 10, g_Door.y + 120, g_Door.x + 25 + i * 10, g_Door.y + 150, GetColor(255, 255, 255), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
 		}
 	}
 

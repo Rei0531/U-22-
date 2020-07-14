@@ -26,10 +26,16 @@ obj4x2 = obj4x1 + 150,
 objALLy1 = 518,
 objALLy2 = 668;
 
+
+static int Speed = 2,
+	move_x = 0,
+	move_cnt = 0,
+	move_max = 120;
+
 void Stage7Init() {
 	//プレイヤーの初期位置
 	//オブジェクトの初期位置を描く
-	g_Player.Interact = 10;//プレイヤーがインタラクトできる回数を10回に設定
+	g_Player.Interact = 999;//プレイヤーがインタラクトできる回数を10回に設定
 	InitFlag = FALSE;	//FALSEにして次TRUEになるまで通らないようにする
 
 	g_Player.x = 110;			//プレイヤー座標初期化
@@ -39,9 +45,18 @@ void Stage7Init() {
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
+	g_Door.t = -500;
+
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
+
+	//ドアの位置
+	g_Door.x = 100;
+	g_Door.y = 170;
+	g_Door.w = 200;
+	g_Door.h = 370;
+
 
 	//箱の位置リセット
 	obj1x1 = 500;
@@ -76,9 +91,21 @@ int Stage7(void) {			//マップ画像の描画
 	DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1, obj2x2 + g_Object.BLUE_x, objALLy2, g_pic.Box_Move, TRUE);
 	DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1-100, obj2x2 + g_Object.BLUE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
 
+
+	Change(RED);
+	move_x -= Speed;
+	move_x -= Speed;
+	if (move_cnt++ > move_max) {
+		move_cnt = 0;
+		Speed = Speed * (-1);
+	}
+	DrawExtendGraph(800 + move_x, 320, 950 + move_x, 370, g_pic.Box, TRUE);
+	DrawExtendGraph(1180,270,1280,370, g_pic.Box,TRUE);
+
 	//世界の壁（黒いブロック）
 	Change(NONCOLOR);
-	DrawBox(0,420,200,470,GetColor(255,255,255),TRUE);
+	DrawBox(0,370,200,420,GetColor(255,255,255),TRUE);
+	DrawBox(1080, 370, 1280, 420, GetColor(255, 255, 255), TRUE);
 	Door();			//ステージゴール処理
 	Lock();
 

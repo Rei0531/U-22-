@@ -19,8 +19,7 @@ obj2x2 = obj2x1 + 150,
 objALLy1 = 518,
 objALLy2 = 668;
 
-int MoveFlag = 1;
-int Speed = 10;
+static int Speed = 10;
 
 void Stage6Init() {
 	//移動方向のフラグ
@@ -43,7 +42,6 @@ void Stage6Init() {
 	objALLy1 = 518,
 	objALLy2 = 668;
 
-	MoveFlag = 0;
 }
 
 int Stage6(void) {			//マップ画像の描画
