@@ -30,14 +30,14 @@ int PlayerDraw(void) {
 
 	//当たり判定処理_____________________________________________________________________________________________________________________
 	//当たり判定取得する座標
-	int Hit_Up_y = g_Player.y - 50,			//プレイヤーの頭上
-		Hit_L_x = g_Player.x - 40,		//左の中心からのx座標
-		Hit_R_x = g_Player.x + 40,		//右の中心からのx座標
-		Hit_UpLR_y = g_Player.y - ((g_Player.y - (g_Player.y - 90)) / 2),		//上側左右の中心からのy座標
-		Hit_Under_y = g_Player.y + 100,		//プレイヤーの足元	y軸
+	int Hit_Up_y = g_Player.y - 35,			//プレイヤーの頭上
+		Hit_L_x = g_Player.x - 30,		//左の中心からのx座標
+		Hit_R_x = g_Player.x + 30,		//右の中心からのx座標
+		Hit_UpLR_y = g_Player.y - ((g_Player.y - (g_Player.y - 36)) / 2),		//上側左右の中心からのy座標
+		Hit_Under_y = g_Player.y + 70,		//プレイヤーの足元	y軸
 		Hit_Under_x = 20,		//プレイヤーの足元  x軸
 		//Hit_UnderLR_y = g_Player.y - ((g_Player.y - Hit_Under_y) / 2);		//下側左右の中心からのy座標
-		Hit_UnderLR_y = g_Player.y + 80;
+		Hit_UnderLR_y = g_Player.y + 55;
 
 	//マジックナンバーの解説
 	//Hit_Up_yの90はプレイヤー画像の真ん中から上下の端っこまでの距離
@@ -125,7 +125,7 @@ int PlayerDraw(void) {
 
 	//プレイヤーの描画_____________________________________________________________________________________________________________________
 	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
-	DrawRotaGraph(g_Player.x, g_Player.y, 1.0, 0, g_pic.Player[animecnt / 10 % 4 + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
+	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0, g_pic.Player[animecnt / 10 % 4 + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
 	ColorReset();//画面全体の変色を元に戻す
 	//_____________________________________________________________________________________________________________________
 	return 0;
