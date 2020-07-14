@@ -15,16 +15,17 @@ public:
 	int w = 1250;		//横幅座標
 	int h = 668;		//縦幅座標
 
-	int Rotation[5][5]{			//ステージごとのドアのローテーション
+	int Rotation[6][5]{			//ステージごとのドアのローテーション
 
 		{BLUE,LIGHTBLUE,RED},		//ステージ１のドアのローテーションの順番
-		{BLUE,LIGHTBLUE,RED},		//ステージ2のドアのローテーションの順番
-		{ORENGE,YELLOW,PURPLE},		//ステージ3のドアのローテーションの順番
-		{BLUE},
-		{BLUE}
+		{BLUE,LIGHTBLUE,RED},		//ステージ２のドアのローテーションの順番
+		{ORENGE,YELLOW,PURPLE},		//ステージ３のドアのローテーションの順番
+		{BLUE},						//ステージ４のドアのローテーションの順番
+		{BLUE},						//ステージ５のドアのローテーションの順番
+		{BLUE}						//ステージ６のドアのローテーションの順番
 	};		//ローテーションの配列
 
-	int ColorNumber[5]{ 3,3,3,1,1 };			//ステージごとのドアのローテーションの数
+	int ColorNumber[6]{ 3,3,3,1,1,1 };			//ステージごとのドアのローテーションの数
 
 	int RotationNumber = 0;			//現在のローテーション位置
 	

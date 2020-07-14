@@ -34,14 +34,18 @@ int Map(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ____________________________________________
 		case 5:
 			Stage5();
 			break;
-		//case 6:
-		//	Stage6();
+		case 6:
+			Stage6();
+			break;
 		//case 7:
 		//	Stage7();
+		// break;
 		//case 8:
 		//	Stage8();
+		// break;
 		//case 9:
 		//	Stage9();
+		// break;
 		//case 10:
 		//	Stage10();
 		//	break;
