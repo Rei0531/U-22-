@@ -41,13 +41,11 @@ int Stage5(void) {			//マップ画像の描画
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	//色ブロック描画
-	DrawBox(600, 568, 700, 668, GetColor(255, 0, 0), TRUE);
 	Change(LIGHTBLUE);
+	DrawExtendGraph(550, 548, 700, 698, g_pic.Reba, TRUE);
 	DrawExtendGraph(700, 518, 850, 668, g_pic.Box, TRUE);
 	Door();			//ステージゴール処理
 	Lock();
-
-	DrawExtendGraph(600, 518, 750, 668, g_pic.Reba, TRUE);
 
 	Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
 	DrawBox(1150, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
