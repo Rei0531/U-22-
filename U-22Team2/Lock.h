@@ -5,19 +5,23 @@
 struct LockALL {		//ノブも含めた鍵穴に必要な変数
 public:
 	//右の[]がステージ数、左の[]がノブ、鍵穴の数
-	int color[4][3]{		//ノブと鍵の穴		//0：ノブ　１～鍵穴
+	int color[6][3]{		//ノブと鍵の穴		//0：ノブ　１～鍵穴
 
 		{BLUE},							//ステージ１
 		{LIGHTBLUE,BLUE, RED},			//ステージ２
 		{BLUE,YELLOW,PURPLE},			//ステージ３
-		{RED}							//ステージ４
+		{RED},							//ステージ４
+		{RED},							//ステージ５
+		{RED},							//ステージ６
 	};
-	int colorback[4][3]{		//鍵穴のバックアップバックアップ
+	int colorback[6][3]{		//鍵穴のバックアップバックアップ
 
 		{BLUE},							//ステージ１
 		{LIGHTBLUE,BLUE, RED},			//ステージ２
 		{ORENGE,YELLOW,PURPLE},			//ステージ３
-		{RED}							//ステージ4
+		{RED},							//ステージ４
+		{RED},							//ステージ５
+		{RED},							//ステージ６
 	};
 	//ステージ数/ノブ、鍵穴の合計
 	//	　↓	↓
