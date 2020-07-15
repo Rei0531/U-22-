@@ -49,6 +49,13 @@ void Stage7Init() {
 
 	gim.SwitchFlag = 0;			//スイッチ初期化
 
+
+	gim.shower_C = PURPLE2;			//シャワーの塗りつぶしの色を初期化
+	gim.shower_X = 70;				//シャワーの座標
+	
+	
+	gim.SwitchColor = BLUE2;		//レバーの色の初期化
+
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
@@ -60,8 +67,7 @@ void Stage7Init() {
 	g_Door.h = 370;
 
 
-	gim.shower_C = PURPLE2;			//シャワーの塗りつぶしの色を初期化
-	gim.shower_X = 70;				//シャワーの座標
+
 
 
 	//箱の位置リセット
