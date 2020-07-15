@@ -15,7 +15,10 @@ int LoadPictue(void) {		//画像の読み込み
 
 	if (LoadDivGraph("image/All_Object.png", 10, 10, 1, 150, 150, g_pic.Object) == -1) return -1;//オブジェクトの分割画像
 
-	if ((g_pic.syawa = LoadGraph("image/シャワー.png")) == -1)return-1;
+	if ((g_pic.shower = LoadGraph("image/shower.png")) == -1)return-1;	//シャワーの画像
+	if ((g_pic.shower_m = LoadGraph("image/shower_water.png")) == -1)return-1;	//シャワーの画像
+
+
 	if ((g_pic.Reba = LoadGraph("image/lever(2).png")) == -1)return-1;
 
 	return 0;

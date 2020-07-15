@@ -4,6 +4,7 @@
 #include"Door.h"
 #include "Lock.h"
 #include "Object.h"
+#include "Gimmick.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -11,6 +12,7 @@ extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
 extern Object g_Object;
+extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 //オブジェクトの初期位置
@@ -32,6 +34,10 @@ void Stage4Init() {
 	g_Player.x = 110;			//プレイヤー座標初期化
 	g_Player.y = 571;			//プレイヤー座標初期化
 	g_Player.NowColor = RED;		//プレイヤーの色初期化
+
+	gim.shower_C = BLUE2;			//シャワーの塗りつぶしの色を初期化
+	gim.shower_X = 130;				//シャワーの座標
+
 
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
@@ -59,15 +65,13 @@ int Stage4(void) {			//マップ画像の描画
 
 
 
+	Shower();		//塗りつぶしシャワーの処理
 
-	if ((260 < g_Player.x & 400 > g_Player.x) & (440 < g_Player.y & 680 > g_Player.y)) {
-		g_Player.NowColor = BLUE;
-	}
 
 
 
 	ColorReset();
 
-	DrawExtendGraph(260, 440, 400, 680, g_pic.syawa, TRUE);
+	
 	return 0;
 }

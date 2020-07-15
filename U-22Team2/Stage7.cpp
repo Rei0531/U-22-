@@ -4,6 +4,7 @@
 #include"Door.h"
 #include "Lock.h"
 #include "Object.h"
+#include "Gimmick.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -12,6 +13,7 @@ extern DoorAll g_Door;
 extern LockALL g_Lock;
 extern Object g_Object;
 extern Controller g_Pad;
+extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 //オブジェクトの初期位置
@@ -28,13 +30,8 @@ objALLy1 = 518,
 objALLy2 = 668;
 
 
-static int Speed = 2,
-	move_x = 0,
-	move_cnt = 0,
-	move_max = 120;
 
-static int SwitchFlag = 0;		//レバーのON、OFF
-static int SwitchWait = 0;		//レバーの待機時間
+
 
 void Stage7Init() {
 	//プレイヤーの初期位置
@@ -50,7 +47,7 @@ void Stage7Init() {
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
 
-	SwitchFlag = 0;			//スイッチ初期化
+	gim.SwitchFlag = 0;			//スイッチ初期化
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
@@ -61,6 +58,10 @@ void Stage7Init() {
 	g_Door.y = 170;
 	g_Door.w = 200;
 	g_Door.h = 370;
+
+
+	gim.shower_C = PURPLE2;			//シャワーの塗りつぶしの色を初期化
+	gim.shower_X = 70;				//シャワーの座標
 
 
 	//箱の位置リセット
@@ -98,49 +99,13 @@ int Stage7(void) {			//マップ画像の描画
 
 
 	//動く床処理___________________________________________________________________________________________________
-	Change(RED);
-	move_x -= Speed;
-	move_x -= Speed;
-	if (move_cnt++ > move_max) {
-		move_cnt = 0;
-		Speed = Speed * (-1);
-	}
-	DrawExtendGraph(800 + move_x, 320, 950 + move_x, 370, g_pic.Box, TRUE);//動く床
-	DrawExtendGraph(1180,265,1280,370, g_pic.Box,TRUE);//色取りようの赤
+	SlideBlock();
 
 	//シャワー処理___________________________________________________________________________________________________
-	Change(PURPLE);
-	if ((70 < g_Player.x & 210 > g_Player.x) & (440 < g_Player.y & 680 > g_Player.y)) {
-		g_Player.NowColor = PURPLE;
-	}
-	DrawExtendGraph(70, 440, 210, 680, g_pic.syawa, TRUE);
+	Shower();
 
 	//レバー処理___________________________________________________________________________________________________
-	Change(BLUE);
-	if ((g_Player.x > 0) & (g_Player.x < 200) & (g_Pad.KEY_B == TRUE)
-		& (SwitchFlag == 0) & (SwitchWait == 0) & (g_Player.NowColor == BLUE)) { //スイッチフラグがOFFであり待機時間が０でありスイッチと重なってあり
-		SwitchFlag = 1;														  //レバーの色と主人公が同じである状態でインタラクトを押すと箱が消える
-		SwitchWait = 10;
-	}
-	else if ((g_Player.x > 0) & (g_Player.x < 200) & (g_Pad.KEY_B == TRUE)	  //スイッチがONの場合はOFFに切り替える
-		& (SwitchFlag == 1) & (SwitchWait == 0) & (g_Player.NowColor == BLUE)) {  //レバーがONまたはOFFになった場合待機時間が加わる
-		SwitchFlag = 0;
-		SwitchWait = 10;
-	}
-
-	if (SwitchFlag == 0) {
-		DrawRotaGraph(51, 337, 0.7, 0, g_pic.Reba, TRUE, FALSE);
-	}
-	else if (SwitchFlag == 1) {
-		DrawRotaGraph(51, 337, 0.7, 0, g_pic.Reba, TRUE, TRUE);
-		Change(WHITE);
-		DrawExtendGraph(200, 270, 300, 370, g_pic.Box, TRUE);
-	}
-	Change(YELLOW);
-	DrawExtendGraph(200, 270, 300, 370, g_pic.Box, TRUE);
-	if (SwitchWait != 0) {													//待機時間がある場合減らし続ける
-		SwitchWait--;
-	}
+	Lever();
 
 	//世界の壁（黒いブロック）
 	Change(NONCOLOR);
