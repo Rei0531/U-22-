@@ -19,6 +19,9 @@ public:
 		Hit_Under,					//四角形の７点で当たり判定を取得
 		Hit_Under2;					//
 
+	int Move_Hit1,
+		Move_Hit2;					//動かせるボックスの当たり判定色を取得
+
 	bool PLAYER_DIRECTION = FALSE,	//プレイヤーの向き//TRUE左向き/FALSE右向き
 		PLAYER_JUMP = FALSE,		//プレイヤーがジャンプしたか
 		PLAYER_PICKUP = FALSE,		//スポイト

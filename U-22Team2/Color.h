@@ -11,7 +11,8 @@ enum Color {
 	PURPLE,			//6
 	BLACK,			//7
 	NONCOLOR,		//8
-	WHITE			//9
+	WHITE,			//9
+	MOVE			//10/動かせるボックスの判定カラー
 };
 
 void Change(int Color);

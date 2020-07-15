@@ -29,7 +29,7 @@ int Lock(void) {
 			Change(g_Lock.color[g_MapC.StageNumber - 1][0]);
 			DrawBox(g_Door.x+50, g_Door.y+120, g_Door.x + 75, g_Door.y + 150, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
 			Change(NONCOLOR);
-			DrawBox(1200, 580, 1230, 600, GetColor(255, 255, 255), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
+			DrawBox(g_Door.x + 50, g_Door.y + 120, g_Door.x + 75, g_Door.y + 150, GetColor(255, 255, 255), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
 
 		}
 		else {

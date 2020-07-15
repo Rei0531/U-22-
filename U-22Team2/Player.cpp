@@ -21,7 +21,9 @@ int PlayerDraw(void) {
 	static int Gravity = 5;		//毎フレーム下に落とす
 	static int NoMove = 0;		//0の時動いていない1の時動いている/プレイヤーの歩くモーション待機モーション切り替えよう変数
 	static int JumpOkflag = 0;	//空中ジャンプ防止変数/0がジャンプしていない/1がジャンプ中
-	
+	static int Move_Hitx1 = 0,
+			   Move_Hitx2 = 0;
+
 	//スポイト_____________________________________________________________________________________________________________________
 	if (g_Player.PLAYER_PICKUP == TRUE && g_Player.Interact > 0) { //この関数呼び出しで色を取得
 		g_Door.Picupflg = TRUE;				//ドアのローテーションためのスポイトのフラグをTRUEにする
@@ -39,6 +41,9 @@ int PlayerDraw(void) {
 		//Hit_UnderLR_y = g_Player.y - ((g_Player.y - Hit_Under_y) / 2);		//下側左右の中心からのy座標
 		Hit_UnderLR_y = g_Player.y + 55;
 
+	Move_Hitx1 = g_Player.x + 50;//取得する座標
+	Move_Hitx2 = g_Player.x - 50;//取得する座標
+
 	//マジックナンバーの解説
 	//Hit_Up_yの90はプレイヤー画像の真ん中から上下の端っこまでの距離
 	//Hit_LR_xの40は画像の真ん中から左右の端っこまでの距離
@@ -52,7 +57,10 @@ int PlayerDraw(void) {
 	g_Player.Hit_LeftUnder = GetPointColor(Hit_L_x, Hit_UnderLR_y);		//左下
 	g_Player.Hit_Under = GetPointColor(g_Player.x + Hit_Under_x, Hit_Under_y);		//右足元
 	g_Player.Hit_Under2 = GetPointColor(g_Player.x - Hit_Under_x, Hit_Under_y);		//左足元
-
+	//動かせるボックスかどうか知るための色を取得_________________________
+	g_Player.Move_Hit1 = GetPointColor(Move_Hitx1, g_Player.y + 15);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	g_Player.Move_Hit2 = GetPointColor(Move_Hitx2, g_Player.y + 15);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	
 	//当たり判定の可視化_____________________________________________________________________
 	DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xff00ff, FALSE);	//頭上
 	DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//右上
@@ -75,21 +83,23 @@ int PlayerDraw(void) {
 
 		//当たり判定処理____________________________________________________________________________
 		if (g_Player.NowColor != g_Player.Hit_RightUp && g_Player.NowColor != g_Player.Hit_RightUnder) {//右側の色当たり判定とプレイヤーの色が違うとき右に行ける
+			if(g_Pad.KEY_RIGHT)
 			g_Player.x += PLAYERX;
 		}
 		else {
-			if (g_Pad.KEY_B == TRUE)
+			if (g_Pad.KEY_B == TRUE && (g_Player.Move_Hit1 == MOVE || g_Player.Move_Hit2 == MOVE))
 				MoveObjectValue(g_Player.NowColor);
 		}
 		if (g_Player.NowColor != g_Player.Hit_LeftUp && g_Player.NowColor != g_Player.Hit_LeftUnder) {//左側の色当たり判定とプレイヤーの色が違うとき左に行ける
+			if(g_Pad.KEY_LEFT)
 			g_Player.x -= PLAYERX;
 		}
 		else {
-			if (g_Pad.KEY_B == TRUE)
+			if (g_Pad.KEY_B == TRUE && (g_Player.Move_Hit1 == MOVE || g_Player.Move_Hit2 == MOVE))
 				MoveObjectValue(g_Player.NowColor);
 		}
 
-		g_Player.x += (g_Pad.KEY_RIGHT) ? PLAYERX : -PLAYERX;		//プレイヤー自身のX軸を加減算
+		//g_Player.x += (g_Pad.KEY_RIGHT) ? PLAYERX : -PLAYERX;		//プレイヤー自身のX軸を加減算
 		//_________________________________________________________________________________________
 		animecnt++;//アニメーション用のカウントプラス
 		NoMove = 1;
