@@ -42,12 +42,12 @@ void Stage3Init() {
 
 	//箱の位置リセット
 	obj1x1 = 400;
-	obj1x2 = obj1x1 + 150;
+	obj1x2 = obj1x1 + 100;
 	obj2x1 = 550;
-	obj2x2 = obj2x1 + 150;
+	obj2x2 = obj2x1 + 100;
 	obj3x1 = 700;
-	obj3x2 = obj3x1 + 150;
-	objALLy1 = 518;
+	obj3x2 = obj3x1 + 100;
+	objALLy1 = 568;
 	objALLy2 = 668;
 	g_Object.Init();//オブジェクトの移動量リセット
 }

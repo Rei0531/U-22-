@@ -16,13 +16,14 @@ extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 //オブジェクトの初期位置
-static int obj1x1 = 400,
-obj1x2 = obj1x1 + 150,
+static int 
+obj1x1 = 400,
+obj1x2 = obj1x1 + 100,
 obj2x1 = 550,
-obj2x2 = obj2x1 + 150,
+obj2x2 = obj2x1 + 100,
 obj3x1 = 700,
-obj3x2 = obj3x1 + 150,
-objALLy1 = 518,
+obj3x2 = obj3x1 + 100,
+objALLy1 = 568,
 objALLy2 = 668;
 
 void Stage4Init() {
