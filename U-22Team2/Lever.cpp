@@ -3,11 +3,13 @@
 #include"Player.h"
 #include "LoadPic.h"
 #include "Controller.h"
+#include "LoadSound.h"
 
 extern image g_pic;
 extern Player g_Player;
 extern Controller g_Pad;
 extern GimmickAll gim;
+extern Sound g_Snd;
 
 
 
@@ -18,11 +20,13 @@ int Lever(void) {
 		& (gim.SwitchFlag == 0) & (gim.SwitchWait == 0) & (g_Player.NowColor == gim.SwitchColor)) { //スイッチフラグがOFFであり待機時間が０でありスイッチと重なってあり
 		gim.SwitchFlag = 1;														  //レバーの色と主人公が同じである状態でインタラクトを押すと箱が消える
 		gim.SwitchWait = 10;
+		PlaySoundMem(g_Snd.leva, DX_PLAYTYPE_BACK);
 	}
 	else if ((g_Player.x > 0) & (g_Player.x < 200) & (g_Pad.KEY_B == TRUE)	  //スイッチがONの場合はOFFに切り替える
 		& (gim.SwitchFlag == 1) & (gim.SwitchWait == 0) & (g_Player.NowColor == gim.SwitchColor)) {  //レバーがONまたはOFFになった場合待機時間が加わる
 		gim.SwitchFlag = 0;
 		gim.SwitchWait = 10;
+		PlaySoundMem(g_Snd.leva, DX_PLAYTYPE_BACK);
 	}
 
 	if (gim.SwitchFlag == 0) {			//オフ

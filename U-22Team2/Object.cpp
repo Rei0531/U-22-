@@ -4,11 +4,13 @@
 #include"Interact.h"
 #include "Object.h"
 #include "Controller.h"
+#include "LoadSound.h"
 
 extern Player g_Player;
 extern DoorAll g_Door;
 extern Object g_Object;
 extern Controller g_Pad;
+extern Sound g_Snd;
 
 static int SaveColor = 99;		//一時変数に現在の色を格納する
 
@@ -111,12 +113,14 @@ void MoveObjectValue(int P_Color) {
 	switch (P_Color) {		//プレイヤーの色に合わせて動かすオブジェクトを決める
 	case RED:
 		g_Object.RED_x += PLAYERX * dir ;
+		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
 		break;
 	case ORENGE:
 		g_Object.ORENGE_x += PLAYERX * dir;
 		break;
 	case YELLOW:
 		g_Object.YELLOW_x += PLAYERX * dir;
+		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
 		break;
 	case GREEN:
 		g_Object.GREEN_x += PLAYERX * dir;
@@ -126,6 +130,7 @@ void MoveObjectValue(int P_Color) {
 		break;
 	case BLUE:
 		g_Object.BLUE_x += PLAYERX * dir;
+		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
 		break;
 	case PURPLE:
 		g_Object.PURPLE_x += PLAYERX * dir;
