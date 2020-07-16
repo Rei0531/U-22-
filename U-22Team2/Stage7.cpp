@@ -36,7 +36,7 @@ objALLy2 = 668;
 void Stage7Init() {
 	//プレイヤーの初期位置
 	//オブジェクトの初期位置を描く
-	g_Player.Interact = 999;//プレイヤーがインタラクトできる回数を10回に設定
+	g_Player.Interact = 60;//プレイヤーがインタラクトできる回数設定
 	InitFlag = FALSE;	//FALSEにして次TRUEになるまで通らないようにする
 
 	g_Player.x = 110;			//プレイヤー座標初期化
