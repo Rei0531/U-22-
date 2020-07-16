@@ -44,34 +44,34 @@ int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
 	case 0:
 		getcolor = BLACK;
 		break;
-	case WHITE:
+	case 765:
 		getcolor = WHITE;
 		break;
 	//MOVEの値をとるためにRGB値が６以下の時の条件にしたいけど、やり方考えるの面倒だからいつか直す
+	case 1:
 	case 2:
-		getcolor = MOVE;
-		break;
+	case 3:
 	case 4:
-		getcolor = MOVE;
-		break;
+	case 5:
 	case 6:
 		getcolor = MOVE;
 		break;
 	default:
+		getcolor = SaveColor;
 		break;
 	}
 	//DrawRotaGraph(g_Player.PickUpPixel, g_Player.PickUpPixely,1.0,0,g_pic.Pin,TRUE,FALSE);
 	if (g_Player.PLAYER_PICKUP == TRUE) {//スポイトされたとき
 		g_Player.PLAYER_PICKUP = FALSE;			//TRUEになってこの関数に入るから一度だけの処理にするためにスポイトフラグをFALSEにする
-		if ((g_Player.Hit_Up == getcolor) | (SaveColor == getcolor)) {
+		if ((g_Player.Hit_Up == getcolor) | (SaveColor == getcolor )|| (getcolor == WHITE)) {
 			g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
 		}
-		if (g_Player.Hit_Up == getcolor) {
+		if (g_Player.Hit_Up == getcolor || getcolor == WHITE) {////プレイヤーが重なっている位置の色と取得した色が同じだった時、取得した色が白色の時
 			Interact(FALSE);
-			return SaveColor; //プレイヤーが重なっている置の色と取得した色が同じだった時//現在の色を返す
+			return SaveColor; //現在の色を返す
 		}
-		if (SaveColor != getcolor) {
-			Interact(TRUE);
+		if (SaveColor != getcolor && getcolor != MOVE) {//取得した色が現在持っている自身の色と違う時
+			Interact(TRUE);//スポイト成功
 		}
 		else {
 			Interact(FALSE);

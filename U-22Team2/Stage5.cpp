@@ -67,9 +67,10 @@ int Stage5(void) {			//マップ画像の描画
 	else if (g_SwitchFlag == 1) {
 		DrawRotaGraph(500, 623, 1.0, 0, g_pic.Reba, TRUE, TRUE);
 		Change(WHITE);
-		DrawExtendGraph(700, 518, 800, 668, g_pic.Box, TRUE);
+		DrawExtendGraph(700, 558, 800, 668, g_pic.Box, TRUE);
 	}
-	DrawExtendGraph(700, 518, 800, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(700, 558, 800, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(700, 458, 800, 568, g_pic.Box, TRUE);
 	if (g_SwitchWait != 0) {													//待機時間がある場合減らし続ける
 		g_SwitchWait--;
 	}

@@ -26,7 +26,8 @@ public:
 		PLAYER_JUMP = FALSE,		//プレイヤーがジャンプしたか
 		PLAYER_PICKUP = FALSE,		//スポイト
 		PLAYER_ACTION = FALSE,		//アクションボタン
-		PLAYER_MENU = FALSE;		//メニュー
+		PLAYER_MENU = FALSE,		//メニュー
+		PLAYER_GROUND;				//地面にいる
 }; 
 
 int PlayerDraw(void);	//関数の定義

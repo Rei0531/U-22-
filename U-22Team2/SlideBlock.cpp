@@ -17,7 +17,7 @@ extern GimmickAll gim;
 			gim.move_cnt = 0;
 			gim.Speed = gim.Speed * (-1);
 		}
-		DrawExtendGraph(800 + gim.move_x, 320, 950 + gim.move_x, 370, g_pic.Box, TRUE);//ìÆÇ≠è∞
+		DrawExtendGraph(950 + gim.move_x, 320, 1100 + gim.move_x, 370, g_pic.Box, TRUE);//ìÆÇ≠è∞
 		DrawExtendGraph(1180, 265, 1280, 370, g_pic.Box, TRUE);//êFéÊÇËÇÊÇ§ÇÃê‘
 
 		return 0;

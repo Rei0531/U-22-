@@ -23,7 +23,7 @@ public:
 	int Speed = 2;
 	int move_x = 0;
 	int move_cnt = 0;
-	int move_max = 120;
+	int move_max = 160;
 
 
 };

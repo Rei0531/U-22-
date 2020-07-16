@@ -35,14 +35,15 @@ int PlayerDraw(void) {
 	int Hit_Up_y = g_Player.y - 35,			//プレイヤーの頭上
 		Hit_L_x = g_Player.x - 30,		//左の中心からのx座標
 		Hit_R_x = g_Player.x + 30,		//右の中心からのx座標
-		Hit_UpLR_y = g_Player.y - ((g_Player.y - (g_Player.y - 36)) / 2),		//上側左右の中心からのy座標
-		Hit_Under_y = g_Player.y + 70,		//プレイヤーの足元	y軸
+		//Hit_UpLR_y = g_Player.y - ((g_Player.y - (g_Player.y - 36)) / 2),		//上側左右の中心からのy座標
+		Hit_UpLR_y = g_Player.y,
+		Hit_Under_y = g_Player.y + 72,		//プレイヤーの足元	y軸
 		Hit_Under_x = 20,		//プレイヤーの足元  x軸
 		//Hit_UnderLR_y = g_Player.y - ((g_Player.y - Hit_Under_y) / 2);		//下側左右の中心からのy座標
-		Hit_UnderLR_y = g_Player.y + 55;
+		Hit_UnderLR_y = g_Player.y + 60;
 
-	Move_Hitx1 = g_Player.x + 50;//取得する座標
-	Move_Hitx2 = g_Player.x - 50;//取得する座標
+	Move_Hitx1 = g_Player.x + 40;//取得する座標
+	Move_Hitx2 = g_Player.x - 40;//取得する座標
 
 	//マジックナンバーの解説
 	//Hit_Up_yの90はプレイヤー画像の真ん中から上下の端っこまでの距離
@@ -58,18 +59,20 @@ int PlayerDraw(void) {
 	g_Player.Hit_Under = GetPointColor(g_Player.x + Hit_Under_x, Hit_Under_y);		//右足元
 	g_Player.Hit_Under2 = GetPointColor(g_Player.x - Hit_Under_x, Hit_Under_y);		//左足元
 	//動かせるボックスかどうか知るための色を取得_________________________
-	g_Player.Move_Hit1 = GetPointColor(Move_Hitx1, g_Player.y + 15);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
-	g_Player.Move_Hit2 = GetPointColor(Move_Hitx2, g_Player.y + 15);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	g_Player.Move_Hit1 = GetPointColor(Move_Hitx1, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	g_Player.Move_Hit2 = GetPointColor(Move_Hitx2, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
 
 	//当たり判定の可視化_____________________________________________________________________
-	DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xff00ff, FALSE);	//頭上
-	DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//右上
-	DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//右下
-	DrawBox(Hit_L_x - 5, Hit_UpLR_y - 5, Hit_L_x + 5, Hit_UpLR_y + 5, 0xff00ff, FALSE);	//左上
-	DrawBox(Hit_L_x - 5, Hit_UnderLR_y - 5, Hit_L_x + 5, Hit_UnderLR_y + 5, 0xff00ff, FALSE);	//左下
-	DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元右
-	DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xff00ff, FALSE);	//足元左
-	DrawBox(g_Player.PickUpPixel - 5, g_Player.PickUpPixely - 5, g_Player.PickUpPixel + 5, g_Player.PickUpPixely + 5, 0xff00ff, FALSE);
+	//DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xfe00fe, FALSE);	//頭上
+	//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xfe00fe, FALSE);	//右上
+	//DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//右下
+	//DrawBox(Hit_L_x - 5, Hit_UpLR_y - 5, Hit_L_x + 5, Hit_UpLR_y + 5, 0xfe00fe, FALSE);	//左上
+	//DrawBox(Hit_L_x - 5, Hit_UnderLR_y - 5, Hit_L_x + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//左下
+	//DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元右
+	//DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元左
+	//DrawBox(g_Player.PickUpPixel - 5, g_Player.PickUpPixely - 5, g_Player.PickUpPixel + 5, g_Player.PickUpPixely + 5, 0xff00ff, FALSE);
+	//DrawBox(Move_Hitx1 -5, g_Player.y + 20 - 5, Move_Hitx1 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置右
+	//DrawBox(Move_Hitx2 - 5, g_Player.y + 20 - 5, Move_Hitx2 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置左
 
 	//プレイヤーの移動処理_____________________________________________________________________________________________________________________
 	if (g_Pad.KEY_RIGHT == TRUE || g_Pad.KEY_LEFT == TRUE)	//右か左に入力されていたら
@@ -86,16 +89,18 @@ int PlayerDraw(void) {
 			if (g_Pad.KEY_RIGHT)
 				g_Player.x += PLAYERX;
 		}
-		else {//Bボタンが押されているとき、動かせるブロックに触れているとき、触れているのが同じ色の時
-			if (g_Pad.KEY_B == TRUE && (g_Player.Move_Hit1 == MOVE || g_Player.Move_Hit2 == MOVE))
+		else {//Bボタンが押されているとき、動かせるブロックに触れているとき、触れているのが同じ色の時,地面にいる時
+			if (g_Pad.KEY_B == TRUE && ((g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder) || 
+				(g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)) && g_Player.PLAYER_GROUND == TRUE)
 				MoveObjectValue(g_Player.NowColor);
 		}
 		if (g_Player.NowColor != g_Player.Hit_LeftUp && g_Player.NowColor != g_Player.Hit_LeftUnder) {//左側の色当たり判定とプレイヤーの色が違うとき左に行ける
 			if (g_Pad.KEY_LEFT)
 				g_Player.x -= PLAYERX;
 		}
-		else {
-			if (g_Pad.KEY_B == TRUE && (g_Player.Move_Hit1 == MOVE || g_Player.Move_Hit2 == MOVE))
+		else {//Bボタンが押されているとき、動かせるブロックに触れているとき、触れているのが同じ色の時,地面にいる時
+			if (g_Pad.KEY_B == TRUE && ((g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder) ||
+				(g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)) && g_Player.PLAYER_GROUND == TRUE)
 			MoveObjectValue(g_Player.NowColor);
 		}
 
@@ -113,9 +118,11 @@ int PlayerDraw(void) {
 	if (!((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
 		(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {
 		g_Player.y += Gravity;		//プレイヤーに重力を追加
+		g_Player.PLAYER_GROUND = FALSE;
 	}
 	else {
 		JumpOkflag = 0;	//地面についているのでジャンプしていない
+		g_Player.PLAYER_GROUND = TRUE;
 	}
 
 	//プレイヤーのジャンプ処理_____________________________________________________________________________________________________________________

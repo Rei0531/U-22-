@@ -63,13 +63,38 @@ int Stage3(void) {			//マップ画像の描画
 	//色ブロック描画
 	Change(ORENGE);
 	DrawExtendGraph(obj1x1 + g_Object.ORENGE_x, objALLy1, obj1x2 + g_Object.ORENGE_x, objALLy2, g_pic.Box_Move, TRUE);
+	DrawExtendGraph(obj1x1 + g_Object.ORENGE_x, objALLy1 - 100, obj1x2 + g_Object.ORENGE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
 	Change(YELLOW);
 	DrawExtendGraph(obj2x1 + g_Object.YELLOW_x, objALLy1, obj2x2 + g_Object.YELLOW_x, objALLy2, g_pic.Box_Move, TRUE);
+	DrawExtendGraph(obj2x1 + g_Object.YELLOW_x, objALLy1 - 100, obj2x2 + g_Object.YELLOW_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
 	Change(PURPLE);
 	DrawExtendGraph(obj3x1 + g_Object.PURPLE_x, objALLy1, obj3x2 + g_Object.PURPLE_x, objALLy2, g_pic.Box_Move, TRUE);
+	DrawExtendGraph(obj3x1 + g_Object.PURPLE_x, objALLy1 - 100, obj3x2 + g_Object.PURPLE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
 	Door();			//ステージゴール処理
 	Lock();
 
+	//プレイヤーの色と同じブロックを手前に出す_______________________________________________________________
+	switch (g_Player.NowColor) {
+	case ORENGE:
+		Change(ORENGE);
+		DrawExtendGraph(obj1x1 + g_Object.ORENGE_x, objALLy1, obj1x2 + g_Object.ORENGE_x, objALLy2, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(obj1x1 + g_Object.ORENGE_x, objALLy1 - 100, obj1x2 + g_Object.ORENGE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
+		break;
+	case YELLOW:
+		Change(YELLOW);
+		DrawExtendGraph(obj2x1 + g_Object.YELLOW_x, objALLy1, obj2x2 + g_Object.YELLOW_x, objALLy2, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(obj2x1 + g_Object.YELLOW_x, objALLy1 - 100, obj2x2 + g_Object.YELLOW_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
+		break;
+	case PURPLE:
+		Change(PURPLE);
+		DrawExtendGraph(obj3x1 + g_Object.PURPLE_x, objALLy1, obj3x2 + g_Object.PURPLE_x, objALLy2, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(obj3x1 + g_Object.PURPLE_x, objALLy1 - 100, obj3x2 + g_Object.PURPLE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
+		break;
+
+	}
+
+
+	//ドアローテーション_________________________________________________________
 	Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
 	DrawBox(1150, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
 	Change(g_Door.Rotation[g_MapC.StageNumber - 1][1]);
