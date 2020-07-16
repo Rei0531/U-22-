@@ -14,7 +14,7 @@ extern GimmickAll gim;
 int Lever(void) {
 
 	Change2(gim.SwitchColor);
-	if ((g_Player.x > 0) & (g_Player.x < 200) & (g_Pad.KEY_B == TRUE)
+	if ((g_Player.x > 0) & (g_Player.x < 100) & (g_Pad.KEY_B == TRUE)
 		& (gim.SwitchFlag == 0) & (gim.SwitchWait == 0) & (g_Player.NowColor == gim.SwitchColor)) { //スイッチフラグがOFFであり待機時間が０でありスイッチと重なってあり
 		gim.SwitchFlag = 1;														  //レバーの色と主人公が同じである状態でインタラクトを押すと箱が消える
 		gim.SwitchWait = 10;
@@ -33,7 +33,7 @@ int Lever(void) {
 		//Change(WHITE);
 		//DrawExtendGraph(200, 270, 300, 370, g_pic.Box, TRUE);
 		Change(YELLOW);
-		DrawExtendGraph(200, 240, 300, 370, g_pic.Box, TRUE);
+		DrawExtendGraph(200, 265, 300, 370, g_pic.Box, TRUE);
 	}
 	
 	if (gim.SwitchWait != 0) {													//待機時間がある場合減らし続ける

@@ -101,8 +101,7 @@ int Stage7(void) {			//マップ画像の描画
 	Change(BLUE);
 	DrawExtendGraph(obj3x1, objALLy1, obj3x2, objALLy2, g_pic.Box, TRUE);
 	DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1, obj2x2 + g_Object.BLUE_x, objALLy2, g_pic.Box_Move, TRUE);
-	DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1-100, obj2x2 + g_Object.BLUE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
-
+	DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1 - 100, obj2x2 + g_Object.BLUE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
 
 	//動く床処理___________________________________________________________________________________________________
 	SlideBlock();
@@ -111,7 +110,22 @@ int Stage7(void) {			//マップ画像の描画
 	Shower();
 
 	//レバー処理___________________________________________________________________________________________________
+	if(g_Lock.Release == 2)
 	Lever();
+
+	//触っている色のオブジェが画面の一番手前に来るようにする処理、いつかZ軸設定してやりたい
+	switch (g_Player.NowColor) {
+	case BLUE:
+		Change(BLUE);
+		DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1, obj2x2 + g_Object.BLUE_x, objALLy2, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1 - 100, obj2x2 + g_Object.BLUE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
+		break;
+	case YELLOW:
+		Change(YELLOW);
+		DrawExtendGraph(obj1x1 + g_Object.YELLOW_x, objALLy1, obj1x2 + g_Object.YELLOW_x, objALLy2, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(obj1x1 + g_Object.YELLOW_x, objALLy1 - 100, obj1x2 + g_Object.YELLOW_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
+		break;
+	}
 
 	//世界の壁（黒いブロック）
 	Change(NONCOLOR);
