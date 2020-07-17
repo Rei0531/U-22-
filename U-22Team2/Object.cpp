@@ -113,14 +113,12 @@ void MoveObjectValue(int P_Color) {
 	switch (P_Color) {		//プレイヤーの色に合わせて動かすオブジェクトを決める
 	case RED:
 		g_Object.RED_x += PLAYERX * dir ;
-		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
 		break;
 	case ORENGE:
 		g_Object.ORENGE_x += PLAYERX * dir;
 		break;
 	case YELLOW:
 		g_Object.YELLOW_x += PLAYERX * dir;
-		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
 		break;
 	case GREEN:
 		g_Object.GREEN_x += PLAYERX * dir;
@@ -130,7 +128,6 @@ void MoveObjectValue(int P_Color) {
 		break;
 	case BLUE:
 		g_Object.BLUE_x += PLAYERX * dir;
-		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
 		break;
 	case PURPLE:
 		g_Object.PURPLE_x += PLAYERX * dir;

@@ -29,10 +29,12 @@ int Shower(void) {		//塗りつぶしをするシャワーの処理
 			DrawGraph(gim.shower_X, gim.shower_Y + 10 * i, g_pic.shower_m, TRUE);
 		
 			g_Player.NowColor = gim.shower_C;
-			PlaySoundMem(g_Snd.Shower, DX_PLAYTYPE_BACK); //範囲内なら音を流す
+			if (CheckSoundMem(g_Snd.Shower) == 0){ 
+				PlaySoundMem(g_Snd.Shower, DX_PLAYTYPE_BACK); //範囲内なら音を流す
+			}
 	}
 	else {
-		StopSoundMem(g_Snd.Shower); //範囲外に行ったら音を止める
+		StopSoundMem(g_Snd.Shower);
 	}
 
 

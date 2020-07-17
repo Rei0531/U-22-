@@ -6,12 +6,14 @@
 #include "Object.h"
 #include"Door.h"
 #include "Object.h"
+#include "LoadSound.h"
 
 extern image g_pic;
 extern Controller g_Pad;
 extern MapCoordinate g_MapC;
 extern Player g_Player;
 extern DoorAll g_Door;
+extern Sound g_Snd;
 
 
 int PlayerDraw(void) {
@@ -90,20 +92,34 @@ int PlayerDraw(void) {
 				g_Player.x += PLAYERX;
 		}
 		else {//Bボタンが押されているとき、動かせるブロックに触れているとき、触れているのが同じ色の時,地面にいる時
-			if (g_Pad.KEY_B == TRUE && ((g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder) || 
-				(g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)) && g_Player.PLAYER_GROUND == TRUE)
+			if (g_Pad.KEY_B == TRUE && ((g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder) ||
+				(g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)) && g_Player.PLAYER_GROUND == TRUE) {
 				MoveObjectValue(g_Player.NowColor);
-		}
+				if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
+					PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
+				}
+			}
+		} 
+		if ((g_Pad.KEY_B == FALSE) && (CheckSoundMem(g_Snd.BoxDrag) == 1)){
+		 StopSoundMem(g_Snd.BoxDrag);
+			}
 		if (g_Player.NowColor != g_Player.Hit_LeftUp && g_Player.NowColor != g_Player.Hit_LeftUnder) {//左側の色当たり判定とプレイヤーの色が違うとき左に行ける
 			if (g_Pad.KEY_LEFT)
 				g_Player.x -= PLAYERX;
 		}
 		else {//Bボタンが押されているとき、動かせるブロックに触れているとき、触れているのが同じ色の時,地面にいる時
 			if (g_Pad.KEY_B == TRUE && ((g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder) ||
-				(g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)) && g_Player.PLAYER_GROUND == TRUE)
-			MoveObjectValue(g_Player.NowColor);
+				(g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)) && g_Player.PLAYER_GROUND == TRUE) {
+				MoveObjectValue(g_Player.NowColor);
+				if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
+					PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
+				}
+			}
 		}
 
+		if ((g_Pad.KEY_B == FALSE) && (CheckSoundMem(g_Snd.BoxDrag) == 1)) {
+			StopSoundMem(g_Snd.BoxDrag);
+		}
 		//g_Player.x += (g_Pad.KEY_RIGHT) ? PLAYERX : -PLAYERX;		//プレイヤー自身のX軸を加減算
 		//_________________________________________________________________________________________
 		animecnt++;//アニメーション用のカウントプラス
