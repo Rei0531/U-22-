@@ -59,7 +59,7 @@ int GetPointColor(int Point_x, int Point_y) {	//“n‚³‚ê‚½À•W‚ÌF‚ğæ“¾‚µ‚Ä•Ô‚·
 		getcolor = MOVE;
 		break;
 	default:
-		getcolor = SaveColor;
+		//getcolor = SaveColor;
 		break;
 	}
 	//DrawRotaGraph(g_Player.PickUpPixel, g_Player.PickUpPixely,1.0,0,g_pic.Pin,TRUE,FALSE);
