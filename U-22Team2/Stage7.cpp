@@ -67,10 +67,6 @@ void Stage7Init() {
 	g_Door.w = 200;
 	g_Door.h = 370;
 
-
-
-
-
 	//箱の位置リセット
 	obj1x1 = 500;
 	obj1x2 = obj1x1 + 100;

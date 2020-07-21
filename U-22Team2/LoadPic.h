@@ -16,6 +16,8 @@ public:
 	int shower_m; //シャワーの水画像
 
 	int Reba;//レバー
+
+	int C_Switch;//色を反映するスイッチ
 };
 
 int LoadPictue(void);	//関数の定義

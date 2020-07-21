@@ -4,13 +4,15 @@
 #include"Door.h"
 #include "Lock.h"
 #include "Draw_Door_Rotation.h"
+#include "Gimmick.h"
 
-//MapCoordinate g_MapC;
+
 extern MapCoordinate g_MapC;
 extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
 
+static int SwitchColor = 9;
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 
 void Stage8Init() {
@@ -21,7 +23,7 @@ void Stage8Init() {
 
 	g_Player.x = 110;			//プレイヤー座標初期化
 	g_Player.y = 571;			//プレイヤー座標初期化
-	g_Player.NowColor = 4;		//プレイヤーの色初期化
+	g_Player.NowColor = 0;		//プレイヤーの色初期化//0:RED 1:ORENGE 2:YELLOW 3:GREEN 4:LIGHTBLUE 5:BLUE 6:PURPLE
 
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
@@ -30,46 +32,54 @@ void Stage8Init() {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
 
+	//ドアの位置
+	g_Door.x = 540;				//扉の左上のx座標
+	g_Door.y = 170;				//扉の左上のy座標
+	g_Door.w = g_Door.x + 100;	//横幅
+	g_Door.h = g_Door.y + 200;	//縦幅
+
+	SwitchColor = 9;//スイッチから―の初期化
 
 }
 
 int Stage8(void) {			//マップ画像の描画
-
-	if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
-		Stage8Init();
-		g_Player.PLAYER_MENU = FALSE;
-	}
-
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
+
+	//色反映スイッチ_____________________
+	SwitchColor = CC_Switch(g_Player.NowColor, 140, 568);//一時変数に関数からの戻り値を格納する
+	Change(SwitchColor);
+	DrawExtendGraph(340,568,440,668,g_pic.Box,TRUE);
+	DrawExtendGraph(340, 468, 440, 568, g_pic.Box, TRUE);
+	DrawBox(340, 568, 440, 668, GetColor(1,1,1),FALSE);
+	DrawBox(340, 468, 440, 568, GetColor(1, 1, 1), FALSE);
+	//____________________________________________________
+	DrawExtendGraph(740, 568, 840, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(740, 468, 840, 568, g_pic.Box, TRUE);
+	DrawBox(740, 568, 840, 668, GetColor(1, 1, 1), FALSE);
+	DrawBox(740, 468, 840, 568, GetColor(1, 1, 1), FALSE);
+
 	//色ブロック描画
-	Change(BLUE);
-	DrawExtendGraph(400, 568, 500, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);
 	Change(RED);
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
-	Change(LIGHTBLUE);
-	DrawExtendGraph(600, 568, 700, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(600, 468, 700, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(240, 568, 340, 668, g_pic.Box, TRUE);
+	Change(GREEN);
+	DrawExtendGraph(840, 568, 940, 668, g_pic.Box, TRUE);
+
+	//世界の壁_________________________________________
+	Change(NONCOLOR);
+	DrawBox(440,370,740,420,GetColor(255,255,255),TRUE);
+
 	Door();			//ステージゴール処理
 	Lock();
 
 	DoorRotation(2);
 
-	//static int
-	//	RotationNum = 2,//ローテーションする数
-	//	X_Size = 100 / RotationNum;//ローテーションのボックスの横のサイズ
-
-	//Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
-	//DrawBox(g_Door.x, g_Door.y - 30, g_Door.x + X_Size, g_Door.y, GetColor(255, 255, 255), TRUE);
-	//Change(g_Door.Rotation[g_MapC.StageNumber - 1][1]);
-	//DrawBox(g_Door.x + X_Size, g_Door.y - 30, g_Door.x + X_Size * 2, g_Door.y, GetColor(255, 255, 255), TRUE);
-	////Change(g_Door.Rotation[g_MapC.StageNumber - 1][2]);
-	////DrawBox(g_Door.x + X_Size * 2, g_Door.y - 30, g_Door.x + X_Size * 3, g_Door.y, GetColor(255, 255, 255), TRUE);
-	////Change(g_Door.Rotation[g_MapC.StageNumber - 1][3]);
-	////DrawBox(g_Door.x + X_Size * 3, g_Door.y - 30, g_Door.x + X_Size * 4, g_Door.y, GetColor(255, 255, 255), TRUE);
-
 	ColorReset();
+
+	//Init処理___________________________________
+	if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
+		Stage8Init();
+		g_Player.PLAYER_MENU = FALSE;
+	}
 
 	return 0;
 }

@@ -65,10 +65,10 @@ int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
 	//DrawRotaGraph(g_Player.PickUpPixel, g_Player.PickUpPixely,1.0,0,g_pic.Pin,TRUE,FALSE);
 	if (g_Player.PLAYER_PICKUP == TRUE) {//スポイトされたとき
 		g_Player.PLAYER_PICKUP = FALSE;			//TRUEになってこの関数に入るから一度だけの処理にするためにスポイトフラグをFALSEにする
-		if ((g_Player.Hit_Up == getcolor) | (SaveColor == getcolor )|| (getcolor == WHITE)) {
+		if ((g_Player.Hit_Up == getcolor) | (SaveColor == getcolor )|| (getcolor == WHITE) || (getcolor == BLACK)) {
 			g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
 		}
-		if (g_Player.Hit_Up == getcolor || getcolor == WHITE) {////プレイヤーが重なっている位置の色と取得した色が同じだった時、取得した色が白色の時
+		if (g_Player.Hit_Up == getcolor || getcolor == WHITE || getcolor == BLACK) {////プレイヤーが重なっている位置の色と取得した色が同じだった時、取得した色が白色の時
 			Interact(FALSE);
 			return SaveColor; //現在の色を返す
 		}

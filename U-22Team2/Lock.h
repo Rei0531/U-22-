@@ -14,7 +14,7 @@ public:
 		{LIGHTBLUE},					//ステージ5
 		{RED},							//ステージ6
 		{YELLOW,BLUE,RED},				//ステージ7
-		{RED,GREEN},					//ステージ8
+		{GREEN,RED},					//ステージ8
 		{RED,GREEN},					//ステージ9
 		{RED},						//ステージ10のドアのローテーションの順番
 		{RED},						//ステージ11のドアのローテーションの順番
@@ -48,7 +48,7 @@ public:
 		{LIGHTBLUE},					//ステージ5
 		{RED},							//ステージ6
 		{YELLOW,BLUE,RED},				//ステージ7
-		{RED,GREEN},					//ステージ8
+		{GREEN,RED},					//ステージ8
 		{RED,GREEN},					//ステージ9
 		{RED},						//ステージ10のドアのローテーションの順番
 		{RED},						//ステージ11のドアのローテーションの順番

@@ -19,7 +19,9 @@ int LoadPictue(void) {		//画像の読み込み
 	if ((g_pic.shower_m = LoadGraph("image/shower_water.png")) == -1)return-1;	//シャワーの画像
 
 
-	if ((g_pic.Reba = LoadGraph("image/lever(2).png")) == -1)return-1;
+	if ((g_pic.Reba = LoadGraph("image/lever(2).png")) == -1)return-1;//レバー
+
+	if ((g_pic.C_Switch = LoadGraph("image/ChangeSwitch.png")) == -1)return-1;//色を反映するスイッチ
 
 	return 0;
 }

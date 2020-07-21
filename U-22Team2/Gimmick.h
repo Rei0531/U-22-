@@ -31,3 +31,4 @@ public:
 int Shower(void);		//塗りつぶしシャワーの処理
 int Lever(void);		//レバーの処理
 int SlideBlock(void);	//動く床の処理
+int CC_Switch(int Color, int x,int y);	//プレイヤーの押した色を反映するスイッチの処理//引数：押した時点のプレイヤーの色を渡す
