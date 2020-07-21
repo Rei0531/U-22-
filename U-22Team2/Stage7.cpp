@@ -5,6 +5,7 @@
 #include "Lock.h"
 #include "Object.h"
 #include "Gimmick.h"
+#include "Draw_Door_Rotation.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -135,18 +136,20 @@ int Stage7(void) {			//マップ画像の描画
 	Lock();
 
 
-	static int
-		RotationNum = 4,//ローテーションする数
-		X_Size = 100 / RotationNum;//ローテーションのボックスの横のサイズ
+	DoorRotation(4);
 
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
-	DrawBox(g_Door.x, g_Door.y-30, g_Door.x + X_Size, g_Door.y, GetColor(255, 255, 255), TRUE);
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][1]);
-	DrawBox(g_Door.x + X_Size, g_Door.y - 30, g_Door.x + X_Size*2, g_Door.y, GetColor(255, 255, 255), TRUE);
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][2]);
-	DrawBox(g_Door.x + X_Size * 2, g_Door.y - 30, g_Door.x + X_Size * 3, g_Door.y, GetColor(255, 255, 255), TRUE);
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][3]);
-	DrawBox(g_Door.x + X_Size * 3, g_Door.y - 30, g_Door.x + X_Size * 4, g_Door.y, GetColor(255, 255, 255), TRUE);
+	//static int
+	//	RotationNum = 4,//ローテーションする数
+	//	X_Size = 100 / RotationNum;//ローテーションのボックスの横のサイズ
+
+	//Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
+	//DrawBox(g_Door.x, g_Door.y-30, g_Door.x + X_Size, g_Door.y, GetColor(255, 255, 255), TRUE);
+	//Change(g_Door.Rotation[g_MapC.StageNumber - 1][1]);
+	//DrawBox(g_Door.x + X_Size, g_Door.y - 30, g_Door.x + X_Size*2, g_Door.y, GetColor(255, 255, 255), TRUE);
+	//Change(g_Door.Rotation[g_MapC.StageNumber - 1][2]);
+	//DrawBox(g_Door.x + X_Size * 2, g_Door.y - 30, g_Door.x + X_Size * 3, g_Door.y, GetColor(255, 255, 255), TRUE);
+	//Change(g_Door.Rotation[g_MapC.StageNumber - 1][3]);
+	//DrawBox(g_Door.x + X_Size * 3, g_Door.y - 30, g_Door.x + X_Size * 4, g_Door.y, GetColor(255, 255, 255), TRUE);
 
 	ColorReset();
 
