@@ -48,13 +48,15 @@ int Stage8(void) {			//マップ画像の描画
 	//色反映スイッチ_____________________
 	SwitchColor = CC_Switch(g_Player.NowColor, 140, 568);//一時変数に関数からの戻り値を格納する
 	Change(SwitchColor);
+	//色反映する箱________________________________________________
 	DrawExtendGraph(340,568,440,668,g_pic.Box,TRUE);
 	DrawExtendGraph(340, 468, 440, 568, g_pic.Box, TRUE);
-	DrawBox(340, 568, 440, 668, GetColor(1,1,1),FALSE);
-	DrawBox(340, 468, 440, 568, GetColor(1, 1, 1), FALSE);
-	//____________________________________________________
 	DrawExtendGraph(740, 568, 840, 668, g_pic.Box, TRUE);
 	DrawExtendGraph(740, 468, 840, 568, g_pic.Box, TRUE);
+	//箱の枠線__________________________________________
+	ColorReset();
+	DrawBox(340, 568, 440, 668, GetColor(1, 1, 1), FALSE);
+	DrawBox(340, 468, 440, 568, GetColor(1, 1, 1), FALSE);
 	DrawBox(740, 568, 840, 668, GetColor(1, 1, 1), FALSE);
 	DrawBox(740, 468, 840, 568, GetColor(1, 1, 1), FALSE);
 

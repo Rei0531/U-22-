@@ -68,11 +68,16 @@ int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
 		if ((g_Player.Hit_Up == getcolor) | (SaveColor == getcolor )|| (getcolor == WHITE) || (getcolor == BLACK)) {
 			g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
 		}
-		if (g_Player.Hit_Up == getcolor || getcolor == WHITE || getcolor == BLACK) {////プレイヤーが重なっている位置の色と取得した色が同じだった時、取得した色が白色の時
-			Interact(FALSE);
+		if (g_Player.Hit_Up == getcolor || getcolor == WHITE || getcolor == BLACK  || getcolor == MOVE ||
+			(g_Door.x < g_Player.PickUpPixel && g_Door.w > g_Player.PickUpPixel &&
+				g_Door.y < g_Player.PickUpPixely && g_Door.h > g_Player.PickUpPixely)) {
+			////プレイヤーが重なっている位置の色と取得した色が同じだった時、取得した色が白色の時,黒色の時、ドアの位置の時
+			Interact(FALSE);//スポイト失敗
+			g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
 			return SaveColor; //現在の色を返す
 		}
 		if (SaveColor != getcolor && getcolor != MOVE) {//取得した色が現在持っている自身の色と違う時
+			g_Door.Picupflg = TRUE;				//ドアのローテーションためのスポイトのフラグをTRUEにする
 			Interact(TRUE);//スポイト成功
 		}
 		else {
