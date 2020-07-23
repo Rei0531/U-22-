@@ -73,7 +73,7 @@ int Stage8(void) {			//マップ画像の描画
 	Door();			//ステージゴール処理
 	Lock();
 
-	DoorRotation(2);
+	DoorRotationBox(2);
 
 	ColorReset();
 

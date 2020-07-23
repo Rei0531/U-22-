@@ -132,7 +132,7 @@ int Stage7(void) {			//マップ画像の描画
 	Lock();
 
 
-	DoorRotation(4);
+	DoorRotationBox(4);
 
 	//static int
 	//	RotationNum = 4,//ローテーションする数

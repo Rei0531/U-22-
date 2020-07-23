@@ -8,7 +8,7 @@ extern DoorAll g_Door;
 extern MapCoordinate g_MapC;
 
 //Rot_sum:ローテションす数
-void DoorRotation(int Rot_sum) {
+void DoorRotationBox(int Rot_sum) {
 
 	int
 		RotationNum = Rot_sum,//ローテーションする数

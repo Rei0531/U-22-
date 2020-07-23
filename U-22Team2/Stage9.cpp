@@ -3,6 +3,8 @@
 #include "Color.h"
 #include"Door.h"
 #include "Lock.h"
+#include "Draw_Door_Rotation.h"
+#include "Rotation_Box.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -15,12 +17,12 @@ static bool InitFlag = TRUE;//InitŠÖ”‚ğ’Ê‚Á‚Ä‚¢‚¢‚©”»’è•Ï”/TRUE‚ª‚¢‚¢/FALSE‚ªƒ
 void Stage9Init() {
 	//ƒvƒŒƒCƒ„[‚Ì‰ŠúˆÊ’u
 	//ƒIƒuƒWƒFƒNƒg‚Ì‰ŠúˆÊ’u‚ğ•`‚­
-	g_Player.Interact = 10;//ƒvƒŒƒCƒ„[‚ªƒCƒ“ƒ^ƒ‰ƒNƒg‚Å‚«‚é‰ñ”‚ğ10‰ñ‚Éİ’è
+	g_Player.Interact = 20;//ƒvƒŒƒCƒ„[‚ªƒCƒ“ƒ^ƒ‰ƒNƒg‚Å‚«‚é‰ñ”‚ğ10‰ñ‚Éİ’è
 	InitFlag = FALSE;	//FALSE‚É‚µ‚ÄŸTRUE‚É‚È‚é‚Ü‚Å’Ê‚ç‚È‚¢‚æ‚¤‚É‚·‚é
 
 	g_Player.x = 110;			//ƒvƒŒƒCƒ„[À•W‰Šú‰»
 	g_Player.y = 571;			//ƒvƒŒƒCƒ„[À•W‰Šú‰»
-	g_Player.NowColor = 4;		//ƒvƒŒƒCƒ„[‚ÌF‰Šú‰»
+	g_Player.NowColor = 0;		//ƒvƒŒƒCƒ„[‚ÌF‰Šú‰»
 
 	g_Door.RotationNumber = 0;	//ƒ[ƒe[ƒVƒ‡ƒ“‰Šú‰»
 	g_Lock.Release = 0;			//Œ®ŒŠ‰ğœ”‰Šú‰»
@@ -29,6 +31,11 @@ void Stage9Init() {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
 
+	//ƒhƒA‚ÌˆÊ’u
+	g_Door.x = 540;				//”à‚Ì¶ã‚ÌxÀ•W
+	g_Door.y = 368;				//”à‚Ì¶ã‚ÌyÀ•W
+	g_Door.w = g_Door.x + 100;	//‰¡•
+	g_Door.h = g_Door.y + 200;	//c•
 
 }
 
@@ -40,25 +47,19 @@ int Stage9(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 	}
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//ƒ}ƒbƒv‚Ì•`‰æ
-	//FƒuƒƒbƒN•`‰æ
-	Change(BLUE);
-	DrawExtendGraph(400, 568, 500, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);
-	Change(RED);
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
-	Change(LIGHTBLUE);
-	DrawExtendGraph(600, 568, 700, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(600, 468, 700, 568, g_pic.Box, TRUE);
+
+	Change(Rotation_Box(2));
+	DrawExtendGraph(340, 568, 440, 668, g_pic.Box, TRUE);
+	Change(Rotation_Box(1));
+	DrawExtendGraph(540, 568, 640, 668, g_pic.Box, TRUE);
+	Change(Rotation_Box(0));
+	DrawExtendGraph(740, 568, 840, 668, g_pic.Box, TRUE);
+
 	Door();			//ƒXƒe[ƒWƒS[ƒ‹ˆ—
 	Lock();
 
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
-	DrawBox(1150, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][1]);
-	DrawBox(1186, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][2]);
-	DrawBox(1216, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
+
+	DoorRotationBox(3);
 
 	ColorReset();
 

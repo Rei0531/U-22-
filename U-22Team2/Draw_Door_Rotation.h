@@ -1,3 +1,3 @@
 #pragma once
 
-void DoorRotation(int Rot_sum);
+void DoorRotationBox(int Rot_sum);
