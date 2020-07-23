@@ -18,6 +18,7 @@ public:
 	int Reba;//レバー
 
 	int C_Switch;//色を反映するスイッチ
+	int Rot_Box;//ローテーションするボックス
 };
 
 int LoadPictue(void);	//関数の定義

@@ -23,5 +23,7 @@ int LoadPictue(void) {		//画像の読み込み
 
 	if ((g_pic.C_Switch = LoadGraph("image/ChangeSwitch.png")) == -1)return-1;//色を反映するスイッチ
 
+	if ((g_pic.Rot_Box = LoadGraph("image/RotationBox.png")) == -1)return-1;//ローテーションボックス
+
 	return 0;
 }
