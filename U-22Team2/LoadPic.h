@@ -19,6 +19,9 @@ public:
 
 	int C_Switch;//色を反映するスイッチ
 	int Rot_Box;//ローテーションするボックス
+
+	int OneTimeSwitch;
+	int Bomb;
 };
 
 int LoadPictue(void);	//関数の定義

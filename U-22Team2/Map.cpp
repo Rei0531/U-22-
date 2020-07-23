@@ -52,12 +52,12 @@ int Map(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ____________________________________________
 		//case 11:
 		//	Stage11();
 		//	break;
-		//case 12:
-		//	Stage12();
-		//	break;
-		//case 13:
-		//	Stage13();
-		//	break;
+		case 12:
+			Stage12();
+			break;
+		case 13:
+			Stage13();
+			break;
 		//case 14:
 		//	Stage14();
 		//	break;
