@@ -3,6 +3,7 @@
 #include "Color.h"
 #include"Door.h"
 #include "Lock.h"
+#include "Gimmick.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -47,20 +48,16 @@ int Stage13(void) {			//マップ画像の描画
 	Change(RED);
 	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);
 	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
-	Change(LIGHTBLUE);
-	DrawExtendGraph(600, 568, 700, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(600, 468, 700, 568, g_pic.Box, TRUE);
+
 	Door();			//ステージゴール処理
 	Lock();
 
 	Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
 	DrawBox(1150, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][1]);
-	DrawBox(1186, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][2]);
-	DrawBox(1216, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
 
 	ColorReset();
+
+	Bomb();
 
 	return 0;
 }
