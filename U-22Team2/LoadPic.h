@@ -22,6 +22,8 @@ public:
 
 	int OneTimeSwitch;
 	int Bomb;
+
+	int Warp_Area;
 };
 
 int LoadPictue(void);	//ŠÖ”‚Ì’è‹`
