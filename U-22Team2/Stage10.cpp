@@ -46,6 +46,12 @@ void Stage10Init() {
 
 	gim.move_cnt = 0;
 	gim.move_max = 160;
+
+	//ドアの位置
+	g_Door.x = 1100;				//扉の左上のx座標
+	g_Door.y = 468;				//扉の左上のy座標
+	g_Door.w = g_Door.x + 100;	//横幅
+	g_Door.h = g_Door.y + 200;	//縦幅
 }
 
 int Stage10(void) {			//マップ画像の描画
@@ -64,20 +70,20 @@ int Stage10(void) {			//マップ画像の描画
 	DrawExtendGraph(868, 168, 968, 268, g_pic.Warp_Area, TRUE);//ワープ用画像
 
 	Change(RED);
-	DrawExtendGraph(150, 568, 250, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(150, 468, 250, 568, g_pic.Box, TRUE);
+	/*DrawExtendGraph(150, 568, 250, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(150, 468, 250, 568, g_pic.Box, TRUE);*/
 	DrawExtendGraph(500, 68, 600, 168, g_pic.Box, TRUE);
 	DrawExtendGraph(500, 168, 600, 268, g_pic.Box, TRUE);
 
 	Change(BLUE);
-	DrawExtendGraph(300, 68, 400,168, g_pic.Box, TRUE);
-	DrawExtendGraph(300, 168, 400, 268, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(700, 68, 800,168, g_pic.Box, TRUE);
+	DrawExtendGraph(700, 168, 800, 268, g_pic.Box, TRUE);
+	/*DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);*/
 
 	Change(LIGHTBLUE);
-	DrawExtendGraph(600, 68, 700, 168, g_pic.Box, TRUE);
-	DrawExtendGraph(600, 168, 700, 268, g_pic.Box, TRUE);
+	DrawExtendGraph(300, 68, 400, 168, g_pic.Box, TRUE);
+	DrawExtendGraph(300, 168, 400, 268, g_pic.Box, TRUE);
 
 	if (g_Pad.KEY_B == TRUE) {
 		gim.move_cnt++;
@@ -92,11 +98,12 @@ int Stage10(void) {			//マップ画像の描画
 	}
 	//DrawFormatString(g_Player.x - 30, g_Player.y - 200, g_Player.NowColor, "%d", gim.move_cnt);
 	
+	DoorRotationBox(3);
+
 	Door();			//ステージゴール処理
 	Lock();
 
 
-	DoorRotationBox(3);
 	/*Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
 	DrawBox(1150, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
 	Change(g_Door.Rotation[g_MapC.StageNumber - 1][1]);
