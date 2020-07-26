@@ -25,5 +25,6 @@ int LoadPictue(void) {		//画像の読み込み
 
 	if ((g_pic.Rot_Box = LoadGraph("image/RotationBox.png")) == -1)return-1;//ローテーションボックス
 
+	if ((g_pic.Warp_Area = LoadGraph("image/Warp.png")) == -1)return -1;//ワープの画像
 	return 0;
 }
