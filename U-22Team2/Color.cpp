@@ -38,3 +38,34 @@ void Change(int Color) {								//渡された色の輝度に設定する
 		break;
 	}
 }
+
+void Change2(int Color2) {								//渡された色の輝度に設定する(スポイトされない色）
+	switch (Color2) {
+	case RED2:
+		SetDrawBright(253, 0, 0);		//253
+		break;
+	case ORENGE2:
+		SetDrawBright(254, 165, 0);		//419
+		break;
+	case YELLOW2:
+		SetDrawBright(254, 254, 0);		//508
+		break;
+	case GREEN2:
+		SetDrawBright(0, 127, 0);		//127
+		break;
+	case LIGHTBLUE2:
+		SetDrawBright(0, 254, 253);		//507
+		break;
+	case BLUE2:
+		SetDrawBright(0, 0, 252);		//252
+		break;
+	case PURPLE2:
+		SetDrawBright(128, 0, 122);		//250
+		break;
+	case NONCOLOR2:
+		SetDrawBright(0, 0, 0);
+		break;
+	default:
+		break;
+	}
+}

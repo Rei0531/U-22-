@@ -28,16 +28,18 @@ int Lock(void) {
 		if (i == 0) {
 			Change(g_Lock.color[g_MapC.StageNumber - 1][0]);
 			DrawBox(g_Door.x+50, g_Door.y+120, g_Door.x + 75, g_Door.y + 150, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
-			Change(NONCOLOR);
-			DrawBox(g_Door.x + 50, g_Door.y + 120, g_Door.x + 75, g_Door.y + 150, GetColor(255, 255, 255), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
+			//Change(NONCOLOR);
+			ColorReset();
+			DrawBox(g_Door.x + 50, g_Door.y + 120, g_Door.x + 75, g_Door.y + 150, GetColor(1,1,1), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
 
 		}
 		else {
 
 			Change(g_Lock.color[g_MapC.StageNumber - 1][i]);
 			DrawBox(g_Door.x +15 + i * 10, g_Door.y + 120, g_Door.x + 25 + i * 10, g_Door.y + 150, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
-			Change(NONCOLOR);
-			DrawBox(g_Door.x + 15 + i * 10, g_Door.y + 120, g_Door.x + 25 + i * 10, g_Door.y + 150, GetColor(255, 255, 255), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
+			//Change(NONCOLOR);
+			ColorReset();
+			DrawBox(g_Door.x + 15 + i * 10, g_Door.y + 120, g_Door.x + 25 + i * 10, g_Door.y + 150, GetColor(1, 1, 1), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
 		}
 	}
 

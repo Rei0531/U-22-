@@ -4,6 +4,7 @@
 #include"Door.h"
 #include "Lock.h"
 #include "Object.h"
+#include "LoadSound.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -11,6 +12,7 @@ extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
 extern Controller g_Pad;
+extern Sound g_Snd;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 
@@ -54,11 +56,13 @@ int Stage5(void) {			//マップ画像の描画
 		& (g_SwitchFlag == 0) & (g_SwitchWait == 0) & (g_Player.NowColor == 4)) { //スイッチフラグがOFFであり待機時間が０でありスイッチと重なってあり
 		g_SwitchFlag = 1;														  //レバーの色と主人公が同じである状態でインタラクトを押すと箱が消える
 		g_SwitchWait = 10;
+		PlaySoundMem(g_Snd.leva, DX_PLAYTYPE_BACK);
 	}
 	else if ((g_Player.x > 424) & (g_Player.x < 575) & (g_Pad.KEY_B == TRUE)	  //スイッチがONの場合はOFFに切り替える
 		& (g_SwitchFlag == 1) & (g_SwitchWait == 0) & (g_Player.NowColor == 4)){  //レバーがONまたはOFFになった場合待機時間が加わる
 		g_SwitchFlag = 0;
 		g_SwitchWait = 10;
+		PlaySoundMem(g_Snd.leva, DX_PLAYTYPE_BACK);
 	}
 
 	if (g_SwitchFlag == 0) {													  
@@ -67,9 +71,10 @@ int Stage5(void) {			//マップ画像の描画
 	else if (g_SwitchFlag == 1) {
 		DrawRotaGraph(500, 623, 1.0, 0, g_pic.Reba, TRUE, TRUE);
 		Change(WHITE);
-		DrawExtendGraph(700, 518, 850, 668, g_pic.Box, TRUE);
+		DrawExtendGraph(700, 558, 800, 668, g_pic.Box, TRUE);
 	}
-	DrawExtendGraph(700, 518, 850, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(700, 558, 800, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(700, 458, 800, 568, g_pic.Box, TRUE);
 	if (g_SwitchWait != 0) {													//待機時間がある場合減らし続ける
 		g_SwitchWait--;
 	}

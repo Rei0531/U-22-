@@ -12,8 +12,18 @@ public:
 	int Pin;//色取った場所のピン
 	int Box_Move;//動く箱
 
-	int syawa;//シャワーの画像
+	int shower;//シャワーの画像
+	int shower_m; //シャワーの水画像
+
 	int Reba;//レバー
+
+	int C_Switch;//色を反映するスイッチ
+	int Rot_Box;//ローテーションするボックス
+
+	int OneTimeSwitch;
+	int Bomb;
+
+	int Warp_Area;
 };
 
 int LoadPictue(void);	//関数の定義

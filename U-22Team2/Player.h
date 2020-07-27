@@ -17,7 +17,9 @@ public:
 		Hit_RightUnder,				// 。     。
 		Hit_LeftUnder,				// L_。_。_l
 		Hit_Under,					//四角形の７点で当たり判定を取得
-		Hit_Under2;					//
+		Hit_Under2,					//足の当たり判定二個目
+		Hit_Rght_High,				//頭の高さの右当たり判定
+		Hit_Left_High;				//頭の高さの左当たり判定
 
 	int Move_Hit1,
 		Move_Hit2;					//動かせるボックスの当たり判定色を取得
@@ -26,7 +28,8 @@ public:
 		PLAYER_JUMP = FALSE,		//プレイヤーがジャンプしたか
 		PLAYER_PICKUP = FALSE,		//スポイト
 		PLAYER_ACTION = FALSE,		//アクションボタン
-		PLAYER_MENU = FALSE;		//メニュー
+		PLAYER_MENU = FALSE,		//メニュー
+		PLAYER_GROUND;				//地面にいる
 }; 
 
 int PlayerDraw(void);	//関数の定義

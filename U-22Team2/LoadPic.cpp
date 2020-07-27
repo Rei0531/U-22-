@@ -15,8 +15,16 @@ int LoadPictue(void) {		//画像の読み込み
 
 	if (LoadDivGraph("image/All_Object.png", 10, 10, 1, 150, 150, g_pic.Object) == -1) return -1;//オブジェクトの分割画像
 
-	if ((g_pic.syawa = LoadGraph("image/シャワー.png")) == -1)return-1;
-	if ((g_pic.Reba = LoadGraph("image/lever(2).png")) == -1)return-1;
+	if ((g_pic.shower = LoadGraph("image/shower.png")) == -1)return-1;	//シャワーの画像
+	if ((g_pic.shower_m = LoadGraph("image/shower_water.png")) == -1)return-1;	//シャワーの画像
 
+
+	if ((g_pic.Reba = LoadGraph("image/lever(2).png")) == -1)return-1;//レバー
+
+	if ((g_pic.C_Switch = LoadGraph("image/ChangeSwitch.png")) == -1)return-1;//色を反映するスイッチ
+
+	if ((g_pic.Rot_Box = LoadGraph("image/RotationBox.png")) == -1)return-1;//ローテーションボックス
+
+	if ((g_pic.Warp_Area = LoadGraph("image/Warp.png")) == -1)return -1;//ワープの画像
 	return 0;
 }

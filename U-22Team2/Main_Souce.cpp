@@ -88,7 +88,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		DrawFormatString(0, 0, 0xff0fff, "X %d ", g_Pad.MouseX);
 		DrawFormatString(0, 20, 0xff0fff, "Y %d ", g_Pad.MouseY);
-		//DrawFormatString(0, 40, 0xff0000, "Color %d ", c);
+		//DrawFormatString(0, 40, 0xff0000, " %d ", );
 		DrawFormatString(0, 60, 0xff0fff, "g_Player.x %d ", g_Player.x);
 		DrawFormatString(0, 80, 0xff0fff, "g_Player.y %d ", g_Player.y);
 		ScreenFlip();		//— ‰æ–Ê‚Ì“à—e‚ð•\‰æ–Ê‚É”½‰f
