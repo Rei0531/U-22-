@@ -49,9 +49,9 @@ int Map(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ____________________________________________
 	case 10:
 		Stage10();
 		break;
-	case 11:
-		Stage11();
-		break;
+	//case 11:
+		//Stage11();
+		//break;
 	case 12:
 		Stage12();
 		break;
