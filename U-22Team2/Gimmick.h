@@ -24,8 +24,10 @@ public:
 	int move_x = 0;
 	int move_cnt = 0;
 	int move_max = 160;
-	//
+	//一度限りのスイッチ用の変数_____________
 	int OTSwitchFlag = 0;
+	//爆弾用の変数___________________________
+	int g_Bomb = 0;
 };
 
 int Shower(void);		//塗りつぶしシャワーの処理

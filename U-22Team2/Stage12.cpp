@@ -28,7 +28,7 @@ void Stage12Init() {
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
-	gim.OTSwitchFlag = 0;
+	gim.OTSwitchFlag = 0;		//一度限りのスイッチフラグ初期化
 
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {

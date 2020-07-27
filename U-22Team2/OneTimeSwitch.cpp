@@ -12,15 +12,15 @@ extern GimmickAll gim;
 int OneTimeSwitch(void) {
 
 	if (g_Pad.KEY_B == TRUE &&
-		g_Player.x > 800 && g_Player.x < 850 && gim.OTSwitchFlag == 0) {
+		g_Player.x > 800 && g_Player.x < 850 && gim.OTSwitchFlag == 0) {			//スイッチ周辺でインタラクトを押すと壁が消える
 		gim.OTSwitchFlag = 99;
 	}
 
 	if (gim.OTSwitchFlag == 0) {
 		Change(NONCOLOR);
-		DrawBox(900, 0, 1000, 669, GetColor(255, 255, 255), TRUE);
-	}
-	else if (gim.OTSwitchFlag != 0) {
+		DrawBox(900, 0, 1000, 669, GetColor(255, 255, 255), TRUE);					//スイッチが押されてないなら表示
+	}																				
+	else if (gim.OTSwitchFlag != 0) {												//押されたら非表示
 		DrawBox(900, 0, 1000, 669, GetColor(255, 255, 255), TRUE);
 		Change(NONCOLOR);
 		DrawBox(720, 0, 770, 669, GetColor(255, 255, 255), TRUE);
