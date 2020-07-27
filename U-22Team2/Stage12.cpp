@@ -4,15 +4,15 @@
 #include"Door.h"
 #include "Lock.h"
 #include "Gimmick.h"
-#include "OneTime_Switch.h"
+#include "Bomb.h"
 #include "Draw_Door_Rotation.h"
 #include "Rotation_Box.h"
 
+//MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
 extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
-extern Controller g_Pad;
 extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
@@ -30,8 +30,7 @@ void Stage12Init() {
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
-	gim.OTSwitchFlag = 0;		//一度限りのスイッチフラグ初期化
-
+	gim.g_Bomb = 0;				//爆弾フラグの初期化
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
@@ -60,13 +59,7 @@ int Stage12(void) {			//マップ画像の描画
 	Change(RED);
 	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);
 	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
-	Change(LIGHTBLUE);
-	DrawExtendGraph(600, 568, 700, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(600, 468, 700, 568, g_pic.Box, TRUE);
 
-	Change(RED);
-	DrawBox(800, 668, 850, 648, 0xffffff, TRUE);
-	
 	Door();			//ステージゴール処理
 	Lock();
 
@@ -74,7 +67,7 @@ int Stage12(void) {			//マップ画像の描画
 
 	ColorReset();
 
-	OneTimeSwitch();
+	Bomb();
 
 	return 0;
 }
