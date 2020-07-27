@@ -4,13 +4,14 @@
 #include"Door.h"
 #include "Lock.h"
 #include "Gimmick.h"
+#include "OneTime_Switch.h"
 
-//MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
 extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
 extern Controller g_Pad;
+extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 
@@ -26,6 +27,9 @@ void Stage12Init() {
 
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
+
+	gim.OTSwitchFlag = 0;
+
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];

@@ -24,8 +24,8 @@ public:
 	int move_x = 0;
 	int move_cnt = 0;
 	int move_max = 160;
-
-
+	//
+	int OTSwitchFlag = 0;
 };
 
 int Shower(void);		//“h‚è‚Â‚Ô‚µƒVƒƒƒ[‚Ìˆ—
