@@ -16,4 +16,13 @@ int Stage13(void);
 int Stage14(void);
 int Stage15(void);
 int Stage16(void);
+int Stage17(void);
+int Stage18(void);
+int Stage19(void);
+int Stage20(void);
+int Stage21(void);
+int Stage22(void);
+int Stage23(void);
+int Stage24(void);
+int Stage25(void);
 
