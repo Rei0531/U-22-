@@ -28,6 +28,18 @@ public:
 	int OTSwitchFlag = 0;
 	//爆弾用の変数___________________________
 	int g_Bomb = 0;
+
+	//変形オブジェクト用の変数＿＿＿＿
+	int cheobj_flg;	 //変形するオブジェクトのフラグ
+	int cheobj_x;
+	int cheobj_y = 670 - 225;
+	int cheobj_c;
+
+	//回復アイテム用の変数_______
+	int item_x;
+	int item_y = 670 - 50;
+	int item_flg;
+
 };
 
 int Shower(void);		//塗りつぶしシャワーの処理
@@ -36,3 +48,5 @@ int SlideBlock(void);	//動く床の処理
 int CC_Switch(int Color, int x,int y);	//プレイヤーの押した色を反映するスイッチの処理//引数：押した時点のプレイヤーの色を渡す
 int OneTimeSwitch(void); //一度限りのスイッチ
 int Bomb(void);			//ボックス破壊の爆弾
+int ChangeBlock(void); //変形するオブジェクト
+int kaihuku(int x, int y);	//スポイト回復アイテム

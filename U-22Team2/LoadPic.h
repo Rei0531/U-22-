@@ -24,6 +24,10 @@ public:
 	int Bomb;
 
 	int Warp_Area;
+
+	int ChengObject[3];  //変形するオブジェクト
+
+	int item;	//スポイト回復アイテム
 };
 
 int LoadPictue(void);	//関数の定義

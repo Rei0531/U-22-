@@ -26,5 +26,9 @@ int LoadPictue(void) {		//画像の読み込み
 	if ((g_pic.Rot_Box = LoadGraph("image/RotationBox.png")) == -1)return-1;//ローテーションボックス
 
 	if ((g_pic.Warp_Area = LoadGraph("image/Warp.png")) == -1)return -1;//ワープの画像
+	
+	if (LoadDivGraph("image/ChangeObject.png", 3, 3, 1, 225, 225, g_pic.ChengObject) == -1) return -1;//変形するオブジェクト
+	if ((g_pic.item = LoadGraph("image/kaihuku.png")) == -1)return-1;//スポイト回復アイテム
+
 	return 0;
 }
