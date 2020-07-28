@@ -105,6 +105,10 @@ int GetObjectColor(void) {
 }
 
 void MoveObjectValue(int P_Color) {
+
+	if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
+		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
+	}
 	static int dir = 1;//向きによって*-1するからそのための変数
 	//g_Player.PLAYER_DIRECTION ? dir = -1 : dir = 1;//プレイヤーがTURE(左向き)ならマイナス、FALSE(右向き)ならプラス、
 	//if (g_Pad.KEY_RIGHT && (g_Player.Move_Hit1 == MOVE && (g_Player.Hit_RightUnder == g_Player.NowColor || g_Player.Hit_RightUp == g_Player.NowColor))) {
