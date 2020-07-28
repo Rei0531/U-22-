@@ -96,33 +96,43 @@ int PlayerDraw(void) {
 			&& g_Player.Hit_RightUp != BLACK && g_Player.Hit_RightUnder != BLACK && g_Player.Hit_Rght_High != BLACK) {//右側の色当たり判定とプレイヤーの色が違うとき右に行ける
 			if (g_Pad.KEY_RIGHT)
 				g_Player.x += PLAYERX;
-		}
-		else {//Bボタンが押されているとき、動かせるブロックに触れているとき、触れているのが同じ色の時,地面にいる時
+			//ブロック動かす処理___________________________
 			if (g_Pad.KEY_B == TRUE && ((g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder) ||
 				(g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)) && g_Player.PLAYER_GROUND == TRUE) {
 				MoveObjectValue(g_Player.NowColor);
-				if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
-					PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
-				}
 			}
-		} 
-		if ((g_Pad.KEY_B == FALSE) && (CheckSoundMem(g_Snd.BoxDrag) == 1)){
-		 StopSoundMem(g_Snd.BoxDrag);
-			}
+
+		}
+		//else {//Bボタンが押されているとき、動かせるブロックに触れているとき、触れているのが同じ色の時,地面にいる時
+		//	if (g_Pad.KEY_B == TRUE && ((g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder) ||
+		//		(g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)) && g_Player.PLAYER_GROUND == TRUE) {
+		//		MoveObjectValue(g_Player.NowColor);
+		//		if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
+		//			PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
+		//		}
+		//	}
+		//} 
+		if ((g_Pad.KEY_B == FALSE) && (CheckSoundMem(g_Snd.BoxDrag) == 1)) {
+			StopSoundMem(g_Snd.BoxDrag);
+		}
 		if (g_Player.NowColor != g_Player.Hit_LeftUp && g_Player.NowColor != g_Player.Hit_LeftUnder && g_Player.NowColor != g_Player.Hit_Left_High
 			&& g_Player.Hit_LeftUp != BLACK && g_Player.Hit_LeftUnder != BLACK && g_Player.Hit_Left_High != BLACK) {//左側の色当たり判定とプレイヤーの色が違うとき左に行ける
 			if (g_Pad.KEY_LEFT)
 				g_Player.x -= PLAYERX;
-		}
-		else {//Bボタンが押されているとき、動かせるブロックに触れているとき、触れているのが同じ色の時,地面にいる時
 			if (g_Pad.KEY_B == TRUE && ((g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder) ||
 				(g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)) && g_Player.PLAYER_GROUND == TRUE) {
 				MoveObjectValue(g_Player.NowColor);
-				if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
-					PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
-				}
 			}
 		}
+		//else {//Bボタンが押されているとき、動かせるブロックに触れているとき、触れているのが同じ色の時,地面にいる時
+		//	if (g_Pad.KEY_B == TRUE && ((g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder) ||
+		//		(g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)) && g_Player.PLAYER_GROUND == TRUE) {
+		//		MoveObjectValue(g_Player.NowColor);
+		//		if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
+		//			PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
+		//		}
+		//	}
+		//}
 
 		if ((g_Pad.KEY_B == FALSE) && (CheckSoundMem(g_Snd.BoxDrag) == 1)) {
 			StopSoundMem(g_Snd.BoxDrag);
