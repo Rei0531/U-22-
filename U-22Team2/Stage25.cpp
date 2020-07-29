@@ -6,6 +6,7 @@
 #include "Object.h"
 #include "Gimmick.h"
 #include "Draw_Door_Rotation.h"
+#include "Menu.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -83,13 +84,13 @@ void Stage25Init() {
 }
 
 int Stage25(void) {			//マップ画像の描画
+	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
-	if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
+	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
 		Stage25Init();
-		g_Player.PLAYER_MENU = FALSE;
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
+
 	//色ブロック描画
 	Change(YELLOW);
 	DrawExtendGraph(obj4x1, objALLy1, obj4x2, objALLy2, g_pic.Box, TRUE);
@@ -132,22 +133,13 @@ int Stage25(void) {			//マップ画像の描画
 	Lock();
 
 
-	DoorRotationBox(4);
-
-	//static int
-	//	RotationNum = 4,//ローテーションする数
-	//	X_Size = 100 / RotationNum;//ローテーションのボックスの横のサイズ
-
-	//Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
-	//DrawBox(g_Door.x, g_Door.y-30, g_Door.x + X_Size, g_Door.y, GetColor(255, 255, 255), TRUE);
-	//Change(g_Door.Rotation[g_MapC.StageNumber - 1][1]);
-	//DrawBox(g_Door.x + X_Size, g_Door.y - 30, g_Door.x + X_Size*2, g_Door.y, GetColor(255, 255, 255), TRUE);
-	//Change(g_Door.Rotation[g_MapC.StageNumber - 1][2]);
-	//DrawBox(g_Door.x + X_Size * 2, g_Door.y - 30, g_Door.x + X_Size * 3, g_Door.y, GetColor(255, 255, 255), TRUE);
-	//Change(g_Door.Rotation[g_MapC.StageNumber - 1][3]);
-	//DrawBox(g_Door.x + X_Size * 3, g_Door.y - 30, g_Door.x + X_Size * 4, g_Door.y, GetColor(255, 255, 255), TRUE);
+	DoorRotationBox(4);//ドアの上のローテ―ションするボックスの描画
 
 	ColorReset();
 
+	if (g_Player.PLAYER_MENU == TRUE) {
+		Menu_Draw();
+		InitFlag = Menu_Update();
+	}
 	return 0;
 }

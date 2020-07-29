@@ -63,7 +63,7 @@ int PlayerDraw(void) {
 	g_Player.Move_Hit1 = GetPointColor(Move_Hitx1, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
 	g_Player.Move_Hit2 = GetPointColor(Move_Hitx2, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
 
-	g_Player.Hit_Rght_High = GetPointColor(Hit_R_x, Hit_UpLR_y -50);		//右頭
+	g_Player.Hit_Rght_High = GetPointColor(Hit_R_x, Hit_UpLR_y - 50);		//右頭
 	g_Player.Hit_Left_High = GetPointColor(Hit_L_x, Hit_UpLR_y - 50);		//右頭
 
 	//当たり判定の可視化_____________________________________________________________________
@@ -75,7 +75,7 @@ int PlayerDraw(void) {
 	DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元右
 	DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元左
 	DrawBox(g_Player.PickUpPixel - 5, g_Player.PickUpPixely - 5, g_Player.PickUpPixel + 5, g_Player.PickUpPixely + 5, 0xff00ff, FALSE);
-	DrawBox(Move_Hitx1 -5, g_Player.y + 20 - 5, Move_Hitx1 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置右
+	DrawBox(Move_Hitx1 - 5, g_Player.y + 20 - 5, Move_Hitx1 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置右
 	DrawBox(Move_Hitx2 - 5, g_Player.y + 20 - 5, Move_Hitx2 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置左
 
 	DrawBox(Hit_R_x - 5, Hit_UpLR_y - 50 - 5, Hit_R_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭
@@ -89,96 +89,96 @@ int PlayerDraw(void) {
 	bool LeftOK = g_Player.NowColor != g_Player.Hit_LeftUp && g_Player.NowColor != g_Player.Hit_LeftUnder && g_Player.NowColor != g_Player.Hit_Left_High
 		&& g_Player.Hit_LeftUp != BLACK && g_Player.Hit_LeftUnder != BLACK && g_Player.Hit_Left_High != BLACK;
 
+	if (g_Player.PLAYER_MENU == FALSE) {
+		//プレイヤーの移動処理_____________________________________________________________________________________________________________________
+		if (g_Pad.KEY_RIGHT == TRUE || g_Pad.KEY_LEFT == TRUE)	//右か左に入力されていたら
+		{
+			if (g_Player.x < g_MapC.X1) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、左端に到達
+				g_Player.x = g_MapC.X1;
+			}
+			if (g_Player.x > g_MapC.X2) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、右端に到達
+				g_Player.x = g_MapC.X2;
+			}
 
-	//プレイヤーの移動処理_____________________________________________________________________________________________________________________
-	if (g_Pad.KEY_RIGHT == TRUE || g_Pad.KEY_LEFT == TRUE)	//右か左に入力されていたら
-	{
-		if (g_Player.x < g_MapC.X1) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、左端に到達
-			g_Player.x = g_MapC.X1;
-		}
-		if (g_Player.x > g_MapC.X2) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、右端に到達
-			g_Player.x = g_MapC.X2;
-		}
-
-		//当たり判定処理 & ボックスを動かす____________________________________________________________________________
-		//右側の当たり判定処理___________________________________
-		if (RightOK == TRUE) {
-			if (g_Pad.KEY_RIGHT)
-				g_Player.x += PLAYERX;
+			//当たり判定処理 & ボックスを動かす____________________________________________________________________________
+			//右側の当たり判定処理___________________________________
+			if (RightOK == TRUE) {
+				if (g_Pad.KEY_RIGHT)
+					g_Player.x += PLAYERX;
+				//ブロック動かす処理___________________________
+				if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
+					&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
+					if (g_Pad.KEY_RIGHT == TRUE)
+						MoveObjectValue(g_Player.NowColor);
+				}
+			}
 			//ブロック動かす処理___________________________
-			if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
+			else if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
 				&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
-				if (g_Pad.KEY_RIGHT == TRUE)
+				if (g_Pad.KEY_LEFT == TRUE && g_Player.NowColor != g_Player.Hit_LeftUnder ||
+					g_Pad.KEY_RIGHT == TRUE) {
 					MoveObjectValue(g_Player.NowColor);
+				}
 			}
-		}
-		//ブロック動かす処理___________________________
-		else if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
-			&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
-			if (g_Pad.KEY_LEFT == TRUE && g_Player.NowColor != g_Player.Hit_LeftUnder ||
-				g_Pad.KEY_RIGHT == TRUE) {
-				MoveObjectValue(g_Player.NowColor);
+			//左側の当たり判定処理_______________________
+			if (LeftOK == TRUE) {
+				if (g_Pad.KEY_LEFT)
+					g_Player.x -= PLAYERX;
+				//ブロック動かす処理___________________________
+				if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
+					&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
+					if (g_Pad.KEY_LEFT == TRUE)
+						MoveObjectValue(g_Player.NowColor);
+				}
 			}
-		}
-		//左側の当たり判定処理_______________________
-		if (LeftOK == TRUE) {
-			if (g_Pad.KEY_LEFT)
-				g_Player.x -= PLAYERX;
 			//ブロック動かす処理___________________________
-			if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
+			else if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
 				&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
-				if (g_Pad.KEY_LEFT == TRUE)
+				if (g_Pad.KEY_RIGHT == TRUE && g_Player.NowColor != g_Player.Hit_RightUnder ||
+					g_Pad.KEY_LEFT == TRUE) {
 					MoveObjectValue(g_Player.NowColor);
+				}
+			}
+
+			//箱を引きずる音を止める_______
+			if ((g_Pad.KEY_B == FALSE) && (CheckSoundMem(g_Snd.BoxDrag) == 1)) {
+				StopSoundMem(g_Snd.BoxDrag);
+			}
+			//_________________________________________________________________________________________
+			animecnt++;//アニメーション用のカウントプラス
+			NoMove = 1;//動いているときのフラグ
+		}
+		else {
+			NoMove = 0;//動いていない
+			animecnt = 0;//アニメーションを止める
+		}
+		//重力の処理_____________________________________________________________________________________________
+		//プレイヤーが地面についていないとき
+		if (!((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
+			(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {
+			g_Player.y += Gravity;		//プレイヤーに重力を追加
+			g_Player.PLAYER_GROUND = FALSE;
+		}
+		else {
+			JumpOkflag = 0;	//地面についているのでジャンプしていない
+			g_Player.PLAYER_GROUND = TRUE;
+		}
+
+		//プレイヤーのジャンプ処理_____________________________________________________________________________________________________________________
+		if ((g_Player.PLAYER_JUMP == TRUE && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
+			(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) || JumpOkflag == 1) {	//ジャンプボタンが押されたら
+			Jumpcnt--;		//ジャンプアニメーションのカウント開始
+			JumpOkflag = 1;	//一度ジャンプしたので終わるまでジャンプ処理
+			if (Jumpcnt >= JumpMax) {//決められた時間までプレイヤーを上にあげる
+				g_Player.y -= Jumpcnt;
+			}
+			if (Jumpcnt <= JumpMax && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
+				(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {		//ジャンプアニメーションが決められた時間になったとき
+				g_Player.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
+				Jumpcnt = 20;				//ジャンプアニメーションのカウントを0にする
 			}
 		}
-		//ブロック動かす処理___________________________
-		else if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
-			&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
-			if (g_Pad.KEY_RIGHT == TRUE && g_Player.NowColor != g_Player.Hit_RightUnder ||
-				g_Pad.KEY_LEFT == TRUE) {
-				MoveObjectValue(g_Player.NowColor);
-			}
-		}
-
-		//箱を引きずる音を止める_______
-		if ((g_Pad.KEY_B == FALSE) && (CheckSoundMem(g_Snd.BoxDrag) == 1)) {
-			StopSoundMem(g_Snd.BoxDrag);
-		}
-		//_________________________________________________________________________________________
-		animecnt++;//アニメーション用のカウントプラス
-		NoMove = 1;//動いているときのフラグ
 	}
-	else {
-		NoMove = 0;//動いていない
-		animecnt = 0;//アニメーションを止める
-	}
-	//重力の処理_____________________________________________________________________________________________
-	//プレイヤーが地面についていないとき
-	if (!((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
-		(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {
-		g_Player.y += Gravity;		//プレイヤーに重力を追加
-		g_Player.PLAYER_GROUND = FALSE;
-	}
-	else {
-		JumpOkflag = 0;	//地面についているのでジャンプしていない
-		g_Player.PLAYER_GROUND = TRUE;
-	}
-
-	//プレイヤーのジャンプ処理_____________________________________________________________________________________________________________________
-	if ((g_Player.PLAYER_JUMP == TRUE && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
-		(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) || JumpOkflag == 1) {	//ジャンプボタンが押されたら
-		Jumpcnt--;		//ジャンプアニメーションのカウント開始
-		JumpOkflag = 1;	//一度ジャンプしたので終わるまでジャンプ処理
-		if (Jumpcnt >= JumpMax) {//決められた時間までプレイヤーを上にあげる
-			g_Player.y -= Jumpcnt;
-		}
-		if (Jumpcnt <= JumpMax && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
-			(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {		//ジャンプアニメーションが決められた時間になったとき
-			g_Player.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
-			Jumpcnt = 20;				//ジャンプアニメーションのカウントを0にする
-		}
-	}
-
 	//プレイヤーの描画_____________________________________________________________________________________________________________________
 	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
 	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0, g_pic.Player[animecnt / 10 % 4 + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画

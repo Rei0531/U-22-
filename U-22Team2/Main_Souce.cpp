@@ -67,6 +67,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			break;
 		case GAME_MENU:
 			//ゲームメニュー処理
+			Main();
 			break;
 		case GAME_INIT:
 			//ゲーム初期処理
