@@ -86,7 +86,7 @@ void Stage25Init() {
 int Stage25(void) {			//マップ画像の描画
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
-	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
+	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる
 		Stage25Init();
 	}
 

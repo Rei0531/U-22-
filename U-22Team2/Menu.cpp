@@ -2,6 +2,7 @@
 
 //更新
 bool Menu_Update() {
+
     if (g_Pad.KEY_DOWN == TRUE) {//下キーが押されていたら
         NowSelect = (NowSelect + 1) % eMenu_Num;//選択状態を一つ下げる
     }
@@ -13,10 +14,12 @@ bool Menu_Update() {
         case eMenu_Select://セレクト選択中なら
             //本来はここにセレクト画面以降処理
             GameState = GAME_MAIN;//シーンをセレクト画面に変更
+            g_Player.PLAYER_MENU = FALSE;//メニューを開くフラグをFALSEにする
             break;
         case eMenu_Reset://リセット選択中なら
             g_Player.PLAYER_MENU = FALSE;//メニューを開くフラグをFALSEにする
-            return TRUE;
+            g_Player.PLAYER_RESET = TRUE;  //リセットした処理をTRUEにする
+            return TRUE;    //ステージ処理をリセットする処理のフラグをTRUEにする
             break;
         case eMenu_End:
             g_Player.PLAYER_MENU = FALSE;//メニューを開くフラグをFALSEにする

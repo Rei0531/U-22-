@@ -7,6 +7,7 @@
 #include "OneTime_Switch.h"
 #include "Draw_Door_Rotation.h"
 #include "Rotation_Box.h"
+#include "Menu.h"
 
 extern MapCoordinate g_MapC;
 extern Player g_Player;
@@ -47,9 +48,8 @@ void Stage11Init() {
 
 int Stage11(void) {			//マップ画像の描画
 
-	if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
+	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる
 		Stage11Init();
-		g_Player.PLAYER_MENU = FALSE;
 	}
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
@@ -75,6 +75,11 @@ int Stage11(void) {			//マップ画像の描画
 	ColorReset();
 
 	OneTimeSwitch();
+
+	if (g_Player.PLAYER_MENU == TRUE) {
+		Menu_Draw();
+		InitFlag = Menu_Update();
+	}
 
 	return 0;
 }

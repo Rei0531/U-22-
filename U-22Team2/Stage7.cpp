@@ -5,6 +5,7 @@
 #include "Lock.h"
 #include "Draw_Door_Rotation.h"
 #include "Gimmick.h"
+#include "Menu.h"
 
 
 extern MapCoordinate g_MapC;
@@ -78,10 +79,16 @@ int Stage7(void) {			//マップ画像の描画
 	ColorReset();
 
 	//Init処理___________________________________
-	if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
+	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる
 		Stage7Init();
-		g_Player.PLAYER_MENU = FALSE;
 	}
-
+	if (g_Player.PLAYER_MENU == TRUE) {
+		Menu_Draw();
+		InitFlag = Menu_Update();
+	}
+	//if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
+	//	Stage7Init();
+	//	g_Player.PLAYER_MENU = FALSE;
+	//}
 	return 0;
 }

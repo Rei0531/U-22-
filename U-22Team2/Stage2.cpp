@@ -3,6 +3,7 @@
 #include "Color.h"
 #include"Door.h"
 #include "Lock.h"
+#include "Menu.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -34,9 +35,8 @@ void Stage2Init() {
 
 int Stage2(void) {			//マップ画像の描画
 
-	if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
+	if ((InitFlag == TRUE) ) {//InitフラグがTRUEの時に初期化できる
 		Stage2Init();
-		g_Player.PLAYER_MENU = FALSE;
 	}
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
@@ -62,5 +62,9 @@ int Stage2(void) {			//マップ画像の描画
 
 	ColorReset();
 
+	if (g_Player.PLAYER_MENU == TRUE) {
+		Menu_Draw();
+		InitFlag = Menu_Update();
+	}
 	return 0;
 }
