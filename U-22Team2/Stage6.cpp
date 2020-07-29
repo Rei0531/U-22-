@@ -4,6 +4,7 @@
 #include"Door.h"
 #include "Lock.h"
 #include "Object.h"
+#include "Gimmick.h"
 #include "Menu.h"
 
 //MapCoordinate g_MapC;
@@ -12,6 +13,7 @@ extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
 extern Object g_Object;
+extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数
 //オブジェクトの初期位置
@@ -19,8 +21,6 @@ static int obj2x1 = 550,
 obj2x2 = obj2x1 + 100,
 objALLy1 = 568,
 objALLy2 = 668;
-
-static int Speed = 10;
 
 void Stage6Init() {
 	//移動方向のフラグ
@@ -39,29 +39,42 @@ void Stage6Init() {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
 	obj2x1 = 550,
-	obj2x2 = obj2x1 + 100,
-	objALLy1 = 558,
-	objALLy2 = 668;
+		obj2x2 = obj2x1 + 150,
+		objALLy1 = 518,
+		objALLy2 = 668;
 
 }
 
 int Stage6(void) {			//マップ画像の描画
 
-	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる
+	if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
 		Stage6Init();
+		g_Player.PLAYER_MENU = FALSE;
 	}
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
-	//色ブロック描画
-	Change(RED);
-	objALLy1 -= Speed;
-	objALLy2 -= Speed;
-	if ((objALLy1 <= 318) || (objALLy2 >= 668)) {
-		Speed = Speed * (-1);
+	//DrawBox((obj2x1 + 200) + gim.move_x, g_Player.y + 65, (obj2x2 + 200) + gim.move_x, g_Player.y + 75, GetColor(1, 1, 1), TRUE);//デバッグ用
+	DrawBox(g_Player.x - 20, g_Player.y + 65, g_Player.x, g_Player.y + 75, GetColor(1, 1, 1), TRUE);//デバッグ用
+	Change(BLUE);//色ブロック描画
+	DrawExtendGraph(980, 460, 1080, 565, g_pic.Box, TRUE);//障害ブロック
+	DrawExtendGraph(980, 565, 1080, 670, g_pic.Box, TRUE);//障害ブロック
+	//DrawExtendGraph(g_Player.x - 30, g_Player.y - 30, g_Player.x + 30, g_Player.y + 30, GetColor(255, 255, 255), TRUE);
+	Change(RED);//色ブロック描画
+	gim.move_x -= gim.Speed;
+	gim.move_x -= gim.Speed;
+	if (gim.move_cnt++ > gim.move_max - 100) {
+		gim.move_cnt = 0;
+		gim.Speed = gim.Speed * (-1);
 	}
-	DrawExtendGraph(obj2x1, objALLy1, obj2x2, objALLy2, g_pic.Box, TRUE);
-	Change(BLUE);
-	DrawExtendGraph(550, 558, 650, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(380, 565, 480, 670, g_pic.Box, TRUE);//障害ブロック
+	DrawExtendGraph(880, 565, 980, 670, g_pic.Box, TRUE);//障害ブロック
+	DrawExtendGraph(880, 460, 980, 565, g_pic.Box, TRUE);//障害ブロック
+	DrawExtendGraph((obj2x1 + 200) + gim.move_x, objALLy1, (obj2x2 + 200) + gim.move_x, objALLy2, g_pic.Box, TRUE);//動く床
+	if (((g_Player.x - 20 >= (obj2x1 + 200) + gim.move_x) && (g_Player.x - 20 <= (obj2x2 + 200) + gim.move_x) &&
+		((g_Player.y + 65 <= objALLy1) && (g_Player.y + 75 >= objALLy1))) &&
+		((g_Player.Hit_Under == g_Player.NowColor) || (g_Player.Hit_Under2 == g_Player.NowColor))) {
+		g_Player.x -= gim.Speed * 2;		//プレイヤーを自動で動かす
+	}
 	Door();			//ステージゴール処理
 	Lock();
 
