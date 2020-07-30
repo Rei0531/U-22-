@@ -105,6 +105,10 @@ int GetObjectColor(void) {
 }
 
 void MoveObjectValue(int P_Color) {
+
+	if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
+		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
+	}
 	static int dir = 1;//向きによって*-1するからそのための変数
 	//g_Player.PLAYER_DIRECTION ? dir = -1 : dir = 1;//プレイヤーがTURE(左向き)ならマイナス、FALSE(右向き)ならプラス、
 	//if (g_Pad.KEY_RIGHT && (g_Player.Move_Hit1 == MOVE && (g_Player.Hit_RightUnder == g_Player.NowColor || g_Player.Hit_RightUp == g_Player.NowColor))) {
@@ -113,8 +117,15 @@ void MoveObjectValue(int P_Color) {
 	//if (g_Pad.KEY_LEFT && (g_Player.Move_Hit2 == MOVE && (g_Player.Hit_LeftUnder == g_Player.NowColor || g_Player.Hit_LeftUp == g_Player.NowColor))) {
 	//	dir = -1;
 	//}
+	//if (g_Player.Move_Hit1 == MOVE && g_Player.Hit_LeftUnder != g_Player.NowColor && g_Pad.KEY_LEFT == TRUE) {
+	//	dir = -1;
+	//}
+	//if (g_Player.Move_Hit2 == MOVE && g_Player.Hit_RightUnder != g_Player.NowColor && g_Pad.KEY_RIGHT == TRUE) {
+	//	dir = 1;
+	//}
 	
 	g_Pad.KEY_LEFT ? dir = -1 : dir = 1;//プレイヤーがTURE(左向き)ならマイナス、FALSE(右向き)ならプラス、
+
 	switch (P_Color) {		//プレイヤーの色に合わせて動かすオブジェクトを決める
 	case RED:
 		g_Object.RED_x += PLAYERX * dir ;

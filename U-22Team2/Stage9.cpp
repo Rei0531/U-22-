@@ -6,6 +6,7 @@
 #include "Object.h"
 #include "Gimmick.h"
 #include "Draw_Door_Rotation.h"
+#include "Menu.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -31,7 +32,7 @@ void Stage9Init() {
 
 	g_Player.x = 110;			//プレイヤー座標初期化
 	g_Player.y = 571;			//プレイヤー座標初期化
-	g_Player.NowColor = BLUE;		//プレイヤーの色初期化
+	g_Player.NowColor = YELLOW;		//プレイヤーの色初期化
 
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
@@ -56,9 +57,8 @@ void Stage9Init() {
 
 int Stage9(void) {			//マップ画像の描画
 
-	if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
+	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる
 		Stage9Init();
-		g_Player.PLAYER_MENU = FALSE;
 	}
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
@@ -103,13 +103,12 @@ int Stage9(void) {			//マップ画像の描画
 	Door();			//ステージゴール処理
 	Lock();
 
-
-	/*Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
-	DrawBox(1150, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][1]);
-	DrawBox(1186, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][2]);
-	DrawBox(1186, 370, 1250, 400, GetColor(255, 255, 255), TRUE);*/
 	ColorReset();
+
+	if (g_Player.PLAYER_MENU == TRUE) {
+		Menu_Draw();
+		InitFlag = Menu_Update();
+	}
+
 	return 0;
 }

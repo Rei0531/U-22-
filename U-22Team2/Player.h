@@ -29,7 +29,8 @@ public:
 		PLAYER_PICKUP = FALSE,		//スポイト
 		PLAYER_ACTION = FALSE,		//アクションボタン
 		PLAYER_MENU = FALSE,		//メニュー
-		PLAYER_GROUND;				//地面にいる
+		PLAYER_GROUND,				//地面にいる
+		PLAYER_RESET = FALSE;		//リセット処理したか
 }; 
 
 int PlayerDraw(void);	//関数の定義

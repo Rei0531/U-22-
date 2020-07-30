@@ -8,7 +8,7 @@ extern Controller g_Pad;
 extern image g_pic;
 extern Player g_Player;
 
-int PushColor = 9;//押された色を引数から格納する変数
+static int PushColor = 9;//押された色を引数から格納する変数
 
 int CC_Switch(int Color,int x,int y) {
 
@@ -17,8 +17,10 @@ int CC_Switch(int Color,int x,int y) {
 		PushColor = Color;
 	}
 
-	if (g_Player.PLAYER_MENU == TRUE)	//Init処理が呼ばれたら色を初期化する
+	if (g_Player.PLAYER_RESET == TRUE) {	//Init処理が呼ばれたら色を初期化する
 		PushColor = 9;
+		g_Player.PLAYER_RESET = FALSE;//リセットしたフラグをFALSEにし続ける
+	}
 
 	Change(PushColor);
 	DrawExtendGraph(x, y, x+100, y+100, g_pic.C_Switch, TRUE);
