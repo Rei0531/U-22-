@@ -1,14 +1,24 @@
 #include "Menu.h"
 
+static bool DOWN = FALSE,//下キー
+            UP = FALSE;//上キー
+
 //更新
 bool Menu_Update() {
 
-    if (g_Pad.KEY_DOWN == TRUE) {//下キーが押されていたら
+    if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
+        DOWN = TRUE;
         NowSelect = (NowSelect + 1) % eMenu_Num;//選択状態を一つ下げる
     }
-    if (g_Pad.KEY_UP == TRUE) {//上キーが押されていたら
+    if (g_Pad.KEY_UP == TRUE && UP == FALSE) {//上キーが押されていたら
+        UP = TRUE;
         NowSelect = (NowSelect + (eMenu_Num - 1)) % eMenu_Num;//選択状態を一つ上げる
     }
+
+    DOWN = (g_Pad.KEY_DOWN == TRUE) ? TRUE : FALSE;//下キーが押されていたら
+
+    UP = (g_Pad.KEY_UP == TRUE) ? TRUE : FALSE;//上キーが押されていたら
+
     if (g_Pad.KEY_B == TRUE) {//Bボタンが押されたら
         switch (NowSelect) {//現在選択中の状態によって処理を分岐
         case eMenu_Select://セレクト選択中なら

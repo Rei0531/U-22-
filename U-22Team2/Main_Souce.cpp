@@ -1,6 +1,3 @@
-//#include "DxLib.h"
-//#include "Player.h"		//ヘッダファイルの読み込み：プレイヤー処理のプロトタイプ宣言
-//#include "Enemy.h"		//ヘッダファイルの読み込み：敵処理のプロトタイプ宣言
 #include "LoadPic.h"		//ヘッダファイルの読み込み：構造体での画像の定義
 #include "Map.h"			//ヘッダファイルの読み込み：マップ処理のプロトタイプ宣言
 #include "Controller.h"
@@ -20,6 +17,7 @@ Object g_Object;
 extern Controller g_Pad;
 extern Player g_Player;
 extern  int GameState= GAME_TITLE;
+extern MapCoordinate g_MapC;
 
 
 /***************************************************************
@@ -89,7 +87,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		DrawFormatString(0, 0, 0xff0fff, "X %d ", g_Pad.MouseX);
 		DrawFormatString(0, 20, 0xff0fff, "Y %d ", g_Pad.MouseY);
-		//DrawFormatString(0, 40, 0xff0000, " %d ", );
+		DrawFormatString(0, 40, 0xff0000, " %dステージ ", g_MapC.StageNumber);
 		DrawFormatString(0, 60, 0xff0fff, "g_Player.x %d ", g_Player.x);
 		DrawFormatString(0, 80, 0xff0fff, "g_Player.y %d ", g_Player.y);
 		ScreenFlip();		//裏画面の内容を表画面に反映
