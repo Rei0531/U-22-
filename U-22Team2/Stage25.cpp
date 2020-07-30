@@ -7,6 +7,7 @@
 #include "Gimmick.h"
 #include "Draw_Door_Rotation.h"
 #include "Menu.h"
+#include "SlaidBlock.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -29,7 +30,11 @@ obj3x2 = obj3x1 + 150,
 obj4x1 = 1050,
 obj4x2 = obj4x1 + 150,
 objALLy1 = 518,
-objALLy2 = 668;
+objALLy2 = 668,
+SliObjx1 = obj2x1 + 200,
+SliObjx2 = obj2x1 + 200,
+SliObjy1 = objALLy1,
+SliObjy2 = objALLy2;
 
 
 

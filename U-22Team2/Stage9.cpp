@@ -7,6 +7,7 @@
 #include "Gimmick.h"
 #include "Draw_Door_Rotation.h"
 #include "Menu.h"
+#include "Warp.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -85,17 +86,8 @@ int Stage9(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 	DrawExtendGraph(300, 68, 400, 168, g_pic.Box, TRUE);
 	DrawExtendGraph(300, 168, 400, 268, g_pic.Box, TRUE);
 
-	if (g_Pad.KEY_B == TRUE) {
-		gim.move_cnt++;
-		if ((g_Player.x >= 368) && (g_Player.x <= 468) && (g_Player.y <= 668) && (g_Player.y >= 568) && gim.move_cnt % 3 == 1) {
-			g_Player.x = 218;
-			g_Player.y = 200;
-		}
-		if ((g_Player.x >= 868) && (g_Player.x <= 968) && (g_Player.y <= 268) && (g_Player.y >= 168) && gim.move_cnt % 3 == 2) {
-			g_Player.x = 418;
-			g_Player.y = 600;
-		}
-	}
+	Warp();
+
 	//DrawFormatString(g_Player.x - 30, g_Player.y - 200, g_Player.NowColor, "%d", gim.move_cnt);
 
 	DoorRotationBox(3);

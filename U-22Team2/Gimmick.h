@@ -22,6 +22,10 @@ public:
 	//スライドする床の用の変数_______＿＿＿＿
 	int Speed = 2;
 	int move_x = 0;
+	int SliObjx1 = 0;
+	int SliObjx2 = 0;
+	int SliObjy1 = 0;
+	int SliObjy2 = 0;
 	int move_cnt = 0;
 	int move_max = 160;
 	//一度限りのスイッチ用の変数_____________
