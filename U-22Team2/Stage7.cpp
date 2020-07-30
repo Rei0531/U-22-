@@ -86,9 +86,6 @@ int Stage7(void) {			//マップ画像の描画
 		Menu_Draw();
 		InitFlag = Menu_Update();
 	}
-	//if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
-	//	Stage7Init();
-	//	g_Player.PLAYER_MENU = FALSE;
-	//}
+
 	return 0;
 }

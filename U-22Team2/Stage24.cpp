@@ -33,7 +33,7 @@ void Stage24Init() {
 	}
 
 	//ドアの位置
-	g_Door.x = 1100;				//扉の左上のx座標
+	g_Door.x = 1100;			//扉の左上のx座標
 	g_Door.y = 468;				//扉の左上のy座標
 	g_Door.w = g_Door.x + 100;	//横幅
 	g_Door.h = g_Door.y + 200;	//縦幅

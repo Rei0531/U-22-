@@ -48,6 +48,7 @@ int Stage8(void) {			//マップ画像の描画
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
+	//変色箱________________________________________
 	Change(Rotation_Box(2));
 	DrawExtendGraph(340, 568, 440, 668, g_pic.Rot_Box, TRUE);
 	Change(Rotation_Box(1));

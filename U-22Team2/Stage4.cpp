@@ -6,6 +6,7 @@
 #include "Object.h"
 #include "Gimmick.h"
 #include "Menu.h"
+#include "Draw_Door_Rotation.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -47,7 +48,11 @@ void Stage4Init() {
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
-
+	//ドアの位置
+	g_Door.x = 1100;			//扉の左上のx座標
+	g_Door.y = 468;				//扉の左上のy座標
+	g_Door.w = g_Door.x + 100;	//横幅
+	g_Door.h = g_Door.y + 200;	//縦幅
 }
 
 int Stage4(void) {			//マップ画像の描画
