@@ -31,7 +31,7 @@ void Stage6Init() {
 
 	g_Player.x = 110;			//プレイヤー座標初期化
 	g_Player.y = 571;			//プレイヤー座標初期化
-	g_Player.NowColor = YELLOW;	//プレイヤーの色初期化
+	g_Player.NowColor = BLUE;	//プレイヤーの色初期化
 
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
@@ -50,11 +50,17 @@ void Stage6Init() {
 	obj2x1 = 550,
 		obj2x2 = obj2x1 + 150,
 		objALLy1 = 518,
-		objALLy2 = 668,
-		gim.SliObjx1 = obj2x1 + 200,
-		gim.SliObjx2 = obj2x1 + 200,
-		gim.SliObjy1 = objALLy1,
-		gim.SliObjy2 = objALLy2;
+		objALLy2 = objALLy1 + 150,
+		gim.SliObjx1 = 750,
+		gim.SliObjx2 = gim.SliObjx1 + 150,
+		gim.SliObjy1 = 518,
+		gim.SliObjy2 = gim.SliObjy1 + 150,
+		gim.GetObjx1 = 260,
+		gim.GetObjx2 = gim.GetObjx1 + 100,
+		gim.GetObjy1 = 565,
+		gim.GetObjy2 = gim.GetObjy1 + 100,
+		gim.move_max = 100,
+		gim.move_cnt = 0;
 }
 
 int Stage6(void) {			//マップ画像の描画
@@ -66,19 +72,19 @@ int Stage6(void) {			//マップ画像の描画
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	Change(BLUE);//色ブロック描画
-	DrawExtendGraph(980, 460, 1080, 565, g_pic.Box, TRUE);//障害ブロック
-	DrawExtendGraph(980, 565, 1080, 670, g_pic.Box, TRUE);//障害ブロック
+	DrawExtendGraph(980, 460, 1080, 560, g_pic.Box, TRUE);//障害ブロック
+	DrawExtendGraph(980, 560, 1080, 665, g_pic.Box, TRUE);//障害ブロック
 	//DrawExtendGraph(g_Player.x - 30, g_Player.y - 30, g_Player.x + 30, g_Player.y + 30, GetColor(255, 255, 255), TRUE);
 	Change(RED);//色ブロック描画
-	gim.move_x -= gim.Speed;
+	/*gim.move_x -= gim.Speed;
 	gim.move_x -= gim.Speed;
 	if (gim.move_cnt++ > gim.move_max - 100) {
 		gim.move_cnt = 0;
 		gim.Speed = gim.Speed * (-1);
-	}
-	DrawExtendGraph(380, 565, 480, 670, g_pic.Box, TRUE);//障害ブロック
-	DrawExtendGraph(880, 565, 980, 670, g_pic.Box, TRUE);//障害ブロック
-	DrawExtendGraph(880, 460, 980, 565, g_pic.Box, TRUE);//障害ブロック
+	}*/
+	//DrawExtendGraph(380, 568, 480, 668, g_pic.Box, TRUE);//障害ブロック
+	DrawExtendGraph(880, 568, 980, 668, g_pic.Box, TRUE);//障害ブロック
+	DrawExtendGraph(880, 468, 980, 568, g_pic.Box, TRUE);//障害ブロック
 	//DrawExtendGraph((obj2x1 + 200) + gim.move_x, objALLy1, (obj2x2 + 200) + gim.move_x, objALLy2, g_pic.Box, TRUE);//動く床
 	//DrawBox((obj2x1 + 200) + gim.move_x, objALLy1, (obj2x2 + 200) + gim.move_x, objALLy2, GetColor(1, 1, 1), TRUE);
 	//if (((g_Player.x >= (obj2x1 + 200) + gim.move_x) && (g_Player.x <= (obj2x2 + 200) + gim.move_x) &&
