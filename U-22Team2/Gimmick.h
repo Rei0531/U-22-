@@ -22,12 +22,16 @@ public:
 	//スライドする床の用の変数_______＿＿＿＿
 	int Speed = 2;
 	int move_x = 0;
-	int SliObjx1 = 0;
-	int SliObjx2 = 0;
-	int SliObjy1 = 0;
-	int SliObjy2 = 0;
 	int move_cnt = 0;
 	int move_max = 160;
+	int SliObjx1 = 0;		//スライドするブロックの座標
+	int SliObjx2 = 0;		//スライドするブロックの座標
+	int SliObjy1 = 0;		//スライドするブロックの座標
+	int SliObjy2 = 0;		//スライドするブロックの座標
+	int GetObjx1 = 0;		//色取るためのブロックの座標
+	int GetObjx2 = 0;		//色取るためのブロックの座標
+	int GetObjy1 = 0;		//色取るためのブロックの座標
+	int GetObjy2 = 0;		//色取るためのブロックの座標
 	//一度限りのスイッチ用の変数_____________
 	int OTSwitchFlag = 0;
 	//爆弾用の変数___________________________
