@@ -36,24 +36,6 @@ int Warp(void) {
 	{
 		Warp_Flg = FALSE;
 	}
-	/*if (g_Player.x >= 100 && g_Player.x <= 200) {
-		Warp_No = 1;
-	}
-	else if (g_Player.x >= 200 && g_Player.x <= 300)
-	{
-		Warp_No = 2;
-	}
-
-	if (g_Pad.KEY_B == TRUE)
-	{
-		switch (Warp_No)
-		{
-		case 1:
-			break;
-		case 2:
-			break;
-		}
-	}*/
 	
 	return 0;
 }

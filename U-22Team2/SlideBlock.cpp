@@ -24,13 +24,19 @@ extern GimmickAll gim;
 		//	((g_Player.Hit_Under == g_Player.NowColor) || (g_Player.Hit_Under2 == g_Player.NowColor))) {
 		//	g_Player.x -= gim.Speed * 2;		//プレイヤーを自動で動かす
 		//}
-		if (((g_Player.x - 30 >= gim.SliObjx1 + gim.move_x) && (g_Player.x + 30 <= gim.SliObjx2 + gim.move_x) &&
+		//if (((g_Player.x - 30 >= gim.SliObjx1 + gim.move_x) && (g_Player.x + 30 <= gim.SliObjx2 + gim.move_x) &&
+		//	((g_Player.y + 65 <= gim.SliObjy1) && (g_Player.y + 75 <= gim.SliObjy2))) &&
+		//	((g_Player.Hit_Under == g_Player.NowColor) || (g_Player.Hit_Under2 == g_Player.NowColor))) {
+		//	g_Player.x -= gim.Speed * 2;		//プレイヤーを自動で動かす
+		//}
+		if (((g_Player.x - 30 >= gim.SliObjx1) && (g_Player.x + 30 <= gim.SliObjx2) &&
 			((g_Player.y + 65 <= gim.SliObjy1) && (g_Player.y + 75 <= gim.SliObjy2))) &&
 			((g_Player.Hit_Under == g_Player.NowColor) || (g_Player.Hit_Under2 == g_Player.NowColor))) {
 			g_Player.x -= gim.Speed * 2;		//プレイヤーを自動で動かす
 		}
 		//DrawExtendGraph(950 + gim.move_x, 320, 1100 + gim.move_x, 370, g_pic.Box, TRUE);//動く床
-		DrawExtendGraph(gim.SliObjx1 + gim.move_x, gim.SliObjy1, gim.SliObjx2 + gim.move_x, gim.SliObjy2, g_pic.Box, TRUE);//動く床
+		//DrawExtendGraph(gim.SliObjx1 + gim.move_x, gim.SliObjy1, gim.SliObjx2 + gim.move_x, gim.SliObjy2, g_pic.Box, TRUE);//動く床
+		DrawExtendGraph(gim.SliObjx1, gim.SliObjy1, gim.SliObjx2, gim.SliObjy2, g_pic.Box, TRUE);//動く床
 		//DrawExtendGraph(1180, 265, 1280, 370, g_pic.Box, TRUE);//色取りようの赤
 		DrawExtendGraph(gim.GetObjx1, gim.GetObjy1, gim.GetObjx2, gim.GetObjy2, g_pic.Box, TRUE);//色取りようの赤
 		
