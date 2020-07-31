@@ -89,10 +89,13 @@ int PlayerDraw(void) {
 	bool LeftOK = g_Player.NowColor != g_Player.Hit_LeftUp && g_Player.NowColor != g_Player.Hit_LeftUnder && g_Player.NowColor != g_Player.Hit_Left_High
 		&& g_Player.Hit_LeftUp != BLACK && g_Player.Hit_LeftUnder != BLACK && g_Player.Hit_Left_High != BLACK;
 
-	if (g_Player.PLAYER_MENU == FALSE) {
+	if (g_Player.PLAYER_MENU == FALSE) {//メニュー画面を閉じているとき
 		//プレイヤーの移動処理_____________________________________________________________________________________________________________________
 		if (g_Pad.KEY_RIGHT == TRUE || g_Pad.KEY_LEFT == TRUE)	//右か左に入力されていたら
 		{
+			if (CheckSoundMem(g_Snd.Walk) == 0 && g_Player.PLAYER_JUMP == FALSE) {
+				PlaySoundMem(g_Snd.Walk, DX_PLAYTYPE_BACK);
+			}
 			if (g_Player.x < g_MapC.X1) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、左端に到達
 				g_Player.x = g_MapC.X1;
 			}
@@ -148,10 +151,14 @@ int PlayerDraw(void) {
 			animecnt++;//アニメーション用のカウントプラス
 			NoMove = 1;//動いているときのフラグ
 		}
-		else {
+		else {//動いていない
 			NoMove = 0;//動いていない
 			animecnt = 0;//アニメーションを止める
+			if (CheckSoundMem(g_Snd.Walk) == 1) {
+				StopSoundMem(g_Snd.Walk);
+			}
 		}
+
 		//重力の処理_____________________________________________________________________________________________
 		//プレイヤーが地面についていないとき
 		if (!((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||

@@ -10,6 +10,12 @@ public:
 	int leva;		//レバーのSE
 	int BoxDrag;	//箱を引きずるSE
 	int Shower;		//シャワーのSE
+	int Walk;		//歩く
+	int Reset;		//リセット時
+	int MenuOpen;	//メニューオープン
+	int MenuClose;	//メニュークローズ
+	int Switch;		//スイッチ
+	int Warp;		//ワープ
 };
 
 int LoadSound(void);	//関数の定義

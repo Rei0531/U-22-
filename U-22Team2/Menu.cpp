@@ -1,10 +1,21 @@
 #include "Menu.h"
+#include "LoadSound.h"
+
+
+extern Sound g_Snd;
 
 static bool DOWN = FALSE,//下キー
             UP = FALSE;//上キー
 
+static bool Sndflg = FALSE;//音再生フラグ
+
 //更新
 bool Menu_Update() {
+
+    if (CheckSoundMem(g_Snd.MenuOpen) == 0 && Sndflg == FALSE) {
+        PlaySoundMem(g_Snd.MenuOpen, DX_PLAYTYPE_BACK);
+        Sndflg = TRUE;//音再生フラグをTRUEにして二度再生防止
+    }
 
     if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
         DOWN = TRUE;
@@ -20,6 +31,7 @@ bool Menu_Update() {
     UP = (g_Pad.KEY_UP == TRUE) ? TRUE : FALSE;//上キーが押されていたら
 
     if (g_Pad.KEY_B == TRUE) {//Bボタンが押されたら
+        Sndflg = FALSE;//メニューオープンのフラグをFALSEにして再度関数に入った時音が鳴るようにする
         switch (NowSelect) {//現在選択中の状態によって処理を分岐
         case eMenu_Select://セレクト選択中なら
             //本来はここにセレクト画面以降処理
@@ -29,10 +41,12 @@ bool Menu_Update() {
         case eMenu_Reset://リセット選択中なら
             g_Player.PLAYER_MENU = FALSE;//メニューを開くフラグをFALSEにする
             g_Player.PLAYER_RESET = TRUE;  //リセットした処理をTRUEにする
+            PlaySoundMem(g_Snd.Reset, DX_PLAYTYPE_BACK);
             return TRUE;    //ステージ処理をリセットする処理のフラグをTRUEにする
             break;
         case eMenu_End:
             g_Player.PLAYER_MENU = FALSE;//メニューを開くフラグをFALSEにする
+            PlaySoundMem(g_Snd.MenuClose, DX_PLAYTYPE_BACK);//メニューを閉じたときの音
             break;
 
         }
