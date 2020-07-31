@@ -32,7 +32,9 @@ extern GimmickAll gim;
 		//DrawExtendGraph(950 + gim.move_x, 320, 1100 + gim.move_x, 370, g_pic.Box, TRUE);//ìÆÇ≠è∞
 		DrawExtendGraph(gim.SliObjx1 + gim.move_x, gim.SliObjy1, gim.SliObjx2 + gim.move_x, gim.SliObjy2, g_pic.Box, TRUE);//ìÆÇ≠è∞
 		//DrawExtendGraph(1180, 265, 1280, 370, g_pic.Box, TRUE);//êFéÊÇËÇÊÇ§ÇÃê‘
-		DrawExtendGraph(gim.SliObjx1, gim.SliObjy1, gim.SliObjx2, gim.SliObjy2, g_pic.Box, TRUE);//êFéÊÇËÇÊÇ§ÇÃê‘
+		DrawExtendGraph(gim.GetObjx1, gim.GetObjy1, gim.GetObjx2, gim.GetObjy2, g_pic.Box, TRUE);//êFéÊÇËÇÊÇ§ÇÃê‘
+		
+		ColorReset();
 
 		return 0;
 	}
