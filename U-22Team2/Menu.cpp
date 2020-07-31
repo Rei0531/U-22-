@@ -35,7 +35,7 @@ bool Menu_Update() {
         switch (NowSelect) {//現在選択中の状態によって処理を分岐
         case eMenu_Select://セレクト選択中なら
             //本来はここにセレクト画面以降処理
-            GameState = GAME_MAIN;//シーンをセレクト画面に変更
+            GameState = GAME_TITLE;//シーンをセレクト画面に変更
             g_Player.PLAYER_MENU = FALSE;//メニューを開くフラグをFALSEにする
             break;
         case eMenu_Reset://リセット選択中なら
@@ -59,9 +59,9 @@ void Menu_Draw() {
     static int MenuX = 440, MenuY = 200;
     DrawBox(MenuX, 200, MenuX+400, MenuY+400,GetColor(200,200,200),TRUE);
     DrawString(MenuX + 100, MenuY + 100, "メニュー画面です。", GetColor(0, 0, 0));
-    DrawString(MenuX + 150, GAME_Y, "ステージセレクト", GetColor(0, 0, 0));
+    DrawString(MenuX + 150, GAME_Y, "タイトル", GetColor(0, 0, 0));
     DrawString(MenuX + 150, RESET_Y, "リセット", GetColor(0, 0, 0));
-    DrawString(MenuX + 150, END_Y, "終了", GetColor(0, 0, 0));
+    DrawString(MenuX + 150, END_Y, "とじる", GetColor(0, 0, 0));
     int y = 0;
     switch (NowSelect) {//現在の選択状態に従って処理を分岐
     case eMenu_Select://セレクト選択中なら
