@@ -15,7 +15,7 @@ int Bomb(void) {
 		g_Player.x > 700 && g_Player.x < 730 && gim.g_Bomb == 0) {		//”š’e‚ÌŽü•Ó‚ÅƒCƒ“ƒ^ƒ‰ƒNƒg‚ð‰Ÿ‚·‚Æ”š’e‚ðE‚¤
 		gim.g_Bomb = 1;
 		Change(WHITE);
-		DrawBox(700, 638, 730, 668, 0xffffff, TRUE);
+		//DrawExtendGraph(700, 638, 730, 668, g_pic.Bomb, TRUE);
 	}
 	
 	if (gim.g_Bomb == 1 && g_Pad.KEY_B == TRUE &&
@@ -23,13 +23,15 @@ int Bomb(void) {
 		gim.g_Bomb = 2;
 	}
 
+	if (gim.g_Bomb == 1) {
+		DrawExtendGraph(g_Player.x -25, g_Player.y - 125, g_Player.x + 25, g_Player.y - 75, g_pic.Bomb, TRUE);
+	}
 	if (gim.g_Bomb == 0) {
-		Change(RED);
-		DrawBox(700, 638, 730, 668, 0xffffff, TRUE);					//E‚Á‚½‚Ì‚Å”š’e‚ðÁ‚·
+		DrawExtendGraph(700, 618, 750, 668, g_pic.Bomb, TRUE);					//”š’e•`‰æ
 	}
 	if (gim.g_Bomb != 2) {
 		Change(NONCOLOR);
-		DrawBox(800, 0, 850, 669, 0xffffff, TRUE);						//•Ç‚ð”j‰ó
+		DrawBox(800, 0, 850, 669, 0xffffff, TRUE);						//‰ó‚¹‚é•Ç‚Ì•`‰æ
 	}
 
 

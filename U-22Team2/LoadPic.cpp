@@ -25,6 +25,10 @@ int LoadPictue(void) {		//画像の読み込み
 
 	if ((g_pic.Rot_Box = LoadGraph("image/RotationBox.png")) == -1)return-1;//ローテーションボックス
 
+	if ((g_pic.Bomb = LoadGraph("image/Bomb.png")) == -1)return-1;
+	if ((g_pic.OneTimeSwitch_OFF = LoadGraph("image/Switch_OFF.png")) == -1)return -1;
+	if ((g_pic.OneTimeSwitch_ON = LoadGraph("image/Switch_On.png")) == -1)return -1;
+
 	if ((g_pic.Warp_Area = LoadGraph("image/Warp.png")) == -1)return -1;//ワープの画像
 	
 	if (LoadDivGraph("image/ChangeObject.png", 3, 3, 1, 225, 225, g_pic.ChengObject) == -1) return -1;//変形するオブジェクト

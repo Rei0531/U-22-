@@ -20,8 +20,9 @@ public:
 	int C_Switch;//色を反映するスイッチ
 	int Rot_Box;//ローテーションするボックス
 
-	int OneTimeSwitch;
-	int Bomb;
+	int OneTimeSwitch_ON;//一度限りのスイッチONの画像
+	int OneTimeSwitch_OFF;//一度限りのスイッチOFFの画像
+	int Bomb;			//爆弾の画像
 
 	int Warp_Area;
 
