@@ -10,6 +10,8 @@ public:
 	int NowColor = 4;		//デフォで白色
 	int Interact = 0;		//プレイヤーのスポイトできる回数/ステージごとに値を入れる
 
+	int Anime_Num = 0;//0～3地上歩き、4～8ジャンプ、10～14、押す15～19引く
+
 	//当たり判定用の色を格納する変数
 	int Hit_Up,						// ___。__
 		Hit_RightUp,				// 。     。
@@ -30,7 +32,8 @@ public:
 		PLAYER_ACTION = FALSE,		//アクションボタン
 		PLAYER_MENU = FALSE,		//メニュー
 		PLAYER_GROUND,				//地面にいる
-		PLAYER_RESET = FALSE;		//リセット処理したか
+		PLAYER_RESET = FALSE,		//リセット処理したか
+		PLAYER_MOVEBOX = FALSE;		//動くブロックを触っているか
 }; 
 
 int PlayerDraw(void);	//関数の定義
