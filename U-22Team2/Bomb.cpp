@@ -35,7 +35,7 @@ int Bomb(void) {
 	}
 
 
-	Change(NONCOLOR);
+	Change(WHITE);
 	DrawFormatString(50, 100, 0xffffff, "Bomb = %d", gim.g_Bomb);
 
 	return 0;

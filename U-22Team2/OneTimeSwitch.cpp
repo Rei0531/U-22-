@@ -30,6 +30,7 @@ int OneTimeSwitch(void) {
 	}
 
 	DrawFormatString(100, 300, 0xffffff,"OTS = %d", gim.OTSwitchFlag);
+	Change(WHITE);
 
 	return 0;
 }
