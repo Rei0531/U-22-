@@ -7,8 +7,11 @@ int LoadPictue(void) {		//画像の読み込み
 	if (LoadDivGraph("image/Player.png", 20, 5, 4, 100, 200, g_pic.Player) == -1) return -1;//プレイヤーの分割画像
 
 	if ((g_pic.Title = LoadGraph("image/Title.png")) == -1) return -1;//タイトル画面
-	if (LoadDivGraph("image/TitleChar.png", 3, 1, 3, 759, 94, g_pic.TitleChar) == -1) return -1;//プレイヤーの分割画像
+	if (LoadDivGraph("image/TitleChar.png", 3, 1, 3, 759, 94, g_pic.TitleChar) == -1) return -1;//タイトルの分割画像
 	if ((g_pic.StageClear = LoadGraph("image/stageimage(仮）.png")) == -1)return -1;//ステージクリア画面
+
+	if ((g_pic.Menu = LoadGraph("image/Menu.png")) == -1)return -1;//メニュー画面
+	if (LoadDivGraph("image/MenuChar.PNG", 3, 1, 3, 600, 200, g_pic.MenuChar) == -1) return -1;//メニュー文字の分割画像
 
 	if ((g_pic.Box = LoadGraph("image/Box2.png")) == -1)return -1;//木箱
 	if ((g_pic.Box_Move = LoadGraph("image/Box_Move.png")) == -1)return -1;//動く木箱

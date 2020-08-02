@@ -8,6 +8,8 @@ public:
 	int Title;			//タイトル画像
 	int StageClear;		//ステージのクリア画像
 	int TitleChar[3];	//タイトルの文字
+	int Menu;			//メニュー
+	int MenuChar[3];	//メニューの文字
 
 	int Box;//オブジェクトの木の箱
 	int Pin;//色取った場所のピン

@@ -3,6 +3,7 @@
 
 
 extern Sound g_Snd;
+extern image g_pic;
 
 static bool DOWN = FALSE,//下キー
             UP = FALSE;//上キー
@@ -57,11 +58,17 @@ bool Menu_Update() {
 //描画
 void Menu_Draw() {
     static int MenuX = 440, MenuY = 200;
-    DrawBox(MenuX, 200, MenuX+400, MenuY+400,GetColor(200,200,200),TRUE);
-    DrawString(MenuX + 100, MenuY + 100, "メニュー画面です。", GetColor(0, 0, 0));
-    DrawString(MenuX + 150, GAME_Y, "タイトル", GetColor(0, 0, 0));
-    DrawString(MenuX + 150, RESET_Y, "リセット", GetColor(0, 0, 0));
-    DrawString(MenuX + 150, END_Y, "とじる", GetColor(0, 0, 0));
+   // DrawBox(MenuX, MenuY, MenuX+400, MenuY+400,GetColor(200,200,200),TRUE);
+    //DrawString(MenuX + 100, MenuY + 100, "メニュー画面です。", GetColor(0, 0, 0));
+    //DrawString(MenuX + 150, GAME_Y, "タイトル", GetColor(0, 0, 0));
+    //DrawString(MenuX + 150, RESET_Y, "リセット", GetColor(0, 0, 0));
+    //DrawString(MenuX + 150, END_Y, "とじる", GetColor(0, 0, 0));
+
+    DrawExtendGraph(MenuX, MenuY, MenuX + 400, MenuY + 400,g_pic.Menu,TRUE);
+    DrawRotaGraph(MenuX + 200, GAME_Y, 0.3, 0, g_pic.MenuChar[0], TRUE, FALSE);
+    DrawRotaGraph(MenuX + 200, RESET_Y, 0.3, 0, g_pic.MenuChar[1], TRUE, FALSE);
+    DrawRotaGraph(MenuX + 200, END_Y, 0.3, 0, g_pic.MenuChar[2], TRUE, FALSE);
+
     int y = 0;
     switch (NowSelect) {//現在の選択状態に従って処理を分岐
     case eMenu_Select://セレクト選択中なら
@@ -73,5 +80,5 @@ void Menu_Draw() {
     case eMenu_End://終了選択中なら
         y = END_Y;      //終了の座標を格納
     }
-    DrawString(MenuX + 120, y, "■", GetColor(0, 0, 0));
+    DrawRotaGraph(MenuX + 90, y, 1.0, 0, g_pic.Pin, TRUE, TRUE);
 }

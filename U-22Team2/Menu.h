@@ -7,9 +7,9 @@ extern Controller g_Pad;
 extern Player g_Player;
 extern int GameState;
 
-const static int GAME_Y = 450;    //「ゲーム」文字のy位置
-const static int RESET_Y = 480;    //「リセット」文字のy位置
-const static int END_Y = 510;    //「終了」文字のy位置
+const static int GAME_Y = 380;    //「ゲーム」文字のy位置
+const static int RESET_Y = 440;    //「リセット」文字のy位置
+const static int END_Y = 500;    //「終了」文字のy位置
 
 typedef enum {
     eMenu_Select,       //ステージセレクト
