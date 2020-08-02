@@ -64,9 +64,6 @@ int Stage11(void) {			//マップ画像の描画
 	DrawExtendGraph(600, 568, 700, 668, g_pic.Box, TRUE);
 	DrawExtendGraph(600, 468, 700, 568, g_pic.Box, TRUE);
 
-	Change(RED);
-	DrawBox(800, 668, 850, 648, 0xffffff, TRUE);
-
 	Door();			//ステージゴール処理
 	Lock();
 

@@ -28,7 +28,7 @@ int LoadPictue(void) {		//‰æ‘œ‚Ì“Ç‚İ‚İ
 
 	if ((g_pic.Bomb = LoadGraph("image/Bomb.png")) == -1)return-1;
 	if ((g_pic.OneTimeSwitch_OFF = LoadGraph("image/Switch_OFF.png")) == -1)return -1;
-	if ((g_pic.OneTimeSwitch_ON = LoadGraph("image/Switch_On.png")) == -1)return -1;
+	if ((g_pic.OneTimeSwitch_ON = LoadGraph("image/Switch_ON.png")) == -1)return -1;
 
 	if ((g_pic.Warp_Area = LoadGraph("image/Warp.png")) == -1)return -1;//ƒ[ƒv‚Ì‰æ‘œ
 	

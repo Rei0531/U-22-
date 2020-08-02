@@ -19,11 +19,14 @@ int OneTimeSwitch(void) {
 	if (gim.OTSwitchFlag == 0) {
 		Change(NONCOLOR);
 		DrawBox(900, 0, 1000, 669, GetColor(255, 255, 255), TRUE);					//スイッチが押されてないなら表示
+		DrawExtendGraph(800, 618, 850, 668, g_pic.OneTimeSwitch_OFF, TRUE);
 	}																				
-	else if (gim.OTSwitchFlag != 0) {												//押されたら非表示
+	else if (gim.OTSwitchFlag != 0) {												//押されたらON
+		DrawExtendGraph(800, 618, 850, 668, g_pic.OneTimeSwitch_ON, TRUE);
 		DrawBox(900, 0, 1000, 669, GetColor(255, 255, 255), TRUE);
 		Change(NONCOLOR);
 		DrawBox(720, 0, 770, 669, GetColor(255, 255, 255), TRUE);
+		Change(RED);
 	}
 
 	DrawFormatString(100, 300, 0xffffff,"OTS = %d", gim.OTSwitchFlag);
