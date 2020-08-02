@@ -147,6 +147,10 @@ int PlayerDraw(void) {
 			if ((g_Pad.KEY_B == FALSE) && (CheckSoundMem(g_Snd.BoxDrag) == 1)) {
 				StopSoundMem(g_Snd.BoxDrag);
 			}
+			if (CheckSoundMem(g_Snd.BoxDrag) == 0 && g_Player.PLAYER_MOVEBOX == TRUE) {//動かすブロックを動かしていない時フラグをFALSEにする
+				g_Player.PLAYER_MOVEBOX = FALSE;
+
+			}
 			//_________________________________________________________________________________________
 			animecnt++;//アニメーション用のカウントプラス
 			NoMove = 1;//動いているときのフラグ
@@ -187,8 +191,28 @@ int PlayerDraw(void) {
 		}
 	}
 	//プレイヤーの描画_____________________________________________________________________________________________________________________
+	static int
+		anime_motionMax = 0,//プレイヤーの描画に合わせて画像のどの列のプレイヤーを描画するかの変数
+		anime_JumpMax = 9,//ジャンプアニメーションのどこまでを画像から描画するかの最大値の変数
+		anime_PushMax = 14,//押すモーション
+		anime_PullMax = 16;//引くモーション
+	if (g_Player.PLAYER_JUMP == TRUE) {
+		g_Player.Anime_Num = 5;
+		anime_motionMax = 5;
+		NoMove = 0;
+	}
+	else {
+		anime_motionMax = 4;
+		g_Player.Anime_Num = 0;
+	}
+	if (g_Player.PLAYER_MOVEBOX == TRUE) {
+		g_Player.Anime_Num = 10;
+		anime_motionMax = 4;
+		NoMove = 0;
+	}
 	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
-	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0, g_pic.Player[animecnt / 10 % 4 + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
+	//														10フレームごとに、プレイヤーの動きに合わせて動かす
+	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0, g_pic.Player[animecnt / 10 % anime_motionMax + g_Player.Anime_Num + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
 	ColorReset();//画面全体の変色を元に戻す
 	//_____________________________________________________________________________________________________________________
 	return 0;

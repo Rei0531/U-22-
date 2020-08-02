@@ -4,7 +4,7 @@
 
 int LoadPictue(void) {		//画像の読み込み
 	if ((g_pic.Map = LoadGraph("image/Stage_Deffault.jpg")) == -1) return -1;	//ステージの基本背景
-	if (LoadDivGraph("image/player01.png", 5, 5, 1, 100, 200, g_pic.Player) == -1) return -1;//プレイヤーの分割画像
+	if (LoadDivGraph("image/Player.png", 20, 5, 4, 100, 200, g_pic.Player) == -1) return -1;//プレイヤーの分割画像
 
 	if ((g_pic.Title = LoadGraph("image/Title.png")) == -1) return -1;//タイトル画面
 	if (LoadDivGraph("image/TitleChar.png", 3, 1, 3, 759, 94, g_pic.TitleChar) == -1) return -1;//プレイヤーの分割画像

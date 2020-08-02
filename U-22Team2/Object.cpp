@@ -104,7 +104,9 @@ int GetObjectColor(void) {
 	return GetPointColor(g_Player.PickUpPixel, g_Player.PickUpPixely);
 }
 
-void MoveObjectValue(int P_Color) {
+void MoveObjectValue(int P_Color) {//動くブロックの処理
+
+	g_Player.PLAYER_MOVEBOX = TRUE;//動かすブロックを動かしているフラグをTRUEにする
 
 	if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
 		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
