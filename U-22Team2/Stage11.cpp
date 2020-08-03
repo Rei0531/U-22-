@@ -31,8 +31,16 @@ void Stage11Init() {
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
-	gim.OTSwitchFlag = 0;		//一度限りのスイッチフラグ初期化
+	gim.g_OTSwitchFlag = 0;		//一度限りのスイッチフラグ初期化
 
+	gim.OTS_X1 = 800;				//一度限りのスイッチのX/Y軸初期化
+	gim.OTS_Y1 = 618;
+	gim.OTS_X2 = gim.OTS_X1 + 50;
+	gim.OTS_Y2 = gim.OTS_Y1 + 50;
+	gim.OTS_WallX1 = 900;
+	gim.OTS_WallY1 = 0;
+	gim.OTS_WallX2 = 1000;
+	gim.OTS_WallY2 = 669;
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];

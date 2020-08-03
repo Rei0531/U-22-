@@ -33,9 +33,27 @@ public:
 	int GetObjy1 = 0;		//色取るためのブロックの座標
 	int GetObjy2 = 0;		//色取るためのブロックの座標
 	//一度限りのスイッチ用の変数_____________
-	int OTSwitchFlag = 0;
+	int g_OTSwitchFlag = 0;			//一度限りのスイッチのON/OFFフラグ
+
+	int OTS_X1 = 0;					//一度限りのスイッチX/Y軸
+	int OTS_Y1 = 0;
+	int OTS_X2 = 0;
+	int OTS_Y2 = 0;
+	int OTS_WallX1 = 0;				//一度限りのスイッチで反応する壁のX/Y軸
+	int OTS_WallY1 = 0;
+	int OTS_WallX2 = 0;
+	int OTS_WallY2 = 0;
 	//爆弾用の変数___________________________
-	int g_Bomb = 0;
+	int g_Bombflg = 0;				//ボムの設置、所持、使用フラグ
+
+	int B_WallX1 = 0;				//|	
+	int B_WallY1 = 0;				//|--壊せる壁の座標
+	int B_WallX2 = 0;				//|
+	int B_WallY2 = 0;				//|
+	int BombX1 = 0;			//|
+	int BombX2 = 0;			//|--ボムの座標
+	int BombY1 = 0;			//|
+	int BombY2 = 0;			//|
 
 	//変形オブジェクト用の変数＿＿＿＿
 	int cheobj_flg;	 //変形するオブジェクトのフラグ

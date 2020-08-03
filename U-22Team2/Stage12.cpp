@@ -31,7 +31,16 @@ void Stage12Init() {
 	g_Door.RotationNumber = 0;	//ƒ[ƒe[ƒVƒ‡ƒ“‰Šú‰»
 	g_Lock.Release = 0;			//Œ®ŒŠ‰ðœ”‰Šú‰»
 
-	gim.g_Bomb = 0;				//”š’eƒtƒ‰ƒO‚Ì‰Šú‰»
+	gim.g_Bombflg = 0;				//”š’eƒtƒ‰ƒO‚Ì‰Šú‰»
+	gim.BombX1 = 650;				//”š’e‚ÌXŽ²‰Šú‰»
+	gim.BombX2 = gim.BombX1 + 50;
+	gim.BombY1 = 618;				//”š’e‚ÌYŽ²‰Šú‰»
+	gim.BombY2 = gim.BombY1 + 50;
+
+	gim.B_WallX1 = 800;			//‰ó‚¹‚é•Ç‚ÌXŽ²
+	gim.B_WallY1 = 0;
+	gim.B_WallX2 = 850;			//‰ó‚¹‚é•Ç‚ÌYŽ²
+	gim.B_WallY2 = 669;
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];

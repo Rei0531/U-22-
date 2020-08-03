@@ -12,24 +12,24 @@ extern GimmickAll gim;
 int OneTimeSwitch(void) {
 
 	if (g_Pad.KEY_B == TRUE &&
-		g_Player.x > 800 && g_Player.x < 850 && gim.OTSwitchFlag == 0) {			//スイッチ周辺でインタラクトを押すと壁が消える
-		gim.OTSwitchFlag = 99;
+		g_Player.x > gim.OTS_X1 && g_Player.x < gim.OTS_X2 && gim.g_OTSwitchFlag == 0) {			//スイッチ周辺でインタラクトを押すと壁が消える
+		gim.g_OTSwitchFlag = 99;
 	}
 
-	if (gim.OTSwitchFlag == 0) {
+	if (gim.g_OTSwitchFlag == 0) {
 		Change(NONCOLOR);
-		DrawBox(900, 0, 1000, 669, GetColor(255, 255, 255), TRUE);					//スイッチが押されてないなら表示
-		DrawExtendGraph(800, 618, 850, 668, g_pic.OneTimeSwitch_OFF, TRUE);
+		DrawBox(gim.OTS_WallX1, gim.OTS_WallY1, gim.OTS_WallX2, gim.OTS_WallY2, GetColor(255, 255, 255), TRUE);					//スイッチが押されてないなら表示
+		DrawExtendGraph(gim.OTS_X1, gim.OTS_Y1, gim.OTS_X2, gim.OTS_Y2, g_pic.OneTimeSwitch_OFF, TRUE);
 	}																				
-	else if (gim.OTSwitchFlag != 0) {												//押されたらON
-		DrawExtendGraph(800, 618, 850, 668, g_pic.OneTimeSwitch_ON, TRUE);
-		DrawBox(900, 0, 1000, 669, GetColor(255, 255, 255), TRUE);
+	else if (gim.g_OTSwitchFlag != 0) {												//押されたらON
+		DrawExtendGraph(gim.OTS_X1, gim.OTS_Y1, gim.OTS_X2, gim.OTS_Y2, g_pic.OneTimeSwitch_ON, TRUE);
+		DrawBox(gim.OTS_WallX1, gim.OTS_WallY1, gim.OTS_WallX2, gim.OTS_WallY2 , GetColor(255, 255, 255), TRUE);
 		Change(NONCOLOR);
-		DrawBox(720, 0, 770, 669, GetColor(255, 255, 255), TRUE);
+		DrawBox(gim.OTS_WallX1 - 200, gim.OTS_WallY1, gim.OTS_WallX2 - 200, gim.OTS_WallY2, GetColor(255, 255, 255), TRUE);
 		Change(RED);
 	}
 
-	DrawFormatString(100, 300, 0xffffff,"OTS = %d", gim.OTSwitchFlag);
+	DrawFormatString(100, 300, 0xffffff,"WallY = %d", gim.OTS_WallY2);
 	Change(WHITE);
 
 	return 0;
