@@ -187,6 +187,7 @@ int PlayerDraw(void) {
 				(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {		//ジャンプアニメーションが決められた時間になったとき
 				g_Player.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
 				Jumpcnt = 20;				//ジャンプアニメーションのカウントを0にする
+				PlaySoundMem(g_Snd.Landing, DX_PLAYTYPE_BACK);
 			}
 		}
 	}
