@@ -41,6 +41,8 @@ void Stage17Init() {
 	g_Door.w = g_Door.x + 100;	//横幅
 	g_Door.h = g_Door.y + 200;	//縦幅
 
+	SwitchColor = 9;//スイッチの初期からリセット
+
 }
 
 int Stage17(void) {			//マップ画像の描画

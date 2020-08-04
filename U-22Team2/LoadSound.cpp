@@ -18,9 +18,13 @@ int LoadSound(void) {		//音の読み込み
 	if ((g_Snd.Walk = LoadSoundMem("Sound/footsteps.mp3")) == -1)return -1;				//歩く音
 	if ((g_Snd.MenuOpen = LoadSoundMem("Sound/MenuOpen.mp3")) == -1)return -1;			//メニューオープン
 	if ((g_Snd.MenuClose = LoadSoundMem("Sound/MenuClose.mp3")) == -1)return -1;		//メニュークローズ
+	if ((g_Snd.MenuMove = LoadSoundMem("Sound/MenuMove.mp3")) == -1)return -1;			//メニュー内移動
 	if ((g_Snd.Reset = LoadSoundMem("Sound/Reset.mp3")) == -1)return -1;				//リセット時
-	if ((g_Snd.Switch = LoadSoundMem("Sound/Switch2.mp3")) == -1)return -1;				//スイッチ
+	if ((g_Snd.Switch = LoadSoundMem("Sound/button.mp3")) == -1)return -1;				//スイッチ
 	if ((g_Snd.Warp = LoadSoundMem("Sound/Warp2.mp3")) == -1)return -1;					//ワープ
+	if ((g_Snd.Landing = LoadSoundMem("Sound/tyakuti.mp3")) == -1)return -1;			//着地
+	if ((g_Snd.Bomb= LoadSoundMem("Sound/Bomb_PON.mp3")) == -1)return -1;				//爆弾
+	if ((g_Snd.StageBGM = LoadSoundMem("Sound/StageBGM01.mp3")) == -1)return -1;		//ステージBGM
 
 	return 0;
 }
