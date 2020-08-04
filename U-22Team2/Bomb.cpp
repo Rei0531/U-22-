@@ -20,6 +20,7 @@ int Bomb(void) {
 	
 	if (gim.g_Bombflg == 1 && g_Pad.KEY_B == TRUE &&
 		g_Player.x > gim.B_WallX1 - 30 && g_Player.x < gim.B_WallX1) {							//•Ç‚ÌŽü•Ó‚ÅŽg‚¤‚ÆÁ”ï
+		DrawRotaGraph(gim.B_WallX1, gim.B_WallY1, 1, 0, g_pic.Bombeffect, TRUE, FALSE);
 		gim.g_Bombflg = 2;
 	}
 
