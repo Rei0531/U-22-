@@ -59,13 +59,13 @@ int Stage5(void) {			//マップ画像の描画
 	//色ブロック描画
 
 	Change(LIGHTBLUE);
-	if ((g_Player.x > 424) & (g_Player.x < 575) & (g_Pad.KEY_B == TRUE)
+	if ((g_Player.x > 400) & (g_Player.x < 600) & (g_Pad.KEY_B == TRUE)
 		& (g_SwitchFlag == 0) & (g_SwitchWait == 0) & (g_Player.NowColor == 4)) { //スイッチフラグがOFFであり待機時間が０でありスイッチと重なってあり
 		g_SwitchFlag = 1;														  //レバーの色と主人公が同じである状態でインタラクトを押すと箱が消える
 		g_SwitchWait = 10;
 		PlaySoundMem(g_Snd.leva, DX_PLAYTYPE_BACK);
 	}
-	else if ((g_Player.x > 424) & (g_Player.x < 575) & (g_Pad.KEY_B == TRUE)	  //スイッチがONの場合はOFFに切り替える
+	else if ((g_Player.x > 400) & (g_Player.x < 600) & (g_Pad.KEY_B == TRUE)	  //スイッチがONの場合はOFFに切り替える
 		& (g_SwitchFlag == 1) & (g_SwitchWait == 0) & (g_Player.NowColor == 4)){  //レバーがONまたはOFFになった場合待機時間が加わる
 		g_SwitchFlag = 0;
 		g_SwitchWait = 10;
@@ -73,10 +73,10 @@ int Stage5(void) {			//マップ画像の描画
 	}
 
 	if (g_SwitchFlag == 0) {													  
-		DrawRotaGraph(500, 623, 1.0, 0, g_pic.Reba, TRUE, FALSE);
+		DrawRotaGraph(500, 613, 1.0, 0, g_pic.Reba, TRUE, FALSE);
 	}
 	else if (g_SwitchFlag == 1) {
-		DrawRotaGraph(500, 623, 1.0, 0, g_pic.Reba, TRUE, TRUE);
+		DrawRotaGraph(500, 613, 1.0, 0, g_pic.Reba, TRUE, TRUE);
 		Change(WHITE);
 		DrawExtendGraph(700, 558, 800, 668, g_pic.Box, TRUE);
 	}
