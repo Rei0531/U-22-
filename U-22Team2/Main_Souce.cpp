@@ -8,6 +8,7 @@
 #include "Lock.h"
 #include "LoadSound.h"
 #include "Object.h"
+#include "LoadSound.h"
 
 //デバッグ用のマウス座標取得変数宣言
 Controller g_Pad;
@@ -18,6 +19,7 @@ extern Controller g_Pad;
 extern Player g_Player;
 extern  int GameState= GAME_TITLE;
 extern MapCoordinate g_MapC;
+extern Sound g_Snd;
 
 
 /***************************************************************
@@ -57,6 +59,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		GetMousePoint(&g_Pad.MouseX, &g_Pad.MouseY);		//デバッグ用とか、画像配置用にマウス座標取得
 
 		ControllerVlue();//コントローラーの入力状態を取得
+
+		if (CheckSoundMem(g_Snd.StageBGM) == 0) {
+			PlaySoundMem(g_Snd.StageBGM, DX_PLAYTYPE_LOOP);
+		}
 
 		switch (GameState) {
 		case GAME_TITLE:

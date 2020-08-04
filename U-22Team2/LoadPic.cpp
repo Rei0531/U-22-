@@ -30,7 +30,7 @@ int LoadPictue(void) {		//画像の読み込み
 	if ((g_pic.Rot_Box = LoadGraph("image/RotationBox.png")) == -1)return-1;//ローテーションボックス
 
 	if ((g_pic.Bomb = LoadGraph("image/Bomb.png")) == -1)return-1;					//爆弾の画像
-	if ((g_pic.Bombeffect = LoadGraph("image/bakudan_effect.png")) == -1) return -1;	//爆風の画像
+	//if ((g_pic.Bombeffect = LoadGraph("image/bakudan_effect.png")) == -1) return -1;	//爆風の画像
 
 	if ((g_pic.OneTimeSwitch_OFF = LoadGraph("image/Switch_OFF.png")) == -1)return -1;		//一度限りのスイッチONの画像
 	if ((g_pic.OneTimeSwitch_ON = LoadGraph("image/Switch_ON.png")) == -1)return -1;		//OFFの画像

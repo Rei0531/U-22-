@@ -33,7 +33,8 @@ public:
 		PLAYER_MENU = FALSE,		//メニュー
 		PLAYER_GROUND,				//地面にいる
 		PLAYER_RESET = FALSE,		//リセット処理したか
-		PLAYER_MOVEBOX = FALSE;		//動くブロックを触っているか
+		PLAYER_MOVEBOX_PUSH = FALSE,//動くブロックを押しているか
+		PLAYER_MOVEBOX_PULL = FALSE;//動くブロックを引いているか
 }; 
 
 int PlayerDraw(void);	//関数の定義
