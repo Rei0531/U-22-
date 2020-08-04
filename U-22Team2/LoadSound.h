@@ -16,6 +16,10 @@ public:
 	int MenuClose;	//メニュークローズ
 	int Switch;		//スイッチ
 	int Warp;		//ワープ
+	int Landing;	//着地
+	int MenuMove;	//メニュー内移動
+	int Bomb;		//爆弾
+	int StageBGM;	//ステージBGM
 };
 
 int LoadSound(void);	//関数の定義
