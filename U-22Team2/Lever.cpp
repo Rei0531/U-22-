@@ -30,10 +30,10 @@ int Lever(void) {
 	}
 
 	if (gim.SwitchFlag == 0) {			//ÉIÉt
-		DrawRotaGraph(51, 337, 0.7, 0, g_pic.Reba, TRUE, FALSE);
+		DrawRotaGraph(50, 50, 0.7, 0, g_pic.Reba, TRUE, FALSE);
 	}
 	else if (gim.SwitchFlag == 1) {		//ÉIÉì
-		DrawRotaGraph(51, 337, 0.7, 0, g_pic.Reba, TRUE, TRUE);
+		DrawRotaGraph(50, 50, 0.7, 0, g_pic.Reba, TRUE, TRUE);
 		//Change(WHITE);
 		//DrawExtendGraph(200, 270, 300, 370, g_pic.Box, TRUE);
 		Change(YELLOW);
