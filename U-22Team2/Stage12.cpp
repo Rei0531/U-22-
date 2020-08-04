@@ -27,7 +27,7 @@ void Stage12Init() {
 	g_Player.x = 110;			//プレイヤー座標初期化
 	g_Player.y = 571;			//プレイヤー座標初期化
 	g_Player.NowColor = 4;		//プレイヤーの色初期化
-
+	
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
@@ -37,6 +37,7 @@ void Stage12Init() {
 	gim.BombY1 = 618;				//爆弾のY軸初期化
 	gim.BombY2 = gim.BombY1 + 50;
 
+	gim.B_EffectCount = 30;	//爆風の画像の描画時間
 	gim.B_WallX1 = 800;			//壊せる壁のX軸
 	gim.B_WallY1 = 0;
 	gim.B_WallX2 = 850;			//壊せる壁のY軸

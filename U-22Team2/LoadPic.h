@@ -26,7 +26,7 @@ public:
 	int OneTimeSwitch_ON;//一度限りのスイッチONの画像
 	int OneTimeSwitch_OFF;//一度限りのスイッチOFFの画像
 	int Bomb;			//爆弾の画像
-	int Bombeffect;		//爆風の画像
+	int BombEffect;		//爆風の画像
 
 	int Warp_Area;
 
