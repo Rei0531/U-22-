@@ -46,6 +46,7 @@ public:
 	//爆弾用の変数___________________________
 	int g_Bombflg = 0;				//ボムの設置、所持、使用フラグ
 
+	int B_EffectCount = 0;
 	int B_WallX1 = 0;				//|	
 	int B_WallY1 = 0;				//|--壊せる壁の座標
 	int B_WallX2 = 0;				//|

@@ -21,10 +21,12 @@ bool Menu_Update() {
     if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
         DOWN = TRUE;
         NowSelect = (NowSelect + 1) % eMenu_Num;//選択状態を一つ下げる
+        PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
     }
     if (g_Pad.KEY_UP == TRUE && UP == FALSE) {//上キーが押されていたら
         UP = TRUE;
         NowSelect = (NowSelect + (eMenu_Num - 1)) % eMenu_Num;//選択状態を一つ上げる
+        PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
     }
 
     DOWN = (g_Pad.KEY_DOWN == TRUE) ? TRUE : FALSE;//下キーが押されていたら
@@ -57,12 +59,8 @@ bool Menu_Update() {
 
 //描画
 void Menu_Draw() {
+
     static int MenuX = 440, MenuY = 200;
-   // DrawBox(MenuX, MenuY, MenuX+400, MenuY+400,GetColor(200,200,200),TRUE);
-    //DrawString(MenuX + 100, MenuY + 100, "メニュー画面です。", GetColor(0, 0, 0));
-    //DrawString(MenuX + 150, GAME_Y, "タイトル", GetColor(0, 0, 0));
-    //DrawString(MenuX + 150, RESET_Y, "リセット", GetColor(0, 0, 0));
-    //DrawString(MenuX + 150, END_Y, "とじる", GetColor(0, 0, 0));
 
     DrawExtendGraph(MenuX, MenuY, MenuX + 400, MenuY + 400,g_pic.Menu,TRUE);
     DrawRotaGraph(MenuX + 200, GAME_Y, 0.3, 0, g_pic.MenuChar[0], TRUE, FALSE);

@@ -27,10 +27,12 @@ void Title_Update() {
     if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
         DOWN = TRUE;
         NowSelect = (NowSelect + 1) % eTitle_Num;//選択状態を一つ下げる
+        PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
     }
     if (g_Pad.KEY_UP == TRUE && UP == FALSE) {//上キーが押されていたら
         UP = TRUE;
         NowSelect = (NowSelect + (eTitle_Num - 1)) % eTitle_Num;//選択状態を一つ上げる
+        PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
     }
 
 
