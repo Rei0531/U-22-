@@ -61,6 +61,9 @@ public:
 	int cheobj_x;
 	int cheobj_y = 670 - 225;
 	int cheobj_c;
+	int cheobj_ani = 0;
+	int cheobj_zeroflg = 0;
+	int cheobj_sirusi;
 
 	//回復アイテム用の変数_______
 	int item_x;

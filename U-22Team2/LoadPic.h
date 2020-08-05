@@ -31,6 +31,7 @@ public:
 	int Warp_Area;
 
 	int ChengObject[3];  //変形するオブジェクト
+	int ChengObjectmark[4]; //
 
 	int item;	//スポイト回復アイテム
 };

@@ -5,6 +5,7 @@
 #include "Lock.h"
 #include "Gimmick.h"
 #include "Menu.h"
+#include "Draw_Door_Rotation.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -32,6 +33,7 @@ void Stage14Init() {
 	gim.cheobj_flg = 1;			//変形するオブジェクトのフラグ
 	gim.cheobj_x = 800 - 225;
 	gim.cheobj_c = g_Player.NowColor;
+	gim.cheobj_ani = 158;
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
@@ -76,12 +78,10 @@ int Stage14(void) {			//マップ画像の描画
 	Door();			//ステージゴール処理
 	Lock();
 
-	Change(g_Door.Rotation[g_MapC.StageNumber - 1][0]);
-	DrawBox(1150, 370, 1250, 400, GetColor(255, 255, 255), TRUE);
-
-
+	DoorRotationBox(1);
 
 	ColorReset();
+
 
 	if (g_Player.PLAYER_MENU == TRUE) {
 		Menu_Draw();
