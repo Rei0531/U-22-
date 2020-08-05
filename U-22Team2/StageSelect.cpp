@@ -94,7 +94,6 @@ void Stage_Draw() {
             DrawBox(168 + j * 168,26 + i * 156,268 + j * 168,126 + i * 156,0xff0000,TRUE);
         }
     }
-    int y = 0;
     //switch (NowStage) {//現在の選択状態に従って処理を分岐
     //case eTitle_Select://セレクト選択中なら
     //    //y = SELECT_Y;    //セレクトの座標を格納
@@ -110,7 +109,10 @@ void Stage_Draw() {
     //}
 
     DrawFormatString(0, 100, 0xff0fff, "NowStage %d ", NowStage+1);
-    DrawBox(168 + (NowStage % 5) * 168, 26 + (NowStage%6) * 156, 268 + (NowStage % 5) * 168, 126 + (NowStage % 6) * 156, 0x0000ff, FALSE);
+    int
+        x = NowStage%6,
+        y = NowStage/6;
+    DrawBox(168 + x * 168, 26 + y * 156, 268 + x * 168, 126 + y * 156, 0x0000ff, TRUE);
    // DrawRotaGraph(168 +  NowStage * 168 + BoxX, y - 5, 1.0, 0, g_pic.Pin, TRUE, TRUE);
     //DrawBox(168 + j * 168, 156 + i * 156, 268 + j * 168, 256 + i * 156, 0x0000ff, FALSE);
 }
