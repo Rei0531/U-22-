@@ -9,6 +9,7 @@
 #include "LoadSound.h"
 #include "Object.h"
 #include "LoadSound.h"
+#include "StageSelect.h"
 
 //デバッグ用のマウス座標取得変数宣言
 Controller g_Pad;
@@ -71,7 +72,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			break;
 		case GAME_MENU:
 			//ゲームメニュー処理
-			Main();
+			Menu();
 			break;
 		case GAME_INIT:
 			//ゲーム初期処理
@@ -106,6 +107,7 @@ int Title(void) {
 	return 0;
 }
 int Menu(void) {
+	StageSelect();
 	return 0;
 }
 int Init(void) {

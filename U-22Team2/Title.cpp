@@ -46,7 +46,7 @@ void Title_Update() {
         switch (NowSelect) {//現在選択中の状態によって処理を分岐
         case eTitle_Select://セレクト選択中なら
             //本来はここにセレクト画面以降処理
-            GameState = GAME_MAIN;//セレクト画面から行きたい
+            GameState = GAME_MENU;//セレクト画面から行きたい
             break;
         case eTitle_SpecialThanks://スペシャルサンクス選択中なら
             GameState = GAME_MAIN;
