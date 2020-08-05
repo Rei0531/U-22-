@@ -30,12 +30,12 @@ void Stage_Update() {
 
     if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
         DOWN = TRUE;
-        NowStage = (NowStage + 5) % Stage_Num;//選択状態を一つ下げる
+        NowStage = (NowStage + 6) % Stage_Num;//選択状態を一つ下げる
         PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
     }
     if (g_Pad.KEY_UP == TRUE && UP == FALSE) {//上キーが押されていたら
         UP = TRUE;
-        NowStage = (NowStage + (Stage_Num - 5)) % Stage_Num;//選択状態を一つ上げる
+        NowStage = (NowStage + (Stage_Num - 6)) % Stage_Num;//選択状態を一つ上げる
         PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
     }
     if (g_Pad.KEY_LEFT == TRUE && LEFT == FALSE) {//下キーが押されていたら
