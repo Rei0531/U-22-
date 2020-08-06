@@ -19,7 +19,7 @@ int Bomb(void) {
 	}
 	
 	if (gim.g_Bombflg == 1 && g_Pad.KEY_B == TRUE &&
-		g_Player.x > gim.B_WallX1 - 30 && g_Player.x < gim.B_WallX1) {							//•Ç‚ÌŽü•Ó‚ÅŽg‚¤‚ÆÁ”ï
+		g_Player.x > gim.B_WallX1 - 50 && g_Player.x < gim.B_WallX1) {							//•Ç‚ÌŽü•Ó‚ÅŽg‚¤‚ÆÁ”ï
 	 gim.g_Bombflg = 2;
 	}
 
@@ -31,14 +31,14 @@ int Bomb(void) {
 	}
 	if (gim.g_Bombflg == 2) {
 		if (gim.B_EffectCount >= 0) gim.B_EffectCount--;
-		if(gim.B_EffectCount > 20) DrawRotaGraph(gim.B_WallX1, gim.B_WallY2 - 150, 1, 0, g_pic.BombEffect, FALSE, TRUE);
-		if(gim.B_EffectCount <= 20 && gim.B_EffectCount > 10) DrawRotaGraph(gim.B_WallX1, gim.B_WallY2 - 150, 1, 0, g_pic.BombEffect, FALSE, FALSE);
-		if(gim.B_EffectCount <= 10) DrawRotaGraph(gim.B_WallX1, gim.B_WallY2 - 150, 1, 0, g_pic.BombEffect, FALSE, TRUE);
+		if(gim.B_EffectCount > 20) DrawRotaGraph(gim.B_WallX1, gim.B_WallY2 - 150, 1, 0, g_pic.BombEffect, TRUE, TRUE);
+		if(gim.B_EffectCount <= 20 && gim.B_EffectCount > 10) DrawRotaGraph(gim.B_WallX1, gim.B_WallY2 - 150, 1, 0, g_pic.BombEffect, TRUE, FALSE);
+		if(gim.B_EffectCount <= 10) DrawRotaGraph(gim.B_WallX1, gim.B_WallY2 - 150, 1, 0, g_pic.BombEffect,TRUE, TRUE);
 		if (gim.B_EffectCount < 0) gim.g_Bombflg = 3;
 	}
 	if (gim.g_Bombflg != 3) {
 		Change(NONCOLOR);
-		DrawBox(gim.B_WallX1, gim.B_WallY1, gim.B_WallX2, gim.B_WallY2, 0xffffff, TRUE);						//‰ó‚¹‚é•Ç‚Ì•`‰æ
+		DrawBox(gim.B_WallX1, gim.B_WallY1, gim.B_WallX2, gim.B_WallY2, GetColor(255,255,255), TRUE);						//‰ó‚¹‚é•Ç‚Ì•`‰æ
 	}
 
 	DrawFormatString(50, 100, 0xffffff, "Bomb = %d", gim.B_EffectCount);

@@ -41,6 +41,10 @@ void Stage11Init() {
 	gim.OTS_WallY1 = 0;
 	gim.OTS_WallX2 = 1000;
 	gim.OTS_WallY2 = 669;
+	gim.OTS_C_WallX1 = 700;			//一度限りのスイッチで表れる壁のX/Y軸
+	gim.OTS_C_WallY1 = 0;
+	gim.OTS_C_WallX2 = 800;
+	gim.OTS_C_WallY2 = 669;
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];

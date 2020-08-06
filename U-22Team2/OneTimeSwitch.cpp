@@ -25,11 +25,11 @@ int OneTimeSwitch(void) {
 		DrawExtendGraph(gim.OTS_X1, gim.OTS_Y1, gim.OTS_X2, gim.OTS_Y2, g_pic.OneTimeSwitch_ON, TRUE);
 		DrawBox(gim.OTS_WallX1, gim.OTS_WallY1, gim.OTS_WallX2, gim.OTS_WallY2 , GetColor(255, 255, 255), TRUE);
 		Change(NONCOLOR);
-		DrawBox(gim.OTS_WallX1 - 200, gim.OTS_WallY1, gim.OTS_WallX2 - 200, gim.OTS_WallY2, GetColor(255, 255, 255), TRUE);
+		DrawBox(gim.OTS_C_WallX1, gim.OTS_C_WallY1, gim.OTS_C_WallX2, gim.OTS_WallY2, GetColor(255, 255, 255), TRUE);
 		Change(RED);
 	}
 
-	DrawFormatString(100, 300, 0xffffff,"WallY = %d", gim.OTS_WallY2);
+	//DrawFormatString(100, 300, 0xffffff,"WallY = %d", gim.OTS_WallY2);
 	Change(WHITE);
 
 	return 0;
