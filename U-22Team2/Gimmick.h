@@ -39,10 +39,14 @@ public:
 	int OTS_Y1 = 0;
 	int OTS_X2 = 0;
 	int OTS_Y2 = 0;
-	int OTS_WallX1 = 0;				//一度限りのスイッチで反応する壁のX/Y軸
+	int OTS_WallX1 = 0;				//一度限りのスイッチで消える壁のX/Y軸
 	int OTS_WallY1 = 0;
 	int OTS_WallX2 = 0;
 	int OTS_WallY2 = 0;
+	int OTS_C_WallX1 = 0;			//一度限りのスイッチで表れる壁のX/Y軸
+	int OTS_C_WallY1 = 0;
+	int OTS_C_WallX2 = 0;
+	int OTS_C_WallY2 = 0;
 	//爆弾用の変数___________________________
 	int g_Bombflg = 0;				//ボムの設置、所持、使用フラグ
 
