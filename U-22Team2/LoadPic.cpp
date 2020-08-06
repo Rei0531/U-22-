@@ -12,6 +12,7 @@ int LoadPictue(void) {		//画像の読み込み
 
 	if ((g_pic.Menu = LoadGraph("image/Menu.png")) == -1)return -1;//メニュー画面
 	if (LoadDivGraph("image/MenuChar.PNG", 3, 1, 3, 600, 200, g_pic.MenuChar) == -1) return -1;//メニュー文字の分割画像
+	if (LoadDivGraph("image/StageNumber.PNG", 30, 10, 3, 179, 173, g_pic.StageNum) == -1) return -1;//ステージ番号の分割画像
 
 	if ((g_pic.Box = LoadGraph("image/Box2.png")) == -1)return -1;//木箱
 	if ((g_pic.Box_Move = LoadGraph("image/Box_Move.png")) == -1)return -1;//動く木箱

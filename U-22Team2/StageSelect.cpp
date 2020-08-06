@@ -64,19 +64,6 @@ void Stage_Update() {
         Sndflg = FALSE;//メニューオープンのフラグをFALSEにして再度関数に入った時音が鳴るようにする
         g_MapC.StageNumber = NowStage+1;
         GameState = GAME_MAIN;
-        //switch (NowStage) {//現在選択中の状態によって処理を分岐
-        ////case eTitle_Select://セレクト選択中なら
-        ////    //本来はここにセレクト画面以降処理
-        ////    GameState = GAME_MAIN;//セレクト画面から行きたい
-        ////    break;
-        ////case eTitle_SpecialThanks://スペシャルサンクス選択中なら
-        ////    GameState = GAME_MAIN;
-        ////    break;
-        ////case eTitle_End:
-        ////    DxLib_End();//終了処理
-        ////    break;
-
-        //}
     }
 
     B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
@@ -85,36 +72,20 @@ void Stage_Update() {
 void Stage_Draw() {
     static int MenuX = 634, MenuY = 200;
     static int BoxX = 0;//選択カーソルのプラスする量の位置;
-    //DrawRotaGraph(MenuX, SELECT_Y, 0.5, 0, g_pic.TitleChar[0], TRUE, FALSE);
-    //DrawRotaGraph(MenuX, THANKS_Y, 0.5, 0, g_pic.TitleChar[1], TRUE, FALSE);
-    //DrawRotaGraph(MenuX, END_Y, 0.5, 0, g_pic.TitleChar[2], TRUE, FALSE);
+    int cnt = 0;
     //ステージのびょうが　
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 6; j++) {
-            DrawBox(168 + j * 168,26 + i * 156,268 + j * 168,126 + i * 156,0xff0000,TRUE);
+            DrawBox(168 + j * 168,26 + i * 156,268 + j * 168,126 + i * 156,0x000000,FALSE);
+            DrawRotaGraph(218 + j * 168, 76 + i * 156,0.5,0, g_pic.StageNum[cnt++ % 30],TRUE,FALSE);
         }
     }
-    //switch (NowStage) {//現在の選択状態に従って処理を分岐
-    //case eTitle_Select://セレクト選択中なら
-    //    //y = SELECT_Y;    //セレクトの座標を格納
-    //    BoxX = -175;
-    //    break;
-    //case eTitle_SpecialThanks://リセット選択中なら
-    //   // y = THANKS_Y;    //スペシャルサンクスの座標を格納
-    //    BoxX = -210;
-    //    break;
-    //case eTitle_End://終了選択中なら
-    //    //y = END_Y;      //終了の座標を格納
-    //    BoxX = -70;
-    //}
 
     DrawFormatString(0, 100, 0xff0fff, "NowStage %d ", NowStage+1);
     int
         x = NowStage%6,
         y = NowStage/6;
-    DrawBox(168 + x * 168, 26 + y * 156, 268 + x * 168, 126 + y * 156, 0x0000ff, TRUE);
-   // DrawRotaGraph(168 +  NowStage * 168 + BoxX, y - 5, 1.0, 0, g_pic.Pin, TRUE, TRUE);
-    //DrawBox(168 + j * 168, 156 + i * 156, 268 + j * 168, 256 + i * 156, 0x0000ff, FALSE);
+    DrawExtendGraph(168 + x * 168, 26 + y * 156, 268 + x * 168, 126 + y * 156, g_pic.StageNum[NowStage], TRUE);
 }
 
 int StageSelect(void) {
