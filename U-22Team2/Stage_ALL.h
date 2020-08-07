@@ -25,4 +25,9 @@ int Stage22(void);
 int Stage23(void);
 int Stage24(void);
 int Stage25(void);
+int Stage26(void);
+int Stage27(void);
+int Stage28(void);
+int Stage29(void);
+int Stage30(void);
 
