@@ -14,7 +14,10 @@ extern Sound g_Snd;
 
 static int SaveColor = 99;		//一時変数に現在の色を格納する
 
-int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
+/************************************************************************
+*渡された座標の色を取得して返す
+*************************************************************************/
+int GetPointColor(int Point_x, int Point_y) {
 	int color, r, g, b;
 	int getcolor = 99;		//今取得する色格納変数
 
@@ -65,10 +68,11 @@ int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
 	//DrawRotaGraph(g_Player.PickUpPixel, g_Player.PickUpPixely,1.0,0,g_pic.Pin,TRUE,FALSE);
 	if (g_Player.PLAYER_PICKUP == TRUE) {//スポイトされたとき
 		g_Player.PLAYER_PICKUP = FALSE;			//TRUEになってこの関数に入るから一度だけの処理にするためにスポイトフラグをFALSEにする
-		if ((g_Player.Hit_Up == getcolor) | (SaveColor == getcolor )|| (getcolor == WHITE) || (getcolor == BLACK)) {
+		if ((g_Player.Hit_Up == getcolor) | (SaveColor == getcolor) || (getcolor == WHITE) || (getcolor == BLACK)) {
 			g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
 		}
-		if (g_Player.Hit_Up == getcolor || getcolor == WHITE || getcolor == BLACK  || getcolor == MOVE ||
+		//g_Player.Hit_Up == getcolor || //Hitが重なっているときに取れなくするやつ
+		if (getcolor == WHITE || getcolor == BLACK || getcolor == MOVE ||
 			(g_Door.x < g_Player.PickUpPixel && g_Door.w > g_Player.PickUpPixel &&
 				g_Door.y < g_Player.PickUpPixely && g_Door.h > g_Player.PickUpPixely)) {
 			////プレイヤーが重なっている位置の色と取得した色が同じだった時、取得した色が白色の時,黒色の時、ドアの位置の時
@@ -94,17 +98,22 @@ int GetPointColor(int Point_x, int Point_y) {	//渡された座標の色を取得して返す
 		return SaveColor;//同じ色の場合は元の色を返す
 	}
 }
-
+/************************************************************************
+*スポイト処理
+*************************************************************************/
 int GetObjectColor(void) {
 	//プレイヤーの向いている方向より+-50したところか色を取得する
 	g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 30 : g_Player.x + 30l;//スポイトする場所
-	g_Player.PickUpPixely = g_Player.y - 33;
+	g_Player.PickUpPixely = g_Player.y - 27;//初期値33もし白色が取れるようになってしまったら戻す
 	SaveColor = g_Player.NowColor;		//一時変数に現在の色を格納する
 
 	return GetPointColor(g_Player.PickUpPixel, g_Player.PickUpPixely);
 }
 
-void MoveObjectValue(int P_Color) {//動くブロックの処理
+/************************************************************************
+*動くブロックの処理
+*************************************************************************/
+void MoveObjectValue(int P_Color) {
 
 	g_Player.PLAYER_MOVEBOX_PUSH = TRUE;//動かすブロックを動かしているフラグをTRUEにする
 

@@ -113,7 +113,7 @@ int PlayerDraw(void) {
 	**		プレイヤーの動き
 	**
 	*************************************************************************/
-	if (g_Player.PLAYER_MENU == FALSE) {//メニュー画面を閉じているとき
+	if (g_Player.PLAYER_MENU == FALSE && g_Player.Hit_Up != g_Player.NowColor) {//メニュー画面を閉じているとき,色が重なっていないとき
 		/************************************************************************
 		*プレイヤーの移動処理
 		*************************************************************************/
@@ -206,8 +206,8 @@ int PlayerDraw(void) {
 	*重力の処理
 	*************************************************************************/
 		//プレイヤーが地面についていないとき
-		if (!((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor) ||
-			(g_Player.Hit_Under2 == BLACK || g_Player.Hit_Under2 == g_Player.NowColor))) {
+		if (!((g_Player.Hit_Under == g_Player.NowColor || g_Player.Hit_Under2 == g_Player.NowColor) ||
+			(g_Player.Hit_Under == BLACK || g_Player.Hit_Under2 == BLACK))) {
 			g_Player.y += Gravity;		//プレイヤーに重力を追加
 			g_Player.PLAYER_GROUND = FALSE;
 		}
