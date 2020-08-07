@@ -6,6 +6,7 @@
 #include "Object.h"
 #include "Menu.h"
 #include "Draw_Door_Rotation.h"
+#include "Gimmick.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -15,15 +16,7 @@ extern LockALL g_Lock;
 extern Object g_Object;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
-//オブジェクトの初期位置
-static int obj1x1 = 400,
-obj1x2 = obj1x1 + 150,
-obj2x1 = 550,
-obj2x2 = obj2x1 + 150,
-obj3x1 = 700,
-obj3x2 = obj3x1 + 150,
-objALLy1 = 518,
-objALLy2 = 668;
+
 
 void Stage3Init() {
 	//プレイヤーの初期位置
@@ -43,14 +36,6 @@ void Stage3Init() {
 	}
 
 	//箱の位置リセット
-	obj1x1 = 400;
-	obj1x2 = obj1x1 + 100;
-	obj2x1 = 550;
-	obj2x2 = obj2x1 + 100;
-	obj3x1 = 700;
-	obj3x2 = obj3x1 + 100;
-	objALLy1 = 568;
-	objALLy2 = 668;
 	g_Object.Init();//オブジェクトの移動量リセット
 
 	//ドアの位置
@@ -68,38 +53,28 @@ int Stage3(void) {			//マップ画像の描画
 	}
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
-	//色ブロック描画
-	Change(ORENGE);
-	DrawExtendGraph(obj1x1 + g_Object.ORENGE_x, objALLy1, obj1x2 + g_Object.ORENGE_x, objALLy2, g_pic.Box_Move, TRUE);
-	DrawExtendGraph(obj1x1 + g_Object.ORENGE_x, objALLy1 - 100, obj1x2 + g_Object.ORENGE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
-	Change(YELLOW);
-	DrawExtendGraph(obj2x1 + g_Object.YELLOW_x, objALLy1, obj2x2 + g_Object.YELLOW_x, objALLy2, g_pic.Box_Move, TRUE);
-	DrawExtendGraph(obj2x1 + g_Object.YELLOW_x, objALLy1 - 100, obj2x2 + g_Object.YELLOW_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
-	Change(PURPLE);
-	DrawExtendGraph(obj3x1 + g_Object.PURPLE_x, objALLy1, obj3x2 + g_Object.PURPLE_x, objALLy2, g_pic.Box_Move, TRUE);
-	DrawExtendGraph(obj3x1 + g_Object.PURPLE_x, objALLy1 - 100, obj3x2 + g_Object.PURPLE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
+
+	//色ブロック描画_____________________________________________________
+	MoveBox(ORENGE,400,568);
+	MoveBox(ORENGE, 400, 468);
+
+	MoveBox(YELLOW, 550, 568);
+	MoveBox(YELLOW, 550, 468);
+
+	MoveBox(PURPLE, 700, 568);
+	MoveBox(PURPLE, 700, 468);
+	//プレイヤーの色と同じブロックを手前に出す_______________________________________________________________
+	frontMoveBox(ORENGE, 400, 568);
+	frontMoveBox(ORENGE, 400, 468);
+
+	frontMoveBox(YELLOW, 550, 568);
+	frontMoveBox(YELLOW, 550, 468);
+
+	frontMoveBox(PURPLE, 700, 568);
+	frontMoveBox(PURPLE, 700, 468);
+
 	Door();			//ステージゴール処理
 	Lock();
-
-	//プレイヤーの色と同じブロックを手前に出す_______________________________________________________________
-	switch (g_Player.NowColor) {
-	case ORENGE:
-		Change(ORENGE);
-		DrawExtendGraph(obj1x1 + g_Object.ORENGE_x, objALLy1, obj1x2 + g_Object.ORENGE_x, objALLy2, g_pic.Box_Move, TRUE);
-		DrawExtendGraph(obj1x1 + g_Object.ORENGE_x, objALLy1 - 100, obj1x2 + g_Object.ORENGE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
-		break;
-	case YELLOW:
-		Change(YELLOW);
-		DrawExtendGraph(obj2x1 + g_Object.YELLOW_x, objALLy1, obj2x2 + g_Object.YELLOW_x, objALLy2, g_pic.Box_Move, TRUE);
-		DrawExtendGraph(obj2x1 + g_Object.YELLOW_x, objALLy1 - 100, obj2x2 + g_Object.YELLOW_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
-		break;
-	case PURPLE:
-		Change(PURPLE);
-		DrawExtendGraph(obj3x1 + g_Object.PURPLE_x, objALLy1, obj3x2 + g_Object.PURPLE_x, objALLy2, g_pic.Box_Move, TRUE);
-		DrawExtendGraph(obj3x1 + g_Object.PURPLE_x, objALLy1 - 100, obj3x2 + g_Object.PURPLE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
-		break;
-
-	}
 
 
 	//ドアローテーション_________________________________________________________

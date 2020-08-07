@@ -215,6 +215,7 @@ int PlayerDraw(void) {
 			JumpOkflag = 0;	//地面についているのでジャンプしていない
 			g_Player.PLAYER_GROUND = TRUE;
 		}
+		DrawFormatString(0, 100, 0xff0fff, "Gravity %d ", Gravity);
 
 	/************************************************************************
 	*プレイヤーのジャンプ処理

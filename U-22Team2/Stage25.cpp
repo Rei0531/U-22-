@@ -21,23 +21,10 @@ extern GimmickAll gim;
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 //オブジェクトの初期位置
 static int
-obj1x1 = 600,
-obj1x2 = obj1x1 + 150,
-obj2x1 = 750,
-obj2x2 = obj2x1 + 150,
-obj3x1 = 900,
-obj3x2 = obj3x1 + 150,
-obj4x1 = 1050,
-obj4x2 = obj4x1 + 150,
-objALLy1 = 518,
-objALLy2 = 668,
-SliObjx1 = obj2x1 + 200,
-SliObjx2 = obj2x1 + 200,
-SliObjy1 = objALLy1,
-SliObjy2 = objALLy2;
-
-
-
+SliObjx1 = 750 + 200,
+SliObjx2 = 750 + 200,
+SliObjy1 = 568,
+SliObjy2 = 668;
 
 
 void Stage25Init() {
@@ -82,18 +69,6 @@ void Stage25Init() {
 	g_Door.w = 200;
 	g_Door.h = 370;
 
-	//箱の位置リセット
-	obj1x1 = 500;
-	obj1x2 = obj1x1 + 100;
-	obj2x1 = 750;
-	obj2x2 = obj2x1 + 100;
-	obj3x1 = 350;
-	obj3x2 = obj3x1 + 100;
-	obj4x1 = 900;
-	obj4x2 = obj4x1 + 100;
-	objALLy1 = 568;
-	objALLy2 = 668;
-
 	g_Object.Init();//オブジェクトの移動量リセット
 }
 
@@ -107,13 +82,13 @@ int Stage25(void) {			//マップ画像の描画
 
 	//色ブロック描画
 	Change(YELLOW);
-	DrawExtendGraph(obj4x1, objALLy1, obj4x2, objALLy2, g_pic.Box, TRUE);
-	DrawExtendGraph(obj1x1 + g_Object.YELLOW_x, objALLy1, obj1x2 + g_Object.YELLOW_x, objALLy2, g_pic.Box_Move, TRUE);
-	DrawExtendGraph(obj1x1 + g_Object.YELLOW_x, objALLy1 - 100, obj1x2 + g_Object.YELLOW_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
+	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box, TRUE);
+	MoveBox(YELLOW, 500, 568);
+	MoveBox(YELLOW, 500, 468);
 	Change(BLUE);
-	DrawExtendGraph(obj3x1, objALLy1, obj3x2, objALLy2, g_pic.Box, TRUE);
-	DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1, obj2x2 + g_Object.BLUE_x, objALLy2, g_pic.Box_Move, TRUE);
-	DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1 - 100, obj2x2 + g_Object.BLUE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
+	DrawExtendGraph(350, 568, 450, 668, g_pic.Box, TRUE);
+	MoveBox(BLUE, 750, 568);
+	MoveBox(BLUE, 750, 468);
 
 	//動く床処理___________________________________________________________________________________________________
 	SlideBlock();
@@ -126,18 +101,10 @@ int Stage25(void) {			//マップ画像の描画
 		Lever();
 
 	//触っている色のオブジェが画面の一番手前に来るようにする処理、いつかZ軸設定してやりたい
-	switch (g_Player.NowColor) {
-	case BLUE:
-		Change(BLUE);
-		DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1, obj2x2 + g_Object.BLUE_x, objALLy2, g_pic.Box_Move, TRUE);
-		DrawExtendGraph(obj2x1 + g_Object.BLUE_x, objALLy1 - 100, obj2x2 + g_Object.BLUE_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
-		break;
-	case YELLOW:
-		Change(YELLOW);
-		DrawExtendGraph(obj1x1 + g_Object.YELLOW_x, objALLy1, obj1x2 + g_Object.YELLOW_x, objALLy2, g_pic.Box_Move, TRUE);
-		DrawExtendGraph(obj1x1 + g_Object.YELLOW_x, objALLy1 - 100, obj1x2 + g_Object.YELLOW_x, objALLy2 - 100, g_pic.Box_Move, TRUE);
-		break;
-	}
+	frontMoveBox(YELLOW, 500, 568);
+	frontMoveBox(YELLOW, 500, 468);
+	frontMoveBox(BLUE, 750, 568);
+	frontMoveBox(BLUE, 750, 468);
 
 	//世界の壁（黒いブロック）
 	Change(NONCOLOR);
