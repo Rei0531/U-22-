@@ -17,6 +17,9 @@ extern Controller g_Pad;
 LockALL g_Lock;
 extern Sound g_Snd;
 extern DoorAll g_Door;
+extern image g_pic;
+
+static bool B = FALSE;//Bƒ{ƒ^ƒ“
 
 
 int Lock(void) {
@@ -26,20 +29,22 @@ int Lock(void) {
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 
 		if (i == 0) {
-			Change(g_Lock.color[g_MapC.StageNumber - 1][0]);
-			DrawBox(g_Door.x+50, g_Door.y+140, g_Door.x + 75, g_Door.y + 170, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
+			Change2(g_Lock.color[g_MapC.StageNumber - 1][0]);
+			DrawExtendGraph(g_Door.x, g_Door.y + 100, g_Door.x + 100, g_Door.y + 150,g_pic.Door_Nobu,TRUE);
+			//DrawBox(g_Door.x+50, g_Door.y+140, g_Door.x + 75, g_Door.y + 170, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
 			//Change(NONCOLOR);
-			ColorReset();
-			DrawBox(g_Door.x + 50, g_Door.y + 140, g_Door.x + 75, g_Door.y + 170, GetColor(1,1,1), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
+			//ColorReset();
+			//DrawBox(g_Door.x + 50, g_Door.y + 140, g_Door.x + 75, g_Door.y + 170, GetColor(1,1,1), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
 
 		}
 		else {
 
-			Change(g_Lock.color[g_MapC.StageNumber - 1][i]);
-			DrawBox(g_Door.x +15 + i * 10, g_Door.y + 140, g_Door.x + 25 + i * 10, g_Door.y + 170, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
+			Change2(g_Lock.color[g_MapC.StageNumber - 1][i]);
+			DrawExtendGraph(g_Door.x + 15 + i * 20, g_Door.y + 105, g_Door.x + 35 + i * 20, g_Door.y + 145,g_pic.Door_keyhole,TRUE);
+			//DrawBox(g_Door.x +15 + i * 10, g_Door.y + 140, g_Door.x + 25 + i * 10, g_Door.y + 170, GetColor(255, 255, 255), TRUE);	//Œ®ŒŠ•`‰æ(‰¼j
 			//Change(NONCOLOR);
-			ColorReset();
-			DrawBox(g_Door.x + 15 + i * 10, g_Door.y + 140, g_Door.x + 25 + i * 10, g_Door.y + 170, GetColor(1, 1, 1), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
+			//ColorReset();
+			//DrawBox(g_Door.x + 15 + i * 10, g_Door.y + 140, g_Door.x + 25 + i * 10, g_Door.y + 170, GetColor(1, 1, 1), FALSE);	//Œ®ŒŠ•`‰æ(‰¼j˜gü
 		}
 	}
 

@@ -63,7 +63,7 @@ void Change2(int Color2) {								//“n‚³‚ê‚½F‚Ì‹P“x‚Éİ’è‚·‚é(ƒXƒ|ƒCƒg‚³‚ê‚È‚¢
 		SetDrawBright(128, 0, 122);		//250
 		break;
 	case NONCOLOR2:
-		SetDrawBright(0, 0, 0);
+		SetDrawBright(3, 3, 3);
 		break;
 	default:
 		break;

@@ -6,7 +6,8 @@ extern Sound g_Snd;
 extern image g_pic;
 
 static bool DOWN = FALSE,//下キー
-            UP = FALSE;//上キー
+            UP = FALSE,//上キー
+            B = FALSE;//Bボタン
 
 static bool Sndflg = FALSE;//音再生フラグ
 
@@ -33,7 +34,7 @@ bool Menu_Update() {
 
     UP = (g_Pad.KEY_UP == TRUE) ? TRUE : FALSE;//上キーが押されていたら
 
-    if (g_Pad.KEY_B == TRUE) {//Bボタンが押されたら
+    if (g_Pad.KEY_B == TRUE && B == FALSE) {//Bボタンが押されたら
         Sndflg = FALSE;//メニューオープンのフラグをFALSEにして再度関数に入った時音が鳴るようにする
         switch (NowSelect) {//現在選択中の状態によって処理を分岐
         case eMenu_Select://セレクト選択中なら
@@ -54,6 +55,9 @@ bool Menu_Update() {
 
         }
     }
+
+    B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
+
     return FALSE;
 }
 

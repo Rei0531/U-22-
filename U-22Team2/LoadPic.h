@@ -12,6 +12,9 @@ public:
 	int MenuChar[3];	//メニューの文字
 	int StageNum[30];	//ステージ番号の文字
 
+	int Door_keyhole;	//鍵穴
+	int Door_Nobu;		//ノブ
+
 	int Box;//オブジェクトの木の箱
 	int Pin;//色取った場所のピン
 	int Box_Move;//動く箱

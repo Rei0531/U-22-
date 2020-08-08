@@ -17,12 +17,12 @@ enum Color {
 
 enum Color2 {		//プレイヤーにスポイトされない色
 	RED2,			//0
-	ORENGE2,			//1
-	YELLOW2,			//2
+	ORENGE2,		//1
+	YELLOW2,		//2
 	GREEN2,			//3
 	LIGHTBLUE2,		//4
 	BLUE2,			//5
-	PURPLE2,			//6
+	PURPLE2,		//6
 	BLACK2,			//7
 	NONCOLOR2,		//8
 };
