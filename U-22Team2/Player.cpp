@@ -273,7 +273,7 @@ int PlayerDraw(void) {
 	}
 	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
 	//														10フレームごとに、プレイヤーの動きに合わせて動かす
-	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0, g_pic.Player[animecnt / 10 % anime_motionMax + g_Player.Anime_Num + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
+	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0, g_pic.Player[animecnt / 9 % anime_motionMax + g_Player.Anime_Num + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
 	ColorReset();//画面全体の変色を元に戻す
 	//_____________________________________________________________________________________________________________________
 	return 0;

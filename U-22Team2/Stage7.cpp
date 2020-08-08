@@ -78,6 +78,8 @@ int Stage7(void) {			//マップ画像の描画
 
 	ColorReset();
 
+	if (g_Lock.clearflg == TRUE)InitFlag = TRUE;
+
 	//Init処理___________________________________
 	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる
 		Stage7Init();

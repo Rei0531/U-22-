@@ -93,6 +93,8 @@ int Stage5(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 
 	ColorReset();
 
+	if (g_Lock.clearflg == TRUE)InitFlag = TRUE;
+
 	if (g_Player.PLAYER_MENU == TRUE) {
 		Menu_Draw();
 		InitFlag = Menu_Update();

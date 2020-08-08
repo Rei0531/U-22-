@@ -116,6 +116,8 @@ int Stage18(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 
 	OneTimeSwitch();
 
+	if (g_Lock.clearflg == TRUE)InitFlag = TRUE;
+
 	if (g_Player.PLAYER_MENU == TRUE) {
 		Menu_Draw();
 		InitFlag = Menu_Update();
