@@ -16,9 +16,16 @@ public:
 	int shower_h;	//
 
 	//レバー用の変数_______＿＿＿＿
+	int g_LeverX = 0;		//レバーのX座標
+	int g_LeverY = 0;		//レバーのY座標
+	int g_L_BoxX1 = 0;		//レバーで反応する箱
+	int g_L_BoxY1 = 0;
+	int g_L_BoxX2 = 0;
+	int g_L_BoxY2 = 0;
+
 	int SwitchFlag = 0;		//レバーのON、OFF
 	int SwitchWait = 0;		//レバーの待機時間
-	int SwitchColor;		//レバーの色
+	int SwitchColor = 0;		//レバーの色
 
 	//スライドする床の用の変数_______＿＿＿＿
 	int Speed = 2;

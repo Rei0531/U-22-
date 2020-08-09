@@ -1,12 +1,12 @@
 #include "Gimmick.h"
-#include "LoadPic.h"
 #include "Color.h"
+#include "LoadPic.h"
 #include "Controller.h"
 #include "Player.h"
 
-extern Controller g_Pad;
 extern image g_pic;
 extern Player g_Player;
+extern Controller g_Pad;
 extern GimmickAll gim;
 
 int Bomb(void) {

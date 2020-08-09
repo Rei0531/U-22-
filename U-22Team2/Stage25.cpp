@@ -40,9 +40,6 @@ void Stage25Init() {
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
-
-	gim.SwitchFlag = 0;			//スイッチ初期化
-
 	gim.SliObjx1 = 950,
 	gim.SliObjx2 = gim.SliObjx1 + 150,
 	gim.SliObjy1 = 320,
@@ -56,6 +53,15 @@ void Stage25Init() {
 	gim.shower_C = PURPLE2;			//シャワーの塗りつぶしの色を初期化
 	gim.shower_X = 70;				//シャワーの座標
 
+	gim.g_LeverX = 50;		//レバーのX座標
+	gim.g_LeverY = 330;		//レバーのY座標
+
+	gim.g_L_BoxX1 = 200;		//レバーで反応する箱X/Y座標
+	gim.g_L_BoxY1 = 270;
+	gim.g_L_BoxX2 = 300;
+	gim.g_L_BoxY2 = 370;
+	gim.SwitchFlag = 0;		//レバーのON、OFF
+	gim.SwitchColor = 0;		//レバーの色
 
 	gim.SwitchColor = BLUE2;		//レバーの色の初期化
 
@@ -97,7 +103,7 @@ int Stage25(void) {			//マップ画像の描画
 	Shower();
 
 	//レバー処理___________________________________________________________________________________________________
-	if (g_Lock.Release == 2)
+	if (g_Lock.Release == 0)
 		Lever();
 
 	//触っている色のオブジェが画面の一番手前に来るようにする処理、いつかZ軸設定してやりたい

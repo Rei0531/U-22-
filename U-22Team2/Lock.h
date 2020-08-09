@@ -11,7 +11,7 @@ public:
 		{LIGHTBLUE,BLUE, RED},			//ステージ2　０：ノブ、１～：鍵穴の色
 		{ORENGE,YELLOW,PURPLE},			//ステージ3　０：ノブ、１～：鍵穴の色
 		{RED},							//ステージ4　０：ノブ、１～：鍵穴の色
-		{LIGHTBLUE},					//ステージ5　０：ノブ、１～：鍵穴の色
+		{YELLOW},						//ステージ5　０：ノブ、１～：鍵穴の色
 		{RED},							//ステージ6　０：ノブ、１～：鍵穴の色
 		{GREEN,RED},					//ステージ7　０：ノブ、１～：鍵穴の色
 		{RED,BLUE},						//ステージ8　０：ノブ、１～：鍵穴の色
@@ -45,7 +45,7 @@ public:
 		{LIGHTBLUE,BLUE, RED},			//ステージ2
 		{ORENGE,YELLOW,PURPLE},			//ステージ3　０：ノブ、１～：鍵穴の色
 		{RED},							//ステージ4
-		{LIGHTBLUE},					//ステージ5
+		{YELLOW},						//ステージ5
 		{RED},							//ステージ6
 		{GREEN,RED},					//ステージ7
 		{RED,BLUE},						//ステージ8

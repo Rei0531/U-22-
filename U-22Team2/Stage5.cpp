@@ -7,6 +7,8 @@
 #include "LoadSound.h"
 #include "Menu.h"
 #include "Draw_Door_Rotation.h"
+#include "Lever.h"
+#include "Gimmick.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -15,11 +17,10 @@ extern DoorAll g_Door;
 extern LockALL g_Lock;
 extern Controller g_Pad;
 extern Sound g_Snd;
+extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 
-int g_SwitchFlag = 0;		//レバーのON、OFF
-int g_SwitchWait = 0;		//レバーの待機時間
 
 void Stage5Init() {
 	//プレイヤーの初期位置
@@ -29,12 +30,20 @@ void Stage5Init() {
 
 	g_Player.x = 110;			//プレイヤー座標初期化
 	g_Player.y = 571;			//プレイヤー座標初期化
-	g_Player.NowColor = 4;		//プレイヤーの色初期化
+	g_Player.NowColor = 0;		//プレイヤーの色初期化
 
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
-	g_SwitchFlag = 0;			//スイッチ初期化
+	gim.g_LeverX = 500;		//レバーのX座標
+	gim.g_LeverY = 633;		//レバーのY座標
+	
+	gim.g_L_BoxX1 = 700;		//レバーで反応する箱X/Y座標
+	gim.g_L_BoxY1 = 558;
+	gim.g_L_BoxX2 = 800;
+	gim.g_L_BoxY2 = 668;
+	gim.SwitchFlag = 0;		//レバーのON、OFF
+	gim.SwitchColor = 0;		//レバーの色
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
@@ -58,33 +67,9 @@ int Stage5(void) {			//マップ画像の描画
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	//色ブロック描画
 
-	Change(LIGHTBLUE);
-	if ((g_Player.x > 400) & (g_Player.x < 600) & (g_Pad.KEY_B == TRUE)
-		& (g_SwitchFlag == 0) & (g_SwitchWait == 0) & (g_Player.NowColor == 4)) { //スイッチフラグがOFFであり待機時間が０でありスイッチと重なってあり
-		g_SwitchFlag = 1;														  //レバーの色と主人公が同じである状態でインタラクトを押すと箱が消える
-		g_SwitchWait = 10;
-		PlaySoundMem(g_Snd.leva, DX_PLAYTYPE_BACK);
-	}
-	else if ((g_Player.x > 400) & (g_Player.x < 600) & (g_Pad.KEY_B == TRUE)	  //スイッチがONの場合はOFFに切り替える
-		& (g_SwitchFlag == 1) & (g_SwitchWait == 0) & (g_Player.NowColor == 4)){  //レバーがONまたはOFFになった場合待機時間が加わる
-		g_SwitchFlag = 0;
-		g_SwitchWait = 10;
-		PlaySoundMem(g_Snd.leva, DX_PLAYTYPE_BACK);
-	}
-
-	if (g_SwitchFlag == 0) {													  
-		DrawRotaGraph(500, 613, 1.0, 0, g_pic.Reba, TRUE, FALSE);
-	}
-	else if (g_SwitchFlag == 1) {
-		DrawRotaGraph(500, 613, 1.0, 0, g_pic.Reba, TRUE, TRUE);
-		Change(WHITE);
-		DrawExtendGraph(700, 558, 800, 668, g_pic.Box, TRUE);
-	}
 	DrawExtendGraph(700, 558, 800, 668, g_pic.Box, TRUE);
 	DrawExtendGraph(700, 458, 800, 568, g_pic.Box, TRUE);
-	if (g_SwitchWait != 0) {													//待機時間がある場合減らし続ける
-		g_SwitchWait--;
-	}
+
 	//DrawFormatString(0, 400, 0x000000, "g_SwitchFlag = %d", g_SwitchFlag);
 	Door();			//ステージゴール処理
 	Lock();
@@ -92,6 +77,8 @@ int Stage5(void) {			//マップ画像の描画
 	DoorRotationBox(1);
 
 	ColorReset();
+
+	Lever();
 
 	if (g_Lock.clearflg == TRUE)InitFlag = TRUE;
 
