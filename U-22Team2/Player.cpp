@@ -120,7 +120,7 @@ int PlayerDraw(void) {
 		if (g_Pad.KEY_RIGHT == TRUE || g_Pad.KEY_LEFT == TRUE)	//右か左に入力されていたら
 		{
 			//歩く時の音、マップ端を超えないようにする処理_______________________________________
-			if (CheckSoundMem(g_Snd.Walk) == 0 && g_Player.PLAYER_JUMP == FALSE) {
+			if (CheckSoundMem(g_Snd.Walk) == 0 && g_Player.PLAYER_JUMP == FALSE) {//音を鳴らす
 				PlaySoundMem(g_Snd.Walk, DX_PLAYTYPE_BACK);
 			}
 			if (g_Player.x < g_MapC.X1) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、左端に到達
@@ -198,7 +198,7 @@ int PlayerDraw(void) {
 		else {
 			NoMove = 0;//動いていない
 			animecnt = 0;//アニメーションを止める
-			if (CheckSoundMem(g_Snd.Walk) == 1) {
+			if (CheckSoundMem(g_Snd.Walk) == 1) {//音を止める
 				StopSoundMem(g_Snd.Walk);
 			}
 		}
