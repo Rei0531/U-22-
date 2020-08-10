@@ -16,6 +16,7 @@ public:
 
 	int Door_keyhole;	//鍵穴
 	int Door_Nobu;		//ノブ
+	int Door_Rotation[4];	//ドアのローテーション
 
 	int Box;//オブジェクトの木の箱
 	int Pin;//色取った場所のピン

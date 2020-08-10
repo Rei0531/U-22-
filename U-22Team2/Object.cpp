@@ -72,7 +72,7 @@ int GetPointColor(int Point_x, int Point_y) {
 			g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
 		}
 		//g_Player.Hit_Up == getcolor || //Hitが重なっているときに取れなくするやつ
-		if (getcolor == WHITE || getcolor == BLACK || getcolor == MOVE ||
+		if (getcolor == WHITE || getcolor == BLACK || getcolor == MOVE || g_Player.Interact <= 0 || 
 			(g_Door.x < g_Player.PickUpPixel && g_Door.w > g_Player.PickUpPixel &&
 				g_Door.y < g_Player.PickUpPixely && g_Door.h > g_Player.PickUpPixely)) {
 			////プレイヤーが重なっている位置の色と取得した色が同じだった時、取得した色が白色の時,黒色の時、ドアの位置の時

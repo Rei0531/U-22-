@@ -34,6 +34,7 @@ int PlayerDraw(void) {
 	if (g_Player.PLAYER_PICKUP == TRUE && g_Player.Interact > 0) { //この関数呼び出しで色を取得
 		g_Player.NowColor = GetObjectColor();//変数にスポイトした色を格納する
 	}
+	if (g_Player.Interact <= 0)g_Player.Interact = 0;
 
 /************************************************************************
 **

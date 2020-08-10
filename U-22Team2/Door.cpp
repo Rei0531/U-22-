@@ -48,7 +48,7 @@ int DoorRotation(void) {		//ドアのローテーションの色変え
 
 	if (g_Door.Picupflg == TRUE) {
 		g_Door.RotationNumber += 1;
-		g_Door.Picupflg = FALSE;
+		//g_Door.Picupflg = FALSE;
 	}
 
 

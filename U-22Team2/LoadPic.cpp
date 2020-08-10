@@ -19,6 +19,7 @@ int LoadPictue(void) {		//画像の読み込み
 
 	if ((g_pic.Door_Nobu = LoadGraph("image/doanobu.png")) == -1)return -1;//鍵ノブ
 	if ((g_pic.Door_keyhole = LoadGraph("image/ita.png")) == -1)return -1;//鍵穴
+	if (LoadDivGraph("image/Rotation01.png", 4, 4, 1, 100, 100, g_pic.Door_Rotation) == -1) return -1;//ドアのローテーション
 
 	if ((g_pic.Box = LoadGraph("image/Box2.png")) == -1)return -1;//木箱
 	if ((g_pic.Box_Move = LoadGraph("image/Box_Move.png")) == -1)return -1;//動く木箱
