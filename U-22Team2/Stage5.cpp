@@ -80,7 +80,12 @@ int Stage5(void) {			//マップ画像の描画
 
 	Lever();
 
-	if (g_Lock.clearflg == TRUE)InitFlag = TRUE;
+
+	//ステージクリアした時、タイトル画面に戻ったとき
+	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {
+		InitFlag = TRUE;
+		g_Player.InitFlag = FALSE;
+	}
 
 	if (g_Player.PLAYER_MENU == TRUE) {
 		Menu_Draw();

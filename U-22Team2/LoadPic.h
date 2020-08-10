@@ -11,6 +11,8 @@ public:
 	int Menu;			//メニュー
 	int MenuChar[3];	//メニューの文字
 	int StageNum[30];	//ステージ番号の文字
+	int Nokori[6];		//残り回数の文字
+	int Nokori_Num[10];	//残り回数の数字
 
 	int Door_keyhole;	//鍵穴
 	int Door_Nobu;		//ノブ

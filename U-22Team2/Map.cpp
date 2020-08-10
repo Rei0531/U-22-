@@ -114,7 +114,13 @@ int Map(void) {			//マップ画像の描画____________________________________________
 	}
 
 	//残り回数の表示
-	DrawFormatString(g_Player.x - 30, g_Player.y - 150, g_Player.NowColor, "残り%d", g_Player.Interact);
+	for (int i = 0; i < 6; i++) {
+		DrawRotaGraph(20 +i*28, 20, 0.2, 0, g_pic.Nokori[i], TRUE, FALSE);
+	}
+	Change(g_Player.Interact%7);
+	DrawRotaGraph(200, 20, 0.2, 0, g_pic.Nokori_Num[g_Player.Interact / 10 % 10], TRUE, FALSE);
+	DrawRotaGraph(230, 20, 0.2, 0, g_pic.Nokori_Num[g_Player.Interact % 10], TRUE, FALSE);
+	ColorReset();
 
 
 	if ((g_Lock.clearflg == TRUE) & (g_Pad.KEY_B == FALSE)) {

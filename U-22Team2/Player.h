@@ -26,6 +26,8 @@ public:
 	int Move_Hit1,
 		Move_Hit2;					//動かせるボックスの当たり判定色を取得
 
+	bool InitFlag = FALSE;			//プレイヤーのInit処理に入るか
+
 	bool PLAYER_DIRECTION = FALSE,	//プレイヤーの向き//TRUE左向き/FALSE右向き
 		PLAYER_JUMP = FALSE,		//プレイヤーがジャンプしたか
 		PLAYER_PICKUP = FALSE,		//スポイト

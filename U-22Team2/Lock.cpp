@@ -10,7 +10,6 @@
 #include "Door.h"
 
 
-
 extern Player g_Player;
 extern MapCoordinate g_MapC;
 extern Controller g_Pad;
@@ -29,22 +28,14 @@ int Lock(void) {
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 
 		if (i == 0) {
-			Change2(g_Lock.color[g_MapC.StageNumber - 1][0]);
-			DrawExtendGraph(g_Door.x, g_Door.y + 100, g_Door.x + 100, g_Door.y + 150,g_pic.Door_Nobu,TRUE);
-			//DrawBox(g_Door.x+50, g_Door.y+140, g_Door.x + 75, g_Door.y + 170, GetColor(255, 255, 255), TRUE);	//鍵穴描画(仮）
-			//Change(NONCOLOR);
-			//ColorReset();
-			//DrawBox(g_Door.x + 50, g_Door.y + 140, g_Door.x + 75, g_Door.y + 170, GetColor(1,1,1), FALSE);	//鍵穴描画(仮）枠線
-
+			ColorReset();//今の色をリセットする
+			Change2(g_Lock.color[g_MapC.StageNumber - 1][0]);//プレイヤーの当たり判定が出ないように、Change2で描画する
+			DrawExtendGraph(g_Door.x, g_Door.y + 100, g_Door.x + 100, g_Door.y + 150,g_pic.Door_Nobu,TRUE);//ドアノブの描画
 		}
 		else {
-
-			Change2(g_Lock.color[g_MapC.StageNumber - 1][i]);
-			DrawExtendGraph(g_Door.x + 15 + i * 20, g_Door.y + 105, g_Door.x + 35 + i * 20, g_Door.y + 145,g_pic.Door_keyhole,TRUE);
-			//DrawBox(g_Door.x +15 + i * 10, g_Door.y + 140, g_Door.x + 25 + i * 10, g_Door.y + 170, GetColor(255, 255, 255), TRUE);	//鍵穴描画(仮）
-			//Change(NONCOLOR);
-			//ColorReset();
-			//DrawBox(g_Door.x + 15 + i * 10, g_Door.y + 140, g_Door.x + 25 + i * 10, g_Door.y + 170, GetColor(1, 1, 1), FALSE);	//鍵穴描画(仮）枠線
+			ColorReset();//今の色をリセットする
+			Change2(g_Lock.color[g_MapC.StageNumber - 1][i]);//プレイヤーの当たり判定が出ないように、Change2で描画する
+			DrawExtendGraph(g_Door.x + 15 + i * 20, g_Door.y + 105, g_Door.x + 35 + i * 20, g_Door.y + 145,g_pic.Door_keyhole,TRUE);//鍵穴
 		}
 	}
 

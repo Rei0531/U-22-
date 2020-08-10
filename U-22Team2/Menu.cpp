@@ -41,6 +41,7 @@ bool Menu_Update() {
             //本来はここにセレクト画面以降処理
             GameState = GAME_TITLE;//シーンをセレクト画面に変更
             g_Player.PLAYER_MENU = FALSE;//メニューを開くフラグをFALSEにする
+            g_Player.InitFlag = TRUE;//ステージInit処理のフラグをTRUEにする
             break;
         case eMenu_Reset://リセット選択中なら
             g_Player.PLAYER_MENU = FALSE;//メニューを開くフラグをFALSEにする
