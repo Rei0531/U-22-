@@ -27,7 +27,8 @@ int CC_Switch(int Color,int x,int y) {
 
 	if (g_Player.PLAYER_RESET == TRUE) {	//Init処理が呼ばれたら色を初期化する
 		PushColor = 9;
-		g_Player.PLAYER_RESET = FALSE;//リセットしたフラグをFALSEにし続ける
+		//DrawRotagGraphでFALSEにしている
+		//g_Player.PLAYER_RESET = FALSE;//リセットしたフラグをFALSEにし続ける
 	}
 
 	if (g_Lock.clearflg == TRUE)PushColor = 9;
