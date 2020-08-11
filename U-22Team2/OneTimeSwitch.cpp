@@ -18,7 +18,8 @@ int OneTimeSwitch(void) {
 
 	if (gim.g_OTSwitchFlag == 0) {
 		Change(NONCOLOR);
-		DrawBox(gim.OTS_WallX1, gim.OTS_WallY1, gim.OTS_WallX2, gim.OTS_WallY2, GetColor(255, 255, 255), TRUE);					//スイッチが押されてないなら表示
+		DrawExtendGraph(gim.OTS_WallX1, gim.OTS_WallY1, gim.OTS_WallX2, gim.OTS_WallY2,g_pic.Object_Wall, TRUE);					//スイッチが押されてないなら表示
+		DrawExtendGraph(gim.OTS_WallX1 + 35, gim.OTS_WallY1 + 140, gim.OTS_WallX2 - 35, gim.OTS_WallY2 - 199, g_pic.OneTimeSwitch_OFF, TRUE);
 		DrawExtendGraph(gim.OTS_X1, gim.OTS_Y1, gim.OTS_X2, gim.OTS_Y2, g_pic.OneTimeSwitch_OFF, TRUE);
 	}																				
 	else if (gim.g_OTSwitchFlag != 0) {												//押されたらON

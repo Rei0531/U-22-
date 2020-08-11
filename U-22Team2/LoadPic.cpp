@@ -25,6 +25,8 @@ int LoadPictue(void) {		//画像の読み込み
 	if ((g_pic.Box_Move = LoadGraph("image/Box_Move.png")) == -1)return -1;//動く木箱
 	if ((g_pic.Pin = LoadGraph("image/Pin.png")) == -1)return -1;//ピン挿したところ
 
+	if ((g_pic.Object_Wall = LoadGraph("image/Object_Wall.png")) == -1) return -1;			//ボムとスイッチ用の壁
+
 	if (LoadDivGraph("image/All_Object.png", 10, 10, 1, 150, 150, g_pic.Object) == -1) return -1;//オブジェクトの分割画像
 
 	if ((g_pic.shower = LoadGraph("image/shower.png")) == -1)return-1;	//シャワーの画像

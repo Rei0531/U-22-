@@ -38,6 +38,7 @@ void Stage18Init() {
 	gim.OTS_Y1 = 250;
 	gim.OTS_X2 = gim.OTS_X1 + 50;
 	gim.OTS_Y2 = gim.OTS_Y1 + 50;
+
 	gim.OTS_WallX1 = 1000;
 	gim.OTS_WallY1 = 300;
 	gim.OTS_WallX2 = 1050;
@@ -55,7 +56,7 @@ void Stage18Init() {
 
 	gim.B_EffectCount = 30;	//”š•—‚Ì‰æ‘œ‚Ì•`‰æŽžŠÔ
 	gim.B_WallX1 = 650;			//‰ó‚¹‚é•Ç‚ÌXŽ²
-	gim.B_WallY1 = 300;
+	gim.B_WallY1 = 0;
 	gim.B_WallX2 = 700;			//‰ó‚¹‚é•Ç‚ÌYŽ²
 	gim.B_WallY2 = 669;
 

@@ -35,6 +35,8 @@ public:
 	int Bomb;			//爆弾の画像
 	int BombEffect;		//爆風の画像
 
+	int Object_Wall;
+
 	int Warp_Area;
 
 	int ChengObject[3];  //変形するオブジェクト
