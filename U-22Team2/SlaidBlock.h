@@ -1,4 +1,4 @@
 #pragma once
 
 
-int SlideBlock(void);
+int SlideBlock(int Color);
