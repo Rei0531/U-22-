@@ -48,6 +48,8 @@ int Lever(void) {
 		gim.SwitchWait--;
 	}
 
+	Change(WHITE);
+
 	return 0;
 }
 
