@@ -61,7 +61,7 @@ void Stage6Init() {
 	gim.GetObjy2 = gim.GetObjy1 + 100,
 	gim.move_max = 100;
 
-	SlideColor = 9;//スイッチから―の初期化
+	SlideColor = RED;//スイッチから―の初期化
 }
 
 int Stage6(void) {			//マップ画像の描画
@@ -74,7 +74,6 @@ int Stage6(void) {			//マップ画像の描画
 		Stage6Init();
 		g_Player.PLAYER_MENU = FALSE;
 	}
-	SlideColor = g_Player.NowColor;
 	//DrawFormatString(g_Player.x - 30, g_Player.y - 150, g_Player.NowColor, "%d %d %d %d",gim.SliObjx1,gim.SliObjx2,gim.SliObjy1,gim.SliObjy2);
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	Change(BLUE);//色ブロック描画
@@ -88,7 +87,7 @@ int Stage6(void) {			//マップ画像の描画
 	DrawExtendGraph(880, 468, 980, 568, g_pic.Box, TRUE);//障害ブロック
 
 
-	SlideBlock();//動くブロックの方向と、乗ったプレイヤーを動かす処理
+	SlideBlock(SlideColor);//動くブロックの方向と、乗ったプレイヤーを動かす処理
 	Door();			//ステージゴール処理
 	Lock();
 

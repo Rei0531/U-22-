@@ -46,8 +46,7 @@ void Stage9Init() {
 		objALLy1 = 518,
 		objALLy2 = 668;
 
-	gim.move_cnt = 0;
-	gim.move_max = 160;
+	gim.SetNum = 2;
 
 	//ドアの位置
 	g_Door.x = 1100;				//扉の左上のx座標
@@ -66,9 +65,9 @@ int Stage9(void) {			//マップ画像の描画
 	Change(NONCOLOR);
 	DrawBox(0, 268, 1300, 368, GetColor(255, 255, 255), TRUE);
 	ColorReset();
-	DrawExtendGraph(168, 168, 268, 268, g_pic.Warp_Area, TRUE);//ワープ用画像
-	DrawExtendGraph(368, 568, 468, 668, g_pic.Warp_Area, TRUE);//ワープ用画像
-	DrawExtendGraph(868, 168, 968, 268, g_pic.Warp_Area, TRUE);//ワープ用画像
+	//DrawExtendGraph(168, 168, 268, 268, g_pic.Warp_Area, TRUE);//ワープ用画像
+	//DrawExtendGraph(368, 568, 468, 668, g_pic.Warp_Area, TRUE);//ワープ用画像
+	//DrawExtendGraph(868, 168, 968, 268, g_pic.Warp_Area, TRUE);//ワープ用画像
 
 	Change(RED);
 	/*DrawExtendGraph(150, 568, 250, 668, g_pic.Box, TRUE);
@@ -86,14 +85,14 @@ int Stage9(void) {			//マップ画像の描画
 	DrawExtendGraph(300, 68, 400, 168, g_pic.Box, TRUE);
 	DrawExtendGraph(300, 168, 400, 268, g_pic.Box, TRUE);
 
-	Warp();
+	Warp(gim.SetNum,100,175,200,175);
 
 	//DrawFormatString(g_Player.x - 30, g_Player.y - 200, g_Player.NowColor, "%d", gim.move_cnt);
 
-	DoorRotationBox(3);
-
 	Door();			//ステージゴール処理
 	Lock();
+
+	DoorRotationBox(3);
 
 	ColorReset();
 
