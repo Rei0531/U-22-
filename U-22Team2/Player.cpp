@@ -234,6 +234,11 @@ int PlayerDraw(void) {
 				Jumpcnt = 20;				//ジャンプアニメーションのカウントを0にする
 				PlaySoundMem(g_Snd.Landing, DX_PLAYTYPE_BACK);
 			}
+			if (g_Player.Hit_Up == BLACK) {	//プレイヤーが天井にぶつかった時,ジャンプ処理を終了する
+				g_Player.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
+				Jumpcnt = 20;				//ジャンプアニメーションのカウントを0にする
+				JumpOkflag = 0;	//一度ジャンプしたので終わるまでジャンプ処理
+			}
 		}
 	}
 
