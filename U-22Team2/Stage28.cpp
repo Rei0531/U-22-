@@ -22,7 +22,7 @@ static bool InitFlag = TRUE;//InitŠÖ”‚ğ’Ê‚Á‚Ä‚¢‚¢‚©”»’è•Ï”/TRUE‚ª‚¢‚¢/FALSE‚ªƒ
 void Stage28Init() {
 	//ƒvƒŒƒCƒ„[‚Ì‰ŠúˆÊ’u
 	//ƒIƒuƒWƒFƒNƒg‚Ì‰ŠúˆÊ’u‚ğ•`‚­
-	g_Player.Interact = 20;//ƒvƒŒƒCƒ„[‚ªƒCƒ“ƒ^ƒ‰ƒNƒg‚Å‚«‚é‰ñ”‚ğ10‰ñ‚Éİ’è
+	g_Player.Interact = 3;//ƒvƒŒƒCƒ„[‚ªƒCƒ“ƒ^ƒ‰ƒNƒg‚Å‚«‚é‰ñ”‚ğ10‰ñ‚Éİ’è
 	InitFlag = FALSE;	//FALSE‚É‚µ‚ÄŸTRUE‚É‚È‚é‚Ü‚Å’Ê‚ç‚È‚¢‚æ‚¤‚É‚·‚é
 
 	g_Player.x = 110;			//ƒvƒŒƒCƒ„[À•W‰Šú‰»
@@ -51,10 +51,18 @@ void Stage28Init() {
 	gim.OTS_WallY1 = 0;
 	gim.OTS_WallX2 = 0;
 	gim.OTS_WallY2 = 0;
-	gim.OTS_C_WallX1 = 500;            //ˆê“xŒÀ‚è‚ÌƒXƒCƒbƒ`‚Å•\‚ê‚é•Ç‚ÌX/Y²
+	gim.OTS_C_WallX1 = 590;            //ˆê“xŒÀ‚è‚ÌƒXƒCƒbƒ`‚Å•\‚ê‚é•Ç‚ÌX/Y²
 	gim.OTS_C_WallY1 = 280;
-	gim.OTS_C_WallX2 = 780;
+	gim.OTS_C_WallX2 = 690;
 	gim.OTS_C_WallY2 = 320;
+	//*****************************************************
+
+	//•ÏŒ`ƒIƒuƒWƒFƒNƒg*******************************************
+	gim.cheobj_flg = 1;			//•ÏŒ`‚·‚éƒIƒuƒWƒFƒNƒg‚Ìƒtƒ‰ƒO
+	gim.cheobj_x = 525;
+	gim.cheobj_y = 425;
+	gim.cheobj_c = g_Player.NowColor;
+	gim.cheobj_ani = 158;
 	//*****************************************************
 
 	//” ‚ÌˆÊ’uƒŠƒZƒbƒg
@@ -93,10 +101,12 @@ int Stage28(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 
 	OneTimeSwitch();
 
+	ChangeBlock();	//•ÏŒ`‚·‚éƒIƒuƒWƒFƒNƒg‚ÌŠÖ”
+
 	//¢ŠE‚Ì•Ç_________________________________________
 	Change(NONCOLOR);
 	DrawBox(0, 395, 400, 420, GetColor(255, 255, 255), TRUE);//¶‚Ì°
-	DrawBox(540, 569, 740, 669, GetColor(255, 255, 255), TRUE);//’†‰›‚Ì•‚¢•Ç
+	DrawBox(526, 569, 750, 669, GetColor(255, 255, 255), TRUE);//’†‰›‚Ì•‚¢•Ç
 	DrawBox(880, 395, 1280, 420, GetColor(255, 255, 255), TRUE);//‰E‚Ì°
 	DrawBox(290, 295, 340, 395, GetColor(255, 255, 255), TRUE);//¶‚ÌáŠQ•¨
 	DrawBox(940, 295, 990, 395, GetColor(255, 255, 255), TRUE);//‰E‚ÌáŠQ•¨
@@ -109,7 +119,7 @@ int Stage28(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 	Lock();
 
 
-	DoorRotationBox(2);
+	DoorRotationBox(4);
 
 	ColorReset();
 
