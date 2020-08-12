@@ -24,9 +24,9 @@ int OneTimeSwitch(void) {
 	}																				
 	else if (gim.g_OTSwitchFlag != 0) {												//‰Ÿ‚³‚ê‚½‚çON
 		DrawExtendGraph(gim.OTS_X1, gim.OTS_Y1, gim.OTS_X2, gim.OTS_Y2, g_pic.OneTimeSwitch_ON, TRUE);
-		DrawBox(gim.OTS_WallX1, gim.OTS_WallY1, gim.OTS_WallX2, gim.OTS_WallY2 , GetColor(255, 255, 255), TRUE);
+		//DrawExtendGraph(gim.OTS_WallX1, gim.OTS_WallY1, gim.OTS_WallX2, gim.OTS_WallY2 , GetColor(255, 255, 255), TRUE);
 		Change(NONCOLOR);
-		DrawBox(gim.OTS_C_WallX1, gim.OTS_C_WallY1, gim.OTS_C_WallX2, gim.OTS_WallY2, GetColor(255, 255, 255), TRUE);
+		DrawBox(gim.OTS_C_WallX1, gim.OTS_C_WallY1, gim.OTS_C_WallX2, gim.OTS_C_WallY2, 0xffffff, TRUE);
 		Change(RED);
 	}
 
