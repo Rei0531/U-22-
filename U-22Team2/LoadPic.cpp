@@ -17,6 +17,8 @@ int LoadPictue(void) {		//画像の読み込み
 	if (LoadDivGraph("image/nokori.png", 6, 6, 1, 140, 200, g_pic.Nokori) == -1) return -1;//残り回数の分割画像
 	if (LoadDivGraph("image/Nokori_Num.PNG", 10, 10, 1, 170, 200, g_pic.Nokori_Num) == -1) return -1;//残り回数の分割画像
 
+	if ((g_pic.Hand = LoadGraph("image/yubisashi.png")) == -1)return -1;//スポイト場所表示
+
 	if ((g_pic.Door_Nobu = LoadGraph("image/doanobu.png")) == -1)return -1;//鍵ノブ
 	if ((g_pic.Door_keyhole = LoadGraph("image/ita.png")) == -1)return -1;//鍵穴
 	if (LoadDivGraph("image/Rotation01.png", 4, 4, 1, 100, 100, g_pic.Door_Rotation) == -1) return -1;//ドアのローテーション

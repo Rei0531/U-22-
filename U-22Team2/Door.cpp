@@ -31,7 +31,7 @@ int Door(void) {
 	if (g_Player.PLAYER_ACTION == TRUE && g_Player.PLAYER_MENU == FALSE && B == FALSE) {
 		g_Player.PLAYER_ACTION = FALSE;
 		if ((g_Door.x < g_Player.x && g_Door.w > g_Player.x - 20) &&
-			(g_Door.y < g_Player.y && g_Door.h > g_Player.y))
+			(g_Door.y < g_Player.y && g_Door.h > g_Player.y) && g_Player.PLAYER_JUMP == FALSE)
 		{
 
 			UnLock();

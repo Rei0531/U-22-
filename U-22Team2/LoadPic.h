@@ -14,6 +14,7 @@ public:
 	int Nokori[6];		//残り回数の文字
 	int Nokori_Num[10];	//残り回数の数字
 
+	int Hand;			//スポイト表示
 	int Door_keyhole;	//鍵穴
 	int Door_Nobu;		//ノブ
 	int Door_Rotation[4];	//ドアのローテーション
