@@ -97,7 +97,7 @@ int Stage28(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 	MoveBox(RED, 840, 568);
 
 	ColorReset();
-	Warp(gim.SetNum, 150, 175, 150, 175);
+	Warp(150, 270, 150, 568);
 
 	OneTimeSwitch();
 

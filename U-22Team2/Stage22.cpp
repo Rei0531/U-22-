@@ -75,7 +75,7 @@ int Stage22(void) {			//マップ画像の描画
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
-	Warp(gim.SetNum, 200, 175, 200, 175);
+	Warp(200, 270, 200, 568);
 
 	Lever();
 

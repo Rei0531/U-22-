@@ -94,3 +94,5 @@ int OneTimeSwitch(void); //一度限りのスイッチ
 int Bomb(void);			//ボックス破壊の爆弾
 int ChangeBlock(void); //変形するオブジェクト
 int kaihuku(int x, int y);	//スポイト回復アイテム
+int Warp(int x1, int y1,int x2,int y2);	//スポイト回復アイテム
+int Warp2(int x_1, int y_1,int x_2,int y_2);	//スポイト回復アイテム
