@@ -106,7 +106,7 @@ int Stage28(void) {			//マップ画像の描画
 	//世界の壁_________________________________________
 	Change(NONCOLOR);
 	DrawBox(0, 395, 400, 420, GetColor(255, 255, 255), TRUE);//左の床
-	DrawBox(526, 569, 750, 669, GetColor(255, 255, 255), TRUE);//中央の黒い壁
+	DrawBox(525, 569, 750, 669, GetColor(255, 255, 255), TRUE);//中央の黒い壁
 	DrawBox(880, 395, 1280, 420, GetColor(255, 255, 255), TRUE);//右の床
 	DrawBox(290, 295, 340, 395, GetColor(255, 255, 255), TRUE);//左の障害物
 	DrawBox(940, 295, 990, 395, GetColor(255, 255, 255), TRUE);//右の障害物
