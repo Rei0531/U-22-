@@ -17,7 +17,6 @@ int Map(void) {			//マップ画像の描画____________________________________________
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
-
 	switch (g_MapC.StageNumber) {
 	case 1:
 		Stage1();

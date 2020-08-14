@@ -47,7 +47,6 @@ void Stage16Init() {
 
 int Stage16(void) {			//マップ画像の描画
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる
 		Stage16Init();
@@ -55,25 +54,25 @@ int Stage16(void) {			//マップ画像の描画
 
 	//色ブロック描画
 	Change(BLUE);
-	DrawExtendGraph(300, 568, 400, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(300, 468, 400, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(300, 568, 400, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(300, 468, 400, 568, g_pic.Box[0], TRUE);
 	Change(GREEN);
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(500, 568, 600, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(500, 468, 600, 568, g_pic.Box[0], TRUE);
 	Change(YELLOW);
-	DrawExtendGraph(700, 568, 800, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(700, 468, 800, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(700, 568, 800, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(700, 468, 800, 568, g_pic.Box[0], TRUE);
 
 	//変色箱描画________________________________
 	Change(Rotation_Box(2));
-	DrawExtendGraph(900, 568, 1000, 668, g_pic.Rot_Box, TRUE);
+	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box[2], TRUE);
 
 	//色反映スイッチ____________________________
 	SwitchColor = CC_Switch(g_Player.NowColor, 140, 568);//一時変数に関数からの戻り値を格納する
 	Change(SwitchColor);
 	//色反映する箱________________________________________________
-	DrawExtendGraph(1000, 568, 1100, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(1000, 468, 1100, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(1000, 568, 1100, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(1000, 468, 1100, 568, g_pic.Box[0], TRUE);
 	//箱の枠線__________________________________________
 	ColorReset();
 	DrawBox(1000, 568, 1100, 668, GetColor(1, 1, 1), FALSE);

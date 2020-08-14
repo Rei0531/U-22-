@@ -14,10 +14,6 @@ extern Sound g_Snd;
 
 static int SaveColor = 99;		//一時変数に現在の色を格納する
 
-int anicnt = 0,
-anicntMax = 20,
-aniy = 0;
-
 /************************************************************************
 *渡された座標の色を取得して返す
 *************************************************************************/
@@ -25,19 +21,10 @@ int GetPointColor(int Point_x, int Point_y) {
 	int color, r, g, b;
 	int getcolor = 99;		//今取得する色格納変数
 
-	int PixelColor;
-	int PixelSum;
-	int R, G, B;
-
-
 	//当たり判定の場所の色を取得******************************************************************************
 	color = GetPixel(Point_x, Point_y);		//スポイトする/引数はスポイトする場所
 	GetColor2(color, &r, &g, &b);							//スポイトした色をR,G,B値に直す
 	int colorsum = r + g + b;
-	//スポイトする場所の描画___________________________________________________________________
-	PixelColor = GetPixel(g_Player.PickUpPixel, g_Player.PickUpPixely);
-	GetColor2(PixelColor, &R, &G, &B);							//スポイトした色をR,G,B値に直す
-	PixelSum = R + G + B;
 	//********************************************************************************************************
 
 	switch (colorsum) {		//R,G,Bの合計で区別する/スポイトした色をreturnで返す
@@ -81,58 +68,7 @@ int GetPointColor(int Point_x, int Point_y) {
 		//getcolor = SaveColor;
 		break;
 	}
-	/*********************************************************************************************************
-	*スポイトする場所の描画
-	********************************************************************************************************/
-	g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 30 : g_Player.x + 30l;//
-	g_Player.PickUpPixely = g_Player.y - 27;//初期値33もし白色が取れるようになってしまったら戻す
 
-	switch (PixelSum) {		//R,G,Bの合計で区別する/スポイトした色をreturnで返す
-	case 255:
-		PixelColor = RED;
-		break;
-	case 420:
-		PixelColor = ORENGE;
-		break;
-	case 510:
-		PixelColor = YELLOW;
-		break;
-	case 128:
-		PixelColor = GREEN;
-		break;
-	case 509:
-		PixelColor = LIGHTBLUE;
-		break;
-	case 254:
-		PixelColor = BLUE;
-		break;
-	case 256:
-		PixelColor = PURPLE;
-		break;
-	case 0:
-		PixelColor = BLACK;
-		break;
-	case 765:
-		PixelColor = WHITE;
-		break;
-	}
-
-	if (PixelColor != WHITE && PixelColor != BLACK && PixelColor !=  g_Player.NowColor && (!((g_Door.x < g_Player.PickUpPixel && g_Door.w > g_Player.PickUpPixel) &&
-		(g_Door.y < g_Player.PickUpPixely && g_Door.h > g_Player.PickUpPixely)))) {//取得する場所の色が白じゃないとき描画
-
-		anicnt++;
-
-		if (anicnt > anicntMax / 2) {//スポイトする場所のアニメーション
-			aniy += 2;
-		}
-		if (anicnt <= anicntMax / 2) {
-			aniy -= 2;
-		}
-		if (anicnt >= anicntMax)anicnt = 0;
-
-		DrawRotaGraph(g_Player.PickUpPixel, g_Player.PickUpPixely + aniy, 1.0, 0, g_pic.Hand, TRUE, g_Player.PLAYER_DIRECTION);
-	}
-	//*********************************************************************************************************
 
 	//スポイトされたとき********************************************************************************************************
 	if (g_Player.PLAYER_PICKUP == TRUE) {

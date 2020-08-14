@@ -65,7 +65,6 @@ int Stage21(void) {			//マップ画像の描画
 		Stage21Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	Change(NONCOLOR);
 	DrawBox(300, 280, 750, 300, 0xffffff, TRUE);
@@ -74,24 +73,24 @@ int Stage21(void) {			//マップ画像の描画
 	DrawBox(1100, 300, 1300, 370, 0xffffff, TRUE);
 
 	Change(YELLOW);
-	DrawExtendGraph(100, 370, 200, 470, g_pic.Box, TRUE);
-	DrawExtendGraph(100, 470, 200, 570, g_pic.Box, TRUE);
-	DrawExtendGraph(100, 570, 200, 670, g_pic.Box, TRUE);
-	DrawExtendGraph(200, 470, 300, 570, g_pic.Box, TRUE);
-	DrawExtendGraph(200, 570, 300, 670, g_pic.Box, TRUE);
+	DrawExtendGraph(100, 370, 200, 470, g_pic.Box[0], TRUE);
+	DrawExtendGraph(100, 470, 200, 570, g_pic.Box[0], TRUE);
+	DrawExtendGraph(100, 570, 200, 670, g_pic.Box[0], TRUE);
+	DrawExtendGraph(200, 470, 300, 570, g_pic.Box[0], TRUE);
+	DrawExtendGraph(200, 570, 300, 670, g_pic.Box[0], TRUE);
 	Change(RED);
-	DrawExtendGraph(750, 470, 850, 570, g_pic.Box, TRUE);
-	DrawExtendGraph(750, 570, 850, 670, g_pic.Box, TRUE);
-	DrawExtendGraph(850, 370, 950, 470, g_pic.Box, TRUE);
-	DrawExtendGraph(850, 470, 950, 570, g_pic.Box, TRUE);
-	DrawExtendGraph(850, 570, 950, 670, g_pic.Box, TRUE);
+	DrawExtendGraph(750, 470, 850, 570, g_pic.Box[0], TRUE);
+	DrawExtendGraph(750, 570, 850, 670, g_pic.Box[0], TRUE);
+	DrawExtendGraph(850, 370, 950, 470, g_pic.Box[0], TRUE);
+	DrawExtendGraph(850, 470, 950, 570, g_pic.Box[0], TRUE);
+	DrawExtendGraph(850, 570, 950, 670, g_pic.Box[0], TRUE);
 
 	Change(Rotation_Box(0));
-	DrawExtendGraph(300, 568, 400, 668, g_pic.Rot_Box, TRUE);
+	DrawExtendGraph(300, 568, 400, 668, g_pic.Box[2], TRUE);
 	Change(Rotation_Box(1));
-	DrawExtendGraph(550, 568, 650, 668, g_pic.Rot_Box, TRUE);
+	DrawExtendGraph(550, 568, 650, 668, g_pic.Box[2], TRUE);
 	Change(Rotation_Box(2));
-	DrawExtendGraph(650, 568, 750, 668, g_pic.Rot_Box, TRUE);
+	DrawExtendGraph(650, 568, 750, 668, g_pic.Box[2], TRUE);
 
 	kaihuku(gim.item_x, gim.item_y);
 

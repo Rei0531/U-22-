@@ -81,7 +81,6 @@ void Stage22Init() {
 }
 
 int Stage22(void) {			//マップ画像の描画
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる
 		Stage22Init();
@@ -90,11 +89,11 @@ int Stage22(void) {			//マップ画像の描画
 
 	//色ブロック描画
 	Change(YELLOW);
-	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box[0], TRUE);
 	MoveBox(YELLOW, 500, 568);
 	MoveBox(YELLOW, 500, 468);
 	Change(BLUE);
-	DrawExtendGraph(350, 568, 450, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(350, 568, 450, 668, g_pic.Box[0], TRUE);
 	MoveBox(BLUE, 750, 568);
 	MoveBox(BLUE, 750, 468);
 

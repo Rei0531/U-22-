@@ -15,6 +15,12 @@ extern Player g_Player;
 extern DoorAll g_Door;
 extern Sound g_Snd;
 
+int anicnt = 0,
+anicntMax = 20,
+aniy = 0,
+anix = 0,
+PixelColor;;
+
 
 int PlayerDraw(void) {
 	static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
@@ -23,8 +29,8 @@ int PlayerDraw(void) {
 	static int Gravity = 5;		//毎フレーム下に落とす
 	static int NoMove = 0;		//0の時動いていない1の時動いている/プレイヤーの歩くモーション待機モーション切り替えよう変数
 	static int JumpOkflag = 0;	//空中ジャンプ防止変数/0がジャンプしていない/1がジャンプ中
-	static int Move_Hitx1 = 0,
-		Move_Hitx2 = 0;
+	static int Move_Hitx1 = 0,	//動く箱に触れているかの取得する場所
+			   Move_Hitx2 = 0;	//動く箱に触れているかの取得する場所
 /************************************************************************
 **
 **		スポイト処理
@@ -35,6 +41,41 @@ int PlayerDraw(void) {
 		g_Player.NowColor = GetObjectColor();//変数にスポイトした色を格納する
 	}
 	if (g_Player.Interact <= 0)g_Player.Interact = 0;
+
+/*********************************************************************************************************
+*スポイトする場所の描画
+********************************************************************************************************/
+//スポイトする場所の描画___________________________________________________________________
+	g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 30 : g_Player.x + 30l;//
+	g_Player.PickUpPixely = g_Player.y - 27;//初期値33もし白色が取れるようになってしまったら戻す
+
+	//PixelColorに色を格納
+	PixelColor = GetPointColor(g_Player.PickUpPixel, g_Player.PickUpPixely);
+
+	//スポイトの手を表示させるかの判断式
+	if (PixelColor != WHITE && PixelColor != BLACK && PixelColor != g_Player.NowColor &&
+		g_Player.PLAYER_MOVEBOX_PUSH == FALSE && g_Player.PLAYER_MOVEBOX_PULL == FALSE &&
+		(!((g_Door.x < g_Player.PickUpPixel && g_Door.w > g_Player.PickUpPixel) &&
+		(g_Door.y < g_Player.PickUpPixely && g_Door.h > g_Player.PickUpPixely)))) {//取得する場所の色が白じゃないとき描画
+
+		//スポイトの手が上下するアニメーション処理______________
+		anicnt++;
+
+		if (anicnt > anicntMax / 2) {
+			aniy += 2;
+		}
+		if (anicnt <= anicntMax / 2) {
+			aniy -= 2;
+		}
+		if (anicnt >= anicntMax)anicnt = 0;
+		g_Player.PLAYER_DIRECTION ? anix = 58 : anix = 6;
+		//_____________________________________________________________
+
+		//スポイトの手
+		Change2(PixelColor);
+		DrawRotaGraph2(g_Player.PickUpPixel, g_Player.PickUpPixely + aniy, anix, 47, 1.0, 0, g_pic.Hand, TRUE, g_Player.PLAYER_DIRECTION);
+	}
+	//*********************************************************************************************************
 
 /************************************************************************
 **
@@ -278,9 +319,9 @@ int PlayerDraw(void) {
 		NoMove = 0;
 	}
 	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
-	//														10フレームごとに、プレイヤーの動きに合わせて動かす
+	//														9フレームごとに、プレイヤーの動きに合わせて動かす
 	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0, g_pic.Player[animecnt / 9 % anime_motionMax + g_Player.Anime_Num + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
-	ColorReset();//画面全体の変色を元に戻す
 	//_____________________________________________________________________________________________________________________
+	ColorReset();
 	return 0;
 }

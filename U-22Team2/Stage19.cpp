@@ -73,7 +73,6 @@ int Stage19(void) {			//マップ画像の描画
 		Stage19Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	Warp(200, 270, 200, 568);
 
@@ -83,15 +82,15 @@ int Stage19(void) {			//マップ画像の描画
 
 	//色ブロック描画
 	Change(GREEN);
-	DrawExtendGraph(400, 569, 500, 669, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 368, 500, 468, g_pic.Box, TRUE);
+	DrawExtendGraph(400, 569, 500, 669, g_pic.Box[0], TRUE);
+	DrawExtendGraph(400, 468, 500, 568, g_pic.Box[0], TRUE);
+	DrawExtendGraph(400, 368, 500, 468, g_pic.Box[0], TRUE);
 
 	//レバー用_________________________________________________
 	Change(PURPLE);
-	DrawExtendGraph(680, 569, 780, 669, g_pic.Box, TRUE);
-	DrawExtendGraph(780, 569, 880, 669, g_pic.Box, TRUE);
-	DrawExtendGraph(780, 468, 880, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(680, 569, 780, 669, g_pic.Box[0], TRUE);
+	DrawExtendGraph(780, 569, 880, 669, g_pic.Box[0], TRUE);
+	DrawExtendGraph(780, 468, 880, 568, g_pic.Box[0], TRUE);
 
 
 	//世界の壁_________________________________________

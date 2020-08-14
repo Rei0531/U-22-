@@ -45,17 +45,16 @@ int Stage1(void) {			//マップ画像の描画
 	Stage1Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	//色ブロック描画
 	Change(BLUE);
-	DrawExtendGraph(400, 569, 500, 669, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(400, 569, 500, 669, g_pic.Box[0], TRUE);
+	DrawExtendGraph(400, 468, 500, 568, g_pic.Box[0], TRUE);
 	Change(RED);
-	DrawExtendGraph(500, 569, 600, 669, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(500, 569, 600, 669, g_pic.Box[0], TRUE);
+	DrawExtendGraph(500, 468, 600, 568, g_pic.Box[0], TRUE);
 	Change(LIGHTBLUE);
-	DrawExtendGraph(600, 569, 700, 669, g_pic.Box, TRUE);
-	DrawExtendGraph(600, 468, 700, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(600, 569, 700, 669, g_pic.Box[0], TRUE);
+	DrawExtendGraph(600, 468, 700, 568, g_pic.Box[0], TRUE);
 	Door();			//ステージゴール処理
 	Lock();
 

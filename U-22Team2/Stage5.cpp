@@ -64,11 +64,10 @@ int Stage5(void) {			//マップ画像の描画
 		Stage5Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	//色ブロック描画
 
-	DrawExtendGraph(700, 558, 800, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(700, 458, 800, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(700, 558, 800, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(700, 458, 800, 568, g_pic.Box[0], TRUE);
 
 	//DrawFormatString(0, 400, 0x000000, "g_SwitchFlag = %d", g_SwitchFlag);
 	Door();			//ステージゴール処理

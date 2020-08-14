@@ -75,16 +75,16 @@ int Stage6(void) {			//マップ画像の描画
 		g_Player.PLAYER_MENU = FALSE;
 	}
 	//DrawFormatString(g_Player.x - 30, g_Player.y - 150, g_Player.NowColor, "%d %d %d %d",gim.SliObjx1,gim.SliObjx2,gim.SliObjy1,gim.SliObjy2);
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
+
 	Change(BLUE);//色ブロック描画
-	DrawExtendGraph(980, 460, 1080, 560, g_pic.Box, TRUE);//障害ブロック
-	DrawExtendGraph(980, 560, 1080, 665, g_pic.Box, TRUE);//障害ブロック
+	DrawExtendGraph(980, 460, 1080, 560, g_pic.Box[0], TRUE);//障害ブロック
+	DrawExtendGraph(980, 560, 1080, 665, g_pic.Box[0], TRUE);//障害ブロック
 	//DrawExtendGraph(g_Player.x - 30, g_Player.y - 30, g_Player.x + 30, g_Player.y + 30, GetColor(255, 255, 255), TRUE);
 	Change(RED);//色ブロック描画
 	
 	//DrawExtendGraph(380, 568, 480, 668, g_pic.Box, TRUE);//障害ブロック
-	DrawExtendGraph(880, 568, 980, 668, g_pic.Box, TRUE);//障害ブロック
-	DrawExtendGraph(880, 468, 980, 568, g_pic.Box, TRUE);//障害ブロック
+	DrawExtendGraph(880, 568, 980, 668, g_pic.Box[0], TRUE);//障害ブロック
+	DrawExtendGraph(880, 468, 980, 568, g_pic.Box[0], TRUE);//障害ブロック
 
 
 	SlideBlock(SlideColor);//動くブロックの方向と、乗ったプレイヤーを動かす処理

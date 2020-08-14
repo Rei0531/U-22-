@@ -59,27 +59,26 @@ int Stage12(void) {			//マップ画像の描画
 		Stage12Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	//色ブロック描画
 
 
 	Change(LIGHTBLUE);
-	DrawExtendGraph(300, 568, 400, 668, g_pic.Box, TRUE);	//1
+	DrawExtendGraph(300, 568, 400, 668, g_pic.Box[0], TRUE);	//1
 
 	Change(LIGHTBLUE);
-	DrawExtendGraph(400, 568, 500, 668, g_pic.Box, TRUE);	//1
-	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);	//2
+	DrawExtendGraph(400, 568, 500, 668, g_pic.Box[0], TRUE);	//1
+	DrawExtendGraph(400, 468, 500, 568, g_pic.Box[0], TRUE);	//2
 
 
 	Change(BLUE);
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);	//1
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);	//2
+	DrawExtendGraph(500, 568, 600, 668, g_pic.Box[0], TRUE);	//1
+	DrawExtendGraph(500, 468, 600, 568, g_pic.Box[0], TRUE);	//2
 	Change(LIGHTBLUE);
-	DrawExtendGraph(500, 368, 600, 468, g_pic.Box, TRUE);	//3
+	DrawExtendGraph(500, 368, 600, 468, g_pic.Box[0], TRUE);	//3
 
 	Change(BLUE);
-	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box, TRUE);	//1
-	DrawExtendGraph(900, 468, 1000, 568, g_pic.Box, TRUE);	//2
+	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box[0], TRUE);	//1
+	DrawExtendGraph(900, 468, 1000, 568, g_pic.Box[0], TRUE);	//2
 
 
 	kaihuku(gim.item_x, gim.item_y);

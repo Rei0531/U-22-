@@ -40,8 +40,8 @@ int Lever(void) {
 		//	Change(WHITE);
 		//DrawExtendGraph(200, 270, 300, 370, g_pic.Box, TRUE);
 		Change(YELLOW);
-		DrawExtendGraph(gim.g_L_BoxX1, gim.g_L_BoxY1, gim.g_L_BoxX2, gim.g_L_BoxY2, g_pic.Box, TRUE);
-		DrawExtendGraph(gim.g_L_BoxX1, gim.g_L_BoxY1 - 100, gim.g_L_BoxX2, gim.g_L_BoxY2 - 100, g_pic.Box, TRUE);
+		DrawExtendGraph(gim.g_L_BoxX1, gim.g_L_BoxY1, gim.g_L_BoxX2, gim.g_L_BoxY2, g_pic.Box[0], TRUE);
+		DrawExtendGraph(gim.g_L_BoxX1, gim.g_L_BoxY1 - 100, gim.g_L_BoxX2, gim.g_L_BoxY2 - 100, g_pic.Box[0], TRUE);
 	}
 	
 	if (gim.SwitchWait != 0) {													//ë“ã@éûä‘Ç™Ç†ÇÈèÍçáå∏ÇÁÇµë±ÇØÇÈ

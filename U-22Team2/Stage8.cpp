@@ -46,15 +46,14 @@ int Stage8(void) {			//マップ画像の描画
 		Stage8Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	//変色箱________________________________________
 	Change(Rotation_Box(2));
-	DrawExtendGraph(340, 568, 440, 668, g_pic.Rot_Box, TRUE);
+	DrawExtendGraph(340, 568, 440, 668, g_pic.Box[2], TRUE);
 	Change(Rotation_Box(1));
-	DrawExtendGraph(540, 568, 640, 668, g_pic.Rot_Box, TRUE);
+	DrawExtendGraph(540, 568, 640, 668, g_pic.Box[2], TRUE);
 	Change(Rotation_Box(0));
-	DrawExtendGraph(740, 568, 840, 668, g_pic.Rot_Box, TRUE);
+	DrawExtendGraph(740, 568, 840, 668, g_pic.Box[2], TRUE);
 
 	Door();			//ステージゴール処理
 	Lock();

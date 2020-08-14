@@ -32,7 +32,7 @@ typedef class Fps {
 	int mCount;             //カウンタ
 	float mFps;             //fps
 	static const int N = 60;//平均を取るサンプル数
-	static const int FPS = 60;	//設定したFPS
+	static const int FPS = 30;	//設定したFPS
 
 public:
 	Fps() {

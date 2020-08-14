@@ -52,7 +52,6 @@ int Stage3(void) {			//マップ画像の描画
 		Stage3Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	//色ブロック描画_____________________________________________________
 	MoveBox(ORENGE,400,568);

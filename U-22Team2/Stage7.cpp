@@ -44,16 +44,15 @@ void Stage7Init() {
 }
 
 int Stage7(void) {			//マップ画像の描画
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	//色反映スイッチ_____________________
-	SwitchColor = CC_Switch(g_Player.NowColor, 140, 568);//一時変数に関数からの戻り値を格納する
+	SwitchColor = CC_Switch(g_Player.NowColor, 140, 578);//一時変数に関数からの戻り値を格納する
 	Change(SwitchColor);
 	//色反映する箱________________________________________________
-	DrawExtendGraph(340, 568, 440, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(340, 468, 440, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(740, 568, 840, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(740, 468, 840, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(340, 568, 440, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(340, 468, 440, 568, g_pic.Box[0], TRUE);
+	DrawExtendGraph(740, 568, 840, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(740, 468, 840, 568, g_pic.Box[0], TRUE);
 	//箱の枠線__________________________________________
 	ColorReset();
 	DrawBox(340, 568, 440, 668, GetColor(1, 1, 1), FALSE);
@@ -63,9 +62,9 @@ int Stage7(void) {			//マップ画像の描画
 
 	//色ブロック描画
 	Change(RED);
-	DrawExtendGraph(240, 568, 340, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(240, 568, 340, 668, g_pic.Box[0], TRUE);
 	Change(GREEN);
-	DrawExtendGraph(840, 568, 940, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(840, 568, 940, 668, g_pic.Box[0], TRUE);
 
 	//世界の壁_________________________________________
 	Change(NONCOLOR);

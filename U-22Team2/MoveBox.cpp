@@ -14,25 +14,25 @@ void MoveBox(int color ,int x, int y) {
 	Change(color);
 	switch (color) {
 	case RED:
-		DrawExtendGraph(x + g_Object.RED_x, y, x + 100 + g_Object.RED_x, y + 100, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(x + g_Object.RED_x, y, x + 100 + g_Object.RED_x, y + 100, g_pic.Box[1], TRUE);
 		break;
 	case ORENGE:
-		DrawExtendGraph(x + g_Object.ORENGE_x, y, x + 100 + g_Object.ORENGE_x, y + 100, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(x + g_Object.ORENGE_x, y, x + 100 + g_Object.ORENGE_x, y + 100, g_pic.Box[1], TRUE);
 		break;
 	case YELLOW:
-		DrawExtendGraph(x + g_Object.YELLOW_x, y, x + 100 + g_Object.YELLOW_x, y + 100, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(x + g_Object.YELLOW_x, y, x + 100 + g_Object.YELLOW_x, y + 100, g_pic.Box[1], TRUE);
 		break;
 	case GREEN:
-		DrawExtendGraph(x + g_Object.GREEN_x, y, x + 100 + g_Object.GREEN_x, y + 100, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(x + g_Object.GREEN_x, y, x + 100 + g_Object.GREEN_x, y + 100, g_pic.Box[1], TRUE);
 		break;
 	case LIGHTBLUE:
-		DrawExtendGraph(x + g_Object.LIGHTBLUE_x, y, x + 100 + g_Object.LIGHTBLUE_x, y + 100, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(x + g_Object.LIGHTBLUE_x, y, x + 100 + g_Object.LIGHTBLUE_x, y + 100, g_pic.Box[1], TRUE);
 		break;
 	case BLUE:
-		DrawExtendGraph(x + g_Object.BLUE_x, y, x + 100 + g_Object.BLUE_x, y + 100, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(x + g_Object.BLUE_x, y, x + 100 + g_Object.BLUE_x, y + 100, g_pic.Box[1], TRUE);
 		break;
 	case PURPLE:
-		DrawExtendGraph(x + g_Object.PURPLE_x, y, x + 100 + g_Object.PURPLE_x, y + 100, g_pic.Box_Move, TRUE);
+		DrawExtendGraph(x + g_Object.PURPLE_x, y, x + 100 + g_Object.PURPLE_x, y + 100, g_pic.Box[1], TRUE);
 		break;
 	}
 }

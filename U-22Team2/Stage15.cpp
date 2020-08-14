@@ -46,7 +46,6 @@ int Stage15(void) {			//マップ画像の描画
 		Stage15Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	Door();			//ステージゴール処理
 	Lock();

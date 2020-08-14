@@ -61,20 +61,19 @@ int Stage4(void) {			//マップ画像の描画
 		Stage4Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	//色ブロック描画
 	Change(RED);
-	DrawExtendGraph(400, 558, 500, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 458, 500, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(400, 558, 500, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(400, 458, 500, 568, g_pic.Box[0], TRUE);
 
 	Door();			//ステージゴール処理
 	Lock();
 
 	Shower();		//塗りつぶしシャワーの処理
 
-	ColorReset();
-
 	DoorRotationBox(1);
+
+	ColorReset();
 
 	//ステージクリアした時、タイトル画面に戻ったとき
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {

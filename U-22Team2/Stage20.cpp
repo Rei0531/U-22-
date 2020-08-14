@@ -75,22 +75,17 @@ int Stage20(void) {			//マップ画像の描画
 		Stage20Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
-
-
-
-
 	Change(NONCOLOR);
 	DrawBox(0, 370, 350, 400, GetColor(255, 255, 255), TRUE);
 	Change(RED);
-	DrawExtendGraph(0, 270, 100, 370, g_pic.Box, TRUE);	//1
+	DrawExtendGraph(0, 270, 100, 370, g_pic.Box[0], TRUE);	//1
 
 
 
 
 	Change(BLUE);
-	DrawExtendGraph(300, 568, 400, 668, g_pic.Box, TRUE);	//1
-	DrawExtendGraph(300, 468, 400, 568, g_pic.Box, TRUE);	//2
+	DrawExtendGraph(300, 568, 400, 668, g_pic.Box[0], TRUE);	//1
+	DrawExtendGraph(300, 468, 400, 568, g_pic.Box[0], TRUE);	//2
 
 
 		//色反映スイッチ_____________________
@@ -98,8 +93,8 @@ int Stage20(void) {			//マップ画像の描画
 	Change(SwitchColor);
 	//色反映する箱________________________________________________
 
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);	//1
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);	//2
+	DrawExtendGraph(500, 568, 600, 668, g_pic.Box[0], TRUE);	//1
+	DrawExtendGraph(500, 468, 600, 568, g_pic.Box[0], TRUE);	//2
 
 
 	//箱の枠線__________________________________________
@@ -108,7 +103,7 @@ int Stage20(void) {			//マップ画像の描画
 	DrawBox(500, 468, 600, 568, GetColor(1, 1, 1), FALSE);
 
 	Change(YELLOW);
-	DrawExtendGraph(400, 568, 500, 668, g_pic.Box, TRUE);
+	DrawExtendGraph(400, 568, 500, 668, g_pic.Box[0], TRUE);
 
 	ChangeBlock();
 

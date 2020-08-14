@@ -11,7 +11,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
 	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_LEFT) != 0)    //画面左側制限
 	{
 		g_Pad.KEY_LEFT = TRUE;
-		if (GameState == GAME_MAIN) { //ゲームがプレイ中だったら
+		if (GameState == GAME_MAIN && g_Player.PLAYER_MENU == FALSE) { //ゲームがプレイ中だったら
 			g_Player.PLAYER_DIRECTION = TRUE;  //プレイヤーの向きフラグを左にする
 		}
 	}
@@ -20,7 +20,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
 	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_RIGHT) != 0)
 	{
 		g_Pad.KEY_RIGHT = TRUE;
-		if (GameState == GAME_MAIN) { //ゲームがプレイ中だったら
+		if (GameState == GAME_MAIN && g_Player.PLAYER_MENU == FALSE) { //ゲームがプレイ中だったら
 			g_Player.PLAYER_DIRECTION = FALSE;  //プレイヤーの向きフラグを右にする
 		}
 	}
@@ -55,7 +55,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
 	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_A) != 0)
 	{
 		g_Pad.KEY_A = TRUE;
-		if (GameState == GAME_MAIN && g_Player.PLAYER_JUMP == FALSE) {//ゲームがプレイ中だったら
+		if (GameState == GAME_MAIN && g_Player.PLAYER_JUMP == FALSE  && g_Player.PLAYER_MENU == FALSE) {//ゲームがプレイ中だったら
 			g_Player.PLAYER_JUMP = TRUE;
 		}
 	}
@@ -74,7 +74,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
 		g_Pad.KEY_FLG = TRUE;
 	}
 	//Yボタン_____________________________________________________________________________________________________________________
-	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_4) != 0)//オプションボタン    //オプション処理
+	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_8) != 0)//オプションボタン    //オプション処理
 	{
 		g_Pad.KEY_Y = TRUE;
 		if ((GameState == GAME_MAIN) & (g_Pad.KEY_FLG_Y == TRUE)) { //ゲームがプレイ中だったら

@@ -83,15 +83,14 @@ int Stage24(void) {			//マップ画像の描画
 		Stage24Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	//色ブロック描画___________________________
 	Change(PURPLE);
-	DrawExtendGraph(0, 295, 100, 395, g_pic.Box, TRUE);
-	DrawExtendGraph(1080, 195, 1180, 295, g_pic.Box, TRUE);
-	DrawExtendGraph(1180, 195, 1280, 295, g_pic.Box, TRUE);
+	DrawExtendGraph(0, 295, 100, 395, g_pic.Box[0], TRUE);
+	DrawExtendGraph(1080, 195, 1180, 295, g_pic.Box[0], TRUE);
+	DrawExtendGraph(1180, 195, 1280, 295, g_pic.Box[0], TRUE);
 	Change(YELLOW);
-	DrawExtendGraph(1180, 95, 1280, 195, g_pic.Box, TRUE);
+	DrawExtendGraph(1180, 95, 1280, 195, g_pic.Box[0], TRUE);
 	//動かせる箱の描画___________________________
 	MoveBox(BLUE, 340, 568);
 	MoveBox(RED, 840, 568);

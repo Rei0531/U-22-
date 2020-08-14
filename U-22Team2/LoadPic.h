@@ -18,10 +18,14 @@ public:
 	int Door_keyhole;	//鍵穴
 	int Door_Nobu;		//ノブ
 	int Door_Rotation[4];	//ドアのローテーション
+	int Door_Rot_Yajirusi;	//ドアのローテーション矢印
 
-	int Box;//オブジェクトの木の箱
 	int Pin;//色取った場所のピン
-	int Box_Move;//動く箱
+
+	int Box[3];//色々なボックス
+	//int Box;//オブジェクトの木の箱
+	//int Box_Move;//動く箱
+	//int Box_Rot;//ローテーションするボックス
 
 	int shower;//シャワーの画像
 	int shower_m; //シャワーの水画像
@@ -29,7 +33,6 @@ public:
 	int Reba;//レバー
 
 	int C_Switch;//色を反映するスイッチ
-	int Rot_Box;//ローテーションするボックス
 
 	int OneTimeSwitch_ON;//一度限りのスイッチONの画像
 	int OneTimeSwitch_OFF;//一度限りのスイッチOFFの画像

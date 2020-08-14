@@ -79,30 +79,29 @@ int Stage17(void) {			//マップ画像の描画
 		Stage17Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	Change(NONCOLOR);
 	DrawBox(0, 300, 300, 370, 0xffffff, TRUE);
 	DrawBox(1050, 300, 1300, 370, 0xffffff, TRUE);
 
 	Change(BLUE);
-	DrawExtendGraph(400, 568, 500, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 368, 500, 468, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 368, 600, 468, g_pic.Box, TRUE);
-	DrawExtendGraph(1100, 200, 1200, 300, g_pic.Box, TRUE);
-	DrawExtendGraph(1100, 100, 1200, 200, g_pic.Box, TRUE);
+	DrawExtendGraph(400, 568, 500, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(400, 468, 500, 568, g_pic.Box[0], TRUE);
+	DrawExtendGraph(400, 368, 500, 468, g_pic.Box[0], TRUE);
+	DrawExtendGraph(500, 568, 600, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(500, 468, 600, 568, g_pic.Box[0], TRUE);
+	DrawExtendGraph(500, 368, 600, 468, g_pic.Box[0], TRUE);
+	DrawExtendGraph(1100, 200, 1200, 300, g_pic.Box[0], TRUE);
+	DrawExtendGraph(1100, 100, 1200, 200, g_pic.Box[0], TRUE);
 	Change(RED);
-	DrawExtendGraph(300, 568, 400, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(300, 468, 400, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(700, 568, 800, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(800, 568, 900, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(800, 468, 900, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(900, 468, 1000, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(900, 368, 1000, 468, g_pic.Box, TRUE);
+	DrawExtendGraph(300, 568, 400, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(300, 468, 400, 568, g_pic.Box[0], TRUE);
+	DrawExtendGraph(700, 568, 800, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(800, 568, 900, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(800, 468, 900, 568, g_pic.Box[0], TRUE);
+	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(900, 468, 1000, 568, g_pic.Box[0], TRUE);
+	DrawExtendGraph(900, 368, 1000, 468, g_pic.Box[0], TRUE);
 
 
 	Door();			//ステージゴール処理

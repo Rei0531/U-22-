@@ -60,7 +60,6 @@ int Stage9(void) {			//マップ画像の描画
 		Stage9Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 	Change(NONCOLOR);
 	DrawBox(0, 268, 1300, 368, GetColor(255, 255, 255), TRUE);
 	ColorReset();
@@ -71,18 +70,18 @@ int Stage9(void) {			//マップ画像の描画
 	Change(RED);
 	/*DrawExtendGraph(150, 568, 250, 668, g_pic.Box, TRUE);
 	DrawExtendGraph(150, 468, 250, 568, g_pic.Box, TRUE);*/
-	DrawExtendGraph(500, 68, 600, 168, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 168, 600, 268, g_pic.Box, TRUE);
+	DrawExtendGraph(500, 68, 600, 168, g_pic.Box[0], TRUE);
+	DrawExtendGraph(500, 168, 600, 268, g_pic.Box[0], TRUE);
 
 	Change(BLUE);
-	DrawExtendGraph(700, 68, 800, 168, g_pic.Box, TRUE);
-	DrawExtendGraph(700, 168, 800, 268, g_pic.Box, TRUE);
+	DrawExtendGraph(700, 68, 800, 168, g_pic.Box[0], TRUE);
+	DrawExtendGraph(700, 168, 800, 268, g_pic.Box[0], TRUE);
 	/*DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
 	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);*/
 
 	Change(LIGHTBLUE);
-	DrawExtendGraph(300, 68, 400, 168, g_pic.Box, TRUE);
-	DrawExtendGraph(300, 168, 400, 268, g_pic.Box, TRUE);
+	DrawExtendGraph(300, 68, 400, 168, g_pic.Box[0], TRUE);
+	DrawExtendGraph(300, 168, 400, 268, g_pic.Box[0], TRUE);
 	ColorReset();
 	Warp(125,175,125,575);
 	Warp2(900, 175, 250, 575);
