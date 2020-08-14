@@ -38,7 +38,8 @@ public:
 
 	int Object_Wall;
 
-	int Warp_Area;
+	int Warp_Area;		//ワープ用
+	int Warp_Area2;		//ワープ用
 
 	int ChengObject[3];  //変形するオブジェクト
 	int ChengObjectmark[4]; //

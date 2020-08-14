@@ -45,11 +45,10 @@ void Stage9Init() {
 		obj2x2 = obj2x1 + 150,
 		objALLy1 = 518,
 		objALLy2 = 668;
-
-	gim.SetNum = 2;
+	gim.SetNum = 2;			//1:一方通行　2:双方向
 
 	//ドアの位置
-	g_Door.x = 1100;				//扉の左上のx座標
+	g_Door.x = 1100;			//扉の左上のx座標
 	g_Door.y = 468;				//扉の左上のy座標
 	g_Door.w = g_Door.x + 100;	//横幅
 	g_Door.h = g_Door.y + 200;	//縦幅
@@ -84,9 +83,10 @@ int Stage9(void) {			//マップ画像の描画
 	Change(LIGHTBLUE);
 	DrawExtendGraph(300, 68, 400, 168, g_pic.Box, TRUE);
 	DrawExtendGraph(300, 168, 400, 268, g_pic.Box, TRUE);
-
-	Warp(gim.SetNum,100,175,200,175);
-
+	ColorReset();
+	Warp(125,175,125,575);
+	Warp2(900, 175, 250, 575);
+	
 	//DrawFormatString(g_Player.x - 30, g_Player.y - 200, g_Player.NowColor, "%d", gim.move_cnt);
 
 	Door();			//ステージゴール処理

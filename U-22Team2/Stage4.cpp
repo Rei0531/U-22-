@@ -74,6 +74,7 @@ int Stage4(void) {			//マップ画像の描画
 
 	ColorReset();
 
+	DoorRotationBox(1);
 
 	//ステージクリアした時、タイトル画面に戻ったとき
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {
