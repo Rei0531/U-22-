@@ -68,7 +68,7 @@ int Stage24(void) {			//マップ画像の描画
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	Change(NONCOLOR);
-	DrawBox(300, 300, 750, 350, 0xffffff, TRUE);
+	DrawBox(300, 280, 750, 300, 0xffffff, TRUE);
 	DrawBox(0, 300, 100, 370, 0xffffff, TRUE);
 	DrawBox(950, 300, 1000, 370, 0xffffff, TRUE);
 	DrawBox(1100, 300, 1300, 370, 0xffffff, TRUE);
