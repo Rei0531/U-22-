@@ -10,6 +10,8 @@
 #include "Object.h"
 #include "LoadSound.h"
 #include "StageSelect.h"
+#include <math.h>
+
 
 //デバッグ用のマウス座標取得変数宣言
 Controller g_Pad;
@@ -21,6 +23,50 @@ extern Player g_Player;
 extern  int GameState= GAME_TITLE;
 extern MapCoordinate g_MapC;
 extern Sound g_Snd;
+
+/*****************************************************************************
+*FPSの取得、変更
+********************************************************************************/
+typedef class Fps {
+	int mStartTime;         //測定開始時刻
+	int mCount;             //カウンタ
+	float mFps;             //fps
+	static const int N = 60;//平均を取るサンプル数
+	static const int FPS = 60;	//設定したFPS
+
+public:
+	Fps() {
+		mStartTime = 0;
+		mCount = 0;
+		mFps = 0;
+	}
+
+	bool Update() {
+		if (mCount == 0) { //1フレーム目なら時刻を記憶
+			mStartTime = GetNowCount();
+		}
+		if (mCount == N) { //60フレーム目なら平均を計算する
+			int t = GetNowCount();
+			mFps = 1000.f / ((t - mStartTime) / (float)N);
+			mCount = 0;
+			mStartTime = t;
+		}
+		mCount++;
+		return true;
+	}
+
+	void Draw() {
+		DrawFormatString(1240, 0, GetColor(0, 0, 0), "%.1f", mFps);
+	}
+
+	void Wait() {
+		int tookTime = GetNowCount() - mStartTime;	//かかった時間
+		int waitTime = mCount * 1000 / FPS - tookTime;	//待つべき時間
+		if (waitTime > 0) {
+			Sleep(waitTime);	//待機
+		}
+	}
+};
 
 
 /***************************************************************
@@ -50,6 +96,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	/*****画像の読み込み*****/
 	if (LoadPictue() == -1)return -1;		//画像読み込み関数を呼び出し/失敗したらエラー
 	if (LoadSound() == -1)return -1;		//音声読み込み関数を呼び出し
+
+	Fps fps;
 
 	//ゲームループ
 	while (ProcessMessage() == 0 && GameState != END) {
@@ -97,7 +145,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		DrawFormatString(0, 40, 0xff0000, " %dステージ ", g_MapC.StageNumber);
 		DrawFormatString(0, 60, 0xff0fff, "g_Player.x %d ", g_Player.x);
 		DrawFormatString(0, 80, 0xff0fff, "g_Player.y %d ", g_Player.y);
-		ScreenFlip();		//裏画面の内容を表画面に反映
+
+		fps.Update();	//更新
+		fps.Draw();		//描画
+		ScreenFlip();
+		fps.Wait();		//待機
 	}
 	DxLib_End();			//DXライブラリ使用の終了処理
 	return 0;				//ソフトの処理
