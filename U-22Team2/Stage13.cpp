@@ -4,9 +4,8 @@
 #include"Door.h"
 #include "Lock.h"
 #include "Gimmick.h"
-#include "Draw_Door_Rotation.h"
-#include "Rotation_Box.h"
 #include "Menu.h"
+#include "Draw_Door_Rotation.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
@@ -21,24 +20,20 @@ static bool InitFlag = TRUE;//Initä÷êîÇí Ç¡ÇƒÇ¢Ç¢Ç©îªíËïœêî/TRUEÇ™Ç¢Ç¢/FALSEÇ™É
 void Stage13Init() {
 	//ÉvÉåÉCÉÑÅ[ÇÃèâä˙à íu
 	//ÉIÉuÉWÉFÉNÉgÇÃèâä˙à íuÇï`Ç≠
-	g_Player.Interact = 1;//ÉvÉåÉCÉÑÅ[Ç™ÉCÉìÉ^ÉâÉNÉgÇ≈Ç´ÇÈâÒêîÇ10âÒÇ…ê›íË
+	g_Player.Interact = 10;//ÉvÉåÉCÉÑÅ[Ç™ÉCÉìÉ^ÉâÉNÉgÇ≈Ç´ÇÈâÒêîÇ10âÒÇ…ê›íË
 	InitFlag = FALSE;	//FALSEÇ…ÇµÇƒéüTRUEÇ…Ç»ÇÈÇ‹Ç≈í ÇÁÇ»Ç¢ÇÊÇ§Ç…Ç∑ÇÈ
-
 
 	g_Player.x = 110;			//ÉvÉåÉCÉÑÅ[ç¿ïWèâä˙âª
 	g_Player.y = 571;			//ÉvÉåÉCÉÑÅ[ç¿ïWèâä˙âª
-	g_Player.NowColor = BLUE;		//ÉvÉåÉCÉÑÅ[ÇÃêFèâä˙âª
-
-	//âÒïúÉAÉCÉeÉÄóp_________
-	gim.item_x = 520;
-	gim.item_y;
-	gim.item_flg = 1;
+	g_Player.NowColor = RED;		//ÉvÉåÉCÉÑÅ[ÇÃêFèâä˙âª
 
 	g_Door.RotationNumber = 0;	//ÉçÅ[ÉeÅ[ÉVÉáÉìèâä˙âª
 	g_Lock.Release = 0;			//åÆåäâèúêîèâä˙âª
 
-
-
+	gim.cheobj_flg = 1;			//ïœå`Ç∑ÇÈÉIÉuÉWÉFÉNÉgÇÃÉtÉâÉO
+	gim.cheobj_x = 800 - 225;
+	gim.cheobj_c = g_Player.NowColor;
+	gim.cheobj_ani = 158;
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
@@ -62,27 +57,23 @@ int Stage13(void) {			//É}ÉbÉvâÊëúÇÃï`âÊ
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//É}ÉbÉvÇÃï`âÊ
 	//êFÉuÉçÉbÉNï`âÊ
 
+	Change(YELLOW);
+	DrawExtendGraph(200, 568, 300, 668, g_pic.Box, TRUE);	//3
+	DrawExtendGraph(200, 468, 300, 568, g_pic.Box, TRUE);	//2
+	DrawExtendGraph(200, 368, 300, 468, g_pic.Box, TRUE);	//1
 
-	Change(LIGHTBLUE);
-	DrawExtendGraph(300, 568, 400, 668, g_pic.Box, TRUE);	//1
+	Change(YELLOW);
+	DrawExtendGraph(800, 568, 900, 668, g_pic.Box, TRUE);	//3
+	DrawExtendGraph(800, 468, 900, 568, g_pic.Box, TRUE);	//2
+	DrawExtendGraph(800, 368, 900, 468, g_pic.Box, TRUE);	//1
 
-	Change(LIGHTBLUE);
-	DrawExtendGraph(400, 568, 500, 668, g_pic.Box, TRUE);	//1
-	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);	//2
-
-
-	Change(BLUE);
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);	//1
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);	//2
-	Change(LIGHTBLUE);
-	DrawExtendGraph(500, 368, 600, 468, g_pic.Box, TRUE);	//3
-
-	Change(BLUE);
-	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box, TRUE);	//1
+	Change(RED);
+	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box, TRUE);	//3
 	DrawExtendGraph(900, 468, 1000, 568, g_pic.Box, TRUE);	//2
+	DrawExtendGraph(900, 368, 1000, 468, g_pic.Box, TRUE);	//2
 
 
-	kaihuku(gim.item_x, gim.item_y);
+	ChangeBlock();	//ïœå`Ç∑ÇÈÉIÉuÉWÉFÉNÉgÇÃä÷êî
 
 	Door();			//ÉXÉeÅ[ÉWÉSÅ[Éãèàóù
 	Lock();
@@ -96,6 +87,7 @@ int Stage13(void) {			//É}ÉbÉvâÊëúÇÃï`âÊ
 		InitFlag = TRUE;
 		g_Player.InitFlag = FALSE;
 	}
+
 
 	if (g_Player.PLAYER_MENU == TRUE) {
 		Menu_Draw();

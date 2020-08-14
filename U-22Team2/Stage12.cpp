@@ -4,7 +4,6 @@
 #include"Door.h"
 #include "Lock.h"
 #include "Gimmick.h"
-#include "Bomb.h"
 #include "Draw_Door_Rotation.h"
 #include "Rotation_Box.h"
 #include "Menu.h"
@@ -14,6 +13,7 @@ extern MapCoordinate g_MapC;
 extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
+extern Controller g_Pad;
 extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//InitŠÖ”‚ğ’Ê‚Á‚Ä‚¢‚¢‚©”»’è•Ï”/TRUE‚ª‚¢‚¢/FALSE‚ªƒ_ƒ
@@ -21,37 +21,35 @@ static bool InitFlag = TRUE;//InitŠÖ”‚ğ’Ê‚Á‚Ä‚¢‚¢‚©”»’è•Ï”/TRUE‚ª‚¢‚¢/FALSE‚ªƒ
 void Stage12Init() {
 	//ƒvƒŒƒCƒ„[‚Ì‰ŠúˆÊ’u
 	//ƒIƒuƒWƒFƒNƒg‚Ì‰ŠúˆÊ’u‚ğ•`‚­
-	g_Player.Interact = 10;//ƒvƒŒƒCƒ„[‚ªƒCƒ“ƒ^ƒ‰ƒNƒg‚Å‚«‚é‰ñ”‚ğ10‰ñ‚Éİ’è
+	g_Player.Interact = 1;//ƒvƒŒƒCƒ„[‚ªƒCƒ“ƒ^ƒ‰ƒNƒg‚Å‚«‚é‰ñ”‚ğ10‰ñ‚Éİ’è
 	InitFlag = FALSE;	//FALSE‚É‚µ‚ÄŸTRUE‚É‚È‚é‚Ü‚Å’Ê‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+
 
 	g_Player.x = 110;			//ƒvƒŒƒCƒ„[À•W‰Šú‰»
 	g_Player.y = 571;			//ƒvƒŒƒCƒ„[À•W‰Šú‰»
-	g_Player.NowColor = 4;		//ƒvƒŒƒCƒ„[‚ÌF‰Šú‰»
-	
+	g_Player.NowColor = BLUE;		//ƒvƒŒƒCƒ„[‚ÌF‰Šú‰»
+
+	//‰ñ•œƒAƒCƒeƒ€—p_________
+	gim.item_x = 520;
+	gim.item_y;
+	gim.item_flg = 1;
+
 	g_Door.RotationNumber = 0;	//ƒ[ƒe[ƒVƒ‡ƒ“‰Šú‰»
 	g_Lock.Release = 0;			//Œ®ŒŠ‰ğœ”‰Šú‰»
 
-	gim.g_Bombflg = 0;				//”š’eƒtƒ‰ƒO‚Ì‰Šú‰»
-	gim.BombX1 = 650;				//”š’e‚ÌX²‰Šú‰»
-	gim.BombX2 = gim.BombX1 + 50;
-	gim.BombY1 = 618;				//”š’e‚ÌY²‰Šú‰»
-	gim.BombY2 = gim.BombY1 + 50;
 
-	gim.B_EffectCount = 30;	//”š•—‚Ì‰æ‘œ‚Ì•`‰æŠÔ
-	gim.B_WallX1 = 800;			//‰ó‚¹‚é•Ç‚ÌX²
-	gim.B_WallY1 = 0;
-	gim.B_WallX2 = 850;			//‰ó‚¹‚é•Ç‚ÌY²
-	gim.B_WallY2 = 669;
+
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
 
 	//ƒhƒA‚ÌˆÊ’u
-	g_Door.x = 1100;				//”à‚Ì¶ã‚ÌxÀ•W
-	g_Door.y = 468;				//”à‚Ì¶ã‚ÌyÀ•W
+	g_Door.x = 1150;				//”à‚Ì¶ã‚ÌxÀ•W
+	g_Door.y = 670 - 200;				//”à‚Ì¶ã‚ÌyÀ•W
 	g_Door.w = g_Door.x + 100;	//‰¡•
 	g_Door.h = g_Door.y + 200;	//c•
+
 
 }
 
@@ -63,12 +61,28 @@ int Stage12(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//ƒ}ƒbƒv‚Ì•`‰æ
 	//FƒuƒƒbƒN•`‰æ
+
+
+	Change(LIGHTBLUE);
+	DrawExtendGraph(300, 568, 400, 668, g_pic.Box, TRUE);	//1
+
+	Change(LIGHTBLUE);
+	DrawExtendGraph(400, 568, 500, 668, g_pic.Box, TRUE);	//1
+	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);	//2
+
+
 	Change(BLUE);
-	DrawExtendGraph(400, 568, 500, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);
-	Change(RED);
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
+	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);	//1
+	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);	//2
+	Change(LIGHTBLUE);
+	DrawExtendGraph(500, 368, 600, 468, g_pic.Box, TRUE);	//3
+
+	Change(BLUE);
+	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box, TRUE);	//1
+	DrawExtendGraph(900, 468, 1000, 568, g_pic.Box, TRUE);	//2
+
+
+	kaihuku(gim.item_x, gim.item_y);
 
 	Door();			//ƒXƒe[ƒWƒS[ƒ‹ˆ—
 	Lock();
@@ -76,8 +90,6 @@ int Stage12(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 	DoorRotationBox(1);
 
 	ColorReset();
-
-	Bomb();
 
 	//ƒXƒe[ƒWƒNƒŠƒA‚µ‚½Aƒ^ƒCƒgƒ‹‰æ–Ê‚É–ß‚Á‚½‚Æ‚«
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {

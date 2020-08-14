@@ -3,8 +3,6 @@
 #include "Color.h"
 #include"Door.h"
 #include "Lock.h"
-#include "Bomb.h"
-#include "OneTime_Switch.h"
 #include "Draw_Door_Rotation.h"
 #include "Rotation_Box.h"
 #include "Menu.h"
@@ -22,44 +20,26 @@ static bool InitFlag = TRUE;//Initä÷êîÇí Ç¡ÇƒÇ¢Ç¢Ç©îªíËïœêî/TRUEÇ™Ç¢Ç¢/FALSEÇ™É
 void Stage18Init() {
 	//ÉvÉåÉCÉÑÅ[ÇÃèâä˙à íu
 	//ÉIÉuÉWÉFÉNÉgÇÃèâä˙à íuÇï`Ç≠
-	g_Player.Interact = 20;//ÉvÉåÉCÉÑÅ[Ç™ÉCÉìÉ^ÉâÉNÉgÇ≈Ç´ÇÈâÒêîÇ10âÒÇ…ê›íË
+	g_Player.Interact = 1;//ÉvÉåÉCÉÑÅ[Ç™ÉCÉìÉ^ÉâÉNÉgÇ≈Ç´ÇÈâÒêîÇ2âÒÇ…ê›íË
 	InitFlag = FALSE;	//FALSEÇ…ÇµÇƒéüTRUEÇ…Ç»ÇÈÇ‹Ç≈í ÇÁÇ»Ç¢ÇÊÇ§Ç…Ç∑ÇÈ
 
 	g_Player.x = 110;			//ÉvÉåÉCÉÑÅ[ç¿ïWèâä˙âª
 	g_Player.y = 571;			//ÉvÉåÉCÉÑÅ[ç¿ïWèâä˙âª
-	g_Player.NowColor = 1;		//ÉvÉåÉCÉÑÅ[ÇÃêFèâä˙âª
+	g_Player.NowColor = 0;		//ÉvÉåÉCÉÑÅ[ÇÃêFèâä˙âª
 
 	g_Door.RotationNumber = 0;	//ÉçÅ[ÉeÅ[ÉVÉáÉìèâä˙âª
 	g_Lock.Release = 0;			//åÆåäâèúêîèâä˙âª
 
-	gim.g_OTSwitchFlag = 0;		//àÍìxå¿ÇËÇÃÉXÉCÉbÉ`ÉtÉâÉOèâä˙âª
+	gim.cheobj_flg = 1;			//ïœå`Ç∑ÇÈÉIÉuÉWÉFÉNÉgÇÃÉtÉâÉO
+	gim.cheobj_zeroflg = 1;
+	gim.cheobj_x = 650;
+	gim.cheobj_c = g_Player.NowColor;
+	gim.cheobj_ani = 158;
 
-	gim.OTS_X1 = 50;				//àÍìxå¿ÇËÇÃÉXÉCÉbÉ`ÇÃX/Yé≤èâä˙âª
-	gim.OTS_Y1 = 250;
-	gim.OTS_X2 = gim.OTS_X1 + 50;
-	gim.OTS_Y2 = gim.OTS_Y1 + 50;
-
-	gim.OTS_WallX1 = 1000;
-	gim.OTS_WallY1 = 300;
-	gim.OTS_WallX2 = 1050;
-	gim.OTS_WallY2 = 669;
-	gim.OTS_C_WallX1 = 0;			//àÍìxå¿ÇËÇÃÉXÉCÉbÉ`Ç≈ï\ÇÍÇÈï«ÇÃX/Yé≤
-	gim.OTS_C_WallY1 = 0;
-	gim.OTS_C_WallX2 = 0;
-	gim.OTS_C_WallY2 = 669;
-
-	gim.g_Bombflg = 0;				//îöíeÉtÉâÉOÇÃèâä˙âª
-	gim.BombX1 = 250;				//îöíeÇÃXé≤èâä˙âª
-	gim.BombX2 = gim.BombX1 + 50;
-	gim.BombY1 = 618;				//îöíeÇÃYé≤èâä˙âª
-	gim.BombY2 = gim.BombY1 + 50;
-
-	gim.B_EffectCount = 30;	//îöïóÇÃâÊëúÇÃï`âÊéûä‘
-	gim.B_WallX1 = 650;			//âÛÇπÇÈï«ÇÃXé≤
-	gim.B_WallY1 = 0;
-	gim.B_WallX2 = 700;			//âÛÇπÇÈï«ÇÃYé≤
-	gim.B_WallY2 = 669;
-
+	//âÒïúÉAÉCÉeÉÄóp_________
+	gim.item_x = 300 + 10;
+	gim.item_y;
+	gim.item_flg = 1;
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
@@ -80,42 +60,36 @@ int Stage18(void) {			//É}ÉbÉvâÊëúÇÃï`âÊ
 	}
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//É}ÉbÉvÇÃï`âÊ
-
-	Change(NONCOLOR);
-	DrawBox(0, 300, 300, 370, 0xffffff, TRUE);
-	DrawBox(1050, 300, 1300, 370, 0xffffff, TRUE);
+	//êFÉuÉçÉbÉNï`âÊ
 
 	Change(BLUE);
-	DrawExtendGraph(400, 568, 500, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 368, 500, 468, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 368, 600, 468, g_pic.Box, TRUE);
-	DrawExtendGraph(1100, 200, 1200, 300, g_pic.Box, TRUE);
-	DrawExtendGraph(1100, 100, 1200, 200, g_pic.Box, TRUE);
-	Change(RED);
-	DrawExtendGraph(300, 568, 400, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(300, 468, 400, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(700, 568, 800, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(800, 568, 900, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(800, 468, 900, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(900, 468, 1000, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(900, 368, 1000, 468, g_pic.Box, TRUE);
+	DrawExtendGraph(200, 568, 300, 668, g_pic.Box, TRUE);	//1
+	DrawExtendGraph(200, 468, 300, 568, g_pic.Box, TRUE);	//2
+	DrawExtendGraph(200, 368, 300, 468, g_pic.Box, TRUE);	//3
 
+	Change(RED);
+	DrawExtendGraph(300, 568, 400, 668, g_pic.Box, TRUE);	//1
+
+
+	Change(RED);
+	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box, TRUE);	//1
+	DrawExtendGraph(900, 468, 1000, 568, g_pic.Box, TRUE);	//2	
+	Change(BLUE);
+	DrawExtendGraph(900, 368, 1000, 468, g_pic.Box, TRUE);	//3	
+	DrawExtendGraph(900, 268, 1000, 368, g_pic.Box, TRUE);	//4
+	DrawExtendGraph(900, 168, 1000, 268, g_pic.Box, TRUE);	//5
+
+
+	ChangeBlock();	//ïœå`Ç∑ÇÈÉIÉuÉWÉFÉNÉgÇÃä÷êî
+	kaihuku(gim.item_x, gim.item_y);		//âÒïúÉAÉCÉeÉÄ
 
 	Door();			//ÉXÉeÅ[ÉWÉSÅ[Éãèàóù
 	Lock();
 
 
-	DoorRotationBox(2);
-
+	DoorRotationBox(1);
 	ColorReset();
-	
-	Bomb();
 
-	OneTimeSwitch();
 
 	//ÉXÉeÅ[ÉWÉNÉäÉAÇµÇΩéûÅAÉ^ÉCÉgÉãâÊñ Ç…ñﬂÇ¡ÇΩÇ∆Ç´
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {

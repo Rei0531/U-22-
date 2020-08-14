@@ -3,27 +3,34 @@
 #include "Color.h"
 #include"Door.h"
 #include "Lock.h"
-#include "Draw_Door_Rotation.h"
-#include "Rotation_Box.h"
-#include "Menu.h"
+#include "Object.h"
 #include "Gimmick.h"
-#include "Warp.h"
+#include "Draw_Door_Rotation.h"
+#include "Menu.h"
+#include "SlaidBlock.h"
 
 //MapCoordinate g_MapC;
 extern MapCoordinate g_MapC;
 extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
+extern Object g_Object;
+extern Controller g_Pad;
 extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
-
-int Warpy = 50;
+//オブジェクトの初期位置
+static int
+SliObjx1 = 750 + 200,
+SliObjx2 = 750 + 200,
+SliObjy1 = 568,
+SliObjy2 = 668;
+static int SlideColor = 9;//スライド用の色
 
 void Stage22Init() {
 	//プレイヤーの初期位置
 	//オブジェクトの初期位置を描く
-	g_Player.Interact = 20;//プレイヤーがインタラクトできる回数を10回に設定
+	g_Player.Interact = 60;//プレイヤーがインタラクトできる回数設定
 	InitFlag = FALSE;	//FALSEにして次TRUEになるまで通らないようにする
 
 	g_Player.x = 110;			//プレイヤー座標初期化
@@ -33,78 +40,89 @@ void Stage22Init() {
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
+	gim.SliObjx1 = 950,
+		gim.SliObjx2 = gim.SliObjx1 + 150,
+		gim.SliObjy1 = 320,
+		gim.SliObjy2 = gim.SliObjy1 + 50,
+		gim.GetObjx1 = 1180,
+		gim.GetObjx2 = gim.GetObjx1 + 100,
+		gim.GetObjy1 = 265,
+		gim.GetObjy2 = gim.GetObjy1 + 105,
+		gim.move_max = 160;
+
+	gim.shower_C = PURPLE2;			//シャワーの塗りつぶしの色を初期化
+	gim.shower_X = 70;				//シャワーの座標
+
+	gim.g_LeverX = 50;		//レバーのX座標
+	gim.g_LeverY = 330;		//レバーのY座標
+
+	gim.g_L_BoxX1 = 200;		//レバーで反応する箱X/Y座標
+	gim.g_L_BoxY1 = 270;
+	gim.g_L_BoxX2 = 300;
+	gim.g_L_BoxY2 = 370;
+	gim.SwitchFlag = 0;		//レバーのON、OFF
+	gim.SwitchColor = 0;		//レバーの色
+
+	gim.SwitchColor = BLUE2;		//レバーの色の初期化
+
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
 
-	//ワープ***********************************************
-	gim.SetNum = 2;//ワープの対の数
-	//*****************************************************
-
-	//シャワー***********************************************
-	gim.shower_C = LIGHTBLUE2;			//シャワーの塗りつぶしの色を初期化
-	gim.shower_X = 1000;				//シャワーの座標
-	//*****************************************************
-
-	//レバー***********************************************
-	gim.g_LeverX = 1180;		//レバーのX座標
-	gim.g_LeverY = 340;		//レバーのY座標
-
-	gim.g_L_BoxX1 = 780;		//レバーで反応する箱X/Y座標
-	gim.g_L_BoxY1 = 569;
-	gim.g_L_BoxX2 = gim.g_L_BoxX1 + 100;
-	gim.g_L_BoxY2 = gim.g_L_BoxY1 + 100;
-	gim.SwitchFlag = 1;		//レバーのON、OFF
-	gim.SwitchColor = 6;		//レバーの色
-	//*****************************************************
-
-
 	//ドアの位置
-	g_Door.x = 50;				//扉の左上のx座標
-	g_Door.y = 170;				//扉の左上のy座標
-	g_Door.w = g_Door.x + 100;	//横幅
-	g_Door.h = g_Door.y + 200;	//縦幅
+	g_Door.x = 100;
+	g_Door.y = 170;
+	g_Door.w = 200;
+	g_Door.h = 370;
 
+	SlideColor = RED;//スイッチから―の初期化
+
+	g_Object.Init();//オブジェクトの移動量リセット
 }
 
 int Stage22(void) {			//マップ画像の描画
+	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
 	if ((InitFlag == TRUE)) {//InitフラグがTRUEの時に初期化できる
 		Stage22Init();
 	}
 
-	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
-
-	Warp(200, 270, 200, 568);
-
-	Lever();
-
-	Shower();		//塗りつぶしシャワーの処理
 
 	//色ブロック描画
-	Change(GREEN);
-	DrawExtendGraph(400, 569, 500, 669, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 468, 500, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(400, 368, 500, 468, g_pic.Box, TRUE);
+	Change(YELLOW);
+	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box, TRUE);
+	MoveBox(YELLOW, 500, 568);
+	MoveBox(YELLOW, 500, 468);
+	Change(BLUE);
+	DrawExtendGraph(350, 568, 450, 668, g_pic.Box, TRUE);
+	MoveBox(BLUE, 750, 568);
+	MoveBox(BLUE, 750, 468);
 
-	//レバー用_________________________________________________
-	Change(PURPLE);
-	DrawExtendGraph(680, 569, 780, 669, g_pic.Box, TRUE);
-	DrawExtendGraph(780, 569, 880, 669, g_pic.Box, TRUE);
-	DrawExtendGraph(780, 468, 880, 568, g_pic.Box, TRUE);
+	//動く床処理___________________________________________________________________________________________________
+	SlideBlock(SlideColor);
 
+	//シャワー処理___________________________________________________________________________________________________
+	Shower();
 
-	//世界の壁_________________________________________
+	//レバー処理___________________________________________________________________________________________________
+	if (g_Lock.Release == 2)
+		Lever();
+
+	//触っている色のオブジェが画面の一番手前に来るようにする処理、いつかZ軸設定してやりたい
+	frontMoveBox(YELLOW, 500, 568);
+	frontMoveBox(YELLOW, 500, 468);
+	frontMoveBox(BLUE, 750, 568);
+	frontMoveBox(BLUE, 750, 468);
+
+	//世界の壁（黒いブロック）
 	Change(NONCOLOR);
-	DrawBox(0, 370, 400, 420, GetColor(255, 255, 255), TRUE);
-	DrawBox(880, 370, 1280, 420, GetColor(255, 255, 255), TRUE);
-
-
+	DrawBox(0, 370, 300, 420, GetColor(255, 255, 255), TRUE);
+	DrawBox(1080, 370, 1280, 420, GetColor(255, 255, 255), TRUE);
 	Door();			//ステージゴール処理
 	Lock();
 
 
-	DoorRotationBox(3);
+	DoorRotationBox(4);//ドアの上のローテ―ションするボックスの描画
 
 	ColorReset();
 
@@ -118,6 +136,5 @@ int Stage22(void) {			//マップ画像の描画
 		Menu_Draw();
 		InitFlag = Menu_Update();
 	}
-
 	return 0;
 }

@@ -3,10 +3,10 @@
 #include "Color.h"
 #include"Door.h"
 #include "Lock.h"
-#include "Bomb.h"
 #include "Draw_Door_Rotation.h"
 #include "Rotation_Box.h"
 #include "Menu.h"
+#include "Warp.h"
 #include "Gimmick.h"
 
 //MapCoordinate g_MapC;
@@ -15,6 +15,7 @@ extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
 extern GimmickAll gim;
+extern Object g_Object;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 
@@ -26,34 +27,51 @@ void Stage24Init() {
 
 	g_Player.x = 110;			//プレイヤー座標初期化
 	g_Player.y = 571;			//プレイヤー座標初期化
-	g_Player.NowColor = 5;		//プレイヤーの色初期化
+	g_Player.NowColor = 0;		//プレイヤーの色初期化
 
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
-
-	gim.g_Bombflg = 0;				//爆弾フラグの初期化
-	gim.BombX1 = 25;				//爆弾のX軸初期化
-	gim.BombX2 = gim.BombX1 + 50;
-	gim.BombY1 = 240;				//爆弾のY軸初期化
-	gim.BombY2 = gim.BombY1 + 50;
-
-	gim.B_EffectCount = 30;	//爆風の画像の描画時間
-	gim.B_WallX1 = 1000;			//壊せる壁のX軸
-	gim.B_WallY1 = 0;
-	gim.B_WallX2 = 1100;			//壊せる壁のY軸
-	gim.B_WallY2 = 300;
-
-	gim.item_x = 1200;
-	gim.item_y = 250;
-	gim.item_flg = 1;
 
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
 
+	//ワープ***********************************************
+	gim.SetNum = 2;//ワープの対の数
+	//*****************************************************
+
+	//インスタントスイッチ***********************************************
+	gim.g_OTSwitchFlag = 0;		//一度限りのスイッチフラグ初期化
+
+	gim.OTS_X1 = 1200;				//一度限りのスイッチのX/Y軸初期化
+	gim.OTS_Y1 = 618;
+	gim.OTS_X2 = gim.OTS_X1 + 50;
+	gim.OTS_Y2 = gim.OTS_Y1 + 50;
+	gim.OTS_WallX1 = 0;
+	gim.OTS_WallY1 = 0;
+	gim.OTS_WallX2 = 0;
+	gim.OTS_WallY2 = 0;
+	gim.OTS_C_WallX1 = 590;            //一度限りのスイッチで表れる壁のX/Y軸
+	gim.OTS_C_WallY1 = 280;
+	gim.OTS_C_WallX2 = 690;
+	gim.OTS_C_WallY2 = 320;
+	//*****************************************************
+
+	//変形オブジェクト*******************************************
+	gim.cheobj_flg = 1;			//変形するオブジェクトのフラグ
+	gim.cheobj_x = 525;
+	gim.cheobj_y = 425;
+	gim.cheobj_c = g_Player.NowColor;
+	gim.cheobj_ani = 158;
+	//*****************************************************
+
+	//箱の位置リセット
+	g_Object.Init();//オブジェクトの移動量リセット
+
+
 	//ドアの位置
-	g_Door.x = 1100;			//扉の左上のx座標
-	g_Door.y = 468;				//扉の左上のy座標
+	g_Door.x = 590;				//扉の左上のx座標
+	g_Door.y = 80;				//扉の左上のy座標
 	g_Door.w = g_Door.x + 100;	//横幅
 	g_Door.h = g_Door.y + 200;	//縦幅
 
@@ -67,43 +85,43 @@ int Stage24(void) {			//マップ画像の描画
 
 	DrawExtendGraph(g_MapC.X1, g_MapC.Y1, g_MapC.X2, g_MapC.Y2, g_pic.Map, TRUE);	//マップの描画
 
-	Change(NONCOLOR);
-	DrawBox(300, 280, 750, 300, 0xffffff, TRUE);
-	DrawBox(0, 300, 100, 370, 0xffffff, TRUE);
-	DrawBox(950, 300, 1000, 370, 0xffffff, TRUE);
-	DrawBox(1100, 300, 1300, 370, 0xffffff, TRUE);
-
+	//色ブロック描画___________________________
+	Change(PURPLE);
+	DrawExtendGraph(0, 295, 100, 395, g_pic.Box, TRUE);
+	DrawExtendGraph(1080, 195, 1180, 295, g_pic.Box, TRUE);
+	DrawExtendGraph(1180, 195, 1280, 295, g_pic.Box, TRUE);
 	Change(YELLOW);
-	DrawExtendGraph(100, 370, 200, 470, g_pic.Box, TRUE);
-	DrawExtendGraph(100, 470, 200, 570, g_pic.Box, TRUE);
-	DrawExtendGraph(100, 570, 200, 670, g_pic.Box, TRUE);
-	DrawExtendGraph(200, 470, 300, 570, g_pic.Box, TRUE);
-	DrawExtendGraph(200, 570, 300, 670, g_pic.Box, TRUE);
-	Change(RED);
-	DrawExtendGraph(750, 470, 850, 570, g_pic.Box, TRUE);
-	DrawExtendGraph(750, 570, 850, 670, g_pic.Box, TRUE);
-	DrawExtendGraph(850, 370, 950, 470, g_pic.Box, TRUE);
-	DrawExtendGraph(850, 470, 950, 570, g_pic.Box, TRUE);
-	DrawExtendGraph(850, 570, 950, 670, g_pic.Box, TRUE);
+	DrawExtendGraph(1180, 95, 1280, 195, g_pic.Box, TRUE);
+	//動かせる箱の描画___________________________
+	MoveBox(BLUE, 340, 568);
+	MoveBox(RED, 840, 568);
 
-	Change(Rotation_Box(0));
-	DrawExtendGraph(300, 568, 400, 668, g_pic.Rot_Box, TRUE);
-	Change(Rotation_Box(1));
-	DrawExtendGraph(550, 568, 650, 668, g_pic.Rot_Box, TRUE);
-	Change(Rotation_Box(2));
-	DrawExtendGraph(650, 568, 750, 668, g_pic.Rot_Box, TRUE);
+	ColorReset();
+	Warp(150, 270, 150, 568);
 
-	kaihuku(gim.item_x, gim.item_y);
+	OneTimeSwitch();
+
+	ChangeBlock();	//変形するオブジェクトの関数
+
+	//世界の壁_________________________________________
+	Change(NONCOLOR);
+	DrawBox(0, 395, 400, 420, GetColor(255, 255, 255), TRUE);//左の床
+	DrawBox(525, 569, 750, 669, GetColor(255, 255, 255), TRUE);//中央の黒い壁
+	DrawBox(880, 395, 1280, 420, GetColor(255, 255, 255), TRUE);//右の床
+	DrawBox(290, 295, 340, 395, GetColor(255, 255, 255), TRUE);//左の障害物
+	DrawBox(940, 295, 990, 395, GetColor(255, 255, 255), TRUE);//右の障害物
+
+	//動かせる箱を一番前に出す
+	frontMoveBox(BLUE, 340, 568);
+	frontMoveBox(RED, 840, 568);
 
 	Door();			//ステージゴール処理
 	Lock();
 
 
-	DoorRotationBox(3);
+	DoorRotationBox(4);
 
 	ColorReset();
-
-	Bomb();
 
 	//ステージクリアした時、タイトル画面に戻ったとき
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {
