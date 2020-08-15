@@ -123,8 +123,10 @@ int PlayerDraw(void) {
 	g_Player.Hit_Under = GetPointColor(g_Player.x + Hit_Under_x, Hit_Under_y);		//右足元
 	g_Player.Hit_Under2 = GetPointColor(g_Player.x - Hit_Under_x, Hit_Under_y);		//左足元
 	//動かせるボックスかどうか知るための色を取得_________________________
-	g_Player.Move_Hit1 = GetPointColor(Move_Hitx1, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
-	g_Player.Move_Hit2 = GetPointColor(Move_Hitx2, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	g_Player.Move_HitR = GetPointColor(Move_Hitx1, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	g_Player.Move_HitL = GetPointColor(Move_Hitx2, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
+	g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
 
 
 	//当たり判定の可視化_____________________________________________________________________
@@ -141,6 +143,9 @@ int PlayerDraw(void) {
 
 	//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 50 - 5, Hit_R_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭
 	//DrawBox(Hit_L_x - 5, Hit_UpLR_y - 50 - 5, Hit_L_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭
+
+	//DrawBox(Hit_R_x + 110 -5, Hit_UnderLR_y -5, Hit_R_x + 110+5, Hit_UnderLR_y +5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
+	//DrawBox(Hit_L_x - 110 - 5, Hit_UnderLR_y - 5, Hit_L_x - 110 + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
 
 	//当たり判定のフラグ管理_____________________________________
 	//右行ってヨシ！
@@ -182,14 +187,14 @@ int PlayerDraw(void) {
 				if (g_Pad.KEY_RIGHT)
 					g_Player.x += PLAYERX;
 				//ブロック動かす処理_____________________________________________________________
-				if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
+				if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
 					&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
 					if (g_Pad.KEY_RIGHT == TRUE)
 						MoveObjectValue(g_Player.NowColor);
 				}
 			}
 			//ブロック動かす処理___________________________________________________________________
-			else if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit1 == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
+			else if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
 				&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
 				if (g_Pad.KEY_LEFT == TRUE && g_Player.NowColor != g_Player.Hit_LeftUnder ||
 					g_Pad.KEY_RIGHT == TRUE) {
@@ -203,14 +208,14 @@ int PlayerDraw(void) {
 				if (g_Pad.KEY_LEFT)
 					g_Player.x -= PLAYERX;
 				//ブロック動かす処理___________________________
-				if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
+				if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
 					&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
 					if (g_Pad.KEY_LEFT == TRUE)
 						MoveObjectValue(g_Player.NowColor);
 				}
 			}
 			//ブロック動かす処理_________________________________________________
-			else if (g_Pad.KEY_B == TRUE && g_Player.Move_Hit2 == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
+			else if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
 				&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
 				if (g_Pad.KEY_RIGHT == TRUE && g_Player.NowColor != g_Player.Hit_RightUnder ||
 					g_Pad.KEY_LEFT == TRUE) {

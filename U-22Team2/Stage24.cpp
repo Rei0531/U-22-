@@ -84,6 +84,8 @@ int Stage24(void) {			//マップ画像の描画
 	}
 
 
+	ChangeBlock();	//変形するオブジェクトの関数
+
 	//色ブロック描画___________________________
 	Change(PURPLE);
 	DrawExtendGraph(0, 295, 100, 395, g_pic.Box[0], TRUE);
@@ -98,10 +100,6 @@ int Stage24(void) {			//マップ画像の描画
 	ColorReset();
 	Warp(150, 270, 150, 568);
 
-	OneTimeSwitch();
-
-	ChangeBlock();	//変形するオブジェクトの関数
-
 	//世界の壁_________________________________________
 	Change(NONCOLOR);
 	DrawBox(0, 395, 400, 420, GetColor(255, 255, 255), TRUE);//左の床
@@ -109,6 +107,8 @@ int Stage24(void) {			//マップ画像の描画
 	DrawBox(880, 395, 1280, 420, GetColor(255, 255, 255), TRUE);//右の床
 	DrawBox(290, 295, 340, 395, GetColor(255, 255, 255), TRUE);//左の障害物
 	DrawBox(940, 295, 990, 395, GetColor(255, 255, 255), TRUE);//右の障害物
+
+	OneTimeSwitch();
 
 	//動かせる箱を一番前に出す
 	frontMoveBox(BLUE, 340, 568);

@@ -23,8 +23,10 @@ public:
 		Hit_Rght_High = 0,				//頭の高さの右当たり判定
 		Hit_Left_High = 0;				//頭の高さの左当たり判定
 
-	int Move_Hit1,
-		Move_Hit2;					//動かせるボックスの当たり判定色を取得
+	int Move_HitR,					//動かせるボックスの当たり判定色を取得
+		Move_HitL,					//動かせるボックスの当たり判定色を取得
+		Move_BlackR,				//動かせる箱が黒い壁にめり込まないように取得する変数
+		Move_BlackL;				//動かせる箱が黒い壁にめり込まないように取得する変数
 
 	bool InitFlag = FALSE;			//プレイヤーのInit処理に入るか
 

@@ -121,45 +121,42 @@ int GetObjectColor(void) {
 *************************************************************************/
 void MoveObjectValue(int P_Color) {
 
-	g_Player.PLAYER_MOVEBOX_PUSH = TRUE;//動かすブロックを動かしているフラグをTRUEにする
-
 	if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
 		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
 	}
 	
-	static int dir = 1;//向きによって*-1するからそのための変数
+	int dir = 0;//向きによって*-1するからそのための変数
 	
-	g_Pad.KEY_LEFT ? dir = -1 : dir = 1;//プレイヤーがTURE(左向き)ならマイナス、FALSE(右向き)ならプラス
-
-
 	//右に箱があった時______________________________________
-	if (g_Player.Move_Hit1 == MOVE) {
-		//右に向かって動いていた時
-		if (dir == 1) {
+	if (g_Player.Move_HitR == MOVE) {
+		//右に向かって動いていた時//押してるとき
+		if (g_Player.PLAYER_DIRECTION == FALSE && g_Player.Move_BlackR != BLACK) {
 			g_Player.PLAYER_MOVEBOX_PUSH = TRUE;//プレイヤーは押す動作をしている
 			g_Player.PLAYER_MOVEBOX_PULL = FALSE;//引く動作のフラグをFALSEにする
+			dir = 1;// (右向き)ならプラス
 		}
-		//左に向かって動いていた時
-		else {
+		//左に向かって動いていた時//引いている時
+		else if(g_Player.PLAYER_DIRECTION == TRUE && g_Player.Hit_LeftUnder != BLACK && g_Player.NowColor != g_Player.Hit_LeftUnder){
 			g_Player.PLAYER_MOVEBOX_PULL = TRUE;//プレイヤーは引く動作をしている
 			g_Player.PLAYER_MOVEBOX_PUSH = FALSE;//押す動作のフラグをFALSEにする
+			dir = -1;//(左向き)ならマイナス
 		}
-
 	}
 
 	//左に箱があった時______________________________________
-	if (g_Player.Move_Hit2 == MOVE) {
-		//右に向かって動いていた時
-		if (dir == 1) {
-			g_Player.PLAYER_MOVEBOX_PULL = TRUE;//プレイヤーは引く動作をしている
-			g_Player.PLAYER_MOVEBOX_PUSH = FALSE;//押す動作のフラグをFALSEにする
-		}
-		//左に向かって動いていた時
-		else {
+	if (g_Player.Move_HitL == MOVE) {
+		//左に向かって動いていた時//押してるとき
+		if (g_Player.PLAYER_DIRECTION == TRUE && g_Player.Move_BlackL != BLACK) {
 			g_Player.PLAYER_MOVEBOX_PUSH = TRUE;//プレイヤーは押す動作をしている
 			g_Player.PLAYER_MOVEBOX_PULL = FALSE;//引く動作のフラグをFALSEにする
+			dir = -1;//(左向き)ならマイナス
 		}
-
+		//右に向かって動いていた時//引いてるとき
+		else if(g_Player.PLAYER_DIRECTION == FALSE && g_Player.Hit_RightUnder != BLACK && g_Player.NowColor != g_Player.Hit_RightUnder){
+			g_Player.PLAYER_MOVEBOX_PULL = TRUE;//プレイヤーは引く動作をしている
+			g_Player.PLAYER_MOVEBOX_PUSH = FALSE;//押す動作のフラグをFALSEにする
+			dir = 1;// (右向き)ならプラス
+		}
 	}
 
 	switch (P_Color) {		//プレイヤーの色に合わせて動かすオブジェクトを決める
