@@ -15,7 +15,6 @@ extern Sound g_Snd;
 
 int Lever(void) {
 
-	Change2(gim.SwitchColor);
 	if ((g_Player.x > gim.g_LeverX - 100) & (g_Player.x < gim.g_LeverX + 100) & (g_Pad.KEY_B == TRUE) & (g_Player.y > gim.g_LeverY - 100) & (g_Player.y < gim.g_LeverY + 100)
 		& (gim.SwitchFlag == 0) & (gim.SwitchWait == 0) & (g_Player.NowColor == gim.SwitchColor)) { //スイッチフラグがOFFであり待機時間が０でありスイッチと重なってあり
 		gim.SwitchFlag = 1;														  //レバーの色と主人公が同じである状態でインタラクトを押すと箱が消える
@@ -30,20 +29,22 @@ int Lever(void) {
 	}
 
 	if (gim.SwitchFlag == 0) {			//オフ
+		Change2(gim.SwitchColor);
 		DrawRotaGraph(gim.g_LeverX, gim.g_LeverY, 0.7, 0, g_pic.Reba, TRUE, FALSE);
 		//Change(RED);
 		//DrawExtendGraph(gim.g_L_BoxX1, gim.g_L_BoxY1, gim.g_L_BoxX2, gim.g_L_BoxY2, g_pic.Box, TRUE);
 		//DrawExtendGraph(gim.g_L_BoxX1, gim.g_L_BoxY1 - 100, gim.g_L_BoxX2, gim.g_L_BoxY2 - 100, g_pic.Box, TRUE);
 	}
 	else if (gim.SwitchFlag == 1) {		//オン
+		Change2(gim.SwitchColor);
 		DrawRotaGraph(gim.g_LeverX, gim.g_LeverY, 0.7, 0, g_pic.Reba, TRUE, TRUE);
-		//	Change(WHITE);
-		//DrawExtendGraph(200, 270, 300, 370, g_pic.Box, TRUE);
-		Change(YELLOW);
+		Change(gim.OTSBox_Color);
 		DrawExtendGraph(gim.g_L_BoxX1, gim.g_L_BoxY1, gim.g_L_BoxX2, gim.g_L_BoxY2, g_pic.Box[0], TRUE);
 		DrawExtendGraph(gim.g_L_BoxX1, gim.g_L_BoxY1 - 100, gim.g_L_BoxX2, gim.g_L_BoxY2 - 100, g_pic.Box[0], TRUE);
+		Change(gim.OTSBox_Color2);
 		DrawExtendGraph(gim.g_L2_BoxX1, gim.g_L2_BoxY1, gim.g_L2_BoxX2, gim.g_L2_BoxY2, g_pic.Box[0], TRUE);
 		DrawExtendGraph(gim.g_L2_BoxX1, gim.g_L2_BoxY1 - 100, gim.g_L2_BoxX2, gim.g_L2_BoxY2 - 100, g_pic.Box[0], TRUE);
+		Change(gim.OTSBox_Color3);
 		DrawExtendGraph(gim.g_L3_BoxX1, gim.g_L3_BoxY1, gim.g_L3_BoxX2, gim.g_L3_BoxY2, g_pic.Box[0], TRUE);
 		DrawExtendGraph(gim.g_L3_BoxX1, gim.g_L3_BoxY1 - 100, gim.g_L3_BoxX2, gim.g_L3_BoxY2 - 100, g_pic.Box[0], TRUE);
 

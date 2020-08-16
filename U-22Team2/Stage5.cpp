@@ -39,17 +39,21 @@ void Stage5Init() {
 	gim.g_LeverY = 633;		//レバーのY座標
 	
 	gim.g_L_BoxX1 = 700;		//レバーで反応する箱X/Y座標
-	gim.g_L_BoxY1 = 558;
+	gim.g_L_BoxY1 = 568;
 	gim.g_L_BoxX2 = 800;
 	gim.g_L_BoxY2 = 668;
-	gim.g_L2_BoxX1 = 0;
-	gim.g_L2_BoxY1 = 0;
-	gim.g_L2_BoxX2 = 0;
-	gim.g_L2_BoxY2 = 0;
-	gim.g_L3_BoxX1 = 0;
-	gim.g_L3_BoxY1 = 0;
-	gim.g_L3_BoxX2 = 0;
-	gim.g_L3_BoxY2 = 0;
+	gim.g_L2_BoxX1 = 700;
+	gim.g_L2_BoxY1 = 368;
+	gim.g_L2_BoxX2 = 800;
+	gim.g_L2_BoxY2 = 468;
+	gim.g_L3_BoxX1 = 700;
+	gim.g_L3_BoxY1 = 168;
+	gim.g_L3_BoxX2 = 800;
+	gim.g_L3_BoxY2 = 268;
+
+	gim.OTSBox_Color = RED;
+	gim.OTSBox_Color2 = BLUE;
+	gim.OTSBox_Color3 = YELLOW;
 	
 
 	gim.SwitchFlag = 0;		//レバーのON、OFF
