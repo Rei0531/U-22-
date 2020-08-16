@@ -12,7 +12,7 @@ extern GimmickAll gim;
 int OneTimeSwitch(void) {
 
 	if (g_Pad.KEY_B == TRUE &&
-		g_Player.x > gim.OTS_X1 && g_Player.x < gim.OTS_X2 && gim.g_OTSwitchFlag == 0) {			//スイッチ周辺でインタラクトを押すと壁が消える
+		g_Player.x > gim.OTS_X1 && g_Player.x < gim.OTS_X2 && g_Player.y > gim.OTS_Y1 - 30 && g_Player.y < gim.OTS_Y2 && gim.g_OTSwitchFlag == 0) {			//スイッチ周辺でインタラクトを押すと壁が消える
 		gim.g_OTSwitchFlag = 99;
 	}
 

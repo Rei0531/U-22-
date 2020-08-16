@@ -22,6 +22,14 @@ public:
 	int g_L_BoxY1 = 0;
 	int g_L_BoxX2 = 0;
 	int g_L_BoxY2 = 0;
+	int g_L2_BoxX1 = 0;
+	int g_L2_BoxY1 = 0;
+	int g_L2_BoxX2 = 0;
+	int g_L2_BoxY2 = 0;
+	int g_L3_BoxX1 = 0;
+	int g_L3_BoxY1 = 0;
+	int g_L3_BoxX2 = 0;
+	int g_L3_BoxY2 = 0;
 
 	int SwitchFlag = 0;		//レバーのON、OFF
 	int SwitchWait = 0;		//レバーの待機時間

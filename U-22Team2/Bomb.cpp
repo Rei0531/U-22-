@@ -32,7 +32,7 @@ int Bomb(void) {
 	if (gim.g_Bombflg != 3) {
 		Change(NONCOLOR);
 		DrawExtendGraph(gim.B_WallX1, gim.B_WallY1, gim.B_WallX2, gim.B_WallY2,g_pic.Object_Wall, TRUE);						//‰ó‚¹‚é•Ç‚Ì•`‰æ
-		DrawRotaGraph((gim.B_WallX1 + gim.B_WallX2) / 2, (gim.B_WallY1 + gim.B_WallY2) / 2, 0.2, 0, g_pic.Bomb, TRUE, FALSE);
+		DrawRotaGraph((gim.B_WallX1 + gim.B_WallX2) / 2, (gim.B_WallY1 + gim.B_WallY2) / 2,0.05, 0, g_pic.Bomb, TRUE, FALSE);
 	}
 	ColorReset();
 	if (gim.g_Bombflg == 2) {

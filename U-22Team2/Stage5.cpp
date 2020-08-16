@@ -42,6 +42,16 @@ void Stage5Init() {
 	gim.g_L_BoxY1 = 558;
 	gim.g_L_BoxX2 = 800;
 	gim.g_L_BoxY2 = 668;
+	gim.g_L2_BoxX1 = 0;
+	gim.g_L2_BoxY1 = 0;
+	gim.g_L2_BoxX2 = 0;
+	gim.g_L2_BoxY2 = 0;
+	gim.g_L3_BoxX1 = 0;
+	gim.g_L3_BoxY1 = 0;
+	gim.g_L3_BoxX2 = 0;
+	gim.g_L3_BoxY2 = 0;
+	
+
 	gim.SwitchFlag = 0;		//レバーのON、OFF
 	gim.SwitchColor = 0;		//レバーの色
 
