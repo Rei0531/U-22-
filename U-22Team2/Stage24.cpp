@@ -108,6 +108,7 @@ int Stage24(void) {			//マップ画像の描画
 	DrawBox(290, 295, 340, 395, GetColor(255, 255, 255), TRUE);//左の障害物
 	DrawBox(940, 295, 990, 395, GetColor(255, 255, 255), TRUE);//右の障害物
 
+	ColorReset();
 	OneTimeSwitch();
 
 	//動かせる箱を一番前に出す
