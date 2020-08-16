@@ -67,8 +67,8 @@ int Stage16(void) {			//マップ画像の描画
 	Change(Rotation_Box(2));
 	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box[2], TRUE);
 
-	//色反映スイッチ____________________________
-	SwitchColor = CC_Switch(g_Player.NowColor, 140, 568);//一時変数に関数からの戻り値を格納する
+	//色反映スイッチ____________________________				
+	SwitchColor = CC_Switch(g_Player.NowColor, 140, 578);//一時変数に関数からの戻り値を格納する
 	Change(SwitchColor);
 	//色反映する箱________________________________________________
 	DrawExtendGraph(1000, 568, 1100, 668, g_pic.Box[0], TRUE);

@@ -38,11 +38,11 @@ typedef enum {
     Stage_23,
     Stage_24,
     Stage_25,
-    Stage_26,
-    Stage_27,
-    Stage_28,
-    Stage_29,
-    Stage_30,
+    //Stage_26,
+    //Stage_27,
+    //Stage_28,
+    //Stage_29,
+    //Stage_30,
 
     Stage_Num,        //–{€–Ú‚Ì”
 } Stageselect;

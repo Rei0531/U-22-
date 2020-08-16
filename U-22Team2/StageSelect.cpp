@@ -30,12 +30,12 @@ void Stage_Update() {
 
     if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
         DOWN = TRUE;
-        NowStage = (NowStage + 6) % Stage_Num;//選択状態を一つ下げる
+        NowStage = (NowStage + 5) % Stage_Num;//選択状態を5つ下げる
         PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
     }
     if (g_Pad.KEY_UP == TRUE && UP == FALSE) {//上キーが押されていたら
         UP = TRUE;
-        NowStage = (NowStage + (Stage_Num - 6)) % Stage_Num;//選択状態を一つ上げる
+        NowStage = (NowStage + (Stage_Num - 5)) % Stage_Num;//選択状態を5つ上げる
         PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
     }
     if (g_Pad.KEY_LEFT == TRUE && LEFT == FALSE) {//下キーが押されていたら
@@ -75,17 +75,18 @@ void Stage_Draw() {
     int cnt = 0;
     //ステージのびょうが　
     for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 6; j++) {
-            DrawBox(168 + j * 168,26 + i * 156,268 + j * 168,126 + i * 156,0x000000,FALSE);
-            DrawRotaGraph(218 + j * 168, 76 + i * 156,0.5,0, g_pic.StageNum[cnt++ % 30],TRUE,FALSE);
+        for (int j = 0; j < 5; j++) {
+            DrawBox(218 + j * 168,26 + i * 156,318 + j * 168,126 + i * 156,0x000000,FALSE);
+            DrawRotaGraph(268 + j * 168, 76 + i * 156,0.5,0, g_pic.StageNum[cnt++ % Stage_Num],TRUE,FALSE);
         }
     }
 
     DrawFormatString(0, 100, 0xff0fff, "NowStage %d ", NowStage+1);
     int
-        x = NowStage%6,
-        y = NowStage/6;
-    DrawExtendGraph(168 + x * 168, 26 + y * 156, 268 + x * 168, 126 + y * 156, g_pic.StageNum[NowStage], TRUE);
+        x = NowStage%5,
+        y = NowStage/5;
+    //ステージセレクトの大きなる表示
+    DrawExtendGraph(218 + x * 168, 26 + y * 156, 318 + x * 168, 126 + y * 156, g_pic.StageNum[NowStage], TRUE);
 }
 
 int StageSelect(void) {

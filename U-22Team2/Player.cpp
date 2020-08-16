@@ -7,6 +7,7 @@
 #include"Door.h"
 #include "Object.h"
 #include "LoadSound.h"
+#include <stdlib.h>
 
 extern image g_pic;
 extern Controller g_Pad;
@@ -15,22 +16,28 @@ extern Player g_Player;
 extern DoorAll g_Door;
 extern Sound g_Snd;
 
-int anicnt = 0,
-anicntMax = 20,
-aniy = 0,
-anix = 0,
-PixelColor;;
+int anicnt = 0,	//アニメ動かす変数
+anicntMax = 20,	//アニメ全体の時間
+aniy = 0,		//指の上下アニメ用変数
+anix = 0,		//プレイヤーの向きによって変わるX座標用変数
 
+PixelColor4,	//中心から	  _l	    4□	  _l
+PixelColor3,	//中心から	  l 3□			_l
+PixelColor,		//指の中心	  l    □	　_l
+PixelColor2,	//中心から	  l 	2□  _l
+PixelColor1;	//指先		  l□1_______l
+
+static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
+static int Jumpcnt = 20;			//ジャンプ処理のカウント
+static int JumpMax = 0;	//ジャンプ処理全体にかかる最大時間
+static int Gravity = 5;		//毎フレーム下に落とす
+static int NoMove = 0;		//0の時動いていない1の時動いている/プレイヤーの歩くモーション待機モーション切り替えよう変数
+static int JumpOkflag = 0;	//空中ジャンプ防止変数/0がジャンプしていない/1がジャンプ中
+static int Move_Hitx1 = 0,	//動く箱に触れているかの取得する場所
+Move_Hitx2 = 0;	//動く箱に触れているかの取得する場所
 
 int PlayerDraw(void) {
-	static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
-	static int Jumpcnt = 20;			//ジャンプ処理のカウント
-	static int JumpMax = 0;	//ジャンプ処理全体にかかる最大時間
-	static int Gravity = 5;		//毎フレーム下に落とす
-	static int NoMove = 0;		//0の時動いていない1の時動いている/プレイヤーの歩くモーション待機モーション切り替えよう変数
-	static int JumpOkflag = 0;	//空中ジャンプ防止変数/0がジャンプしていない/1がジャンプ中
-	static int Move_Hitx1 = 0,	//動く箱に触れているかの取得する場所
-			   Move_Hitx2 = 0;	//動く箱に触れているかの取得する場所
+
 /************************************************************************
 **
 **		スポイト処理
@@ -51,11 +58,38 @@ int PlayerDraw(void) {
 
 	//PixelColorに色を格納
 	PixelColor = GetPointColor(g_Player.PickUpPixel, g_Player.PickUpPixely);
+	//取得した色が白色だった時
+	if (PixelColor == WHITE) {
+		//左向きの座標を取得する___________________________
+		int Px1 = -3,
+			Px2 = 2,
+			Px3 = -2,
+			Px4 = 3;
+
+		//左用の座標を反転させ右向きようにする_______________________________________
+		if (g_Player.PLAYER_DIRECTION == FALSE) {//右むいている時
+			Px1 *= -1;
+			Px2 *= -1;
+			Px3 *= -1;
+			Px4 *= -1;
+		}
+		//PixelColorの周りから色を取得する
+		PixelColor1 = GetPointColor(g_Player.PickUpPixel+ Px1, g_Player.PickUpPixely+3);
+		PixelColor2 = GetPointColor(g_Player.PickUpPixel+ Px2, g_Player.PickUpPixely+2);
+		PixelColor3 = GetPointColor(g_Player.PickUpPixel+ Px3, g_Player.PickUpPixely-2);
+		PixelColor4 = GetPointColor(g_Player.PickUpPixel+ Px4, g_Player.PickUpPixely-3);
+		//指先の取得した色で多数決を取る
+		if (PixelColor1 != WHITE)PixelColor = PixelColor1;
+		if (PixelColor4 != WHITE)PixelColor = PixelColor4;
+		if (PixelColor2 != WHITE)PixelColor = PixelColor2;
+		if (PixelColor3 != WHITE)PixelColor = PixelColor3;
+	}
+
 
 	//スポイトの手を表示させるかの判断式
-	if (PixelColor != WHITE && PixelColor != BLACK && PixelColor != g_Player.NowColor &&
-		g_Player.PLAYER_MOVEBOX_PUSH == FALSE && g_Player.PLAYER_MOVEBOX_PULL == FALSE &&
-		(!((g_Door.x < g_Player.PickUpPixel && g_Door.w > g_Player.PickUpPixel) &&
+	if (PixelColor != WHITE && PixelColor != NONCOLOR && PixelColor != g_Player.NowColor &&
+		PixelColor != MOVE && g_Player.PLAYER_MOVEBOX_PUSH == FALSE && g_Player.PLAYER_MOVEBOX_PULL == FALSE &&
+		(!((g_Door.x-5 < g_Player.PickUpPixel && g_Door.w+5 > g_Player.PickUpPixel) &&
 		(g_Door.y < g_Player.PickUpPixely && g_Door.h > g_Player.PickUpPixely)))) {//取得する場所の色が白じゃないとき描画
 
 		//スポイトの手が上下するアニメーション処理______________
@@ -68,12 +102,12 @@ int PlayerDraw(void) {
 			aniy -= 2;
 		}
 		if (anicnt >= anicntMax)anicnt = 0;
-		g_Player.PLAYER_DIRECTION ? anix = 58 : anix = 6;
+		g_Player.PLAYER_DIRECTION ? anix = 54 : anix = 10;
 		//_____________________________________________________________
 
 		//スポイトの手
 		Change2(PixelColor);
-		DrawRotaGraph2(g_Player.PickUpPixel, g_Player.PickUpPixely + aniy, anix, 47, 1.0, 0, g_pic.Hand, TRUE, g_Player.PLAYER_DIRECTION);
+		DrawRotaGraph2(g_Player.PickUpPixel, g_Player.PickUpPixely + aniy, anix, 46, 1.0, 0, g_pic.Hand, TRUE, g_Player.PLAYER_DIRECTION);
 	}
 	//*********************************************************************************************************
 

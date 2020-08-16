@@ -19,12 +19,21 @@ int Goal(void) {
 
 	DrawRotaGraph(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, 1.4, 0, g_pic.StageClear, TRUE, FALSE); //ƒ^ƒCƒgƒ‹‰æ‘œ•`‰æ
 
-	if (g_Pad.KEY_B == TRUE) {
-
-		g_MapC.StageNumber += 1;
-		GameState = GAME_MAIN;
-		g_Lock.clearflg = FALSE;
+	if (g_MapC.StageNumber >= 25) {
+		if (g_Pad.KEY_B == TRUE) {
+			g_MapC.StageNumber = 1;
+			GameState = GAME_TITLE;
+			g_Lock.clearflg = FALSE;
+		}
 	}
+	else {
+		if (g_Pad.KEY_B == TRUE) {
+			g_MapC.StageNumber += 1;
+			GameState = GAME_MAIN;
+			g_Lock.clearflg = FALSE;
+		}
+	}
+
 
 	return 0;
 }
