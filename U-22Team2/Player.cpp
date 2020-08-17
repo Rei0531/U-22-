@@ -27,9 +27,11 @@ PixelColor,		//指の中心	  l    □	　_l
 PixelColor2,	//中心から	  l 	2□  _l
 PixelColor1;	//指先		  l□1_______l
 
+const int PicChangeFream = 8;
 static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
-static int Jumpcnt = 20;			//ジャンプ処理のカウント
-static int JumpMax = 0;	//ジャンプ処理全体にかかる最大時間
+static int Jumpcnt = 20;	//ジャンプ処理のカウント
+static int JumpMax = 0;		//ジャンプ処理全体にかかる最大時間
+static int Sndcnt = 0;		//足音のフレームカウント変数
 static int Gravity = 5;		//毎フレーム下に落とす
 static int NoMove = 0;		//0の時動いていない1の時動いている/プレイヤーの歩くモーション待機モーション切り替えよう変数
 static int JumpOkflag = 0;	//空中ジャンプ防止変数/0がジャンプしていない/1がジャンプ中
@@ -181,8 +183,13 @@ int PlayerDraw(void) {
 		if (g_Pad.KEY_RIGHT == TRUE || g_Pad.KEY_LEFT == TRUE)	//右か左に入力されていたら
 		{
 			//歩く時の音、マップ端を超えないようにする処理_______________________________________
-			if (CheckSoundMem(g_Snd.Walk) == 0 && g_Player.PLAYER_JUMP == FALSE && g_Player.PLAYER_GROUND == TRUE) {//音を鳴らす
-				PlaySoundMem(g_Snd.Walk, DX_PLAYTYPE_BACK);
+			if ((Sndcnt++ % (PicChangeFream+6)) == 0) {
+				//if (CheckSoundMem(g_Snd.Walk) == 0 && g_Player.PLAYER_JUMP == FALSE && g_Player.PLAYER_GROUND == TRUE) {//音を鳴らす
+				//	PlaySoundMem(g_Snd.Walk, DX_PLAYTYPE_BACK);
+				//}
+				if (g_Player.PLAYER_JUMP == FALSE && g_Player.PLAYER_GROUND == TRUE) {//音を鳴らす
+					PlaySoundMem(g_Snd.Walk, DX_PLAYTYPE_BACK);
+				}
 			}
 			if (g_Player.x < g_MapC.X1) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、左端に到達
 				g_Player.x = g_MapC.X1;
@@ -345,7 +352,7 @@ int PlayerDraw(void) {
 	}
 	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
 	//														9フレームごとに、プレイヤーの動きに合わせて動かす
-	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0.0, g_pic.Player[animecnt / 9 % anime_motionMax + g_Player.Anime_Num + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
+	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0.0, g_pic.Player[animecnt / 8 % anime_motionMax + g_Player.Anime_Num + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
 	//_____________________________________________________________________________________________________________________
 	ColorReset();
 	//重なった場合の注意表示
