@@ -49,11 +49,27 @@ void Stage19Init() {
 	//レバー***********************************************
 	gim.g_LeverX = 1180;		//レバーのX座標
 	gim.g_LeverY = 340;		//レバーのY座標
-
-	gim.g_L_BoxX1 = 780;		//レバーで反応する箱X/Y座標
-	gim.g_L_BoxY1 = 569;
+	//レバーで反応する箱X/Y座標
+	//一個目
+	gim.g_L_BoxX1 = 780;		
+	gim.g_L_BoxY1 = 568;
 	gim.g_L_BoxX2 = gim.g_L_BoxX1 + 100;
 	gim.g_L_BoxY2 = gim.g_L_BoxY1 + 100;
+	//二個目
+	gim.g_L2_BoxX1 = 780;
+	gim.g_L2_BoxY1 = 468;
+	gim.g_L2_BoxX2 = gim.g_L2_BoxX1 + 100;
+	gim.g_L2_BoxY2 = gim.g_L2_BoxY1 + 100;
+	//三個目
+	gim.g_L3_BoxX1 = 680;
+	gim.g_L3_BoxY1 = 568;
+	gim.g_L3_BoxX2 = gim.g_L3_BoxX1 + 100;
+	gim.g_L3_BoxY2 = gim.g_L3_BoxY1 + 100;
+	//各箱の色設定
+	gim.OTSBox_Color = PURPLE;
+	gim.OTSBox_Color2 = PURPLE;
+	gim.OTSBox_Color3 = PURPLE;
+
 	gim.SwitchFlag = 1;		//レバーのON、OFF
 	gim.SwitchColor = 6;		//レバーの色
 	//*****************************************************
@@ -85,13 +101,6 @@ int Stage19(void) {			//マップ画像の描画
 	DrawExtendGraph(400, 569, 500, 669, g_pic.Box[0], TRUE);
 	DrawExtendGraph(400, 468, 500, 568, g_pic.Box[0], TRUE);
 	DrawExtendGraph(400, 368, 500, 468, g_pic.Box[0], TRUE);
-
-	//レバー用_________________________________________________
-	Change(PURPLE);
-	DrawExtendGraph(680, 569, 780, 669, g_pic.Box[0], TRUE);
-	DrawExtendGraph(780, 569, 880, 669, g_pic.Box[0], TRUE);
-	DrawExtendGraph(780, 468, 880, 568, g_pic.Box[0], TRUE);
-
 
 	//世界の壁_________________________________________
 	Change(NONCOLOR);
