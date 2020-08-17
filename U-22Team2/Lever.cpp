@@ -40,14 +40,14 @@ int Lever(void) {
 		DrawRotaGraph(gim.g_LeverX, gim.g_LeverY, 0.7, 0, g_pic.Reba, TRUE, TRUE);
 		Change(gim.OTSBox_Color);
 		DrawExtendGraph(gim.g_L_BoxX1, gim.g_L_BoxY1, gim.g_L_BoxX2, gim.g_L_BoxY2, g_pic.Box[0], TRUE);
-		DrawExtendGraph(gim.g_L_BoxX1, gim.g_L_BoxY1 - 100, gim.g_L_BoxX2, gim.g_L_BoxY2 - 100, g_pic.Box[0], TRUE);
 		Change(gim.OTSBox_Color2);
 		DrawExtendGraph(gim.g_L2_BoxX1, gim.g_L2_BoxY1, gim.g_L2_BoxX2, gim.g_L2_BoxY2, g_pic.Box[0], TRUE);
-		DrawExtendGraph(gim.g_L2_BoxX1, gim.g_L2_BoxY1 - 100, gim.g_L2_BoxX2, gim.g_L2_BoxY2 - 100, g_pic.Box[0], TRUE);
 		Change(gim.OTSBox_Color3);
 		DrawExtendGraph(gim.g_L3_BoxX1, gim.g_L3_BoxY1, gim.g_L3_BoxX2, gim.g_L3_BoxY2, g_pic.Box[0], TRUE);
-		DrawExtendGraph(gim.g_L3_BoxX1, gim.g_L3_BoxY1 - 100, gim.g_L3_BoxX2, gim.g_L3_BoxY2 - 100, g_pic.Box[0], TRUE);
-
+		Change(gim.OTSBox_Color4);
+		DrawExtendGraph(gim.g_L4_BoxX1, gim.g_L4_BoxY1, gim.g_L4_BoxX2, gim.g_L4_BoxY2, g_pic.Box[0], TRUE);
+		Change(gim.OTSBox_Color5);
+		DrawExtendGraph(gim.g_L5_BoxX1, gim.g_L5_BoxY1, gim.g_L5_BoxX2, gim.g_L5_BoxY2, g_pic.Box[0], TRUE);
 
 		
 	}
