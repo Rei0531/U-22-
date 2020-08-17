@@ -73,7 +73,7 @@ int GetPointColor(int Point_x, int Point_y) {
 	//スポイトされたとき********************************************************************************************************
 	if (g_Player.PLAYER_PICKUP == TRUE) {
 		g_Player.PLAYER_PICKUP = FALSE;			//TRUEになってこの関数に入るから一度だけの処理にするためにスポイトフラグをFALSEにする
-		if ((g_Player.Hit_Up == getcolor) | (SaveColor == getcolor) || (getcolor == WHITE) || (getcolor == BLACK)) {
+		if ((g_Player.Hit_Up == getcolor) || (SaveColor == getcolor) || (getcolor == WHITE) || (getcolor == BLACK)) {
 			g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
 		}
 		//g_Player.Hit_Up == getcolor || //Hitが重なっているときに取れなくするやつ

@@ -109,7 +109,7 @@ int PlayerDraw(void) {
 		Change2(PixelColor);
 		DrawRotaGraph2(g_Player.PickUpPixel, g_Player.PickUpPixely + aniy, anix, 46, 1.0, 0, g_pic.Hand, TRUE, g_Player.PLAYER_DIRECTION);
 	}
-	//*********************************************************************************************************
+//*********************************************************************************************************
 
 /************************************************************************
 **
@@ -127,11 +127,6 @@ int PlayerDraw(void) {
 	Move_Hitx1 = g_Player.x + 40;//取得する座標
 	Move_Hitx2 = g_Player.x - 40;//取得する座標
 
-	//マジックナンバーの解説
-	//Hit_Up_yの90はプレイヤー画像の真ん中から上下の端っこまでの距離
-	//Hit_LR_xの40は画像の真ん中から左右の端っこまでの距離
-	//Hit_UpLR_yは画像の真ん中から上か下までの距離の半分
-
 	/*
 	当たり判定のイメ―ジ
 
@@ -147,20 +142,24 @@ int PlayerDraw(void) {
 	/************************************************************************
 	*当たり判定箇所の色を取得
 	*************************************************************************/
-	g_Player.Hit_Rght_High = GetPointColor(Hit_R_x, Hit_UpLR_y - 50);		//右頭
-	g_Player.Hit_Left_High = GetPointColor(Hit_L_x, Hit_UpLR_y - 50);		//右頭
 	g_Player.Hit_Up = GetPointColor(g_Player.x, Hit_Up_y);				//頭上
+	if (g_Pad.KEY_RIGHT) {
+	g_Player.Hit_Rght_High = GetPointColor(Hit_R_x, Hit_UpLR_y - 50);		//右頭
 	g_Player.Hit_RightUp = GetPointColor(Hit_R_x, Hit_UpLR_y);			//右上
 	g_Player.Hit_RightUnder = GetPointColor(Hit_R_x, Hit_UnderLR_y);	//右下
+	g_Player.Move_HitR = GetPointColor(Move_Hitx1, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
+	}
+	if(g_Pad.KEY_LEFT) {
+	g_Player.Hit_Left_High = GetPointColor(Hit_L_x, Hit_UpLR_y - 50);		//右頭
 	g_Player.Hit_LeftUp = GetPointColor(Hit_L_x, Hit_UpLR_y);			//左上
 	g_Player.Hit_LeftUnder = GetPointColor(Hit_L_x, Hit_UnderLR_y);		//左下
+	g_Player.Move_HitL = GetPointColor(Move_Hitx2, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
+	}
 	g_Player.Hit_Under = GetPointColor(g_Player.x + Hit_Under_x, Hit_Under_y);		//右足元
 	g_Player.Hit_Under2 = GetPointColor(g_Player.x - Hit_Under_x, Hit_Under_y);		//左足元
 	//動かせるボックスかどうか知るための色を取得_________________________
-	g_Player.Move_HitR = GetPointColor(Move_Hitx1, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
-	g_Player.Move_HitL = GetPointColor(Move_Hitx2, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
-	g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-	g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
 
 
 	//当たり判定の可視化_____________________________________________________________________
@@ -217,8 +216,8 @@ int PlayerDraw(void) {
 		*************************************************************************/
 
 		//右側の当たり判定処理______________________________________________________________
-			if (RightOK == TRUE) {
-				if (g_Pad.KEY_RIGHT)
+			if (g_Pad.KEY_RIGHT) {
+				if (RightOK == TRUE)
 					g_Player.x += PLAYERX;
 				//ブロック動かす処理_____________________________________________________________
 				if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
@@ -238,8 +237,8 @@ int PlayerDraw(void) {
 
 
 			//左側の当たり判定処理________________________________________________
-			if (LeftOK == TRUE) {
-				if (g_Pad.KEY_LEFT)
+			if (g_Pad.KEY_LEFT) {
+				if (LeftOK == TRUE)
 					g_Player.x -= PLAYERX;
 				//ブロック動かす処理___________________________
 				if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
@@ -359,7 +358,7 @@ int PlayerDraw(void) {
 	}
 	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
 	//														9フレームごとに、プレイヤーの動きに合わせて動かす
-	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0, g_pic.Player[animecnt / 9 % anime_motionMax + g_Player.Anime_Num + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
+	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0.0, g_pic.Player[animecnt / 9 % anime_motionMax + g_Player.Anime_Num + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
 	//_____________________________________________________________________________________________________________________
 	ColorReset();
 	return 0;
