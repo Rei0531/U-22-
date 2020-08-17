@@ -58,8 +58,16 @@ void Stage22Init() {
 
 	gim.g_L_BoxX1 = 200;		//レバーで反応する箱X/Y座標
 	gim.g_L_BoxY1 = 270;
-	gim.g_L_BoxX2 = 300;
-	gim.g_L_BoxY2 = 370;
+	gim.g_L_BoxX2 = gim.g_L_BoxX1 + 100;
+	gim.g_L_BoxY2 = gim.g_L_BoxY1 + 100;
+	gim.g_L2_BoxX1 = 200;
+	gim.g_L2_BoxY1 = 170;
+	gim.g_L2_BoxX2 = gim.g_L2_BoxX1 + 100;
+	gim.g_L2_BoxY2 = gim.g_L2_BoxY1 + 100;
+	
+	gim.OTSBox_Color = YELLOW;
+	gim.OTSBox_Color2 = YELLOW;
+
 	gim.SwitchFlag = 0;		//レバーのON、OFF
 	gim.SwitchColor = 0;		//レバーの色
 

@@ -40,20 +40,31 @@ void Stage5Init() {
 	
 	gim.g_L_BoxX1 = 700;		//レバーで反応する箱X/Y座標
 	gim.g_L_BoxY1 = 568;
-	gim.g_L_BoxX2 = 800;
-	gim.g_L_BoxY2 = 668;
+	gim.g_L_BoxX2 = gim.g_L_BoxX1 + 100;
+	gim.g_L_BoxY2 = gim.g_L_BoxY1 + 100;
 	gim.g_L2_BoxX1 = 700;
-	gim.g_L2_BoxY1 = 368;
-	gim.g_L2_BoxX2 = 800;
-	gim.g_L2_BoxY2 = 468;
-	gim.g_L3_BoxX1 = 700;
-	gim.g_L3_BoxY1 = 168;
-	gim.g_L3_BoxX2 = 800;
-	gim.g_L3_BoxY2 = 268;
+	gim.g_L2_BoxY1 = 468;
+	gim.g_L2_BoxX2 = gim.g_L2_BoxX1 + 100;
+	gim.g_L2_BoxY2 = gim.g_L2_BoxY1 + 100;
+	gim.g_L3_BoxX1 = 300;
+	gim.g_L3_BoxY1 = 568;
+	gim.g_L3_BoxX2 = gim.g_L3_BoxX1 + 100;
+	gim.g_L3_BoxY2 = gim.g_L3_BoxY1 + 100;
+	gim.g_L4_BoxX1 = 300;
+	gim.g_L4_BoxY1 = 468;
+	gim.g_L4_BoxX2 = gim.g_L4_BoxX1 + 100;
+	gim.g_L4_BoxY2 = gim.g_L4_BoxY1 + 100;
+	gim.g_L5_BoxX1 = 300;
+	gim.g_L5_BoxY1 = 368;
+	gim.g_L5_BoxX2 = gim.g_L5_BoxX1 + 100;
+	gim.g_L5_BoxY2 = gim.g_L5_BoxY1 + 100;
 
 	gim.OTSBox_Color = RED;
-	gim.OTSBox_Color2 = BLUE;
-	gim.OTSBox_Color3 = YELLOW;
+	gim.OTSBox_Color2 = YELLOW;
+	gim.OTSBox_Color3 = RED;
+	gim.OTSBox_Color4 = RED;
+	gim.OTSBox_Color5 = RED;
+	
 	
 
 	gim.SwitchFlag = 0;		//レバーのON、OFF
