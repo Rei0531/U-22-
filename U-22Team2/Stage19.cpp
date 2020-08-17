@@ -69,6 +69,8 @@ void Stage19Init() {
 	gim.OTSBox_Color = PURPLE;
 	gim.OTSBox_Color2 = PURPLE;
 	gim.OTSBox_Color3 = PURPLE;
+	gim.OTSBox_Color4 = WHITE;
+	gim.OTSBox_Color5 = WHITE;
 
 	gim.SwitchFlag = 1;		//レバーのON、OFF
 	gim.SwitchColor = 6;		//レバーの色

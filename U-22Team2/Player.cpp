@@ -87,7 +87,7 @@ int PlayerDraw(void) {
 
 
 	//スポイトの手を表示させるかの判断式
-	if (PixelColor != WHITE && PixelColor != NONCOLOR && PixelColor != g_Player.NowColor &&
+	if (PixelColor != WHITE && PixelColor != NONCOLOR && PixelColor != BLACK && PixelColor != g_Player.NowColor &&
 		PixelColor != MOVE && g_Player.PLAYER_MOVEBOX_PUSH == FALSE && g_Player.PLAYER_MOVEBOX_PULL == FALSE &&
 		(!((g_Door.x-5 < g_Player.PickUpPixel && g_Door.w+5 > g_Player.PickUpPixel) &&
 		(g_Door.y < g_Player.PickUpPixely && g_Door.h > g_Player.PickUpPixely)))) {//取得する場所の色が白じゃないとき描画
@@ -148,14 +148,13 @@ int PlayerDraw(void) {
 	g_Player.Hit_RightUp = GetPointColor(Hit_R_x, Hit_UpLR_y);			//右上
 	g_Player.Hit_RightUnder = GetPointColor(Hit_R_x, Hit_UnderLR_y);	//右下
 	g_Player.Move_HitR = GetPointColor(Move_Hitx1, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
-	g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
+	
 	}
 	if(g_Pad.KEY_LEFT == TRUE) {
 	g_Player.Hit_Left_High = GetPointColor(Hit_L_x, Hit_UpLR_y - 50);		//右頭
 	g_Player.Hit_LeftUp = GetPointColor(Hit_L_x, Hit_UpLR_y);			//左上
 	g_Player.Hit_LeftUnder = GetPointColor(Hit_L_x, Hit_UnderLR_y);		//左下
 	g_Player.Move_HitL = GetPointColor(Move_Hitx2, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
-	g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
 	}
 	g_Player.Hit_Under = GetPointColor(g_Player.x + Hit_Under_x, Hit_Under_y);		//右足元
 	g_Player.Hit_Under2 = GetPointColor(g_Player.x - Hit_Under_x, Hit_Under_y);		//左足元
@@ -182,7 +181,7 @@ int PlayerDraw(void) {
 		if (g_Pad.KEY_RIGHT == TRUE || g_Pad.KEY_LEFT == TRUE)	//右か左に入力されていたら
 		{
 			//歩く時の音、マップ端を超えないようにする処理_______________________________________
-			if (CheckSoundMem(g_Snd.Walk) == 0 && g_Player.PLAYER_JUMP == FALSE) {//音を鳴らす
+			if (CheckSoundMem(g_Snd.Walk) == 0 && g_Player.PLAYER_JUMP == FALSE && g_Player.PLAYER_GROUND == TRUE) {//音を鳴らす
 				PlaySoundMem(g_Snd.Walk, DX_PLAYTYPE_BACK);
 			}
 			if (g_Player.x < g_MapC.X1) {		//マップ端でプレイヤーが画面を少し超えてしまうのを防止、左端に到達
@@ -205,6 +204,7 @@ int PlayerDraw(void) {
 				//ブロック動かす処理_____________________________________________________________
 				if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
 					&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
+					g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
 					if (g_Pad.KEY_RIGHT == TRUE)
 						MoveObjectValue(g_Player.NowColor);
 				}
@@ -212,6 +212,7 @@ int PlayerDraw(void) {
 			//ブロック動かす処理___________________________________________________________________
 			else if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
 					&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
+				g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
 					if (g_Pad.KEY_LEFT == TRUE && g_Player.NowColor != g_Player.Hit_LeftUnder ||
 						g_Pad.KEY_RIGHT == TRUE) {
 						MoveObjectValue(g_Player.NowColor);
@@ -227,6 +228,7 @@ int PlayerDraw(void) {
 				//ブロック動かす処理___________________________
 				if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
 					&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
+					g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
 					if (g_Pad.KEY_LEFT == TRUE)
 						MoveObjectValue(g_Player.NowColor);
 				}
@@ -234,6 +236,7 @@ int PlayerDraw(void) {
 			//ブロック動かす処理_________________________________________________
 			else if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
 					&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
+				g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
 					if (g_Pad.KEY_RIGHT == TRUE && g_Player.NowColor != g_Player.Hit_RightUnder ||
 						g_Pad.KEY_LEFT == TRUE) {
 						MoveObjectValue(g_Player.NowColor);
@@ -355,22 +358,22 @@ int PlayerDraw(void) {
 		g_Player.PLAYER_MOVEOK = TRUE;//動けない状態のフラグにする
 	}
 		//当たり判定の可視化_____________________________________________________________________
-	DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xfe00fe, FALSE);	//頭上
-	DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xfe00fe, FALSE);	//右上
-	DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//右下
-	DrawBox(Hit_L_x - 5, Hit_UpLR_y - 5, Hit_L_x + 5, Hit_UpLR_y + 5, 0xfe00fe, FALSE);	//左上
-	DrawBox(Hit_L_x - 5, Hit_UnderLR_y - 5, Hit_L_x + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//左下
-	DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元右
-	DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元左
-	DrawBox(g_Player.PickUpPixel - 5, g_Player.PickUpPixely - 5, g_Player.PickUpPixel + 5, g_Player.PickUpPixely + 5, 0xff00ff, FALSE);
-	DrawBox(Move_Hitx1 - 5, g_Player.y + 20 - 5, Move_Hitx1 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置右
-	DrawBox(Move_Hitx2 - 5, g_Player.y + 20 - 5, Move_Hitx2 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置左
+	//DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xfe00fe, FALSE);	//頭上
+	//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xfe00fe, FALSE);	//右上
+	//DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//右下
+	//DrawBox(Hit_L_x - 5, Hit_UpLR_y - 5, Hit_L_x + 5, Hit_UpLR_y + 5, 0xfe00fe, FALSE);	//左上
+	//DrawBox(Hit_L_x - 5, Hit_UnderLR_y - 5, Hit_L_x + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//左下
+	//DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元右
+	//DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元左
+	//DrawBox(g_Player.PickUpPixel - 5, g_Player.PickUpPixely - 5, g_Player.PickUpPixel + 5, g_Player.PickUpPixely + 5, 0xff00ff, FALSE);
+	//DrawBox(Move_Hitx1 - 5, g_Player.y + 20 - 5, Move_Hitx1 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置右
+	//DrawBox(Move_Hitx2 - 5, g_Player.y + 20 - 5, Move_Hitx2 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置左
 
-	DrawBox(Hit_R_x - 5, Hit_UpLR_y - 50 - 5, Hit_R_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭
-	DrawBox(Hit_L_x - 5, Hit_UpLR_y - 50 - 5, Hit_L_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭
+	//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 50 - 5, Hit_R_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭
+	//DrawBox(Hit_L_x - 5, Hit_UpLR_y - 50 - 5, Hit_L_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭
 
-	DrawBox(Hit_R_x + 110 -5, Hit_UnderLR_y -5, Hit_R_x + 110+5, Hit_UnderLR_y +5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
-	DrawBox(Hit_L_x - 110 - 5, Hit_UnderLR_y - 5, Hit_L_x - 110 + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
+	//DrawBox(Hit_R_x + 110 -5, Hit_UnderLR_y -5, Hit_R_x + 110+5, Hit_UnderLR_y +5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
+	//DrawBox(Hit_L_x - 110 - 5, Hit_UnderLR_y - 5, Hit_L_x - 110 + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
 
 	return 0;
 }
