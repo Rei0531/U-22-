@@ -184,9 +184,6 @@ int PlayerDraw(void) {
 		{
 			//歩く時の音、マップ端を超えないようにする処理_______________________________________
 			if ((Sndcnt++ % (PicChangeFream+6)) == 0) {
-				//if (CheckSoundMem(g_Snd.Walk) == 0 && g_Player.PLAYER_JUMP == FALSE && g_Player.PLAYER_GROUND == TRUE) {//音を鳴らす
-				//	PlaySoundMem(g_Snd.Walk, DX_PLAYTYPE_BACK);
-				//}
 				if (g_Player.PLAYER_JUMP == FALSE && g_Player.PLAYER_GROUND == TRUE) {//音を鳴らす
 					PlaySoundMem(g_Snd.Walk, DX_PLAYTYPE_BACK);
 				}

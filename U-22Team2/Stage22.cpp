@@ -41,14 +41,16 @@ void Stage22Init() {
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
 	gim.SliObjx1 = 950,
-		gim.SliObjx2 = gim.SliObjx1 + 150,
-		gim.SliObjy1 = 320,
-		gim.SliObjy2 = gim.SliObjy1 + 50,
-		gim.GetObjx1 = 1180,
-		gim.GetObjx2 = gim.GetObjx1 + 100,
-		gim.GetObjy1 = 265,
-		gim.GetObjy2 = gim.GetObjy1 + 105,
-		gim.move_max = 160;
+	gim.SliObjy1 = 320,
+	gim.SliObjx2 = gim.SliObjx1 + 100,
+	gim.SliObjy2 = gim.SliObjy1 + 50,
+
+	gim.GetObjx1 = 1180,
+	gim.GetObjx2 = gim.GetObjx1 + 100,
+	gim.GetObjy1 = 265,
+	gim.GetObjy2 = gim.GetObjy1 + 100,
+
+	gim.move_max = 160;
 
 	gim.shower_C = PURPLE2;			//シャワーの塗りつぶしの色を初期化
 	gim.shower_X = 70;				//シャワーの座標

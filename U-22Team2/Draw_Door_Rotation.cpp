@@ -25,10 +25,10 @@ void DoorRotationBox(int Rot_sum) {
 		RotationNum = Rot_sum,//ローテーションする数
 		X_Size = 100 / RotationNum;//ローテーションのボックスの横のサイズ
 
-	float RotationAngle = (PI*2.0) / (float)Rot_sum;
+	double RotationAngle = (PI*2.0) / (double)Rot_sum;
 
 	if (g_Door.Picupflg == TRUE) {//ドアのローテーションを進めるフラグがTRUEの時
-		Move_Rotation += (PI * 2.0) / (float)Rot_sum;
+		Move_Rotation += (PI * 2.0) / (double)Rot_sum;
 		g_Door.Picupflg = FALSE;
 	}
 
