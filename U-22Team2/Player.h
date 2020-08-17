@@ -30,7 +30,9 @@ public:
 
 	bool InitFlag = FALSE;			//プレイヤーのInit処理に入るか
 
-	bool PLAYER_DIRECTION = FALSE,	//プレイヤーの向き//TRUE左向き/FALSE右向き
+	bool 
+		PLAYER_MOVEOK = TRUE,		//プレイヤーが動ける状態か
+		PLAYER_DIRECTION = FALSE,	//プレイヤーの向き//TRUE左向き/FALSE右向き
 		PLAYER_JUMP = FALSE,		//プレイヤーがジャンプしたか
 		PLAYER_PICKUP = FALSE,		//スポイト
 		PLAYER_ACTION = FALSE,		//アクションボタン

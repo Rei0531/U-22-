@@ -66,8 +66,9 @@ bool Menu_Update() {
 //•`‰æ
 void Menu_Draw() {
 
-    static int MenuX = 440, MenuY = 200;
+    static int MenuX = 440, MenuY = 200;	
 
+    //ƒƒjƒ…[‰æ–Ê‚Ì•`‰æ
     DrawExtendGraph(MenuX, MenuY, MenuX + 400, MenuY + 400,g_pic.Menu,TRUE);
     DrawRotaGraph(MenuX + 200, GAME_Y, 0.3, 0, g_pic.MenuChar[0], TRUE, FALSE);
     DrawRotaGraph(MenuX + 200, RESET_Y, 0.3, 0, g_pic.MenuChar[1], TRUE, FALSE);

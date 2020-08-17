@@ -47,13 +47,13 @@ int Stage1(void) {			//マップ画像の描画
 
 	//色ブロック描画
 	Change(BLUE);
-	DrawExtendGraph(400, 569, 500, 669, g_pic.Box[0], TRUE);
+	DrawExtendGraph(400, 568, 500, 668, g_pic.Box[0], TRUE);
 	DrawExtendGraph(400, 468, 500, 568, g_pic.Box[0], TRUE);
 	Change(RED);
-	DrawExtendGraph(500, 569, 600, 669, g_pic.Box[0], TRUE);
+	DrawExtendGraph(500, 568, 600, 668, g_pic.Box[0], TRUE);
 	DrawExtendGraph(500, 468, 600, 568, g_pic.Box[0], TRUE);
 	Change(LIGHTBLUE);
-	DrawExtendGraph(600, 569, 700, 669, g_pic.Box[0], TRUE);
+	DrawExtendGraph(600, 568, 700, 668, g_pic.Box[0], TRUE);
 	DrawExtendGraph(600, 468, 700, 568, g_pic.Box[0], TRUE);
 	Door();			//ステージゴール処理
 	Lock();
