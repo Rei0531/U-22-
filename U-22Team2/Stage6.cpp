@@ -41,7 +41,7 @@ void Stage6Init() {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
 	//ドアの位置
-	g_Door.x = 1100;			//扉の左上のx座標
+	g_Door.x = 1150;			//扉の左上のx座標
 	g_Door.y = 468;				//扉の左上のy座標
 	g_Door.w = g_Door.x + 100;	//横幅
 	g_Door.h = g_Door.y + 200;	//縦幅

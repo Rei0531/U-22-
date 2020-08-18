@@ -12,8 +12,27 @@ extern GimmickAll gim;
 
 int SlideBlock(int SlaColor)
 {
+	DrawBox(g_Player.x - 20, g_Player.y - 20, g_Player.x + 20, g_Player.y + 20, GetColor(1, 1, 1), TRUE);
 	Change(SlaColor);
-	if (((!(g_Player.Hit_Rght_High == g_Player.NowColor || g_Player.Hit_RightUp == g_Player.NowColor || g_Player.Hit_RightUnder == g_Player.NowColor) && gim.Speed > 0) ||
+	//if (((g_Player.x + 20 != gim.SliObjx1 + gim.move_cnt && gim.Speed < 0) ||
+	//	(g_Player.x - 20 != gim.SliObjx2 + gim.move_cnt && gim.Speed > 0))) {
+	//	gim.move_x -= gim.Speed * 2;
+	//	//g_Player.NowColor = SlaColor;
+	//	if (gim.move_cnt++ > gim.move_max) {
+	//		gim.move_cnt = 0;
+	//		gim.Speed = gim.Speed * (-1);
+	//	}
+	//}
+	if (((g_Player.x + 20 != gim.SliObjx1 + gim.move_x && gim.Speed > 0) ||
+		(g_Player.x - 20 != gim.SliObjx2 + gim.move_x && gim.Speed < 0))) {
+		gim.move_x -= gim.Speed * 2;
+		//g_Player.NowColor = SlaColor;
+		if (gim.move_cnt++ > gim.move_max) {
+			gim.move_cnt = 0;
+			gim.Speed = gim.Speed * (-1);
+		}
+	}
+	/*if (((!(g_Player.Hit_Rght_High == g_Player.NowColor || g_Player.Hit_RightUp == g_Player.NowColor || g_Player.Hit_RightUnder == g_Player.NowColor) && gim.Speed > 0) ||
 		(!(g_Player.Hit_Left_High == g_Player.NowColor || g_Player.Hit_LeftUp == g_Player.NowColor || g_Player.Hit_LeftUnder == g_Player.NowColor) && gim.Speed < 0))) {
 		gim.move_x -= gim.Speed;
 		gim.move_x -= gim.Speed;
@@ -21,7 +40,7 @@ int SlideBlock(int SlaColor)
 			gim.move_cnt = 0;
 			gim.Speed = gim.Speed * (-1);
 		}
-	}
+	}*/
 	/*if (!(g_Player.x + 30 == gim.SliObjx1 + gim.move_x && (g_Player.Hit_Rght_High == g_Player.NowColor || g_Player.Hit_RightUp == g_Player.NowColor || g_Player.Hit_RightUnder == g_Player.NowColor) && gim.Speed > 0) ||
 		!(g_Player.x - 30 == gim.SliObjx2 + gim.move_x && (g_Player.Hit_Left_High == g_Player.NowColor || g_Player.Hit_LeftUp == g_Player.NowColor || g_Player.Hit_LeftUnder == g_Player.NowColor) && gim.Speed < 0)) {
 		gim.move_x -= gim.Speed;
