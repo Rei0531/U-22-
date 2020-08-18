@@ -12,7 +12,7 @@ extern Player g_Player;
 extern Sound g_Snd;
 extern LockALL g_Lock;
 
-int PushColor = 9;//押された色を引数から格納する変数
+int PushColor = WHITE;//押された色を引数から格納する変数
 
 static bool //二度押し防止
 B = FALSE;//Bボタン
@@ -25,8 +25,8 @@ int CC_Switch(int Color,int x,int y) {
 		PlaySoundMem(g_Snd.Switch, DX_PLAYTYPE_BACK);
 	}
 
-	if (g_Player.PLAYER_RESET == TRUE) {	//Init処理が呼ばれたら色を初期化する
-		PushColor = 9;
+	if (g_Player.PLAYER_RESET == TRUE || g_Player.InitFlag == TRUE) {	//Init処理が呼ばれたら色を初期化する
+		PushColor = WHITE;
 		//DrawRotagGraphでFALSEにしている
 		//g_Player.PLAYER_RESET = FALSE;//リセットしたフラグをFALSEにし続ける
 	}
