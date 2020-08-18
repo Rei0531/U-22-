@@ -15,6 +15,8 @@ int LoadSound(void) {		//音の読み込み
 	if ((g_Snd.BoxDrag = LoadSoundMem("Sound/Box_drag.mp3")) == -1)return -1;			//箱を引きずる
 	if ((g_Snd.Shower = LoadSoundMem("Sound/shower.mp3")) == -1)return -1;				//シャワー
 
+	if ((g_Snd.Walk = LoadSoundMem("Sound/HP回復.mp3")) == -1)return -1;				//回復アイテム取得
+	if ((g_Snd.Walk = LoadSoundMem("Sound/Play2.mp3")) == -1)return -1;					//変形オブジェクト作動
 	if ((g_Snd.Walk = LoadSoundMem("Sound/footsteps.mp3")) == -1)return -1;				//歩く音
 	if ((g_Snd.MenuOpen = LoadSoundMem("Sound/MenuOpen.mp3")) == -1)return -1;			//メニューオープン
 	if ((g_Snd.MenuClose = LoadSoundMem("Sound/MenuClose.mp3")) == -1)return -1;		//メニュークローズ

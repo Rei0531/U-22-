@@ -20,6 +20,8 @@ public:
 	int MenuMove;	//メニュー内移動
 	int Bomb;		//爆弾
 	int StageBGM;	//ステージBGM
+	int HeartGet;	//回復アイテム取得
+	int ChangeBlockPlay;	//変形オブジェクト作動
 };
 
 int LoadSound(void);	//関数の定義
