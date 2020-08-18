@@ -62,6 +62,14 @@ int Stage3(void) {			//マップ画像の描画
 
 	MoveBox(PURPLE, 700, 568);
 	MoveBox(PURPLE, 700, 468);
+
+	Door();			//ステージゴール処理
+	Lock();
+
+
+	//ドアローテーション_________________________________________________________
+	DoorRotationBox(3);
+
 	//プレイヤーの色と同じブロックを手前に出す_______________________________________________________________
 	frontMoveBox(ORENGE, 400, 568);
 	frontMoveBox(ORENGE, 400, 468);
@@ -72,14 +80,8 @@ int Stage3(void) {			//マップ画像の描画
 	frontMoveBox(PURPLE, 700, 568);
 	frontMoveBox(PURPLE, 700, 468);
 
-	Door();			//ステージゴール処理
-	Lock();
-
-
-	//ドアローテーション_________________________________________________________
-	DoorRotationBox(3);
-
 	ColorReset();
+
 
 	//ステージクリアした時、タイトル画面に戻ったとき
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {

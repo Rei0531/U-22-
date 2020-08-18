@@ -109,8 +109,8 @@ int GetPointColor(int Point_x, int Point_y) {
 *************************************************************************/
 int GetObjectColor(void) {
 	//プレイヤーの向いている方向より+-50したところか色を取得する
-	g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 30 : g_Player.x + 30l;//スポイトする場所
-	g_Player.PickUpPixely = g_Player.y - 27;//初期値33もし白色が取れるようになってしまったら戻す
+	//g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 40 : g_Player.x + 40;//スポイトする場所
+	//g_Player.PickUpPixely = g_Player.y - 27;//初期値33もし白色が取れるようになってしまったら戻す
 	SaveColor = g_Player.NowColor;		//一時変数に現在の色を格納する
 
 	return GetPointColor(g_Player.PickUpPixel, g_Player.PickUpPixely);
@@ -126,7 +126,7 @@ void MoveObjectValue(int P_Color) {
 	}
 	
 	int dir = 0;//向きによって*-1するからそのための変数
-	
+
 	//右に箱があった時______________________________________
 	if (g_Player.Move_HitR == MOVE) {
 		//右に向かって動いていた時//押してるとき

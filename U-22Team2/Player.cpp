@@ -23,9 +23,9 @@ anix = 0,		//プレイヤーの向きによって変わるX座標用変数
 
 PixelColor4,	//中心から	  _l	    4□	  _l
 PixelColor3,	//中心から	  l 3□			_l
-PixelColor,		//指の中心	  l    □	　_l
-PixelColor2,	//中心から	  l 	2□  _l
-PixelColor1;	//指先		  l□1_______l
+PixelColor2,	//指の中心	  l   2 □	　_l
+PixelColor1,	//中心から	  l 	1□  _l
+PixelColor;		//指先		  l□_______l
 
 const int PicChangeFream = 8;
 static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
@@ -55,7 +55,7 @@ int PlayerDraw(void) {
 *スポイトする場所の描画
 ********************************************************************************************************/
 //スポイトする場所の描画___________________________________________________________________
-	g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 30 : g_Player.x + 30l;//
+	g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 40 : g_Player.x + 40;//
 	g_Player.PickUpPixely = g_Player.y - 27;//初期値33もし白色が取れるようになってしまったら戻す
 
 	//PixelColorに色を格納
@@ -63,23 +63,19 @@ int PlayerDraw(void) {
 	//取得した色が白色だった時
 	if (PixelColor == WHITE) {
 		//左向きの座標を取得する___________________________
-		int Px1 = -3,
-			Px2 = 2,
-			Px3 = -2,
-			Px4 = 3;
+		int Px1 = 5,
+			Px2 = 3;
 
 		//左用の座標を反転させ右向きようにする_______________________________________
 		if (g_Player.PLAYER_DIRECTION == FALSE) {//右むいている時
 			Px1 *= -1;
 			Px2 *= -1;
-			Px3 *= -1;
-			Px4 *= -1;
 		}
 		//PixelColorの周りから色を取得する
-		PixelColor1 = GetPointColor(g_Player.PickUpPixel+ Px1, g_Player.PickUpPixely+3);
-		PixelColor2 = GetPointColor(g_Player.PickUpPixel+ Px2, g_Player.PickUpPixely+2);
-		PixelColor3 = GetPointColor(g_Player.PickUpPixel+ Px3, g_Player.PickUpPixely-2);
-		PixelColor4 = GetPointColor(g_Player.PickUpPixel+ Px4, g_Player.PickUpPixely-3);
+		PixelColor1 = GetPointColor(g_Player.PickUpPixel+ Px1, g_Player.PickUpPixely);
+		PixelColor2 = GetPointColor(g_Player.PickUpPixel+ Px2, g_Player.PickUpPixely-3);
+		PixelColor3 = GetPointColor(g_Player.PickUpPixel,	   g_Player.PickUpPixely-5);
+		PixelColor4 = GetPointColor(g_Player.PickUpPixel+ Px1, g_Player.PickUpPixely-5);
 		//指先の取得した色で多数決を取る
 		if (PixelColor1 != WHITE)PixelColor = PixelColor1;
 		if (PixelColor4 != WHITE)PixelColor = PixelColor4;
