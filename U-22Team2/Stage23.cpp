@@ -22,7 +22,7 @@ static bool InitFlag = TRUE;//InitŠÖ”‚ğ’Ê‚Á‚Ä‚¢‚¢‚©”»’è•Ï”/TRUE‚ª‚¢‚¢/FALSE‚ªƒ
 void Stage23Init() {
 	//ƒvƒŒƒCƒ„[‚Ì‰ŠúˆÊ’u
 	//ƒIƒuƒWƒFƒNƒg‚Ì‰ŠúˆÊ’u‚ğ•`‚­
-	g_Player.Interact = 5;//ƒvƒŒƒCƒ„[‚ªƒCƒ“ƒ^ƒ‰ƒNƒg‚Å‚«‚é‰ñ”‚ğ10‰ñ‚Éİ’è
+	g_Player.Interact = 10;//ƒvƒŒƒCƒ„[‚ªƒCƒ“ƒ^ƒ‰ƒNƒg‚Å‚«‚é‰ñ”‚ğ10‰ñ‚Éİ’è
 	InitFlag = FALSE;	//FALSE‚É‚µ‚ÄŸTRUE‚É‚È‚é‚Ü‚Å’Ê‚ç‚È‚¢‚æ‚¤‚É‚·‚é
 
 	g_Player.x = 110;			//ƒvƒŒƒCƒ„[À•W‰Šú‰»
@@ -50,22 +50,18 @@ void Stage23Init() {
 	gim.OTS_Y1 = 618;
 	gim.OTS_X2 = gim.OTS_X1 + 50;
 	gim.OTS_Y2 = gim.OTS_Y1 + 50;
-	gim.OTS_WallX1 = 900;
+	gim.OTS_WallX1 = 1000;
 	gim.OTS_WallY1 = 300;
-	gim.OTS_WallX2 = 1000;
+	gim.OTS_WallX2 = 1100;
 	gim.OTS_WallY2 = 669;
-	gim.OTS_C_WallX1 = 0;			//ˆê“xŒÀ‚è‚ÌƒXƒCƒbƒ`‚Å•\‚ê‚é•Ç‚ÌX/Y²
-	gim.OTS_C_WallY1 = 0;
-	gim.OTS_C_WallX2 = 0;
-	gim.OTS_C_WallY2 = 0;
-	//gim.OTS_C_WallX1 = 440;			//ˆê“xŒÀ‚è‚ÌƒXƒCƒbƒ`‚Å•\‚ê‚é•Ç‚ÌX/Y²
-	//gim.OTS_C_WallY1 = 569;
-	//gim.OTS_C_WallX2 = 550;
-	//gim.OTS_C_WallY2 = 669;
+	gim.OTS_C_WallX1 = 400;			//ˆê“xŒÀ‚è‚ÌƒXƒCƒbƒ`‚Å•\‚ê‚é•Ç‚ÌX/Y²
+	gim.OTS_C_WallY1 = 300;
+	gim.OTS_C_WallX2 = 600;
+	gim.OTS_C_WallY2 = 325;
 
 	//‰ñ•œƒAƒCƒeƒ€—p_
 	gim.item_x = 200;   //‰¡‚ÌÀ•W
-	gim.item_y = 300;   //c‚ÌÀ•W
+	gim.item_y = 250;   //c‚ÌÀ•W
 	gim.item_flg = 1;   //ƒAƒCƒeƒ€‚ğæ‚Á‚½‚©æ‚Á‚Ä‚È‚¢‚©‚Ìƒtƒ‰ƒO‚Ìƒtƒ‰ƒO
 
 }
@@ -77,19 +73,28 @@ int Stage23(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 	}
 
 	Change(NONCOLOR);
-	DrawBox(0,300,300,325,GetColor(255,255,255),TRUE);
 	DrawBox(1000,300,1300,325,GetColor(255,255,255),TRUE);
 	Change(RED);
 	DrawExtendGraph(340, 568, 440, 668, g_pic.Box[0], TRUE);
 	Change(BLUE);
-	DrawExtendGraph(640, 568, 740, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(440, 468, 540, 568, g_pic.Box[0], TRUE);
+	Change(YELLOW);
+	DrawExtendGraph(540, 568, 640, 668, g_pic.Box[0], TRUE);
+	Change(GREEN);
+	DrawExtendGraph(640, 468, 740, 568, g_pic.Box[0], TRUE);
 	//F”½‰fƒXƒCƒbƒ`_
 	SwitchColor = CC_Switch(g_Player.NowColor, 140, 593);//ˆê•Ï”‚ÉŠÖ”‚©‚ç‚Ì–ß‚è’l‚ğŠi”[‚·‚é
 	Change(SwitchColor);
 	//F”½‰f‚·‚é” __
-	DrawExtendGraph(540, 268, 640, 368, g_pic.Box[0], TRUE);
+	DrawExtendGraph(0, 318, 100, 418, g_pic.Box[0], TRUE);
+	DrawExtendGraph(100, 318, 200, 418, g_pic.Box[0], TRUE);
+	DrawExtendGraph(800, 318, 900, 418, g_pic.Box[0], TRUE);
+	DrawExtendGraph(900, 318, 1000, 418, g_pic.Box[0], TRUE);
 	ColorReset();
-	DrawBox(540, 268, 640, 368, GetColor(1, 1, 1), FALSE);
+	DrawBox(0, 318, 100, 418, GetColor(1, 1, 1), FALSE);
+	DrawBox(100, 318, 200, 418, GetColor(1, 1, 1), FALSE);
+	DrawBox(800, 318, 900, 418, GetColor(1, 1, 1), FALSE);
+	DrawBox(900, 318, 1000, 418, GetColor(1, 1, 1), FALSE);
 	
 	ColorReset();
 	OneTimeSwitch();
@@ -97,13 +102,13 @@ int Stage23(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 	kaihuku(gim.item_x, gim.item_y);  //(xÀ•WAyÀ•Wj
 
 	ColorReset();
-	Warp(50, 200, 1040, 568);
+	Warp(50, 200, 1100, 568);
 
 
 	Door();			//ƒXƒe[ƒWƒS[ƒ‹ˆ—
 	Lock();
 
-	DoorRotationBox(2);
+	DoorRotationBox(4);
 	ColorReset();
 
 	//ƒXƒe[ƒWƒNƒŠƒA‚µ‚½Aƒ^ƒCƒgƒ‹‰æ–Ê‚É–ß‚Á‚½‚Æ‚«
