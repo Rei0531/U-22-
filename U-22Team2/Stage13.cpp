@@ -32,6 +32,7 @@ void Stage13Init() {
 
 	gim.cheobj_flg = 1;			//変形するオブジェクトのフラグ
 	gim.cheobj_x = 800 - 225;
+	gim.cheobj_y = 670 - 225;
 	gim.cheobj_c = g_Player.NowColor;
 	gim.cheobj_ani = 158;
 

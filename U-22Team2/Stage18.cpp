@@ -33,11 +33,13 @@ void Stage18Init() {
 	gim.cheobj_flg = 1;			//変形するオブジェクトのフラグ
 	gim.cheobj_zeroflg = 1;
 	gim.cheobj_x = 650;
+	gim.cheobj_y = 670 - 225;
 	gim.cheobj_c = g_Player.NowColor;
 	gim.cheobj_ani = 158;
 
 	//回復アイテム用_________
 	gim.item_x = 300 + 10;
+	gim.item_y = 670 - 50;
 	gim.item_y;
 	gim.item_flg = 1;
 

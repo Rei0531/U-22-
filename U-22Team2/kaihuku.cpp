@@ -3,10 +3,12 @@
 #include "LoadPic.h"
 #include "Color.h"
 #include"Player.h"
+#include "LoadSound.h"
 
 extern image g_pic;
 extern Player g_Player;
 extern GimmickAll gim;
+extern Sound g_Snd;
 
 int kaihuku(int x, int y) {
 
@@ -24,6 +26,7 @@ int kaihuku(int x, int y) {
 
 			g_Player.Interact += 1;			//スポイトの回数を一回増やす
 			gim.item_flg -= 1;
+			PlaySoundMem(g_Snd.HeartGet, DX_PLAYTYPE_BACK);
 
 		}
 	}

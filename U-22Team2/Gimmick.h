@@ -15,6 +15,25 @@ public:
 	int shower_w;	//
 	int shower_h;	//
 
+			//シャワー2用の変数_______＿＿＿＿
+	int shower_X2[2]{ 0,0 };					//横座標
+	int shower_Y2[2]{ 0,0 };		//縦座標（地面の縦座標-画像の縦の大きさ）
+	int shower_C2[2]{ 0,0 };					//色
+	int shower_x2[2]{ 0,0 };	//塗りつぶす判定の座標
+	int shower_y2[2]{ 0,0 };	//
+	int shower_w2[2]{ 0,0 };	//
+	int shower_h2[2]{ 0,0 };	//
+
+			//スライドする床2の用の変数_______＿＿＿＿
+	int q2_color[2]{ RED2,BLUE2 };
+	int flg[2]{ 0,0 };
+	int q2_move_x[2]{ 0,0 };
+	int q2_x[2]{ 0,0 };		//スライドするブロックの座標
+	int q2_w[2]{ 0,0 };		//スライドするブロックの座標
+	int q2_y[2]{ 0,0 };		//スライドするブロックの座標
+	int q2_h[2]{ 0,0 };		//スライドするブロックの座標
+
+
 	//レバー用の変数_______＿＿＿＿
 	int g_LeverX = 0;		//レバーのX座標
 	int g_LeverY = 0;		//レバーのY座標
@@ -109,8 +128,10 @@ public:
 };
 
 int Shower(void);		//塗りつぶしシャワーの処理
+int Shower2(int k);
 int Lever(void);		//レバーの処理
 int SlideBlock(int SlaColor);	//動く床の処理
+int SlideBlock2(int k);	//動く床の処理
 int CC_Switch(int Color, int x,int y);	//プレイヤーの押した色を反映するスイッチの処理//引数：押した時点のプレイヤーの色を渡す
 int OneTimeSwitch(void); //一度限りのスイッチ
 int Bomb(void);			//ボックス破壊の爆弾

@@ -31,6 +31,7 @@ void Stage12Init() {
 
 	//回復アイテム用_________
 	gim.item_x = 520;
+	gim.item_y = gim.item_y = 670 - 50;
 	gim.item_y;
 	gim.item_flg = 1;
 

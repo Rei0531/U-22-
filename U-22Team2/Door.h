@@ -42,7 +42,7 @@ public:
 		{YELLOW,PURPLE,BLUE,RED},	//ステージ22のドアのローテーションの順番
 		{BLUE,RED,GREEN,YELLOW},						//ステージ23のドアのローテーションの順番
 		{YELLOW,RED,BLUE,PURPLE},	//ステージ24のドアのローテーションの順番
-		{BLUE}						//ステージ25のドアのローテーションの順番
+		{RED,BLUE,GREEN,PURPLE}		//ステージ25のドアのローテーションの順番
 	};		//ローテーションの配列
 
 	int ColorNumber[25]{
@@ -50,7 +50,7 @@ public:
 		2,2,3,3,1,
 		1,1,1,2,2,
 		3,1,1,3,3,
-		3,4,4,4,1
+		3,4,4,4,4
 	};			//ステージごとのドアのローテーションの数
 
 	int RotationNumber = 0;			//現在のローテーション位置

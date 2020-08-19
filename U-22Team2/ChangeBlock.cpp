@@ -3,15 +3,18 @@
 #include"LoadPic.h"
 #include "Player.h"
 #include "Color.h"
+#include "LoadSound.h"
 
 #define PI 3.141592654
 
 extern image g_pic;
 extern GimmickAll gim;
 extern Player g_Player;
+extern Sound g_Snd;
 
 int playermove_changeblock(int x, int y);
 
+int flg = 0;
 
 int ChangeBlock() {
 
@@ -74,7 +77,9 @@ int ChangeBlock() {
 
 	if (gim.cheobj_flg % 3 == 0) {
 		if (gim.cheobj_zeroflg == 0 && gim.cheobj_ani != 150 - 24) {
-			gim.cheobj_ani+=2;
+			gim.cheobj_ani += 2;
+			PlaySoundMem(g_Snd.ChangeBlockPlay, DX_PLAYTYPE_BACK);
+
 
 		}
 		else if (gim.cheobj_zeroflg == 0) {
@@ -83,7 +88,9 @@ int ChangeBlock() {
 		}
 
 		if (gim.cheobj_zeroflg == 1 && gim.cheobj_ani != 150) {
-			gim.cheobj_ani+=2;
+			gim.cheobj_ani += 2;
+			PlaySoundMem(g_Snd.ChangeBlockPlay, DX_PLAYTYPE_BACK);
+
 		}
 
 	}
@@ -94,9 +101,11 @@ int ChangeBlock() {
 
 	if (gim.cheobj_flg % 3 == 1 && 158 != gim.cheobj_ani) {
 		gim.cheobj_ani++;
+		PlaySoundMem(g_Snd.ChangeBlockPlay, DX_PLAYTYPE_BACK);
 	}
-	else if (gim.cheobj_flg % 3 == 2 && 150 != gim.cheobj_ani) {
-		gim.cheobj_ani+=2;
+	else if ((gim.cheobj_flg % 3 == 2 && 150 != gim.cheobj_ani) && (flg == 0)) {
+		gim.cheobj_ani += 2;
+		PlaySoundMem(g_Snd.ChangeBlockPlay, DX_PLAYTYPE_BACK);
 	}
 	else {
 		ani_end = 1;
@@ -126,12 +135,14 @@ int playermove_changeblock(int x, int y) {
 	}
 
 
-	if ((gim.cheobj_flg % 3 == 2) && (gim.cheobj_ani != 150) && (g_Player.PLAYER_JUMP != TRUE) &&
-		(x <= g_Player.x + 5 && x + 75 >= g_Player.x + 5) &&
-		(y >= g_Player.y - 55) && (y <= g_Player.y + 50))
+	if ((gim.cheobj_flg % 3 == 2) && (gim.cheobj_ani != 150) &&
+		(x + 75 < g_Player.x && x + 95 >= g_Player.x) &&
+		(y - 80 <= g_Player.y) && (y + 150 >= g_Player.y))
 	{
-		g_Player.x+=2;
-
+		flg = 1;
+	}
+	else {
+		flg = 0;
 	}
 
 	if ((gim.cheobj_flg % 3 == 0) && (gim.cheobj_ani != 158) && (g_Player.PLAYER_JUMP != TRUE) &&

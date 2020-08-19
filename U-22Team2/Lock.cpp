@@ -25,17 +25,20 @@ int Lock(void) {
 
 	//g_Player.PLAYER_ACTION = FALSE;
 
+
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 
-		if (i == 0) {
-			ColorReset();//今の色をリセットする
-			Change2(g_Lock.color[g_MapC.StageNumber - 1][0]);//プレイヤーの当たり判定が出ないように、Change2で描画する
-			DrawExtendGraph(g_Door.x, g_Door.y + 100, g_Door.x + 100, g_Door.y + 150,g_pic.Door_Nobu,TRUE);//ドアノブの描画
-		}
-		else {
-			ColorReset();//今の色をリセットする
-			Change2(g_Lock.color[g_MapC.StageNumber - 1][i]);//プレイヤーの当たり判定が出ないように、Change2で描画する
-			DrawExtendGraph(g_Door.x + 15 + i * 20, g_Door.y + 105, g_Door.x + 35 + i * 20, g_Door.y + 145,g_pic.Door_keyhole,TRUE);//鍵穴
+		if (g_Lock.color[g_MapC.StageNumber - 1][i] != 8) {
+			if (i == 0) {
+				ColorReset();//今の色をリセットする
+				Change2(g_Lock.color[g_MapC.StageNumber - 1][0]);//プレイヤーの当たり判定が出ないように、Change2で描画する
+				DrawExtendGraph(g_Door.x, g_Door.y + 100, g_Door.x + 100, g_Door.y + 150, g_pic.Door_Nobu, TRUE);//ドアノブの描画
+			}
+			else {
+				ColorReset();//今の色をリセットする
+				Change2(g_Lock.color[g_MapC.StageNumber - 1][i]);//プレイヤーの当たり判定が出ないように、Change2で描画する
+				DrawExtendGraph(g_Door.x + 15 + i * 20, g_Door.y + 105, g_Door.x + 35 + i * 20, g_Door.y + 145, g_pic.Door_keyhole, TRUE);//鍵穴
+			}
 		}
 	}
 
