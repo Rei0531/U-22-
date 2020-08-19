@@ -122,8 +122,8 @@ int PlayerDraw(void) {
 		Hit_Under_x = 20,		//プレイヤーの足元  x軸
 		Hit_UnderLR_y = g_Player.y + 60;		//下側左右の中心からのy座標
 
-	Move_Hitx1 = g_Player.x + 40;//取得する座標
-	Move_Hitx2 = g_Player.x - 40;//取得する座標
+	Move_Hitx1 = g_Player.x + 50;//取得する座標
+	Move_Hitx2 = g_Player.x - 50;//取得する座標
 
 	/*
 	当たり判定のイメ―ジ
@@ -145,14 +145,14 @@ int PlayerDraw(void) {
 	g_Player.Hit_Rght_High = GetPointColor(Hit_R_x, Hit_UpLR_y - 50);		//右頭
 	g_Player.Hit_RightUp = GetPointColor(Hit_R_x, Hit_UpLR_y);			//右上
 	g_Player.Hit_RightUnder = GetPointColor(Hit_R_x, Hit_UnderLR_y);	//右下
-	g_Player.Move_HitR = GetPointColor(Move_Hitx1, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	g_Player.Move_HitR = GetPointColor(Move_Hitx1, g_Player.y + 25);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
 	
 	}
 	if(g_Pad.KEY_LEFT == TRUE) {
 	g_Player.Hit_Left_High = GetPointColor(Hit_L_x, Hit_UpLR_y - 50);		//右頭
 	g_Player.Hit_LeftUp = GetPointColor(Hit_L_x, Hit_UpLR_y);			//左上
 	g_Player.Hit_LeftUnder = GetPointColor(Hit_L_x, Hit_UnderLR_y);		//左下
-	g_Player.Move_HitL = GetPointColor(Move_Hitx2, g_Player.y + 20);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
+	g_Player.Move_HitL = GetPointColor(Move_Hitx2, g_Player.y + 25);		//プレイヤーの中心座標からむいている方向の50加減算した値の色を取得
 	}
 	g_Player.Hit_Under = GetPointColor(g_Player.x + Hit_Under_x, Hit_Under_y);		//右足元
 	g_Player.Hit_Under2 = GetPointColor(g_Player.x - Hit_Under_x, Hit_Under_y);		//左足元
@@ -366,8 +366,8 @@ int PlayerDraw(void) {
 	//DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元右
 	//DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元左
 	//DrawBox(g_Player.PickUpPixel - 5, g_Player.PickUpPixely - 5, g_Player.PickUpPixel + 5, g_Player.PickUpPixely + 5, 0xff00ff, FALSE);
-	//DrawBox(Move_Hitx1 - 5, g_Player.y + 20 - 5, Move_Hitx1 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置右
-	//DrawBox(Move_Hitx2 - 5, g_Player.y + 20 - 5, Move_Hitx2 + 5, g_Player.y + 20 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置左
+	//DrawBox(Move_Hitx1 - 5, g_Player.y + 25 - 5, Move_Hitx1 + 5, g_Player.y + 25 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置右
+	//DrawBox(Move_Hitx2 - 5, g_Player.y + 25 - 5, Move_Hitx2 + 5, g_Player.y + 25 + 5, 0xfe00fe, FALSE);	//動くブロックの取得位置左
 
 	//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 50 - 5, Hit_R_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭
 	//DrawBox(Hit_L_x - 5, Hit_UpLR_y - 50 - 5, Hit_L_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭

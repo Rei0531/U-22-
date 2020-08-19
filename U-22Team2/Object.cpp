@@ -128,7 +128,7 @@ void MoveObjectValue(int P_Color) {
 	int dir = 0;//向きによって*-1するからそのための変数
 
 	//右に箱があった時______________________________________
-	if (g_Player.Move_HitR == MOVE) {
+	if (g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder) {
 		//右に向かって動いていた時//押してるとき
 		if (g_Player.PLAYER_DIRECTION == FALSE && g_Player.Move_BlackR != BLACK) {
 			g_Player.PLAYER_MOVEBOX_PUSH = TRUE;//プレイヤーは押す動作をしている
@@ -144,9 +144,9 @@ void MoveObjectValue(int P_Color) {
 	}
 
 	//左に箱があった時______________________________________
-	if (g_Player.Move_HitL == MOVE) {
+	if (g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder) {
 		//左に向かって動いていた時//押してるとき
-		if (g_Player.PLAYER_DIRECTION == TRUE && g_Player.Move_BlackL != BLACK) {
+		if (g_Player.PLAYER_DIRECTION == TRUE&& g_Player.Move_BlackL != BLACK) {
 			g_Player.PLAYER_MOVEBOX_PUSH = TRUE;//プレイヤーは押す動作をしている
 			g_Player.PLAYER_MOVEBOX_PULL = FALSE;//引く動作のフラグをFALSEにする
 			dir = -1;//(左向き)ならマイナス

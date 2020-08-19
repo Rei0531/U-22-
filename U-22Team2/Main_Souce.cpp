@@ -146,6 +146,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		DrawFormatString(0, 60, 0xff0fff, "g_Player.x %d ", g_Player.x);
 		DrawFormatString(0, 80, 0xff0fff, "g_Player.y %d ", g_Player.y);
 
+		DrawFormatString(100, 20, 0xff0fff, "g_Player.PLAYER_MOVEBOX_PULL %d ", g_Player.PLAYER_MOVEBOX_PULL);
+		DrawFormatString(100, 40, 0xff0fff, "g_Player.PLAYER_MOVEBOX_PUSH %d ", g_Player.PLAYER_MOVEBOX_PUSH);
+
 		fps.Update();	//çXêV
 		fps.Draw();		//ï`âÊ
 		ScreenFlip();
