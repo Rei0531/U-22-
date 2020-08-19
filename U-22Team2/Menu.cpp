@@ -73,6 +73,7 @@ void Menu_Draw() {
     DrawRotaGraph(MenuX + 200, GAME_Y, 0.3, 0, g_pic.MenuChar[0], TRUE, FALSE);
     DrawRotaGraph(MenuX + 200, RESET_Y, 0.3, 0, g_pic.MenuChar[1], TRUE, FALSE);
     DrawRotaGraph(MenuX + 200, END_Y, 0.3, 0, g_pic.MenuChar[2], TRUE, FALSE);
+    DrawExtendGraph(500, 250, 756, 378, g_pic.MenuBotan, TRUE);
 
     int y = 0;
     switch (NowSelect) {//Œ»İ‚Ì‘I‘ğó‘Ô‚É]‚Á‚Äˆ—‚ğ•ªŠò

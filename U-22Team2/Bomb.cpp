@@ -12,7 +12,7 @@ extern GimmickAll gim;
 int Bomb(void) {
 
 	if (g_Pad.KEY_B == TRUE &&
-		g_Player.x >  gim.BombX1 && g_Player.x < gim.BombX2 && gim.g_Bombflg == 0) {		//”š’e‚ÌŽü•Ó‚ÅƒCƒ“ƒ^ƒ‰ƒNƒg‚ð‰Ÿ‚·‚Æ”š’e‚ðE‚¤
+		g_Player.x >  gim.BombX1 && g_Player.x < gim.BombX2 && g_Player.y > gim.BombY1 - 30 && g_Player.y < gim.BombY2 && gim.g_Bombflg == 0) {		//”š’e‚ÌŽü•Ó‚ÅƒCƒ“ƒ^ƒ‰ƒNƒg‚ð‰Ÿ‚·‚Æ”š’e‚ðE‚¤
 		gim.g_Bombflg = 1;
 		Change(WHITE);
 		//DrawExtendGraph(700, 638, 730, 668, g_pic.Bomb, TRUE);
