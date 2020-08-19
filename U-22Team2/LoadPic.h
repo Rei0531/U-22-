@@ -13,6 +13,7 @@ public:
 	int StageNum[30];	//ステージ番号の文字
 	int Nokori[6];		//残り回数の文字
 	int Nokori_Num[10];	//残り回数の数字
+	int MenuBotan;		//メニューのボタン説明
 
 	int Hand;			//スポイト表示
 	int Door_keyhole;	//鍵穴

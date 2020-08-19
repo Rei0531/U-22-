@@ -13,6 +13,7 @@ int LoadPictue(void) {		//画像の読み込み
 	if ((g_pic.Menu = LoadGraph("image/Menu.png")) == -1)return -1;//メニュー画面
 	if (LoadDivGraph("image/MenuChar.PNG", 3, 1, 3, 600, 200, g_pic.MenuChar) == -1) return -1;//メニュー文字の分割画像
 	if (LoadDivGraph("image/StageNumber.PNG", 30, 10, 3, 179, 173, g_pic.StageNum) == -1) return -1;//ステージ番号の分割画像
+	if ((g_pic.MenuBotan = LoadGraph("image/Botan_setumei.png")) == -1)return-1;
 
 	if (LoadDivGraph("image/nokori.png", 6, 6, 1, 140, 200, g_pic.Nokori) == -1) return -1;//残り回数の分割画像
 	if (LoadDivGraph("image/Nokori_Num.PNG", 10, 10, 1, 170, 200, g_pic.Nokori_Num) == -1) return -1;//残り回数の分割画像
