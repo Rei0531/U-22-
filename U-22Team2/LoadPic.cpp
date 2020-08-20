@@ -6,18 +6,19 @@ int LoadPictue(void) {		//画像の読み込み
 	if ((g_pic.Map = LoadGraph("image/Stage_Deffault.jpg")) == -1) return -1;	//ステージの基本背景
 	if (LoadDivGraph("image/Player02.png", 20, 5, 4, 100, 200, g_pic.Player) == -1) return -1;//プレイヤーの分割画像
 
-	if ((g_pic.Title = LoadGraph("image/Title.png")) == -1) return -1;//タイトル画面
+	//if ((g_pic.Title = LoadGraph("image/Title.png")) == -1) return -1;//タイトル画面
+	if (LoadDivGraph("image/Title_name.png", 13, 13, 1, 128, 128 , g_pic.TitleName) == -1) return -1;//タイトル名の文字分割画像
 	if ((g_pic.StageClear = LoadGraph("image/stageimage(仮）.png")) == -1)return -1;//ステージクリア画面
 	if (LoadDivGraph("image/TitleChar.png", 3, 1, 3, 759, 94, g_pic.TitleChar) == -1) return -1;//タイトルの文字分割画像
 
 	if ((g_pic.Select_Back = LoadGraph("image/Select_Back.png")) == -1)return -1;//セレクト選択中のやつ
-
+	           
 	if ((g_pic.Menu = LoadGraph("image/Menu.png")) == -1)return -1;//メニュー画面
 	if (LoadDivGraph("image/MenuChar.PNG", 3, 1, 3, 600, 200, g_pic.MenuChar) == -1) return -1;//メニュー文字の分割画像
 	if (LoadDivGraph("image/StageNumber.PNG", 30, 10, 3, 179, 173, g_pic.StageNum) == -1) return -1;//ステージ番号の分割画像
 	if ((g_pic.MenuBotan = LoadGraph("image/Botan_setumei.png")) == -1)return-1;
 
-	if (LoadDivGraph("image/nokori.png", 6, 6, 1, 140, 200, g_pic.Nokori) == -1) return -1;//残り回数の分割画像
+	if (LoadDivGraph("image/nokori2.png", 6, 6, 1, 202, 256, g_pic.Nokori) == -1) return -1;//残り回数の分割画像
 	if (LoadDivGraph("image/Nokori_Num.PNG", 10, 10, 1, 170, 200, g_pic.Nokori_Num) == -1) return -1;//残り回数の分割画像
 
 	if ((g_pic.Hand = LoadGraph("image/yubisashi2.png")) == -1)return -1;//スポイト場所表示

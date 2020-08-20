@@ -4,6 +4,7 @@
 #include "constant.h"
 #include "Title.h"
 #include "LoadSound.h"
+#include "Color.h"
 
 
 extern Sound g_Snd;
@@ -12,6 +13,11 @@ static bool //二度押し防止
 DOWN = FALSE,//下キー
 UP = FALSE,//上キー
 B = FALSE;//Bボタン
+static int ColorMove = 0;//スポイトするたび色が変わる変数
+static int CircleRcnt = 0;//円の半径のカウント
+static int CircleRcnt2 = -300;//円の半径のカウント2
+static int CircleRcntMax = 1280;//円の半径のカウント
+static int Fcnt = 0;//このcpp内でのフレームカウント
 
 static bool Sndflg = FALSE;//音再生フラグ
 extern image g_pic;
@@ -28,11 +34,13 @@ void Title_Update() {
         DOWN = TRUE;
         NowSelect = (NowSelect + 1) % eTitle_Num;//選択状態を一つ下げる
         PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
+        ColorMove++;
     }
     if (g_Pad.KEY_UP == TRUE && UP == FALSE) {//上キーが押されていたら
         UP = TRUE;
         NowSelect = (NowSelect + (eTitle_Num - 1)) % eTitle_Num;//選択状態を一つ上げる
         PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
+        ColorMove++;
     }
 
 
@@ -61,6 +69,23 @@ void Title_Update() {
     B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
 }
 void Title_Draw() {
+    //拡大していく円**********************************************
+    CircleRcnt = CircleRcntMax > CircleRcnt ? CircleRcnt += 5 : CircleRcnt = 0;
+    CircleRcnt2 = CircleRcntMax > CircleRcnt2 ? CircleRcnt2 += 5 : CircleRcnt2 = 0;
+    Fcnt++;
+
+    SetDrawBlendMode(DX_BLENDMODE_ALPHA, 200);//描画ブレンドモードをアルファブレンドにする
+    Change(Fcnt / 60 % 7);//動かすたびに色が変わる
+    DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt, 0xffffff, TRUE, TRUE);
+    Change(Fcnt / 120 % 7);//動かすたびに色が変わる
+    DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt2, 0xffffff, TRUE, TRUE);
+    Change(Fcnt / 180 % 7);//動かすたびに色が変わる
+    DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt/2, 0xffffff, TRUE, TRUE);
+    Change(Fcnt / 240 % 7);//動かすたびに色が変わる
+    DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt2/2, 0xffffff, TRUE, TRUE);
+    SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);	//描画ブレンドモードをノーブレンドにする
+    ColorReset();
+    //***********************************************************
     static int MenuX = 634, MenuY = 200;
     static int BoxX = 0;//選択カーソルのプラスする量の位置;
     DrawRotaGraph(MenuX, SELECT_Y,0.5,0,g_pic.TitleChar[0],TRUE,FALSE);
@@ -81,11 +106,23 @@ void Title_Draw() {
         BoxX = -70;
     }
 
-    DrawRotaGraph(MenuX + BoxX, y - 5,1.0,0,g_pic.Pin,TRUE,TRUE);
+    DrawRotaGraph(MenuX + BoxX, y - 5,1.0,0,g_pic.Pin,TRUE,TRUE);//スポイトのやつ
+
+
+    //タイトル名の表示*****************************************************
+
+    //タイトル名の表示
+    for (int i = 0; i < 13; i++) {
+        Change((i + ColorMove) % 7);//動かすたびに色が変わる
+        DrawRotaGraph(60 + i * 95, 150, 0.8, 0, g_pic.TitleName[i], TRUE, FALSE);
+    }
+    ColorReset();
+    //**********************************************
 }
 
 int GameTitle(void) {
-	DrawRotaGraph(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, 1.0, 0,g_pic.Title, TRUE, FALSE); //タイトル画像描画
+    DrawBox(0,0, SCREEN_WIDHT, SCREEN_HEIGHT,0xffffff,TRUE);//白い背景
+	//DrawRotaGraph(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, 1.0, 0,g_pic.Title, TRUE, FALSE); //タイトル画像描画
     Title_Update();
     Title_Draw();
 	return 0;

@@ -140,14 +140,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			//エンド描画処理
 			break;
 		}
-		DrawFormatString(0, 0, 0xff0fff, "X %d ", g_Pad.MouseX);
-		DrawFormatString(0, 20, 0xff0fff, "Y %d ", g_Pad.MouseY);
-		DrawFormatString(0, 40, 0xff0000, " %dステージ ", g_MapC.StageNumber);
-		DrawFormatString(0, 60, 0xff0fff, "g_Player.x %d ", g_Player.x);
-		DrawFormatString(0, 80, 0xff0fff, "g_Player.y %d ", g_Player.y);
+		//DrawFormatString(0, 0, 0xff0fff, "X %d ", g_Pad.MouseX);
+		//DrawFormatString(0, 20, 0xff0fff, "Y %d ", g_Pad.MouseY);
+		//DrawFormatString(0, 40, 0xff0000, " %dステージ ", g_MapC.StageNumber);
+		//DrawFormatString(0, 60, 0xff0fff, "g_Player.x %d ", g_Player.x);
+		//DrawFormatString(0, 80, 0xff0fff, "g_Player.y %d ", g_Player.y);
 
-		DrawFormatString(100, 20, 0xff0fff, "g_Player.PLAYER_MOVEBOX_PULL %d ", g_Player.PLAYER_MOVEBOX_PULL);
-		DrawFormatString(100, 40, 0xff0fff, "g_Player.PLAYER_MOVEBOX_PUSH %d ", g_Player.PLAYER_MOVEBOX_PUSH);
+		//DrawFormatString(100, 20, 0xff0fff, "g_Player.PLAYER_MOVEBOX_PULL %d ", g_Player.PLAYER_MOVEBOX_PULL);
+		//DrawFormatString(100, 40, 0xff0fff, "g_Player.PLAYER_MOVEBOX_PUSH %d ", g_Player.PLAYER_MOVEBOX_PUSH);
 
 		fps.Update();	//更新
 		fps.Draw();		//描画

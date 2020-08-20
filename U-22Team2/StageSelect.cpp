@@ -99,8 +99,6 @@ void Stage_Draw() {
         }
     }
 
-    DrawFormatString(0, 100, 0xff0fff, "NowStage %d ", NowStage+1);
-
     //ステージセレクトの大きなる表示
     DrawExtendGraph(218 + x * 168, 26 + y * 156, 318 + x * 168, 126 + y * 156, g_pic.StageNum[NowStage], TRUE);
 }

@@ -72,7 +72,7 @@ int PlayerDraw(void) {
 		g_Object.PixelColor2 = GetPointColor(g_Player.PickUpPixel+ Px2, g_Player.PickUpPixely-3);
 		g_Object.PixelColor3 = GetPointColor(g_Player.PickUpPixel,	   g_Player.PickUpPixely-5);
 		g_Object.PixelColor4 = GetPointColor(g_Player.PickUpPixel+ Px1, g_Player.PickUpPixely-5);
-		//指先の取得した色で多数決を取る
+		//指先の取得した色で優先順位で色を取る
 		if (g_Object.PixelColor1 != WHITE)g_Object.PixelColor = g_Object.PixelColor1;
 		if (g_Object.PixelColor4 != WHITE)g_Object.PixelColor = g_Object.PixelColor4;
 		if (g_Object.PixelColor2 != WHITE)g_Object.PixelColor = g_Object.PixelColor2;
@@ -278,7 +278,6 @@ int PlayerDraw(void) {
 			JumpOkflag = 0;	//地面についているのでジャンプしていない
 			g_Player.PLAYER_GROUND = TRUE;
 		}
-		DrawFormatString(0, 100, 0xff0fff, "Gravity %d ", Gravity);
 
 	/************************************************************************
 	*プレイヤーのジャンプ処理

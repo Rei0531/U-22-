@@ -45,8 +45,6 @@ int Bomb(void) {
 		if (gim.B_EffectCount < 0) gim.g_Bombflg = 3;
 		PlaySoundMem(g_Snd.Bomb, DX_PLAYTYPE_BACK);
 	}
-
-	DrawFormatString(50, 100, 0xffffff, "Bomb = %d", gim.B_EffectCount);
 	Change(WHITE);
 
 	return 0;

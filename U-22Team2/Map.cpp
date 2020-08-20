@@ -112,14 +112,21 @@ int Map(void) {			//マップ画像の描画____________________________________________
 		break;
 	}
 
+	//残り回数の表示*****************************************************
+	static int ColorMove = 0;//スポイトするたび色が変わる変数
+
+	if (g_Player.PLAYER_PICKUP == TRUE)ColorMove++;
+
 	//残り回数の表示
 	for (int i = 0; i < 6; i++) {
-		DrawRotaGraph(20 +i*28, 20, 0.2, 0, g_pic.Nokori[i], TRUE, FALSE);
+		Change((i + ColorMove) % 7);//スポイトするたびに色が変わる
+		DrawRotaGraph(25 +i*28, 40, 0.2, 0, g_pic.Nokori[i], TRUE, FALSE);
 	}
 	Change(g_Player.Interact%7);
-	DrawRotaGraph(200, 20, 0.2, 0, g_pic.Nokori_Num[g_Player.Interact / 10 % 10], TRUE, FALSE);
-	DrawRotaGraph(230, 20, 0.2, 0, g_pic.Nokori_Num[g_Player.Interact % 10], TRUE, FALSE);
+	DrawRotaGraph(200, 40, 0.2, 0, g_pic.Nokori_Num[g_Player.Interact / 10 % 10], TRUE, FALSE);
+	DrawRotaGraph(230, 40, 0.2, 0, g_pic.Nokori_Num[g_Player.Interact % 10], TRUE, FALSE);
 	ColorReset();
+	//**********************************************
 
 
 	if ((g_Lock.clearflg == TRUE) & (g_Pad.KEY_B == FALSE)) {
