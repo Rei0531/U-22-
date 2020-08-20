@@ -89,7 +89,7 @@ int Stage20(void) {			//マップ画像の描画
 
 
 		//色反映スイッチ_____________________
-	SwitchColor = CC_Switch(g_Player.NowColor, 200, 568);//一時変数に関数からの戻り値を格納する
+	SwitchColor = CC_Switch(g_Player.NowColor, 200, 578);//一時変数に関数からの戻り値を格納する
 	Change(SwitchColor);
 	//色反映する箱________________________________________________
 

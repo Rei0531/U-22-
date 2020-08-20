@@ -23,6 +23,12 @@ public:
 		BLUE_x = 0;
 		PURPLE_x = 0;
 	}
+
+	int PixelColor4,	//中心から	  _l	    4□	  _l
+		PixelColor3,	//中心から	  l 3□			_l
+		PixelColor2,	//指の中心	  l   2 □	　_l
+		PixelColor1,	//中心から	  l 	1□  _l
+		PixelColor;		//指先		  l□_______l
 };
 
 void MoveObjectValue(int P_Color);//オブジェクトごとの移動量を返す

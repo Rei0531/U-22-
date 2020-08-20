@@ -63,8 +63,8 @@ int Stage4(void) {			//マップ画像の描画
 
 	//色ブロック描画
 	Change(RED);
-	DrawExtendGraph(400, 558, 500, 668, g_pic.Box[0], TRUE);
-	DrawExtendGraph(400, 458, 500, 568, g_pic.Box[0], TRUE);
+	DrawExtendGraph(400, 568, 500, 668, g_pic.Box[0], TRUE);
+	DrawExtendGraph(400, 468, 500, 568, g_pic.Box[0], TRUE);
 
 	Door();			//ステージゴール処理
 	Lock();

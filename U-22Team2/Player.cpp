@@ -15,19 +15,15 @@ extern MapCoordinate g_MapC;
 extern Player g_Player;
 extern DoorAll g_Door;
 extern Sound g_Snd;
+extern Object g_Object;
 
 int anicnt = 0,	//アニメ動かす変数
 anicntMax = 20,	//アニメ全体の時間
 aniy = 0,		//指の上下アニメ用変数
 anix = 0,		//プレイヤーの向きによって変わるX座標用変数
 
-PixelColor4,	//中心から	  _l	    4□	  _l
-PixelColor3,	//中心から	  l 3□			_l
-PixelColor2,	//指の中心	  l   2 □	　_l
-PixelColor1,	//中心から	  l 	1□  _l
-PixelColor;		//指先		  l□_______l
 
-const int PicChangeFream = 8;
+const PicChangeFream = 8;
 static int animecnt = 0;	//スポイントマンアニメーション用カウント変数
 static int Jumpcnt = 20;	//ジャンプ処理のカウント
 static int JumpMax = 0;		//ジャンプ処理全体にかかる最大時間
@@ -59,9 +55,9 @@ int PlayerDraw(void) {
 	g_Player.PickUpPixely = g_Player.y - 27;//初期値33もし白色が取れるようになってしまったら戻す
 
 	//PixelColorに色を格納
-	PixelColor = GetPointColor(g_Player.PickUpPixel, g_Player.PickUpPixely);
+	g_Object.PixelColor = GetPointColor(g_Player.PickUpPixel, g_Player.PickUpPixely);
 	//取得した色が白色だった時
-	if (PixelColor == WHITE) {
+	if (g_Object.PixelColor == WHITE) {
 		//左向きの座標を取得する___________________________
 		int Px1 = 5,
 			Px2 = 3;
@@ -72,21 +68,21 @@ int PlayerDraw(void) {
 			Px2 *= -1;
 		}
 		//PixelColorの周りから色を取得する
-		PixelColor1 = GetPointColor(g_Player.PickUpPixel+ Px1, g_Player.PickUpPixely);
-		PixelColor2 = GetPointColor(g_Player.PickUpPixel+ Px2, g_Player.PickUpPixely-3);
-		PixelColor3 = GetPointColor(g_Player.PickUpPixel,	   g_Player.PickUpPixely-5);
-		PixelColor4 = GetPointColor(g_Player.PickUpPixel+ Px1, g_Player.PickUpPixely-5);
+		g_Object.PixelColor1 = GetPointColor(g_Player.PickUpPixel+ Px1, g_Player.PickUpPixely);
+		g_Object.PixelColor2 = GetPointColor(g_Player.PickUpPixel+ Px2, g_Player.PickUpPixely-3);
+		g_Object.PixelColor3 = GetPointColor(g_Player.PickUpPixel,	   g_Player.PickUpPixely-5);
+		g_Object.PixelColor4 = GetPointColor(g_Player.PickUpPixel+ Px1, g_Player.PickUpPixely-5);
 		//指先の取得した色で多数決を取る
-		if (PixelColor1 != WHITE)PixelColor = PixelColor1;
-		if (PixelColor4 != WHITE)PixelColor = PixelColor4;
-		if (PixelColor2 != WHITE)PixelColor = PixelColor2;
-		if (PixelColor3 != WHITE)PixelColor = PixelColor3;
+		if (g_Object.PixelColor1 != WHITE)g_Object.PixelColor = g_Object.PixelColor1;
+		if (g_Object.PixelColor4 != WHITE)g_Object.PixelColor = g_Object.PixelColor4;
+		if (g_Object.PixelColor2 != WHITE)g_Object.PixelColor = g_Object.PixelColor2;
+		if (g_Object.PixelColor3 != WHITE)g_Object.PixelColor = g_Object.PixelColor3;
 	}
 
 
 	//スポイトの手を表示させるかの判断式
-	if (PixelColor != WHITE && PixelColor != NONCOLOR && PixelColor != BLACK && PixelColor != g_Player.NowColor &&
-		PixelColor != MOVE && g_Player.PLAYER_MOVEBOX_PUSH == FALSE && g_Player.PLAYER_MOVEBOX_PULL == FALSE &&
+	if (g_Object.PixelColor != WHITE && g_Object.PixelColor != NONCOLOR && g_Object.PixelColor != BLACK &&
+		g_Object.PixelColor != g_Player.NowColor &&g_Object.PixelColor != MOVE && g_Player.PLAYER_MOVEBOX_PUSH == FALSE && g_Player.PLAYER_MOVEBOX_PULL == FALSE &&
 		(!((g_Door.x-5 < g_Player.PickUpPixel && g_Door.w+5 > g_Player.PickUpPixel) &&
 		(g_Door.y < g_Player.PickUpPixely && g_Door.h > g_Player.PickUpPixely)))) {//取得する場所の色が白じゃないとき描画
 
@@ -104,7 +100,7 @@ int PlayerDraw(void) {
 		//_____________________________________________________________
 
 		//スポイトの手
-		Change2(PixelColor);
+		Change2(g_Object.PixelColor);
 		DrawRotaGraph2(g_Player.PickUpPixel, g_Player.PickUpPixely + aniy, anix, 46, 1.0, 0, g_pic.Hand, TRUE, g_Player.PLAYER_DIRECTION);
 	}
 //*********************************************************************************************************

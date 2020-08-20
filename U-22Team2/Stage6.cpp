@@ -78,7 +78,7 @@ int Stage6(void) {			//マップ画像の描画
 
 	Change(BLUE);//色ブロック描画
 	DrawExtendGraph(980, 460, 1080, 560, g_pic.Box[0], TRUE);//障害ブロック
-	DrawExtendGraph(980, 560, 1080, 665, g_pic.Box[0], TRUE);//障害ブロック
+	DrawExtendGraph(980, 565, 1080, 665, g_pic.Box[0], TRUE);//障害ブロック
 	//DrawExtendGraph(g_Player.x - 30, g_Player.y - 30, g_Player.x + 30, g_Player.y + 30, GetColor(255, 255, 255), TRUE);
 	Change(RED);//色ブロック描画
 	

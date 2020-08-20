@@ -19,7 +19,7 @@ static int SaveColor = 99;		//一時変数に現在の色を格納する
 *************************************************************************/
 int GetPointColor(int Point_x, int Point_y) {
 	int color, r, g, b;
-	int getcolor = 99;		//今取得する色格納変数
+	int getcolor = 9;		//今取得する色格納変数
 
 	//当たり判定の場所の色を取得******************************************************************************
 	color = GetPixel(Point_x, Point_y);		//スポイトする/引数はスポイトする場所
@@ -69,10 +69,15 @@ int GetPointColor(int Point_x, int Point_y) {
 		break;
 	}
 
-
 	//スポイトされたとき********************************************************************************************************
 	if (g_Player.PLAYER_PICKUP == TRUE) {
 		g_Player.PLAYER_PICKUP = FALSE;			//TRUEになってこの関数に入るから一度だけの処理にするためにスポイトフラグをFALSEにする
+
+		if (g_Object.PixelColor1 != WHITE)g_Object.PixelColor = g_Object.PixelColor1;
+		if (g_Object.PixelColor4 != WHITE)g_Object.PixelColor = g_Object.PixelColor4;
+		if (g_Object.PixelColor2 != WHITE)g_Object.PixelColor = g_Object.PixelColor2;
+		if (g_Object.PixelColor3 != WHITE)g_Object.PixelColor = g_Object.PixelColor3;
+
 		if ((g_Player.Hit_Up == getcolor) || (SaveColor == getcolor) || (getcolor == WHITE) || (getcolor == BLACK)) {
 			g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
 		}

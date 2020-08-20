@@ -83,7 +83,7 @@ int Stage23(void) {			//マップ画像の描画
 	Change(GREEN);
 	DrawExtendGraph(640, 468, 740, 568, g_pic.Box[0], TRUE);
 	//色反映スイッチ_
-	SwitchColor = CC_Switch(g_Player.NowColor, 140, 593);//一時変数に関数からの戻り値を格納する
+	SwitchColor = CC_Switch(g_Player.NowColor, 140, 588);//一時変数に関数からの戻り値を格納する
 	Change(SwitchColor);
 	//色反映する箱__
 	DrawExtendGraph(0, 318, 100, 418, g_pic.Box[0], TRUE);
