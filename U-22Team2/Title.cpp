@@ -13,11 +13,12 @@ static bool //二度押し防止
 DOWN = FALSE,//下キー
 UP = FALSE,//上キー
 B = FALSE;//Bボタン
-static int ColorMove = 0;//スポイトするたび色が変わる変数
-static int CircleRcnt = 0;//円の半径のカウント
-static int CircleRcnt2 = -300;//円の半径のカウント2
-static int CircleRcntMax = 1280;//円の半径のカウント
-static int Fcnt = 0;//このcpp内でのフレームカウント
+
+int ColorMove = 0;//スポイトするたび色が変わる変数
+int CircleRcnt = 0;//円の半径のカウント
+int CircleRcnt2 = -300;//円の半径のカウント2
+int CircleRcntMax = 1280;//円の半径のカウント
+int Fcnt = 0;//このcpp内でのフレームカウント
 
 static bool Sndflg = FALSE;//音再生フラグ
 extern image g_pic;
@@ -75,13 +76,13 @@ void Title_Draw() {
     Fcnt++;
 
     SetDrawBlendMode(DX_BLENDMODE_ALPHA, 200);//描画ブレンドモードをアルファブレンドにする
-    Change(Fcnt / 60 % 7);//動かすたびに色が変わる
+    Change(Fcnt / 60 % 7);//フレームごとに色が変わる
     DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt, 0xffffff, TRUE, TRUE);
-    Change(Fcnt / 120 % 7);//動かすたびに色が変わる
+    Change(Fcnt / 120 % 7);//フレームごとに色が変わる
     DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt2, 0xffffff, TRUE, TRUE);
-    Change(Fcnt / 180 % 7);//動かすたびに色が変わる
+    Change(Fcnt / 180 % 7);//フレームごとに色が変わる
     DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt/2, 0xffffff, TRUE, TRUE);
-    Change(Fcnt / 240 % 7);//動かすたびに色が変わる
+    Change(Fcnt / 240 % 7);//フレームごとに色が変わる
     DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt2/2, 0xffffff, TRUE, TRUE);
     SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);	//描画ブレンドモードをノーブレンドにする
     ColorReset();
