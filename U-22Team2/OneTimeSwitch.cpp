@@ -3,17 +3,20 @@
 #include "Color.h"
 #include "Controller.h"
 #include "Player.h"
+#include "LoadSound.h"
 
 extern Controller g_Pad;
 extern image g_pic;
 extern Player g_Player;
 extern GimmickAll gim;
+extern Sound g_Snd;
 
 int OneTimeSwitch(void) {
 
 	if (g_Pad.KEY_B == TRUE &&
 		g_Player.x > gim.OTS_X1 && g_Player.x < gim.OTS_X2 && g_Player.y > gim.OTS_Y1 - 30 && g_Player.y < gim.OTS_Y2 && gim.g_OTSwitchFlag == 0) {			//スイッチ周辺でインタラクトを押すと壁が消える
 		gim.g_OTSwitchFlag = 99;
+		PlaySoundMem(g_Snd.Switch, DX_PLAYTYPE_BACK);
 	}
 
 	if (gim.g_OTSwitchFlag == 0) {

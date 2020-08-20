@@ -3,11 +3,13 @@
 #include "LoadPic.h"
 #include "Controller.h"
 #include "Player.h"
+#include "LoadSound.h"
 
 extern image g_pic;
 extern Player g_Player;
 extern Controller g_Pad;
 extern GimmickAll gim;
+extern Sound g_Snd;
 
 int Bomb(void) {
 
@@ -41,6 +43,7 @@ int Bomb(void) {
 		if (gim.B_EffectCount <= 20 && gim.B_EffectCount > 10) DrawRotaGraph(gim.B_WallX1, gim.B_WallY2 - 150, 1, 0, g_pic.BombEffect, TRUE, FALSE);
 		if (gim.B_EffectCount <= 10) DrawRotaGraph(gim.B_WallX1, gim.B_WallY2 - 150, 1, 0, g_pic.BombEffect, TRUE, TRUE);
 		if (gim.B_EffectCount < 0) gim.g_Bombflg = 3;
+		PlaySoundMem(g_Snd.Bomb, DX_PLAYTYPE_BACK);
 	}
 
 	DrawFormatString(50, 100, 0xffffff, "Bomb = %d", gim.B_EffectCount);
