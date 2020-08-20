@@ -23,6 +23,9 @@ public:
 
 	int Pin;//色取った場所のピン
 
+	int Select_Back;	//セレクト画面の選択中のやつ
+
+
 	int Box[3];//色々なボックス
 	//int Box;//オブジェクトの木の箱
 	//int Box_Move;//動く箱

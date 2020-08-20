@@ -71,20 +71,36 @@ void Stage_Update() {
 }
 void Stage_Draw() {
     static int MenuX = 634, MenuY = 200;
+    static double anicnt = 0;//虹色光回転カウント
+    static int FreamCnt = 0;
     static int BoxX = 0;//選択カーソルのプラスする量の位置;
     int cnt = 0;
+    int
+        x = NowStage % 5,
+        y = NowStage / 5;
+
+    anicnt += 0.02;//虹色の光回転
+
+    //static int r = 0, g = 0, b = 0;
+    //if (FreamCnt % 60 == 0) {
+    //    r = GetRand(255);
+    //    g = GetRand(255);
+    //    b = GetRand(255);
+    //}
+
+    DrawRotaGraph(268 + x * 168, 76 + y * 156, 1.5, anicnt, g_pic.Select_Back, TRUE, FALSE);//虹色の背景
+
     //ステージのびょうが　
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
-            DrawBox(218 + j * 168,26 + i * 156,318 + j * 168,126 + i * 156,0x000000,FALSE);
+            DrawBox(218 + j * 168, 26 + i * 156, 318 + j * 168, 126 + i * 156, 0xffffff, TRUE);//白い四角
+            DrawBox(218 + j * 168, 26 + i * 156, 318 + j * 168, 126 + i * 156, 0x000000 , FALSE);//枠線
             DrawRotaGraph(268 + j * 168, 76 + i * 156,0.5,0, g_pic.StageNum[cnt++ % Stage_Num],TRUE,FALSE);
         }
     }
 
     DrawFormatString(0, 100, 0xff0fff, "NowStage %d ", NowStage+1);
-    int
-        x = NowStage%5,
-        y = NowStage/5;
+
     //ステージセレクトの大きなる表示
     DrawExtendGraph(218 + x * 168, 26 + y * 156, 318 + x * 168, 126 + y * 156, g_pic.StageNum[NowStage], TRUE);
 }
