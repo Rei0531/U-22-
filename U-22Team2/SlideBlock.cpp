@@ -15,24 +15,16 @@ int SlideBlock(int SlaColor)
 	Change(SlaColor);
 	if ((((g_Player.x + 20 != gim.SliObjx1 + gim.move_x) && gim.Speed > 0) ||
 		((g_Player.x - 20 != gim.SliObjx2 + gim.move_x) && gim.Speed < 0))) {
-			gim.move_x -= gim.Speed * 2;
+		//gim.move_x -= gim.Speed * 2;
+		gim.SliObjx1 -= gim.Speed * 2;
+		gim.SliObjx2 -= gim.Speed * 2;
 		if (gim.move_cnt++ > gim.move_max) {
 			gim.move_cnt = 0;
 			gim.Speed = gim.Speed * (-1);
 		}
 	}
-	/*if ((((g_Player.x + 20 != gim.SliObjx1 + gim.move_x) && gim.Speed > 0) ||
-		((g_Player.x - 20 != gim.SliObjx2 + gim.move_x) && gim.Speed < 0)) &&
-		(g_Player.Hit_RightUp != g_Player.NowColor || g_Player.Hit_LeftUp != g_Player.NowColor) &&
-		(g_Player.Hit_RightUp != SlaColor || g_Player.Hit_LeftUp != SlaColor)) {
-			gim.move_x -= gim.Speed * 2;
-		if (gim.move_cnt++ > gim.move_max) {
-			gim.move_cnt = 0;
-			gim.Speed = gim.Speed * (-1);
-		}
-	}*/
-	DrawExtendGraph(gim.SliObjx1 + gim.move_x, gim.SliObjy1, gim.SliObjx2 + gim.move_x, gim.SliObjy2, g_pic.Box[0], TRUE);//動く床
-	if ((g_Player.x >= gim.SliObjx1 + gim.move_x) && (g_Player.x <= gim.SliObjx2 + gim.move_x) &&
+	DrawExtendGraph(gim.SliObjx1, gim.SliObjy1, gim.SliObjx2, gim.SliObjy2, g_pic.Box[0], TRUE);//動く床
+	if ((g_Player.x + 20 >= gim.SliObjx1) && (g_Player.x - 20 <= gim.SliObjx2) &&
 		(g_Player.y < gim.SliObjy1) && (g_Player.y > gim.SliObjy1 - 200) &&
 		(g_Player.Hit_Under == g_Player.NowColor || g_Player.Hit_Under2 == g_Player.NowColor) &&
 		(g_Player.Hit_Under == SlaColor || g_Player.Hit_Under2 == SlaColor)) {
@@ -41,7 +33,7 @@ int SlideBlock(int SlaColor)
 	DrawExtendGraph(gim.GetObjx1, gim.GetObjy1, gim.GetObjx2, gim.GetObjy2, g_pic.Box[0], TRUE);//色取り用のブロック
 
 	ColorReset();
-	DrawBox(gim.SliObjx1 + gim.move_x+10, gim.SliObjy1 + 10, gim.SliObjx2 + gim.move_x-10, gim.SliObjy2 - 10 , GetColor(1, 1, 1), TRUE);
+	
 
 	return SlaColor;
 }
