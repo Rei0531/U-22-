@@ -172,85 +172,6 @@ int PlayerDraw(void) {
 	**
 	*************************************************************************/
 	if (g_Player.PLAYER_MENU == FALSE && g_Player.Hit_Up != g_Player.NowColor) {//メニュー画面を閉じているとき,色が重なっていないとき
-
-
-		/************************************************************************
-		*当たり判定処理 & ボックスを動かす
-		*************************************************************************/
-		//	//ブロック動かす処理_____________________________________________________________
-		//	if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
-		//		&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
-		//		g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-		//		if (g_Pad.KEY_RIGHT == TRUE)
-		//			MoveObjectValue(g_Player.NowColor);
-		//	}
-		////ブロック動かす処理___________________________________________________________________
-		//	else if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
-		//		&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
-		//		g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-		//		if (g_Pad.KEY_LEFT == TRUE && g_Player.NowColor != g_Player.Hit_LeftUnder ||
-		//			g_Pad.KEY_RIGHT == TRUE) {
-		//			MoveObjectValue(g_Player.NowColor);
-		//		}
-		//	}
-
-		//	//ブロック動かす処理___________________________
-		//	if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
-		//		&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
-		//		g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-		//		if (g_Pad.KEY_LEFT == TRUE)
-		//			MoveObjectValue(g_Player.NowColor);
-		//	}
-		////ブロック動かす処理_________________________________________________
-		//	else if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
-		//		&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
-		//		g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-		//		if (g_Pad.KEY_RIGHT == TRUE && g_Player.NowColor != g_Player.Hit_RightUnder ||
-		//			g_Pad.KEY_LEFT == TRUE) {
-		//			MoveObjectValue(g_Player.NowColor);
-		//		}
-		//	}
-
-		//Bボタンの切り替え条件の隣に動かせる箱があるか
-		bool MOVEOK = (g_Player.Move_HitL == MOVE || g_Player.NowColor == g_Player.Hit_LeftUnder)
-			|| (g_Player.Move_HitR == MOVE || g_Player.NowColor == g_Player.Hit_RightUnder);
-
-		if (g_Pad.KEY_B == TRUE && Move_B == TRUE && B == FALSE && MOVEOK == TRUE) {
-			Move_B = FALSE;
-			B = TRUE;
-		}
-		if (g_Pad.KEY_B == TRUE && Move_B == FALSE && B == FALSE && MOVEOK == TRUE) {
-			Move_B = TRUE;
-			B = TRUE;
-		}
-
-		B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
-
-		if (Move_B == TRUE && g_Player.PLAYER_GROUND == TRUE) {
-			if(g_Pad.KEY_RIGHT == TRUE)g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-			if(g_Pad.KEY_LEFT == TRUE)g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-			MoveObjectValue(g_Player.NowColor);
-		}
-		//箱を引きずる音___________________________________________________
-		if (Move_B == TRUE && CheckSoundMem(g_Snd.BoxDrag) == 0 &&
-			(g_Player.PLAYER_MOVEBOX_PUSH == TRUE || g_Player.PLAYER_MOVEBOX_PULL == TRUE)
-			&& (g_Pad.KEY_LEFT == TRUE || g_Pad.KEY_RIGHT == TRUE)) {
-			PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
-		}
-		if ((g_Pad.KEY_LEFT == FALSE && g_Pad.KEY_RIGHT == FALSE) ||
-			(Move_B == FALSE) && (CheckSoundMem(g_Snd.BoxDrag) == 1)) {
-			StopSoundMem(g_Snd.BoxDrag);
-		}
-		//箱を動かしているフラグをリセットする____________________________________________
-		if (CheckSoundMem(g_Snd.BoxDrag) == 0
-			&& (g_Player.PLAYER_MOVEBOX_PUSH == TRUE || g_Player.PLAYER_MOVEBOX_PULL == TRUE)) {
-			g_Player.PLAYER_MOVEBOX_PUSH = FALSE;
-			g_Player.PLAYER_MOVEBOX_PULL = FALSE;
-		}
-		//_________________________________________________________________________________________
-
-		//********************************************************************************************
-
 		/************************************************************************
 		*プレイヤーの移動処理
 		*************************************************************************/
@@ -332,6 +253,82 @@ int PlayerDraw(void) {
 				JumpOkflag = 0;	//一度ジャンプしたので終わるまでジャンプ処理
 			}
 		}
+		/************************************************************************
+		*当たり判定処理 & ボックスを動かす
+		*************************************************************************/
+		//	//ブロック動かす処理_____________________________________________________________
+		//	if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
+		//		&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
+		//		g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
+		//		if (g_Pad.KEY_RIGHT == TRUE)
+		//			MoveObjectValue(g_Player.NowColor);
+		//	}
+		////ブロック動かす処理___________________________________________________________________
+		//	else if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
+		//		&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
+		//		g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
+		//		if (g_Pad.KEY_LEFT == TRUE && g_Player.NowColor != g_Player.Hit_LeftUnder ||
+		//			g_Pad.KEY_RIGHT == TRUE) {
+		//			MoveObjectValue(g_Player.NowColor);
+		//		}
+		//	}
+
+		//	//ブロック動かす処理___________________________
+		//	if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
+		//		&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
+		//		g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
+		//		if (g_Pad.KEY_LEFT == TRUE)
+		//			MoveObjectValue(g_Player.NowColor);
+		//	}
+		////ブロック動かす処理_________________________________________________
+		//	else if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
+		//		&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
+		//		g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
+		//		if (g_Pad.KEY_RIGHT == TRUE && g_Player.NowColor != g_Player.Hit_RightUnder ||
+		//			g_Pad.KEY_LEFT == TRUE) {
+		//			MoveObjectValue(g_Player.NowColor);
+		//		}
+		//	}
+
+		//Bボタンの切り替え条件の隣に動かせる箱があるか
+		bool MOVEOK = (g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)
+			|| (g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder);
+
+		if (g_Pad.KEY_B == TRUE && Move_B == TRUE && B == FALSE && MOVEOK == TRUE) {
+			Move_B = FALSE;
+			B = TRUE;
+		}
+		if (g_Pad.KEY_B == TRUE && Move_B == FALSE && B == FALSE && MOVEOK == TRUE) {
+			Move_B = TRUE;
+			B = TRUE;
+		}
+
+		B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
+
+		if (Move_B == TRUE && g_Player.PLAYER_GROUND == TRUE) {
+			if (g_Pad.KEY_RIGHT == TRUE)g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
+			if (g_Pad.KEY_LEFT == TRUE)g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
+			MoveObjectValue(g_Player.NowColor);
+		}
+		//箱を引きずる音___________________________________________________
+		if (Move_B == TRUE && CheckSoundMem(g_Snd.BoxDrag) == 0 &&
+			(g_Player.PLAYER_MOVEBOX_PUSH == TRUE || g_Player.PLAYER_MOVEBOX_PULL == TRUE)
+			&& (g_Pad.KEY_LEFT == TRUE || g_Pad.KEY_RIGHT == TRUE)) {
+			PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
+		}
+		if ((g_Pad.KEY_LEFT == FALSE && g_Pad.KEY_RIGHT == FALSE) ||
+			(Move_B == FALSE) && (CheckSoundMem(g_Snd.BoxDrag) == 1)) {
+			StopSoundMem(g_Snd.BoxDrag);
+		}
+		//箱を動かしているフラグをリセットする____________________________________________
+		if (CheckSoundMem(g_Snd.BoxDrag) == 0
+			&& (g_Player.PLAYER_MOVEBOX_PUSH == TRUE || g_Player.PLAYER_MOVEBOX_PULL == TRUE)) {
+			g_Player.PLAYER_MOVEBOX_PUSH = FALSE;
+			g_Player.PLAYER_MOVEBOX_PULL = FALSE;
+		}
+		//_________________________________________________________________________________________
+
+		//********************************************************************************************
 	}
 
 	/************************************************************************
@@ -384,11 +381,11 @@ int PlayerDraw(void) {
 		g_Player.PLAYER_MOVEOK = TRUE;//動けない状態のフラグにする
 	}
 	//当たり判定の可視化_____________________________________________________________________
-//DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xfe00fe, FALSE);	//頭上
-//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xfe00fe, FALSE);	//右上
-	DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//右下
+	//DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xfe00fe, FALSE);	//頭上
+	//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 5, Hit_R_x + 5, Hit_UpLR_y + 5, 0xfe00fe, FALSE);	//右上
+	//DrawBox(Hit_R_x - 5, Hit_UnderLR_y - 5, Hit_R_x + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//右下
 	//DrawBox(Hit_L_x - 5, Hit_UpLR_y - 5, Hit_L_x + 5, Hit_UpLR_y + 5, 0xfe00fe, FALSE);	//左上
-	DrawBox(Hit_L_x - 5, Hit_UnderLR_y - 5, Hit_L_x + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//左下
+	//DrawBox(Hit_L_x - 5, Hit_UnderLR_y - 5, Hit_L_x + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//左下
 	//DrawBox(g_Player.x - 5 + Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 + Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元右
 	//DrawBox(g_Player.x - 5 - Hit_Under_x, Hit_Under_y - 5, g_Player.x + 5 - Hit_Under_x, Hit_Under_y + 5, 0xfe00fe, FALSE);	//足元左
 	//DrawBox(g_Player.PickUpPixel - 5, g_Player.PickUpPixely - 5, g_Player.PickUpPixel + 5, g_Player.PickUpPixely + 5, 0xff00ff, FALSE);
@@ -398,7 +395,7 @@ int PlayerDraw(void) {
 	//DrawBox(Hit_R_x - 5, Hit_UpLR_y - 50 - 5, Hit_R_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭
 	//DrawBox(Hit_L_x - 5, Hit_UpLR_y - 50 - 5, Hit_L_x + 5, Hit_UpLR_y - 50 + 5, 0xfe00fe, FALSE);	//右頭
 
-	//DrawBox(Hit_R_x + 110 -5, Hit_UnderLR_y -5, Hit_R_x + 110+5, Hit_UnderLR_y +5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
+	//DrawBox(Hit_R_x + 110 - 5, Hit_UnderLR_y - 5, Hit_R_x + 110 + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
 	//DrawBox(Hit_L_x - 110 - 5, Hit_UnderLR_y - 5, Hit_L_x - 110 + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
 
 	return 0;

@@ -120,13 +120,18 @@ int Map(void) {			//マップ画像の描画____________________________________________
 	//残り回数の表示
 	for (int i = 0; i < 6; i++) {
 		Change((i + ColorMove) % 7);//スポイトするたびに色が変わる
-		DrawRotaGraph(25 +i*28, 40, 0.2, 0, g_pic.Nokori[i], TRUE, FALSE);
+		DrawRotaGraph(25 +i*45, 720, 0.3, 0, g_pic.Nokori[i], TRUE, FALSE);
 	}
 	Change(g_Player.Interact%7);
-	DrawRotaGraph(200, 40, 0.2, 0, g_pic.Nokori_Num[g_Player.Interact / 10 % 10], TRUE, FALSE);
-	DrawRotaGraph(230, 40, 0.2, 0, g_pic.Nokori_Num[g_Player.Interact % 10], TRUE, FALSE);
+	DrawRotaGraph(290, 720, 0.3, 0, g_pic.Nokori_Num[g_Player.Interact / 10 % 10], TRUE, FALSE);
+	DrawRotaGraph(330, 720, 0.3, 0, g_pic.Nokori_Num[g_Player.Interact % 10], TRUE, FALSE);
 	ColorReset();
 	//**********************************************
+	//現在のステージ表示***********************************************************
+	DrawRotaGraph(1050, 720, 0.2, 0, g_pic.Stage, TRUE, FALSE);//現在のステージ表示
+	DrawRotaGraph(1210, 720, 0.3, 0, g_pic.Nokori_Num[g_MapC.StageNumber / 10 % 10], TRUE, FALSE);
+	DrawRotaGraph(1250, 720, 0.3, 0, g_pic.Nokori_Num[g_MapC.StageNumber % 10], TRUE, FALSE);
+	//**********************************************************************
 
 
 	if ((g_Lock.clearflg == TRUE) & (g_Pad.KEY_B == FALSE)) {
