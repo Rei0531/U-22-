@@ -125,10 +125,6 @@ int GetObjectColor(void) {
 *動くブロックの処理
 *************************************************************************/
 void MoveObjectValue(int P_Color) {
-
-	if (CheckSoundMem(g_Snd.BoxDrag) == 0) {
-		PlaySoundMem(g_Snd.BoxDrag, DX_PLAYTYPE_BACK);
-	}
 	
 	int dir = 0;//向きによって*-1するからそのための変数
 
@@ -164,29 +160,31 @@ void MoveObjectValue(int P_Color) {
 		}
 	}
 
-	switch (P_Color) {		//プレイヤーの色に合わせて動かすオブジェクトを決める
-	case RED:
-		g_Object.RED_x += PLAYERX * dir ;
-		break;
-	case ORENGE:
-		g_Object.ORENGE_x += PLAYERX * dir;
-		break;
-	case YELLOW:
-		g_Object.YELLOW_x += PLAYERX * dir;
-		break;
-	case GREEN:
-		g_Object.GREEN_x += PLAYERX * dir;
-		break;
-	case LIGHTBLUE:
-		g_Object.LIGHTBLUE_x += PLAYERX * dir;
-		break;
-	case BLUE:
-		g_Object.BLUE_x += PLAYERX * dir;
-		break;
-	case PURPLE:
-		g_Object.PURPLE_x += PLAYERX * dir;
-		break;
-	default:
-		break;
+	if (g_Pad.KEY_LEFT || g_Pad.KEY_RIGHT) {
+		switch (P_Color) {		//プレイヤーの色に合わせて動かすオブジェクトを決める
+		case RED:
+			g_Object.RED_x += PLAYERX * dir;
+			break;
+		case ORENGE:
+			g_Object.ORENGE_x += PLAYERX * dir;
+			break;
+		case YELLOW:
+			g_Object.YELLOW_x += PLAYERX * dir;
+			break;
+		case GREEN:
+			g_Object.GREEN_x += PLAYERX * dir;
+			break;
+		case LIGHTBLUE:
+			g_Object.LIGHTBLUE_x += PLAYERX * dir;
+			break;
+		case BLUE:
+			g_Object.BLUE_x += PLAYERX * dir;
+			break;
+		case PURPLE:
+			g_Object.PURPLE_x += PLAYERX * dir;
+			break;
+		default:
+			break;
+		}
 	}
 }
