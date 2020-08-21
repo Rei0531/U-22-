@@ -15,9 +15,6 @@ extern Sound g_Snd;
 extern Controller g_Pad;
 
 
-static bool B = FALSE;//Bボタン
-
-
 int Door(void) {
 
 	DoorRotation();
@@ -28,7 +25,7 @@ int Door(void) {
 	ColorReset();
 	DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(1,1,1), FALSE);//枠線
 
-	if (g_Player.PLAYER_ACTION == TRUE && g_Player.PLAYER_MENU == FALSE && B == FALSE) {
+	if (g_Player.PLAYER_ACTION == TRUE && g_Player.PLAYER_MENU == FALSE) {
 		g_Player.PLAYER_ACTION = FALSE;
 		if ((g_Door.x < g_Player.x && g_Door.w > g_Player.x - 20) &&
 			(g_Door.y < g_Player.y && g_Door.h > g_Player.y) && g_Player.PLAYER_JUMP == FALSE)
@@ -38,8 +35,6 @@ int Door(void) {
 
 		}
 	}
-
-	B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
 
 	return 0;
 }
