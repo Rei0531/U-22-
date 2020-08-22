@@ -25,7 +25,7 @@ void Stage15Init() {
 
 	g_Player.x = 110;			//プレイヤー座標初期化
 	g_Player.y = 571;			//プレイヤー座標初期化
-	g_Player.NowColor = BLUE;		//プレイヤーの色初期化
+	g_Player.NowColor = 5;		//プレイヤーの色初期化
 
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化

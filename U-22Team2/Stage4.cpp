@@ -36,7 +36,7 @@ void Stage4Init() {
 
 	g_Player.x = 110;			//プレイヤー座標初期化
 	g_Player.y = 571;			//プレイヤー座標初期化
-	g_Player.NowColor = RED;		//プレイヤーの色初期化
+	g_Player.NowColor = 0;		//プレイヤーの色初期化
 
 	gim.shower_C = BLUE2;			//シャワーの塗りつぶしの色を初期化
 	gim.shower_X = 130;				//シャワーの座標
