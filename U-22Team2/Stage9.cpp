@@ -70,21 +70,25 @@ int Stage9(void) {			//マップ画像の描画
 	Change(RED);
 	/*DrawExtendGraph(150, 568, 250, 668, g_pic.Box, TRUE);
 	DrawExtendGraph(150, 468, 250, 568, g_pic.Box, TRUE);*/
-	DrawExtendGraph(500, 68, 600, 168, g_pic.Box[0], TRUE);
-	DrawExtendGraph(500, 168, 600, 268, g_pic.Box[0], TRUE);
+	DrawExtendGraph(450, 68, 550, 168, g_pic.Box[0], TRUE);
+	DrawExtendGraph(450, 168, 550, 268, g_pic.Box[0], TRUE);
 
 	Change(BLUE);
-	DrawExtendGraph(700, 68, 800, 168, g_pic.Box[0], TRUE);
-	DrawExtendGraph(700, 168, 800, 268, g_pic.Box[0], TRUE);
+	DrawExtendGraph(650, 68, 750, 168, g_pic.Box[0], TRUE);
+	DrawExtendGraph(650, 168, 750, 268, g_pic.Box[0], TRUE);
 	/*DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
 	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);*/
 
 	Change(LIGHTBLUE);
-	DrawExtendGraph(300, 68, 400, 168, g_pic.Box[0], TRUE);
-	DrawExtendGraph(300, 168, 400, 268, g_pic.Box[0], TRUE);
+	DrawExtendGraph(250, 68, 350, 168, g_pic.Box[0], TRUE);
+	DrawExtendGraph(250, 168, 350, 268, g_pic.Box[0], TRUE);
 	ColorReset();
 	Warp(125,175,125,575);
 	Warp2(900, 175, 250, 575);
+
+	//ギミック説明描画
+	Change(GREEN);
+	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.All_text[3], TRUE, FALSE);
 	
 	//DrawFormatString(g_Player.x - 30, g_Player.y - 200, g_Player.NowColor, "%d", gim.move_cnt);
 

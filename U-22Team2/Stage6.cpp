@@ -86,6 +86,9 @@ int Stage6(void) {			//マップ画像の描画
 	DrawExtendGraph(880, 568, 980, 668, g_pic.Box[0], TRUE);//障害ブロック
 	DrawExtendGraph(880, 468, 980, 568, g_pic.Box[0], TRUE);//障害ブロック
 
+	//ギミック説明描画
+	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.All_text[8], TRUE, FALSE);
+
 
 	SlideBlock(SlideColor);//動くブロックの方向と、乗ったプレイヤーを動かす処理
 	Door();			//ステージゴール処理

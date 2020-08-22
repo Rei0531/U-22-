@@ -55,6 +55,9 @@ int Stage8(void) {			//マップ画像の描画
 	Change(Rotation_Box(0));
 	DrawExtendGraph(740, 568, 840, 668, g_pic.Box[2], TRUE);
 
+	//ギミック説明描画
+	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.All_text[1], TRUE, FALSE);
+
 	Door();			//ステージゴール処理
 	Lock();
 

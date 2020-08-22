@@ -70,6 +70,9 @@ int Stage7(void) {			//マップ画像の描画
 	Change(NONCOLOR);
 	DrawBox(440, 370, 740, 420, GetColor(255, 255, 255), TRUE);
 
+	//ギミック説明描画
+	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.All_text[10], TRUE, FALSE);
+
 	Door();			//ステージゴール処理
 	Lock();
 

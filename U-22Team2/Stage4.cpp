@@ -66,6 +66,9 @@ int Stage4(void) {			//マップ画像の描画
 	DrawExtendGraph(400, 568, 500, 668, g_pic.Box[0], TRUE);
 	DrawExtendGraph(400, 468, 500, 568, g_pic.Box[0], TRUE);
 
+	//ギミック説明描画
+	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.All_text[4], TRUE, FALSE);
+
 	Door();			//ステージゴール処理
 	Lock();
 
