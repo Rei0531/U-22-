@@ -16,9 +16,8 @@ B = FALSE;//Bボタン
 
 int ColorMove = 0;//スポイトするたび色が変わる変数
 int CircleRcnt = 0;//円の半径のカウント
-int CircleRcnt2 = -300;//円の半径のカウント2
-int CircleRcntMax = 1280;//円の半径のカウント
-int Fcnt = 0;//このcpp内でのフレームカウント
+int CircleRcnt2 = -200;//円の半径のカウント2
+int CircleRcntMax = 1100;//円の半径のカウント
 
 static bool Sndflg = FALSE;//音再生フラグ
 extern image g_pic;
@@ -70,23 +69,18 @@ void Title_Update() {
     B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
 }
 void Title_Draw() {
-    ////拡大していく円**********************************************
-    //CircleRcnt = CircleRcntMax > CircleRcnt ? CircleRcnt += 5 : CircleRcnt = 0;
-    //CircleRcnt2 = CircleRcntMax > CircleRcnt2 ? CircleRcnt2 += 5 : CircleRcnt2 = 0;
-    //Fcnt++;
+    //拡大していく円**********************************************
+    CircleRcnt = CircleRcntMax > CircleRcnt ? CircleRcnt += 5 : CircleRcnt = 0;
+    CircleRcnt2 = CircleRcntMax > CircleRcnt2 ? CircleRcnt2 += 5 : CircleRcnt2 = 0;
 
-    //SetDrawBlendMode(DX_BLENDMODE_ALPHA, 200);//描画ブレンドモードをアルファブレンドにする
-    //Change(Fcnt / 60 % 7);//フレームごとに色が変わる
-    //DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt, 0xffffff, TRUE, TRUE);
-    //Change(Fcnt / 120 % 7);//フレームごとに色が変わる
-    //DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt2, 0xffffff, TRUE, TRUE);
-    //Change(Fcnt / 180 % 7);//フレームごとに色が変わる
-    //DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt/2, 0xffffff, TRUE, TRUE);
-    //Change(Fcnt / 240 % 7);//フレームごとに色が変わる
-    //DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt2/2, 0xffffff, TRUE, TRUE);
-    //SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);	//描画ブレンドモードをノーブレンドにする
-    //ColorReset();
-    ////***********************************************************
+    SetDrawBlendMode(DX_BLENDMODE_ALPHA, 200);//描画ブレンドモードをアルファブレンドにする
+    Change(ColorMove % 7);//タイトル画面を動かすごとに色が変わる
+    DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt, 0xffffff, TRUE, TRUE);
+    Change(WHITE);//イトル画面を動かすごとに色が変わる
+    DrawCircle(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, CircleRcnt2, 0xffffff, TRUE, TRUE);
+    SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);	//描画ブレンドモードをノーブレンドにする
+    ColorReset();
+    //***********************************************************
     static int MenuX = 634, MenuY = 200;
     static int BoxX = 0;//選択カーソルのプラスする量の位置;
     DrawRotaGraph(MenuX, SELECT_Y,0.5,0,g_pic.TitleChar[0],TRUE,FALSE);
