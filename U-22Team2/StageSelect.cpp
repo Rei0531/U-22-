@@ -14,14 +14,15 @@ extern image g_pic;
 extern Controller g_Pad;
 extern MapCoordinate g_MapC;
 
-void Stage_Update() {
+bool //二度押し防止
+DOWN = FALSE,//下キー
+UP = FALSE,//上キー
+LEFT = FALSE,//左キー
+RIGHT = FALSE,//右キー
+B = TRUE,//Bボタン
+A = FALSE;//Aボタン
 
-    static bool //二度押し防止
-        DOWN = FALSE,//下キー
-        UP = FALSE,//上キー
-        LEFT = FALSE,//左キー
-        RIGHT = FALSE,//右キー
-        B = TRUE;//Bボタン
+void Stage_Update() {
 
     //if (CheckSoundMem(g_Snd.MenuOpen) == 0 && Sndflg == FALSE) {
     //    PlaySoundMem(g_Snd.MenuOpen, DX_PLAYTYPE_BACK);
@@ -59,7 +60,7 @@ void Stage_Update() {
     RIGHT = (g_Pad.KEY_RIGHT == TRUE) ? TRUE : FALSE;//右キーが押されていたら
 
 
-    if (g_Pad.KEY_B == TRUE && B == FALSE) {//Bボタンが押されたら
+    if (g_Pad.KEY_B == true && B == false) {//Bボタンが押されたら
         B = TRUE;//再度ボタンが押せる
         Sndflg = FALSE;//メニューオープンのフラグをFALSEにして再度関数に入った時音が鳴るようにする
         g_MapC.StageNumber = NowStage+1;
@@ -67,6 +68,14 @@ void Stage_Update() {
     }
 
     B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
+
+    if (g_Pad.KEY_A == TRUE && A == FALSE) {//Aボタンが押されたら
+        GameState = GAME_TITLE;
+        A = TRUE;//再度ボタンが押せる
+        B = TRUE;//Bボタン
+    }
+    A = (g_Pad.KEY_A == TRUE) ? TRUE : FALSE;//Aボタンが押されていたら/再度Aボタンが押せるように
+
 
 }
 void Stage_Draw() {

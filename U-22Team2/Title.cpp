@@ -12,7 +12,8 @@ extern Sound g_Snd;
 static bool //二度押し防止
 DOWN = FALSE,//下キー
 UP = FALSE,//上キー
-B = FALSE;//Bボタン
+B = FALSE,//Bボタン
+A = FALSE;//Aボタン
 
 int ColorMove = 0;//スポイトするたび色が変わる変数
 int CircleRcnt = 0;//円の半径のカウント
@@ -20,6 +21,7 @@ int CircleRcnt2 = -200;//円の半径のカウント2
 int CircleRcntMax = 1100;//円の半径のカウント
 
 static bool Sndflg = FALSE;//音再生フラグ
+static bool SPTHKFlag = FALSE;//スペシャルサンクス表示するかのフラグ//TRUE..表示中//FALSE..非表示
 extern image g_pic;
 extern Controller g_Pad;
 
@@ -30,17 +32,19 @@ void Title_Update() {
         Sndflg = TRUE;//音再生フラグをTRUEにして二度再生防止
     }
 
-    if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
-        DOWN = TRUE;
-        NowSelect = (NowSelect + 1) % eTitle_Num;//選択状態を一つ下げる
-        PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
-        ColorMove++;
-    }
-    if (g_Pad.KEY_UP == TRUE && UP == FALSE) {//上キーが押されていたら
-        UP = TRUE;
-        NowSelect = (NowSelect + (eTitle_Num - 1)) % eTitle_Num;//選択状態を一つ上げる
-        PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
-        ColorMove++;
+    if (SPTHKFlag == FALSE) {
+        if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
+            DOWN = TRUE;
+            NowSelect = (NowSelect + 1) % eTitle_Num;//選択状態を一つ下げる
+            PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
+            ColorMove++;
+        }
+        if (g_Pad.KEY_UP == TRUE && UP == FALSE) {//上キーが押されていたら
+            UP = TRUE;
+            NowSelect = (NowSelect + (eTitle_Num - 1)) % eTitle_Num;//選択状態を一つ上げる
+            PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
+            ColorMove++;
+        }
     }
 
 
@@ -57,7 +61,7 @@ void Title_Update() {
             GameState = GAME_MENU;//セレクト画面から行きたい
             break;
         case eTitle_SpecialThanks://スペシャルサンクス選択中なら
-            GameState = GAME_MAIN;
+            SPTHKFlag = TRUE;
             break;
         case eTitle_End:
             DxLib_End();//終了処理
@@ -67,6 +71,8 @@ void Title_Update() {
     }
 
     B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
+
+
 }
 void Title_Draw() {
     //拡大していく円**********************************************
@@ -113,6 +119,17 @@ void Title_Draw() {
     }
     ColorReset();
     //**********************************************
+    //スペシャルサンクス************************************************************
+    if (SPTHKFlag == TRUE) {
+        DrawRotaGraph(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, 1.0, 0, g_pic.SpecialThanks, TRUE, FALSE);
+    }
+    if (SPTHKFlag == TRUE && g_Pad.KEY_A == TRUE && A == FALSE) {
+        A = TRUE;//再度ボタンが押せる
+        SPTHKFlag = FALSE;
+    }
+    A = (g_Pad.KEY_A == TRUE) ? TRUE : FALSE;//Aボタンが押されていたら/再度Aボタンが押せるように
+    //************************************************************
+
 }
 
 int GameTitle(void) {

@@ -18,6 +18,7 @@ public:
 	int Stage;			//現在のステージ表示
 	int All_text[12];	//全ステージのギミック説明
 	int Door;			//ドアの画像
+	int SpecialThanks;	//スペシャルサンクスの画像
 
 	int Hand;			//スポイト表示
 	int Door_keyhole;	//鍵穴
