@@ -16,6 +16,8 @@ int LoadPictue(void) {		//画像の読み込み
 	if (LoadDivGraph("image/All_text.png", 12, 2, 6, 512, 128, g_pic.All_text) == -1) return -1;//全ステージのギミック説明
 
 	if ((g_pic.Stage = LoadGraph("image/Stage.png")) == -1)return -1;//現在のステージ
+
+	if ((g_pic.Door = LoadGraph("image/door.png")) == -1)return -1;//ドア
 	           
 	if ((g_pic.Menu = LoadGraph("image/Menu.png")) == -1)return -1;//メニュー画面
 	if (LoadDivGraph("image/MenuChar.PNG", 3, 1, 3, 600, 200, g_pic.MenuChar) == -1) return -1;//メニュー文字の分割画像

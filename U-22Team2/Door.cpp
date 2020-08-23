@@ -20,7 +20,8 @@ int Door(void) {
 	DoorRotation();
 
 	Change(g_Door.Rotation[g_MapC.StageNumber - 1][g_Door.RotationNumber % g_Door.ColorNumber[g_MapC.StageNumber - 1]]);
-	DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(255, 255, 255), TRUE);//青
+	//DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(255, 255, 255), TRUE);//青
+	DrawExtendGraph(g_Door.x, g_Door.y, g_Door.w, g_Door.h,g_pic.Door,TRUE);
 	//Change(NONCOLOR);//NONCOLORだと当たり判定が出るから出ないように色をリセットして別の色として表示している
 	ColorReset();
 	DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(1,1,1), FALSE);//枠線

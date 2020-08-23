@@ -106,6 +106,7 @@ int PlayerDraw(void) {
 		Change2(g_Object.PixelColor);
 		DrawRotaGraph2(g_Player.PickUpPixel, g_Player.PickUpPixely + aniy, anix, 46, 1.0, 0, g_pic.Hand, TRUE, g_Player.PLAYER_DIRECTION);
 	}
+
 	//*********************************************************************************************************
 
 	/************************************************************************
@@ -174,41 +175,6 @@ int PlayerDraw(void) {
 		/************************************************************************
 		*当たり判定処理 & ボックスを動かす
 		*************************************************************************/
-		//	//ブロック動かす処理_____________________________________________________________
-		//	if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
-		//		&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
-		//		g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-		//		if (g_Pad.KEY_RIGHT == TRUE)
-		//			MoveObjectValue(g_Player.NowColor);
-		//	}
-		////ブロック動かす処理___________________________________________________________________
-		//	else if (g_Pad.KEY_B == TRUE && g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder
-		//		&& g_Player.PLAYER_GROUND == TRUE) {//右側に動くブロックがあった時
-		//		g_Player.Move_BlackR = GetPointColor(Hit_R_x + 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-		//		if (g_Pad.KEY_LEFT == TRUE && g_Player.NowColor != g_Player.Hit_LeftUnder ||
-		//			g_Pad.KEY_RIGHT == TRUE) {
-		//			MoveObjectValue(g_Player.NowColor);
-		//		}
-		//	}
-
-		//	//ブロック動かす処理___________________________
-		//	if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
-		//		&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
-		//		g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-		//		if (g_Pad.KEY_LEFT == TRUE)
-		//			MoveObjectValue(g_Player.NowColor);
-		//	}
-		////ブロック動かす処理_________________________________________________
-		//	else if (g_Pad.KEY_B == TRUE && g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder
-		//		&& g_Player.PLAYER_GROUND == TRUE) {//左側に動くブロックがあった時
-		//		g_Player.Move_BlackL = GetPointColor(Hit_L_x - 110, Hit_UnderLR_y);		//動かせる箱が黒い壁にめり込まないようにむいてる方向にオブジェクトの箱の横幅100を加算した値
-		//		if (g_Pad.KEY_RIGHT == TRUE && g_Player.NowColor != g_Player.Hit_RightUnder ||
-		//			g_Pad.KEY_LEFT == TRUE) {
-		//			MoveObjectValue(g_Player.NowColor);
-		//		}
-		//	}
-
-
 		//Bボタンの切り替え条件の隣に動かせる箱があるか
 		bool MOVEOK = (g_Player.Move_HitL == MOVE && g_Player.NowColor == g_Player.Hit_LeftUnder)
 			|| (g_Player.Move_HitR == MOVE && g_Player.NowColor == g_Player.Hit_RightUnder);
