@@ -14,6 +14,7 @@ int LoadPictue(void) {		//画像の読み込み
 	if ((g_pic.Select_Back = LoadGraph("image/Select_Back.png")) == -1)return -1;//セレクト選択中のやつ
 
 	if (LoadDivGraph("image/All_text.png", 12, 2, 6, 512, 128, g_pic.All_text) == -1) return -1;//全ステージのギミック説明
+	if ((g_pic.Box_text = LoadGraph("image/Box_text.png")) == -1)return-1;						//ステージ２のギミック説明
 
 	if ((g_pic.Stage = LoadGraph("image/Stage.png")) == -1)return -1;//現在のステージ
 

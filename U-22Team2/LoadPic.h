@@ -17,6 +17,7 @@ public:
 	int MenuBotan;		//メニューのボタン説明
 	int Stage;			//現在のステージ表示
 	int All_text[12];	//全ステージのギミック説明
+	int Box_text;		//ステージ２のギミック説明
 	int Door;			//ドアの画像
 
 	int Hand;			//スポイト表示
