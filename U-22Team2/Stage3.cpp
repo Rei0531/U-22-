@@ -65,7 +65,7 @@ int Stage3(void) {			//マップ画像の描画
 
 	//ギミック説明描画
 	Change(GREEN);
-	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.All_text[1], TRUE, FALSE);
+	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.Box_text, TRUE, FALSE);
 
 	Door();			//ステージゴール処理
 	Lock();
