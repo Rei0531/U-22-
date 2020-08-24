@@ -47,7 +47,7 @@ void Stage22Init() {
 
 	gim.GetObjx1 = 1180,
 	gim.GetObjx2 = gim.GetObjx1 + 100,
-	gim.GetObjy1 = 265,
+	gim.GetObjy1 = 270,
 	gim.GetObjy2 = gim.GetObjy1 + 100,
 
 	gim.move_max = 160;

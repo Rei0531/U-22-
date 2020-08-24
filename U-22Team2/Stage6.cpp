@@ -77,8 +77,8 @@ int Stage6(void) {			//マップ画像の描画
 	//DrawFormatString(g_Player.x - 30, g_Player.y - 150, g_Player.NowColor, "%d %d %d %d",gim.SliObjx1,gim.SliObjx2,gim.SliObjy1,gim.SliObjy2);
 
 	Change(BLUE);//色ブロック描画
-	DrawExtendGraph(980, 460, 1080, 560, g_pic.Box[0], TRUE);//障害ブロック
-	DrawExtendGraph(980, 565, 1080, 665, g_pic.Box[0], TRUE);//障害ブロック
+	DrawExtendGraph(980, 468, 1080, 568, g_pic.Box[0], TRUE);//障害ブロック
+	DrawExtendGraph(980, 568, 1080, 668, g_pic.Box[0], TRUE);//障害ブロック
 	//DrawExtendGraph(g_Player.x - 30, g_Player.y - 30, g_Player.x + 30, g_Player.y + 30, GetColor(255, 255, 255), TRUE);
 	Change(RED);//色ブロック描画
 	
