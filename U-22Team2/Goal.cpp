@@ -13,6 +13,9 @@ extern Player g_Player;
 extern Controller g_Pad;
 extern LockALL g_Lock;
 
+static bool
+B = TRUE;//Bボタン
+
 int Goal(void) {
 
 	ControllerVlue();
@@ -20,20 +23,23 @@ int Goal(void) {
 	DrawRotaGraph(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, 1.4, 0, g_pic.StageClear, TRUE, FALSE); //タイトル画像描画
 
 	if (g_MapC.StageNumber >= 25) {
-		if (g_Pad.KEY_B == TRUE) {
+		if (g_Pad.KEY_B == TRUE && B == FALSE) {
 			g_MapC.StageNumber = 1;
 			GameState = GAME_TITLE;
 			g_Lock.clearflg = FALSE;
 		}
 	}
 	else {
-		if (g_Pad.KEY_B == TRUE) {
+		if (g_Pad.KEY_B == TRUE && B == FALSE) {
 			g_MapC.StageNumber += 1;
 			GameState = GAME_MAIN;
 			g_Lock.clearflg = FALSE;
 		}
 	}
 
+	B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
+
 
 	return 0;
+
 }

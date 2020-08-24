@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "LoadSound.h"
+#include "Color.h"
 
 
 extern Sound g_Snd;
@@ -68,6 +69,7 @@ void Menu_Draw() {
 
     static int MenuX = 440, MenuY = 200;	
 
+    ColorReset();
     //ƒƒjƒ…[‰æ–Ê‚Ì•`‰æ
     DrawExtendGraph(MenuX, MenuY, MenuX + 400, MenuY + 400,g_pic.Menu,TRUE);
     DrawRotaGraph(MenuX + 200, GAME_Y, 0.3, 0, g_pic.MenuChar[0], TRUE, FALSE);

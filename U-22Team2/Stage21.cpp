@@ -100,7 +100,6 @@ int Stage21(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 
 	DoorRotationBox(3);
 
-	ColorReset();
 
 	Bomb();
 

@@ -104,8 +104,6 @@ int Stage5(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 
 	DoorRotationBox(1);
 
-	ColorReset();
-
 	Lever();
 
 

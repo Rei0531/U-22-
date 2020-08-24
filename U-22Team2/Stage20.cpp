@@ -118,7 +118,6 @@ int Stage20(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 
 	DoorRotationBox(3);
 
-	ColorReset();
 
 	OneTimeSwitch();
 

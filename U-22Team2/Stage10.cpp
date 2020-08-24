@@ -83,8 +83,6 @@ int Stage10(void) {			//マップ画像の描画
 
 	DoorRotationBox(1);
 
-	ColorReset();
-
 	OneTimeSwitch();
 
 	//ステージクリアした時、タイトル画面に戻ったとき

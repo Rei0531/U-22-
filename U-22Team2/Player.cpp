@@ -84,7 +84,7 @@ int PlayerDraw(void) {
 
 
 	//スポイトの手を表示させるかの判断式
-	if (g_Object.PixelColor != WHITE && g_Object.PixelColor != NONCOLOR && g_Object.PixelColor != BLACK &&
+	if (g_Object.PixelColor != WHITE && g_Object.PixelColor != NONCOLOR && g_Object.PixelColor != BLACK && g_Player.Interact > 0 &&
 		g_Object.PixelColor != g_Player.NowColor && g_Object.PixelColor != MOVE && g_Player.PLAYER_MOVEBOX_PUSH == FALSE && g_Player.PLAYER_MOVEBOX_PULL == FALSE &&
 		(!((g_Door.x - 5 < g_Player.PickUpPixel && g_Door.w + 5 > g_Player.PickUpPixel) &&
 			(g_Door.y < g_Player.PickUpPixely && g_Door.h > g_Player.PickUpPixely)))) {//取得する場所の色が白じゃないとき描画
@@ -355,7 +355,7 @@ int PlayerDraw(void) {
 		NoMove = 0;
 	}
 	Change(g_Player.NowColor);//引数に色の名前/数字を入れて値を変更
-	//														9フレームごとに、プレイヤーの動きに合わせて動かす
+	//														8フレームごとに、プレイヤーの動きに合わせて動かす
 	DrawRotaGraph(g_Player.x, g_Player.y, 0.7, 0.0, g_pic.Player[animecnt / 8 % anime_motionMax + g_Player.Anime_Num + NoMove], TRUE, g_Player.PLAYER_DIRECTION);//プレイヤー画像の描画
 	//_____________________________________________________________________________________________________________________
 	ColorReset();

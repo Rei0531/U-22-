@@ -110,8 +110,6 @@ int Stage17(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 
 	DoorRotationBox(2);
 
-	ColorReset();
-
 	Bomb();
 
 	OneTimeSwitch();

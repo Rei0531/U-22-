@@ -69,6 +69,9 @@ void Stage22Init() {
 	
 	gim.OTSBox_Color = YELLOW;
 	gim.OTSBox_Color2 = YELLOW;
+	gim.OTSBox_Color3 = WHITE;
+	gim.OTSBox_Color4 = WHITE;
+	gim.OTSBox_Color5 = WHITE;
 
 	gim.SwitchFlag = 0;		//レバーのON、OFF
 	gim.SwitchColor = 0;		//レバーの色
@@ -133,7 +136,6 @@ int Stage22(void) {			//マップ画像の描画
 
 	DoorRotationBox(4);//ドアの上のローテ―ションするボックスの描画
 
-	ColorReset();
 
 	//ステージクリアした時、タイトル画面に戻ったとき
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {

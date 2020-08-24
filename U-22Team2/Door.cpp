@@ -24,7 +24,7 @@ int Door(void) {
 	DrawExtendGraph(g_Door.x, g_Door.y, g_Door.w, g_Door.h,g_pic.Door,TRUE);
 	//Change(NONCOLOR);//NONCOLORだと当たり判定が出るから出ないように色をリセットして別の色として表示している
 	ColorReset();
-	DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(1,1,1), FALSE);//枠線
+	DrawBox(g_Door.x, g_Door.y, g_Door.w, g_Door.h, GetColor(3,3,3), FALSE);//枠線
 
 	if (g_Player.PLAYER_ACTION == TRUE && g_Player.PLAYER_MENU == FALSE) {
 		g_Player.PLAYER_ACTION = FALSE;
