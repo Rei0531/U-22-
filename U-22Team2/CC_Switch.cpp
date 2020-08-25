@@ -12,7 +12,7 @@ extern Player g_Player;
 extern Sound g_Snd;
 extern LockALL g_Lock;
 
-int PushColor = WHITE;//押された色を引数から格納する変数
+int PushColor = 9;//押された色を引数から格納する変数
 
 static bool //二度押し防止
 B = FALSE;//Bボタン
@@ -31,7 +31,7 @@ int CC_Switch(int Color,int x,int y) {
 		//g_Player.PLAYER_RESET = FALSE;//リセットしたフラグをFALSEにし続ける
 	}
 
-	if (g_Lock.clearflg == TRUE)PushColor = 9;
+	if (g_Lock.clearflg == TRUE || g_Player.PLAYER_RESET == TRUE)PushColor = 9;
 
 	Change(PushColor);
 	DrawExtendGraph(x, y, x+100, y+100, g_pic.C_Switch, TRUE);

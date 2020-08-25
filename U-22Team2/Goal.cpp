@@ -20,7 +20,7 @@ int Goal(void) {
 
 	ControllerVlue();
 
-	DrawRotaGraph(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, 1.4, 0, g_pic.StageClear, TRUE, FALSE); //タイトル画像描画
+	DrawRotaGraph(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, 1.0, 0, g_pic.StageClear, TRUE, FALSE); //タイトル画像描画
 
 	if (g_MapC.StageNumber >= 25) {
 		if (g_Pad.KEY_B == TRUE && B == FALSE) {

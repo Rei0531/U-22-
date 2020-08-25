@@ -8,7 +8,7 @@ int LoadPictue(void) {		//画像の読み込み
 
 	//if ((g_pic.Title = LoadGraph("image/Title.png")) == -1) return -1;//タイトル画面
 	if (LoadDivGraph("image/Title_name.png", 13, 13, 1, 128, 128 , g_pic.TitleName) == -1) return -1;//タイトル名の文字分割画像
-	if ((g_pic.StageClear = LoadGraph("image/stageimage(仮）.png")) == -1)return -1;//ステージクリア画面
+	if ((g_pic.StageClear = LoadGraph("image/Stageclear.png")) == -1)return -1;//ステージクリア画面
 	if (LoadDivGraph("image/TitleChar.png", 3, 1, 3, 759, 94, g_pic.TitleChar) == -1) return -1;//タイトルの文字分割画像
 	
 	if ((g_pic.How_to_play_background = LoadGraph("image/How_to_play_background.png")) == -1) return -1;//遊び方説明の背景画像

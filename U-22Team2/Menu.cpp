@@ -44,6 +44,7 @@ bool Menu_Update() {
             g_Player.PLAYER_MENU = FALSE;//メニューを開くフラグをFALSEにする
             g_Player.InitFlag = TRUE;//ステージInit処理のフラグをTRUEにする
             g_Player.PLAYER_RESET = TRUE;//リセット処理をTRUEにする
+            return TRUE;    //ステージ処理をリセットする処理のフラグをTRUEにする
             break;
         case eMenu_Reset://リセット選択中なら
             g_Player.PLAYER_MENU = FALSE;//メニューを開くフラグをFALSEにする
