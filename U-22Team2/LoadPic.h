@@ -30,6 +30,8 @@ public:
 	int Door_Rot_Yajirusi;	//ドアのローテーション矢印
 
 	int Pin;//色取った場所のピン
+	int Pin2;//残り回数表示用のぴん
+
 
 	int Select_Back;	//セレクト画面の選択中のやつ
 

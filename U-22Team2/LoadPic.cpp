@@ -44,6 +44,8 @@ int LoadPictue(void) {		//画像の読み込み
 
 	if ((g_pic.Pin = LoadGraph("image/Pin.png")) == -1)return -1;//ピン挿したところ
 
+	if ((g_pic.Pin2 = LoadGraph("image/Pin2.png")) == -1)return -1;//残り回数の表示のピン
+
 	if ((g_pic.Object_Wall = LoadGraph("image/Object_Wall.png")) == -1) return -1;			//ボムとスイッチ用の壁
 
 	if ((g_pic.shower = LoadGraph("image/shower.png")) == -1)return-1;	//シャワーの画像
