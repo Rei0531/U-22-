@@ -13,6 +13,8 @@ int LoadPictue(void) {		//画像の読み込み
 	
 	if ((g_pic.How_to_play_background = LoadGraph("image/How_to_play_background.png")) == -1) return -1;//遊び方説明の背景画像
 	if (LoadDivGraph("image/How to play.png", 4, 4, 1, 512, 256, g_pic.How_to_play) == -1)return -1;//遊び方説明分割画像
+	if ((g_pic.NextPage = LoadGraph("image/NextPage.png")) == -1) return -1;//次のページ画像
+	if ((g_pic.EndPage = LoadGraph("image/EndPage.png")) == -1)return -1;//閉じる　画像
 
 	if ((g_pic.Select_Back = LoadGraph("image/Select_Back.png")) == -1)return -1;//セレクト選択中のやつ
 

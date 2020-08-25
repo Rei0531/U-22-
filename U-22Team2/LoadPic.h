@@ -20,6 +20,8 @@ public:
 	int Box_text;		//ステージ２のギミック説明
 	int How_to_play_background;//遊び方説明の背景
 	int How_to_play[4];	//遊び方説明
+	int NextPage;		//次のページ
+	int EndPage;		//閉じる
 	int Door;			//ドアの画像
 	int SpecialThanks;	//スペシャルサンクスの画像
 

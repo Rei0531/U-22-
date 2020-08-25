@@ -23,7 +23,7 @@ B = TRUE,//Bボタン
 A = FALSE,//Aボタン
 Y = FALSE;//Yボタン
 
-int HtPflg = 0;
+int HtPflg = 1;
 
 void Stage_Update() {
 
@@ -32,11 +32,11 @@ void Stage_Update() {
     //    Sndflg = TRUE;//音再生フラグをTRUEにして二度再生防止
     //}
 
-    if (g_Pad.KEY_RIGHT == TRUE && RIGHT == FALSE && HtPflg > 0) HtPflg++;
+    if (g_Pad.KEY_RIGHT == TRUE && RIGHT == FALSE && HtPflg > 0) HtPflg++;  //ウィンドウを開いてる時に→で次のページへ
 
-    if (HtPflg > 4) HtPflg = 0;
+    if (HtPflg > 4) HtPflg = 0;     //４ページ目で閉じる
 
-    if (HtPflg == 0) {
+    if (HtPflg == 0) {//ウィンドウが開いてない時に移動可能
 
         if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
             DOWN = TRUE;
@@ -69,35 +69,36 @@ void Stage_Update() {
 
     RIGHT = (g_Pad.KEY_RIGHT == TRUE) ? TRUE : FALSE;//右キーが押されていたら
 
-    if (g_Pad.KEY_Y == TRUE && Y == FALSE && HtPflg == 0) {
+    if (g_Pad.KEY_Y == TRUE && Y == FALSE && HtPflg == 0) {//スタートボタンを押すとウィンドウを開く
         Y = TRUE;
         HtPflg = 1;
     }
 
-    if (g_Pad.KEY_Y == TRUE && Y == FALSE && HtPflg > 0) {
+    if (g_Pad.KEY_Y == TRUE && Y == FALSE && HtPflg > 0) {//開いている時に押すと閉じる
         Y = TRUE;
         HtPflg = 0;
     }
 
-    Y = (g_Pad.KEY_Y == TRUE) ? TRUE : FALSE;
+    Y = (g_Pad.KEY_Y == TRUE) ? TRUE : FALSE;//リーダーのパクり
 
-    if (g_Pad.KEY_B == true && B == false) {//Bボタンが押されたら
-        B = TRUE;//再度ボタンが押せる
-        Sndflg = FALSE;//メニューオープンのフラグをFALSEにして再度関数に入った時音が鳴るようにする
-        g_MapC.StageNumber = NowStage+1;
-        GameState = GAME_MAIN;
+    if (HtPflg == 0) {//ウィンドウ開いていないなら
+        if (g_Pad.KEY_B == true && B == false) {//Bボタンが押されたら
+            B = TRUE;//再度ボタンが押せる
+            Sndflg = FALSE;//メニューオープンのフラグをFALSEにして再度関数に入った時音が鳴るようにする
+            g_MapC.StageNumber = NowStage + 1;
+            GameState = GAME_MAIN;
+        }
+
+        B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
+
+        if (g_Pad.KEY_A == TRUE && A == FALSE) {//Aボタンが押されたら
+            GameState = GAME_TITLE;
+            A = TRUE;//再度ボタンが押せる
+            B = TRUE;//Bボタン
+        }
+        A = (g_Pad.KEY_A == TRUE) ? TRUE : FALSE;//Aボタンが押されていたら/再度Aボタンが押せるように
+
     }
-
-    B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
-
-    if (g_Pad.KEY_A == TRUE && A == FALSE) {//Aボタンが押されたら
-        GameState = GAME_TITLE;
-        A = TRUE;//再度ボタンが押せる
-        B = TRUE;//Bボタン
-    }
-    A = (g_Pad.KEY_A == TRUE) ? TRUE : FALSE;//Aボタンが押されていたら/再度Aボタンが押せるように
-
-
 }
 void Stage_Draw() {
     static int MenuX = 634, MenuY = 200;
@@ -140,21 +141,25 @@ int StageSelect(void) {
     Stage_Draw();
     if (HtPflg > 0) DrawExtendGraph(235, 90, 1045, 678, g_pic.How_to_play_background, TRUE);   //背景サイズ X=610 Y=776
 
-    switch(HtPflg) {
-        case 1:
+    switch(HtPflg) {//ウィンドウページ
+        case 1://１ページ目
             DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[0], TRUE, FALSE);
+            DrawRotaGraph(800, 600, 1.0, 0, g_pic.NextPage, TRUE);
             break;
-        case 2:
+        case 2://２ページ目
             DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[1], TRUE, FALSE);
+            DrawRotaGraph(800, 600, 1.0, 0, g_pic.NextPage, TRUE);
             break;
-        case 3:
+        case 3://３ページ目
             DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[2], TRUE, FALSE);
+            DrawRotaGraph(800, 600, 1.0, 0, g_pic.NextPage, TRUE);
             break;
-        case 4:
+        case 4://４ページ目
             DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[3], TRUE, FALSE);
+            DrawRotaGraph(750, 600, 1.0, 0, g_pic.EndPage, TRUE);
             break;
     }
 
-    DrawFormatString(100, 100, GetColor(0,0,0), "HtPflg = %d", HtPflg);
+    //DrawFormatString(100, 100, GetColor(0,0,0), "HtPflg = %d", HtPflg);
     return 0;
 }
