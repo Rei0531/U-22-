@@ -20,7 +20,10 @@ UP = FALSE,//上キー
 LEFT = FALSE,//左キー
 RIGHT = FALSE,//右キー
 B = TRUE,//Bボタン
-A = FALSE;//Aボタン
+A = FALSE,//Aボタン
+Y = FALSE;//Yボタン
+
+int HtPflg = 0;
 
 void Stage_Update() {
 
@@ -29,25 +32,32 @@ void Stage_Update() {
     //    Sndflg = TRUE;//音再生フラグをTRUEにして二度再生防止
     //}
 
-    if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
-        DOWN = TRUE;
-        NowStage = (NowStage + 5) % Stage_Num;//選択状態を5つ下げる
-        PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
-    }
-    if (g_Pad.KEY_UP == TRUE && UP == FALSE) {//上キーが押されていたら
-        UP = TRUE;
-        NowStage = (NowStage + (Stage_Num - 5)) % Stage_Num;//選択状態を5つ上げる
-        PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
-    }
-    if (g_Pad.KEY_LEFT == TRUE && LEFT == FALSE) {//下キーが押されていたら
-        LEFT = TRUE;
-        NowStage = (NowStage + (Stage_Num - 1)) % Stage_Num;//選択状態を一つ上げる
-        PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
-    }
-    if (g_Pad.KEY_RIGHT == TRUE && RIGHT == FALSE) {//上キーが押されていたら
-        RIGHT = TRUE;
-        NowStage = (NowStage + 1) % Stage_Num;//選択状態を一つ下げる
-        PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
+    if (g_Pad.KEY_RIGHT == TRUE && RIGHT == FALSE && HtPflg > 0) HtPflg++;
+
+    if (HtPflg > 4) HtPflg = 0;
+
+    if (HtPflg == 0) {
+
+        if (g_Pad.KEY_DOWN == TRUE && DOWN == FALSE) {//下キーが押されていたら
+            DOWN = TRUE;
+            NowStage = (NowStage + 5) % Stage_Num;//選択状態を5つ下げる
+            PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
+        }
+        if (g_Pad.KEY_UP == TRUE && UP == FALSE) {//上キーが押されていたら
+            UP = TRUE;
+            NowStage = (NowStage + (Stage_Num - 5)) % Stage_Num;//選択状態を5つ上げる
+            PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
+        }
+        if (g_Pad.KEY_LEFT == TRUE && LEFT == FALSE) {//下キーが押されていたら
+            LEFT = TRUE;
+            NowStage = (NowStage + (Stage_Num - 1)) % Stage_Num;//選択状態を一つ上げる
+            PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
+        }
+        if (g_Pad.KEY_RIGHT == TRUE && RIGHT == FALSE) {//上キーが押されていたら
+            RIGHT = TRUE;
+            NowStage = (NowStage + 1) % Stage_Num;//選択状態を一つ下げる
+            PlaySoundMem(g_Snd.MenuMove, DX_PLAYTYPE_BACK);
+        }
     }
 
 
@@ -59,6 +69,17 @@ void Stage_Update() {
 
     RIGHT = (g_Pad.KEY_RIGHT == TRUE) ? TRUE : FALSE;//右キーが押されていたら
 
+    if (g_Pad.KEY_Y == TRUE && Y == FALSE && HtPflg == 0) {
+        Y = TRUE;
+        HtPflg = 1;
+    }
+
+    if (g_Pad.KEY_Y == TRUE && Y == FALSE && HtPflg > 0) {
+        Y = TRUE;
+        HtPflg = 0;
+    }
+
+    Y = (g_Pad.KEY_Y == TRUE) ? TRUE : FALSE;
 
     if (g_Pad.KEY_B == true && B == false) {//Bボタンが押されたら
         B = TRUE;//再度ボタンが押せる
@@ -117,5 +138,23 @@ int StageSelect(void) {
     DrawBox(0,0,1280,768,0xffffff,TRUE);//白い背景
     Stage_Update();
     Stage_Draw();
+    if (HtPflg > 0) DrawExtendGraph(235, 90, 1045, 678, g_pic.How_to_play_background, TRUE);   //背景サイズ X=610 Y=776
+
+    switch(HtPflg) {
+        case 1:
+            DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[0], TRUE, FALSE);
+            break;
+        case 2:
+            DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[1], TRUE, FALSE);
+            break;
+        case 3:
+            DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[2], TRUE, FALSE);
+            break;
+        case 4:
+            DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[3], TRUE, FALSE);
+            break;
+    }
+
+    DrawFormatString(100, 100, GetColor(0,0,0), "HtPflg = %d", HtPflg);
     return 0;
 }
