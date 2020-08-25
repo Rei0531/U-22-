@@ -99,8 +99,8 @@ int Stage20(void) {			//É}ÉbÉvâÊëúÇÃï`âÊ
 
 	//î†ÇÃògê¸__________________________________________
 	ColorReset();
-	DrawBox(500, 568, 600, 668, GetColor(1, 1, 1), FALSE);
-	DrawBox(500, 468, 600, 568, GetColor(1, 1, 1), FALSE);
+	DrawBox(500, 568, 600, 668, GetColor(3, 3, 3), FALSE);
+	DrawBox(500, 468, 600, 568, GetColor(3, 3, 3), FALSE);
 
 	Change(YELLOW);
 	DrawExtendGraph(400, 568, 500, 668, g_pic.Box[0], TRUE);

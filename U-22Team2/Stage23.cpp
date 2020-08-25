@@ -91,10 +91,10 @@ int Stage23(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 	DrawExtendGraph(800, 318, 900, 418, g_pic.Box[0], TRUE);
 	DrawExtendGraph(900, 318, 1000, 418, g_pic.Box[0], TRUE);
 	ColorReset();
-	DrawBox(0, 318, 100, 418, GetColor(1, 1, 1), FALSE);
-	DrawBox(100, 318, 200, 418, GetColor(1, 1, 1), FALSE);
-	DrawBox(800, 318, 900, 418, GetColor(1, 1, 1), FALSE);
-	DrawBox(900, 318, 1000, 418, GetColor(1, 1, 1), FALSE);
+	DrawBox(0, 318, 100, 418, GetColor(3, 3, 3), FALSE);
+	DrawBox(100, 318, 200, 418, GetColor(3, 3, 3), FALSE);
+	DrawBox(800, 318, 900, 418, GetColor(3, 3, 3), FALSE);
+	DrawBox(900, 318, 1000, 418, GetColor(3, 3, 3), FALSE);
 	
 	ColorReset();
 	OneTimeSwitch();
