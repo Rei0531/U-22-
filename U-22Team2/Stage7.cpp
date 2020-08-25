@@ -55,10 +55,10 @@ int Stage7(void) {			//マップ画像の描画
 	DrawExtendGraph(740, 468, 840, 568, g_pic.Box[0], TRUE);
 	//箱の枠線__________________________________________
 	ColorReset();
-	DrawBox(340, 568, 440, 668, GetColor(1, 1, 1), FALSE);
-	DrawBox(340, 468, 440, 568, GetColor(1, 1, 1), FALSE);
-	DrawBox(740, 568, 840, 668, GetColor(1, 1, 1), FALSE);
-	DrawBox(740, 468, 840, 568, GetColor(1, 1, 1), FALSE);
+	DrawBox(340, 568, 440, 668, GetColor(3, 3, 3), FALSE);
+	DrawBox(340, 468, 440, 568, GetColor(3, 3, 3), FALSE);
+	DrawBox(740, 568, 840, 668, GetColor(3, 3, 3), FALSE);
+	DrawBox(740, 468, 840, 568, GetColor(3, 3, 3), FALSE);
 
 	//色ブロック描画
 	Change(RED);

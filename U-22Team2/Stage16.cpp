@@ -75,8 +75,8 @@ int Stage16(void) {			//É}ÉbÉvâÊëúÇÃï`âÊ
 	DrawExtendGraph(1000, 468, 1100, 568, g_pic.Box[0], TRUE);
 	//î†ÇÃògê¸__________________________________________
 	ColorReset();
-	DrawBox(1000, 568, 1100, 668, GetColor(1, 1, 1), FALSE);
-	DrawBox(1000, 468, 1100, 568, GetColor(1, 1, 1), FALSE);
+	DrawBox(1000, 568, 1100, 668, GetColor(3, 3, 3), FALSE);
+	DrawBox(1000, 468, 1100, 568, GetColor(3, 3, 3), FALSE);
 
 	//ê¢äEÇÃï«_______________________
 	DrawBox(1130, 368, 1280, 418, GetColor(0, 0, 0), TRUE);
