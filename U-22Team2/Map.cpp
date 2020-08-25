@@ -120,15 +120,16 @@ int Map(void) {			//マップ画像の描画____________________________________________
 		static int ColorMove = 0;//スポイトするたび色が変わる変数
 
 		if (g_Player.PLAYER_PICKUP == TRUE)ColorMove++;
-
+		Change(WHITE);
+		DrawRotaGraph(25,720,1.3,0,g_pic.Pin2,TRUE,FALSE);
 		//残り回数の表示
 		for (int i = 0; i < 6; i++) {
 			Change((i + ColorMove) % 7);//スポイトするたびに色が変わる
-			DrawRotaGraph(25 + i * 45, 720, 0.3, 0, g_pic.Nokori[i], TRUE, FALSE);
+			DrawRotaGraph(75 + i * 45, 720, 0.3, 0, g_pic.Nokori[i], TRUE, FALSE);
 		}
 		Change(g_Player.Interact % 7);
-		DrawRotaGraph(290, 720, 0.3, 0, g_pic.Nokori_Num[g_Player.Interact / 10 % 10], TRUE, FALSE);
-		DrawRotaGraph(330, 720, 0.3, 0, g_pic.Nokori_Num[g_Player.Interact % 10], TRUE, FALSE);
+		DrawRotaGraph(340, 720, 0.3, 0, g_pic.Nokori_Num[g_Player.Interact / 10 % 10], TRUE, FALSE);
+		DrawRotaGraph(380, 720, 0.3, 0, g_pic.Nokori_Num[g_Player.Interact % 10], TRUE, FALSE);
 		ColorReset();
 		//**********************************************
 		//現在のステージ表示***********************************************************
