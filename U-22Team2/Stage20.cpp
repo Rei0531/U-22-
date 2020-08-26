@@ -17,7 +17,6 @@ extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 
-static int SwitchColor = 9;
 
 void Stage20Init() {
 	//プレイヤーの初期位置
@@ -32,7 +31,7 @@ void Stage20Init() {
 	g_Door.RotationNumber = 0;	//ローテーション初期化
 	g_Lock.Release = 0;			//鍵穴解除数初期化
 
-	SwitchColor = 9;//スイッチから―の初期化
+	gim.CC_SwitchColor = 9;//スイッチから―の初期化
 
 	gim.cheobj_flg = 0;			//変形するオブジェクトのフラグ
 	gim.cheobj_x = 800;
@@ -89,8 +88,8 @@ int Stage20(void) {			//マップ画像の描画
 
 
 		//色反映スイッチ_____________________
-	SwitchColor = CC_Switch(g_Player.NowColor, 200, 578);//一時変数に関数からの戻り値を格納する
-	Change(SwitchColor);
+	gim.CC_SwitchColor = CC_Switch(g_Player.NowColor, 200, 578);//一時変数に関数からの戻り値を格納する
+	Change(gim.CC_SwitchColor);
 	//色反映する箱________________________________________________
 
 	DrawExtendGraph(500, 568, 600, 668, g_pic.Box[0], TRUE);	//1

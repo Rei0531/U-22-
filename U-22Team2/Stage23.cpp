@@ -16,7 +16,6 @@ extern DoorAll g_Door;
 extern LockALL g_Lock;
 extern GimmickAll gim;
 
-static int SwitchColor = 9;
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 
 void Stage23Init() {
@@ -42,7 +41,7 @@ void Stage23Init() {
 	g_Door.w = g_Door.x + 100;	//横幅
 	g_Door.h = g_Door.y + 200;	//縦幅
 
-	SwitchColor = 9;//白色で初期化
+	gim.CC_SwitchColor = 9;//白色で初期化
 
 	gim.g_OTSwitchFlag = 0;		//一度限りのスイッチフラグ初期化
 
@@ -83,8 +82,8 @@ int Stage23(void) {			//マップ画像の描画
 	Change(GREEN);
 	DrawExtendGraph(640, 468, 740, 568, g_pic.Box[0], TRUE);
 	//色反映スイッチ_
-	SwitchColor = CC_Switch(g_Player.NowColor, 140, 588);//一時変数に関数からの戻り値を格納する
-	Change(SwitchColor);
+	gim.CC_SwitchColor = CC_Switch(g_Player.NowColor, 140, 588);//一時変数に関数からの戻り値を格納する
+	Change(gim.CC_SwitchColor);
 	//色反映する箱__
 	DrawExtendGraph(0, 318, 100, 418, g_pic.Box[0], TRUE);
 	DrawExtendGraph(100, 318, 200, 418, g_pic.Box[0], TRUE);

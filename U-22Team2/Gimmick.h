@@ -5,6 +5,8 @@
 
 struct GimmickAll {			//ギミックに必要な変数
 public:
+	//スポイトボタンの変数
+	int CC_SwitchColor = 9;//デフォルトで白色の9を格納
 
 	//シャワー用の変数_______＿＿＿＿
 	int shower_X;					//横座標

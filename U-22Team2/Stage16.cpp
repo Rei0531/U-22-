@@ -13,10 +13,10 @@ extern MapCoordinate g_MapC;
 extern Player g_Player;
 extern DoorAll g_Door;
 extern LockALL g_Lock;
+extern GimmickAll gim;
 
 static bool InitFlag = TRUE;//Init関数を通っていいか判定変数/TRUEがいい/FALSEがダメ
 
-static int SwitchColor = 9;//色反映スイッチの色格納変数
 
 void Stage16Init() {
 	//プレイヤーの初期位置
@@ -41,7 +41,7 @@ void Stage16Init() {
 	g_Door.w = g_Door.x + 100;	//横幅
 	g_Door.h = g_Door.y + 200;	//縦幅
 
-	SwitchColor = 9;//スイッチの初期からリセット
+	gim.CC_SwitchColor = 9;//スイッチから―の初期化
 
 }
 
@@ -68,8 +68,8 @@ int Stage16(void) {			//マップ画像の描画
 	DrawExtendGraph(900, 568, 1000, 668, g_pic.Box[2], TRUE);
 
 	//色反映スイッチ____________________________				
-	SwitchColor = CC_Switch(g_Player.NowColor, 140, 578);//一時変数に関数からの戻り値を格納する
-	Change(SwitchColor);
+	gim.CC_SwitchColor = CC_Switch(g_Player.NowColor, 140, 578);//一時変数に関数からの戻り値を格納する
+	Change(gim.CC_SwitchColor);
 	//色反映する箱________________________________________________
 	DrawExtendGraph(1000, 568, 1100, 668, g_pic.Box[0], TRUE);
 	DrawExtendGraph(1000, 468, 1100, 568, g_pic.Box[0], TRUE);
