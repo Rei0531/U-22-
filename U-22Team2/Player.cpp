@@ -105,6 +105,9 @@ int PlayerDraw(void) {
 		//スポイトの手
 		Change2(g_Object.PixelColor);
 		DrawRotaGraph2(g_Player.PickUpPixel, g_Player.PickUpPixely + aniy, anix, 46, 1.0, 0, g_pic.Hand, TRUE, g_Player.PLAYER_DIRECTION);
+		if (g_Pad.KEY_X == TRUE && g_Player.Interact > 0) {
+			g_Player.NowColor = g_Object.PixelColor;
+		}
 	}
 
 	//*********************************************************************************************************
