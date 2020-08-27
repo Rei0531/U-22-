@@ -7,6 +7,7 @@
 #include"Door.h"
 #include "Object.h"
 #include "LoadSound.h"
+#include"Interact.h"
 #include <stdlib.h>
 
 extern image g_pic;
@@ -35,7 +36,8 @@ static int Move_Hitx1 = 0,	//動く箱に触れているかの取得する場所
 		   Move_Hitx2 = 0;	//動く箱に触れているかの取得する場所
 
 static bool Move_B = FALSE,//動かせる箱の動かせるかの変数
-B = FALSE;//Bボタン二度おし防止
+B = FALSE,//Bボタン二度おし防止
+X = FALSE;//Xボタン二度おし防止
 
 int PlayerDraw(void) {
 
@@ -105,10 +107,14 @@ int PlayerDraw(void) {
 		//スポイトの手
 		Change2(g_Object.PixelColor);
 		DrawRotaGraph2(g_Player.PickUpPixel, g_Player.PickUpPixely + aniy, anix, 46, 1.0, 0, g_pic.Hand, TRUE, g_Player.PLAYER_DIRECTION);
-		if (g_Pad.KEY_X == TRUE && g_Player.Interact > 0) {
+		if (g_Pad.KEY_X == TRUE && g_Player.Interact > 0 && X == FALSE) {
 			g_Player.NowColor = g_Object.PixelColor;
+			g_Door.Picupflg = TRUE;				//ドアのローテーションためのスポイトのフラグをTRUEにする
+			Interact(TRUE);//スポイト成功
 		}
 	}
+
+	X = (g_Pad.KEY_X == TRUE) ? TRUE : FALSE;//Xボタンが押されていたら/再度Xボタンが押せるように
 
 	//*********************************************************************************************************
 

@@ -72,10 +72,10 @@ int GetPointColor(int Point_x, int Point_y) {
 	//スポイトされたとき********************************************************************************************************
 	if (g_Player.PLAYER_PICKUP == TRUE) {
 		g_Player.PLAYER_PICKUP = FALSE;			//TRUEになってこの関数に入るから一度だけの処理にするためにスポイトフラグをFALSEにする
-		if (g_Object.PixelColor1 != WHITE)g_Object.PixelColor = g_Object.PixelColor1;
-		if (g_Object.PixelColor4 != WHITE)g_Object.PixelColor = g_Object.PixelColor4;
-		if (g_Object.PixelColor2 != WHITE)g_Object.PixelColor = g_Object.PixelColor2;
-		if (g_Object.PixelColor3 != WHITE)g_Object.PixelColor = g_Object.PixelColor3;
+		//if (g_Object.PixelColor1 != WHITE)g_Object.PixelColor = g_Object.PixelColor1;
+		//if (g_Object.PixelColor4 != WHITE)g_Object.PixelColor = g_Object.PixelColor4;
+		//if (g_Object.PixelColor2 != WHITE)g_Object.PixelColor = g_Object.PixelColor2;
+		//if (g_Object.PixelColor3 != WHITE)g_Object.PixelColor = g_Object.PixelColor3;
 
 		if ((g_Player.Hit_Up == getcolor) || (SaveColor == getcolor) || (getcolor == WHITE) || (getcolor == BLACK)) {
 			g_Door.Picupflg = FALSE;	//スポイトした色がプレイヤーと同色ならFALSEにする
@@ -91,7 +91,7 @@ int GetPointColor(int Point_x, int Point_y) {
 		if (SaveColor != getcolor) {//取得した色が現在持っている自身の色と違う時
 			g_Door.Picupflg = TRUE;				//ドアのローテーションためのスポイトのフラグをTRUEにする
 			Interact(TRUE);//スポイト成功
-			g_Player.NowColor = g_Object.PixelColor;//変数にスポイトした色を格納する
+			//g_Player.NowColor = g_Object.PixelColor;//変数にスポイトした色を格納する
 		}
 		else {
 			Interact(FALSE);
