@@ -71,7 +71,7 @@ public:
 	int SwitchColor = 0;		//レバーの色
 
 	//スライドする床の用の変数_______＿＿＿＿
-	int Speed = 2;
+	int Speed = 4;
 	int move_x = 0;
 	int move_cnt = 0;
 	int move_max = 160;

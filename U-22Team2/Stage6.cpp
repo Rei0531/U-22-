@@ -65,16 +65,10 @@ void Stage6Init() {
 }
 
 int Stage6(void) {			//マップ画像の描画
-
-	//if ((InitFlag == TRUE) || (g_Player.PLAYER_MENU == TRUE)) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
-	//	Stage6Init();
-	//	g_Player.PLAYER_MENU = FALSE;
-	//}
 	if (InitFlag == TRUE) {//InitフラグがTRUEの時に初期化できる,または、Yボタンを押されたとき初期化できる
 		Stage6Init();
 		g_Player.PLAYER_MENU = FALSE;
 	}
-	//DrawFormatString(g_Player.x - 30, g_Player.y - 150, g_Player.NowColor, "%d %d %d %d",gim.SliObjx1,gim.SliObjx2,gim.SliObjy1,gim.SliObjy2);
 
 	Change(BLUE);//色ブロック描画
 	DrawExtendGraph(980, 468, 1080, 568, g_pic.Box[0], TRUE);//障害ブロック
