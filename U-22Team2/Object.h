@@ -23,6 +23,7 @@ public:
 		BLUE_x = 0;
 		PURPLE_x = 0;
 	}
+	int PixelColorBuf;//取得する色の前フレームバッファー
 
 	int PixelColor4,	//中心から	  _l	    4□	  _l
 		PixelColor3,	//中心から	  l 3□			_l
