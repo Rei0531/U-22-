@@ -145,16 +145,18 @@ int StageSelect(void) {
 
     switch(HtPflg) {//ウィンドウページ
         case 1://１ページ目
-            DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[0], TRUE, FALSE);
-            DrawRotaGraph(800, 600, 1.0, 0, g_pic.NextPage, TRUE);
+            DrawRotaGraph(680, 384, 1.2, 0, g_pic.How_to_play[0], TRUE, FALSE);
+            DrawRotaGraph(800, 550, 1.0, 0, g_pic.NextPage, TRUE);
             break;
         case 2://２ページ目
-            DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[1], TRUE, FALSE);
-            DrawRotaGraph(800, 600, 1.0, 0, g_pic.NextPage, TRUE);
+            DrawRotaGraph(680, 384, 1.2, 0, g_pic.How_to_play[1], TRUE, FALSE);
+            DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
+            DrawRotaGraph(800, 550, 1.0, 0, g_pic.NextPage, TRUE);
             break;
         case 3://３ページ目
-            DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[3], TRUE, FALSE);
-            DrawRotaGraph(800, 600, 1.0, 0, g_pic.NextPage, TRUE);
+            DrawRotaGraph(680, 384, 1.2, 0, g_pic.How_to_play[2], TRUE, FALSE);
+            DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
+            DrawRotaGraph(800, 550, 1.0, 0, g_pic.EndPage, TRUE);
             break;
         /*case 4://４ページ目
             DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[3], TRUE, FALSE);
@@ -162,6 +164,6 @@ int StageSelect(void) {
             break;*/
     }
 
-    //DrawFormatString(100, 100, GetColor(0,0,0), "HtPflg = %d", HtPflg);
+    DrawFormatString(1080, 50, GetColor(0,0,0),"STARTボタンでゲーム説明");
     return 0;
 }

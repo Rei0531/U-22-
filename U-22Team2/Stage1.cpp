@@ -45,6 +45,9 @@ int Stage1(void) {			//マップ画像の描画
 	Stage1Init();
 	}
 
+	DrawExtendGraph(1024, 30, 1280, 158, g_pic.MenuBotan, TRUE);
+	DrawExtendGraph(896, 128, 1280, 176, g_pic.StartBotan, TRUE);
+
 	//色ブロック描画
 	Change(BLUE);
 	DrawExtendGraph(400, 568, 500, 668, g_pic.Box[0], TRUE);
