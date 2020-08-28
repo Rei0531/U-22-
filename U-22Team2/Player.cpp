@@ -63,6 +63,9 @@ int PlayerDraw(void) {
 	if (g_Object.PixelColor != WHITE) {
 		g_Object.PixelColorBuf = g_Object.PixelColor;
 	}
+	else {
+		g_Object.PixelColorBuf = 9;
+	}
 	//PixelColorÇ…êFÇäiî[
 	g_Object.PixelColor = GetPointColor(g_Player.PickUpPixel, g_Player.PickUpPixely);
 
