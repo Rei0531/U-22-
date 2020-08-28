@@ -6,6 +6,7 @@
 #include "LoadSound.h"
 #include "StageSelect.h"
 #include "Map.h"
+#include "Color.h"
 
 
 extern Sound g_Snd;
@@ -33,8 +34,9 @@ void Stage_Update() {
     //}
 
     if (g_Pad.KEY_RIGHT == TRUE && RIGHT == FALSE && HtPflg > 0) HtPflg++;  //ウィンドウを開いてる時に→で次のページへ
+    if (g_Pad.KEY_LEFT == TRUE && LEFT == FALSE && HtPflg > 1) HtPflg--;    //ウィンドウを開いてる時に←で前のページへ
 
-    if (HtPflg > 4) HtPflg = 0;     //４ページ目で閉じる
+    if (HtPflg > 3) HtPflg = 0;     //４ページ目で閉じる
 
     if (HtPflg == 0) {//ウィンドウが開いてない時に移動可能
 
@@ -151,13 +153,13 @@ int StageSelect(void) {
             DrawRotaGraph(800, 600, 1.0, 0, g_pic.NextPage, TRUE);
             break;
         case 3://３ページ目
-            DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[2], TRUE, FALSE);
+            DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[3], TRUE, FALSE);
             DrawRotaGraph(800, 600, 1.0, 0, g_pic.NextPage, TRUE);
             break;
-        case 4://４ページ目
+        /*case 4://４ページ目
             DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[3], TRUE, FALSE);
             DrawRotaGraph(750, 600, 1.0, 0, g_pic.EndPage, TRUE);
-            break;
+            break;*/
     }
 
     //DrawFormatString(100, 100, GetColor(0,0,0), "HtPflg = %d", HtPflg);
