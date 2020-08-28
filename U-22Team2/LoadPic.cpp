@@ -12,8 +12,10 @@ int LoadPictue(void) {		//画像の読み込み
 	if (LoadDivGraph("image/TitleChar.png", 3, 1, 3, 759, 94, g_pic.TitleChar) == -1) return -1;//タイトルの文字分割画像
 	
 	if ((g_pic.How_to_play_background = LoadGraph("image/How_to_play_background.png")) == -1) return -1;//遊び方説明の背景画像
-	if (LoadDivGraph("image/How to play.png", 4, 4, 1, 512, 256, g_pic.How_to_play) == -1)return -1;//遊び方説明分割画像
+	if (LoadDivGraph("image/How_to_play.png", 3, 3, 1, 512, 256, g_pic.How_to_play) == -1)return -1;//遊び方説明分割画像
+	if ((g_pic.StartBotan = LoadGraph("image/STARTBotan.png")) == -1)return-1;//スタートボタン画像
 	if ((g_pic.NextPage = LoadGraph("image/NextPage.png")) == -1) return -1;//次のページ画像
+	if ((g_pic.BackPage = LoadGraph("image/BackPage.png")) == -1)return -1;	//前のページ画像
 	if ((g_pic.EndPage = LoadGraph("image/EndPage.png")) == -1)return -1;//閉じる　画像
 
 	if ((g_pic.Select_Back = LoadGraph("image/Select_Back.png")) == -1)return -1;//セレクト選択中のやつ
