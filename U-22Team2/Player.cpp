@@ -184,11 +184,12 @@ int PlayerDraw(void) {
 	//	&& g_Player.Hit_LeftUp != BLACK && g_Player.Hit_LeftUnder != BLACK && g_Player.Hit_Left_High != BLACK;
 
 	//当たり判定一時上の当たりを削除、心配だから処理はまだコメントで残す
-	bool RightOK = g_Player.NowColor != g_Player.Hit_RightUp && g_Player.NowColor != g_Player.Hit_RightUnder
-		&& g_Player.Hit_RightUp != BLACK && g_Player.Hit_RightUnder != BLACK && g_Player.Hit_RightUp != MOVE;//
 	//左行ってヨシ！
 	bool LeftOK = g_Player.NowColor != g_Player.Hit_LeftUp && g_Player.NowColor != g_Player.Hit_LeftUnder
 		&& g_Player.Hit_LeftUp != BLACK && g_Player.Hit_LeftUnder != BLACK && g_Player.Hit_LeftUp != MOVE;//
+	//右行ってヨシ！
+	bool RightOK = g_Player.NowColor != g_Player.Hit_RightUp && g_Player.NowColor != g_Player.Hit_RightUnder
+		&& g_Player.Hit_RightUp != BLACK && g_Player.Hit_RightUnder != BLACK && g_Player.Hit_RightUp != MOVE;//
 
 	/************************************************************************
 	**
@@ -268,14 +269,13 @@ int PlayerDraw(void) {
 			}
 			//_____________________________________________________________________________________
 
-			//右側の当たり判定処理______________________________________________________________
-			if (g_Pad.KEY_RIGHT == TRUE && RightOK == TRUE) {
-				g_Player.x += PLAYERX;
-			}
-
 			//左側の当たり判定処理________________________________________________
 			if (g_Pad.KEY_LEFT == TRUE && LeftOK == TRUE) {
 				g_Player.x -= PLAYERX;
+			}
+			//右側の当たり判定処理______________________________________________________________
+			if (g_Pad.KEY_RIGHT == TRUE && RightOK == TRUE) {
+				g_Player.x += PLAYERX;
 			}
 			animecnt++;//アニメーション用のカウントプラス
 			NoMove = 1;//動いているときのフラグ
@@ -412,6 +412,8 @@ int PlayerDraw(void) {
 
 	//DrawBox(Hit_R_x + 110 - 5, Hit_UnderLR_y - 5, Hit_R_x + 110 + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
 	//DrawBox(Hit_L_x - 110 - 5, Hit_UnderLR_y - 5, Hit_L_x - 110 + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
+
+	DrawBox(Hit_L_x, Hit_UpLR_y, Hit_R_x, Hit_UnderLR_y,0xff00ff,FALSE);
 
 	return 0;
 }

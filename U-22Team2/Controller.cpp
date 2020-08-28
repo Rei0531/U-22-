@@ -7,15 +7,6 @@ extern Controller g_Pad;
 extern Player g_Player;
 
 void ControllerVlue(void) {         //プレイヤーの移動処理関数
-	//左入力_____________________________________________________________________________________________________________________
-	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_LEFT) != 0)    //画面左側制限
-	{
-		g_Pad.KEY_LEFT = TRUE;
-		if (GameState == GAME_MAIN && g_Player.PLAYER_MENU == FALSE && g_Player.PLAYER_MOVEOK == TRUE) { //ゲームがプレイ中だったら
-			g_Player.PLAYER_DIRECTION = TRUE;  //プレイヤーの向きフラグを左にする
-		}
-	}
-	else { g_Pad.KEY_LEFT = FALSE; }
 	//右入力_____________________________________________________________________________________________________________________
 	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_RIGHT) != 0)
 	{
@@ -25,6 +16,16 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
 		}
 	}
 	else { g_Pad.KEY_RIGHT = FALSE; }
+	//左入力_____________________________________________________________________________________________________________________
+	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_LEFT) != 0)    //画面左側制限
+	{
+		g_Pad.KEY_LEFT = TRUE;
+		if (GameState == GAME_MAIN && g_Player.PLAYER_MENU == FALSE && g_Player.PLAYER_MOVEOK == TRUE) { //ゲームがプレイ中だったら
+			g_Player.PLAYER_DIRECTION = TRUE;  //プレイヤーの向きフラグを左にする
+		}
+	}
+	else { g_Pad.KEY_LEFT = FALSE; }
+
 	//上入力_____________________________________________________________________________________________________________________
 	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_UP) != 0)
 	{
