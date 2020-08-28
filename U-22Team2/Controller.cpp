@@ -74,7 +74,7 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
 		g_Pad.KEY_X = FALSE;
 		g_Pad.KEY_FLG = TRUE;
 	}
-	//Yボタン_____________________________________________________________________________________________________________________
+	//STARTボタン_____________________________________________________________________________________________________________________
 	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_8) != 0)//オプションボタン    //オプション処理
 	{
 		g_Pad.KEY_Y = TRUE;
@@ -87,12 +87,12 @@ void ControllerVlue(void) {         //プレイヤーの移動処理関数
 		g_Pad.KEY_Y = FALSE;
 		g_Pad.KEY_FLG_Y = TRUE;
 	}
-	//L1,R1ボタン_____________________________________________________________________________________________________________________
-	if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_6) != 0 || (GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_5) != 0)//L1,R1ボタン    //ダッシュ処理
-	{
-		g_Pad.KEY_LR = TRUE;
-	}
-	else { g_Pad.KEY_LR = FALSE; }
+	////L1,R1ボタン_____________________________________________________________________________________________________________________
+	//if ((GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_6) != 0 || (GetJoypadInputState(DX_INPUT_PAD1) & PAD_INPUT_5) != 0)//L1,R1ボタン    //ダッシュ処理
+	//{
+	//	g_Pad.KEY_LR = TRUE;
+	//}
+	//else { g_Pad.KEY_LR = FALSE; }
 
 	//_____________________________________________________________________________________________________________________
 	//if (CheckHitKey(KEY_INPUT_RIGHT) != 0) {          //コントローラーない時はこの処理でキーボードの十字キーで操作

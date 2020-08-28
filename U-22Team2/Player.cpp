@@ -59,10 +59,15 @@ int PlayerDraw(void) {
 	g_Player.PickUpPixel = (g_Player.PLAYER_DIRECTION) ? g_Player.x - 40 : g_Player.x + 40;//
 	g_Player.PickUpPixely = g_Player.y - 27;//初期値33もし白色が取れるようになってしまったら戻す
 
+	//前フレームの取得した色が白色じゃないとき
+	if (g_Object.PixelColor != WHITE) {
+		g_Object.PixelColorBuf = g_Object.PixelColor;
+	}
 	//PixelColorに色を格納
 	g_Object.PixelColor = GetPointColor(g_Player.PickUpPixel, g_Player.PickUpPixely);
+
 	//取得した色が白色だった時
-	if (g_Object.PixelColor == WHITE) {
+	if (g_Object.PixelColor != g_Object.PixelColorBuf) {
 		//左向きの座標を取得する___________________________
 		int Px1 = 5,
 			Px2 = 3;
@@ -177,10 +182,10 @@ int PlayerDraw(void) {
 
 	//当たり判定一時上の当たりを削除、心配だから処理はまだコメントで残す
 	bool RightOK = g_Player.NowColor != g_Player.Hit_RightUp && g_Player.NowColor != g_Player.Hit_RightUnder
-		&& g_Player.Hit_RightUp != BLACK && g_Player.Hit_RightUnder != BLACK && g_Player.Hit_RightUp != MOVE;
+		&& g_Player.Hit_RightUp != BLACK && g_Player.Hit_RightUnder != BLACK && g_Player.Hit_RightUp != MOVE;//
 	//左行ってヨシ！
 	bool LeftOK = g_Player.NowColor != g_Player.Hit_LeftUp && g_Player.NowColor != g_Player.Hit_LeftUnder
-		&& g_Player.Hit_LeftUp != BLACK && g_Player.Hit_LeftUnder != BLACK && g_Player.Hit_LeftUp != MOVE;
+		&& g_Player.Hit_LeftUp != BLACK && g_Player.Hit_LeftUnder != BLACK && g_Player.Hit_LeftUp != MOVE;//
 
 	/************************************************************************
 	**
@@ -305,15 +310,17 @@ int PlayerDraw(void) {
 			if (Jumpcnt >= JumpMax) {//決められた時間までプレイヤーを上にあげる
 				g_Player.y -= Jumpcnt;
 			}
-			if (Jumpcnt <= JumpMax && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor))) {		//ジャンプアニメーションが決められた時間になったとき
+			//ジャンプアニメーションが決められた時間になったとき
+			if (Jumpcnt <= JumpMax && ((g_Player.Hit_Under == BLACK || g_Player.Hit_Under == g_Player.NowColor))) {	
 				g_Player.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
 				Jumpcnt = 20;				//ジャンプアニメーションのカウントを0にする
 				PlaySoundMem(g_Snd.Landing, DX_PLAYTYPE_BACK);
 			}
-			if (g_Player.Hit_Up == BLACK || g_Player.Hit_Up == g_Player.NowColor) {	//プレイヤーが天井にぶつかった時,ジャンプ処理を終了する
+			//プレイヤーが天井にぶつかった時,ジャンプ処理を終了する
+			if (g_Player.Hit_Up == BLACK || g_Player.Hit_Up == g_Player.NowColor) {	
 				g_Player.PLAYER_JUMP = FALSE;//ジャンプ処理の終了
 				Jumpcnt = 20;				//ジャンプアニメーションのカウントを0にする
-				JumpOkflag = 0;	//一度ジャンプしたので終わるまでジャンプ処理
+				JumpOkflag = 0;	//ジャンプ処理終了
 			}
 		}
 	}
@@ -383,7 +390,7 @@ int PlayerDraw(void) {
 		DrawString(470, 718, "STARTボタンを押してRESETしよう", 0xffffff);
 	}
 	else {
-		g_Player.PLAYER_MOVEOK = TRUE;//動けない状態のフラグにする
+		g_Player.PLAYER_MOVEOK = TRUE;//動ける状態のフラグにする
 	}
 	//当たり判定の可視化_____________________________________________________________________
 	//DrawBox(g_Player.x - 5, Hit_Up_y - 5, g_Player.x + 5, Hit_Up_y + 5, 0xfe00fe, FALSE);	//頭上
