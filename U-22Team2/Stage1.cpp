@@ -63,6 +63,9 @@ int Stage1(void) {			//マップ画像の描画
 
 	DoorRotationBox(3);
 
+	DrawRotaGraph(550, 368, 0.5, 0, g_pic.Stage1Txt[0], TRUE, FALSE);
+	DrawRotaGraph(g_Door.x + 50, g_Door.y-120, 0.5, 0, g_pic.Stage1Txt[1], TRUE, FALSE);
+
 
 	//ステージクリアした時、タイトル画面に戻ったとき
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {

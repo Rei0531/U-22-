@@ -36,6 +36,8 @@ public:
 	int Pin;//色取った場所のピン
 	int Pin2;//残り回数表示用のぴん
 
+	int Stage1Txt[2];		//ステージ1のチュートリアル
+
 
 	int Select_Back;	//セレクト画面の選択中のやつ
 

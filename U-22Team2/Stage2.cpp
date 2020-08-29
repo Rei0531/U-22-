@@ -65,6 +65,8 @@ int Stage2(void) {			//マップ画像の描画
 
 	DoorRotationBox(3);
 
+	DrawRotaGraph(550,250,1.0,0, g_pic.How_to_play[2],TRUE,FALSE);
+
 
 	//ステージクリアした時、タイトル画面に戻ったとき
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {
