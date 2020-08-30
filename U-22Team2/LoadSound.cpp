@@ -21,6 +21,7 @@ int LoadSound(void) {		//音の読み込み
 	if ((g_Snd.MenuOpen = LoadSoundMem("Sound/MenuOpen.mp3")) == -1)return -1;			//メニューオープン
 	if ((g_Snd.MenuClose = LoadSoundMem("Sound/MenuClose.mp3")) == -1)return -1;		//メニュークローズ
 	if ((g_Snd.MenuMove = LoadSoundMem("Sound/MenuMove.mp3")) == -1)return -1;			//メニュー内移動
+	if ((g_Snd.Menu_decision = LoadSoundMem("Sound/menu2.mp3")) == -1)return -1;		//ステージ決定
 	if ((g_Snd.Reset = LoadSoundMem("Sound/Reset.mp3")) == -1)return -1;				//リセット時
 	if ((g_Snd.Switch = LoadSoundMem("Sound/button.mp3")) == -1)return -1;				//スイッチ
 	if ((g_Snd.Warp = LoadSoundMem("Sound/Warp2.mp3")) == -1)return -1;					//ワープ

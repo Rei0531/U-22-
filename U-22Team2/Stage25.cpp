@@ -112,7 +112,7 @@ int Stage25(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 
 
 	Change(NONCOLOR);
-	DrawBox(0, 400, 150, 450, GetColor(255, 255, 255), TRUE);
+	DrawBox(0, 400, 150, 500, GetColor(255, 255, 255), TRUE);
 
 	Change(BLUE);
 	DrawExtendGraph(0, 300, 100, 400, g_pic.Box[0], TRUE);

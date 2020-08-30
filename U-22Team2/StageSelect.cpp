@@ -24,7 +24,11 @@ B = TRUE,//Bボタン
 A = FALSE,//Aボタン
 Y = FALSE;//Yボタン
 
+void Stage_Decision(void);		//ステージセレクト決定演出
+
 int HtPflg = 1;
+int stage_decision_flg = 0;	//ステージセレクト決定フラグ
+int anicount = 0;			//演出の時間関係の変数
 
 void Stage_Update() {
 
@@ -88,7 +92,12 @@ void Stage_Update() {
             B = TRUE;//再度ボタンが押せる
             Sndflg = FALSE;//メニューオープンのフラグをFALSEにして再度関数に入った時音が鳴るようにする
             g_MapC.StageNumber = NowStage + 1;
-            GameState = GAME_MAIN;
+            //GameState = GAME_MAIN;
+
+            //ステージセレクト決定音
+            PlaySoundMem(g_Snd.Menu_decision, DX_PLAYTYPE_BACK);
+            stage_decision_flg = 1;
+
         }
 
         B = (g_Pad.KEY_B == TRUE) ? TRUE : FALSE;//Bボタンが押されていたら/再度Bボタンが押せるように
@@ -141,6 +150,8 @@ int StageSelect(void) {
     DrawBox(0,0,1280,768,0xffffff,TRUE);//白い背景
     Stage_Update();
     Stage_Draw();
+    Stage_Decision();
+
     if (HtPflg > 0) DrawExtendGraph(235, 90, 1045, 678, g_pic.How_to_play_background, TRUE);   //背景サイズ X=610 Y=776
 
     switch(HtPflg) {//ウィンドウページ
@@ -166,4 +177,23 @@ int StageSelect(void) {
 
     DrawFormatString(1080, 50, GetColor(0,0,0),"STARTボタンでゲーム説明");
     return 0;
+}
+
+void Stage_Decision(void) {
+
+    if (stage_decision_flg == 1) {
+        anicount += 20;
+        SetDrawBlendMode(DX_BLENDMODE_ADD, anicount);
+
+        if (anicount >= 255)stage_decision_flg = 3;
+
+    }
+    else if (stage_decision_flg == 3) {	//演出が終わったらゲームメインへ
+        SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+        stage_decision_flg = 0;
+        anicount = 0;
+        B = TRUE;
+        GameState = GAME_MAIN;
+    }
+
 }

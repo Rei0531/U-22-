@@ -18,6 +18,7 @@ public:
 	int Warp;		//ワープ
 	int Landing;	//着地
 	int MenuMove;	//メニュー内移動
+	int Menu_decision;	//メニュー決定
 	int Bomb;		//爆弾
 	int StageBGM;	//ステージBGM
 	int HeartGet;	//回復アイテム取得
