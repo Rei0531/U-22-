@@ -18,6 +18,7 @@ int LoadPictue(void) {		//画像の読み込み
 	if ((g_pic.StartBotan = LoadGraph("image/STARTBotan.png")) == -1)return-1;//スタートボタン画像
 	if ((g_pic.NextPage = LoadGraph("image/NextPage.png")) == -1) return -1;//次のページ画像
 	if ((g_pic.BackPage = LoadGraph("image/BackPage.png")) == -1)return -1;	//前のページ画像
+	if ((g_pic.LvUPtxt = LoadGraph("image/Lv_UP_txt.png")) == -1)return -1;	//複合ステージスタート画像
 	if ((g_pic.EndPage = LoadGraph("image/EndPage.png")) == -1)return -1;//閉じる　画像
 
 	if ((g_pic.Select_Back = LoadGraph("image/Select_Back.png")) == -1)return -1;//セレクト選択中のやつ

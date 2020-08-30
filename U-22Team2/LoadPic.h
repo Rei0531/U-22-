@@ -23,6 +23,7 @@ public:
 	int NextPage;		//次のページ
 	int BackPage;		//前のページ
 	int EndPage;		//閉じる
+	int LvUPtxt;		//複合ステージスタート
 	int Door;			//ドアの画像
 	int SpecialThanks;	//スペシャルサンクスの画像
 	int StartBotan;		//スタートボタン

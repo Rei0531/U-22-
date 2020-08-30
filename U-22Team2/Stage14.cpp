@@ -48,6 +48,8 @@ void Stage14Init() {
 	g_Door.w = g_Door.x + 100;	//横幅
 	g_Door.h = g_Door.y + 200;	//縦幅
 
+	int Lvtxtflg = 0;
+
 }
 
 int Stage14(void) {			//マップ画像の描画
@@ -76,8 +78,10 @@ int Stage14(void) {			//マップ画像の描画
 	Door();			//ステージゴール処理
 	Lock();
 
-
 	DoorRotationBox(2);
+
+	Change(NONCOLOR);
+	DrawRotaGraph(400, 100, 1.0, 0, g_pic.LvUPtxt, TRUE);
 
 	//ステージクリアした時、タイトル画面に戻ったとき
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE) {
