@@ -4,6 +4,7 @@
 #include "Stage_All.h"
 #include "Lock.h"
 #include"Player.h"
+#include "Menu.h"
 
 extern MapCoordinate g_MapC;
 extern Controller g_Pad;
@@ -115,6 +116,7 @@ int Map(void) {			//マップ画像の描画____________________________________________
 		if (g_Lock.clearflg == TRUE) {
 			GameState = GAME_CLEAR;
 		}
+
 
 		//残り回数の表示*****************************************************
 		static int ColorMove = 0;//スポイトするたび色が変わる変数

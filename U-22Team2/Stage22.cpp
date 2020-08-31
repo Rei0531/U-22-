@@ -144,7 +144,6 @@ int Stage22(void) {			//ƒ}ƒbƒv‰æ‘œ‚Ì•`‰æ
 	}
 
 	if (g_Player.PLAYER_MENU == TRUE) {
-		Menu_Draw();
 		InitFlag = Menu_Update();
 	}
 	return 0;

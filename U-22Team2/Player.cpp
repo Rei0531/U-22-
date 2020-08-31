@@ -8,6 +8,7 @@
 #include "Object.h"
 #include "LoadSound.h"
 #include"Interact.h"
+#include "Menu.h"
 #include <stdlib.h>
 
 extern image g_pic;
@@ -414,6 +415,11 @@ int PlayerDraw(void) {
 	//DrawBox(Hit_L_x - 110 - 5, Hit_UnderLR_y - 5, Hit_L_x - 110 + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//ìÆÇ©ÇπÇÈî†ÇÃçïÇ¢ï«îªíË
 
 	DrawBox(Hit_L_x, Hit_UpLR_y, Hit_R_x, Hit_UnderLR_y,0xff00ff,FALSE);
+
+
+	if (g_Player.PLAYER_MENU == TRUE) {
+		Menu_Draw();
+	}
 
 	return 0;
 }
