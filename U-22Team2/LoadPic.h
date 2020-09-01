@@ -39,6 +39,8 @@ public:
 
 	int Stage1Txt[2];		//ステージ1のチュートリアル
 
+	int GoalTxt[3];			//ゴール時の選択項目
+
 
 	int Select_Back;	//セレクト画面の選択中のやつ
 
