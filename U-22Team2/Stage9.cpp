@@ -87,7 +87,7 @@ int Stage9(void) {			//マップ画像の描画
 	Warp2(900, 175, 250, 575);
 
 	//ギミック説明描画
-	Change(GREEN);
+	Change2(GREEN);
 	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.All_text[3], TRUE, FALSE);
 	
 	//DrawFormatString(g_Player.x - 30, g_Player.y - 200, g_Player.NowColor, "%d", gim.move_cnt);

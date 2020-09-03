@@ -48,7 +48,7 @@ int LoadPictue(void) {		//画像の読み込み
 	if (LoadDivGraph("image/Rotation02.png", 4, 4, 1, 100, 100, g_pic.Door_Rotation) == -1) return -1;//ドアのローテーション
 	if ((g_pic.Door_Rot_Yajirusi = LoadGraph("image/RotationYajirusi.png")) == -1)return -1;//ドアのローテーション矢印
 
-	if (LoadDivGraph("image/Box_All.png", 3, 3, 1, 150, 150, g_pic.Box) == -1) return -1;//すべての箱
+	if (LoadDivGraph("image/Box_All.png", 4, 4, 1, 150, 150, g_pic.Box) == -1) return -1;//すべての箱
 
 	if ((g_pic.Pin = LoadGraph("image/Pin.png")) == -1)return -1;//ピン挿したところ
 

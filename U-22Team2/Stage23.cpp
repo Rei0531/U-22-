@@ -85,15 +85,10 @@ int Stage23(void) {			//マップ画像の描画
 	gim.CC_SwitchColor = CC_Switch(g_Player.NowColor, 140, 588);//一時変数に関数からの戻り値を格納する
 	Change(gim.CC_SwitchColor);
 	//色反映する箱__
-	DrawExtendGraph(0, 318, 100, 418, g_pic.Box[0], TRUE);
-	DrawExtendGraph(100, 318, 200, 418, g_pic.Box[0], TRUE);
-	DrawExtendGraph(800, 318, 900, 418, g_pic.Box[0], TRUE);
-	DrawExtendGraph(900, 318, 1000, 418, g_pic.Box[0], TRUE);
-	ColorReset();
-	DrawBox(0, 318, 100, 418, GetColor(3, 3, 3), FALSE);
-	DrawBox(100, 318, 200, 418, GetColor(3, 3, 3), FALSE);
-	DrawBox(800, 318, 900, 418, GetColor(3, 3, 3), FALSE);
-	DrawBox(900, 318, 1000, 418, GetColor(3, 3, 3), FALSE);
+	DrawExtendGraph(0, 318, 100, 418, g_pic.Box[3], TRUE);
+	DrawExtendGraph(100, 318, 200, 418, g_pic.Box[3], TRUE);
+	DrawExtendGraph(800, 318, 900, 418, g_pic.Box[3], TRUE);
+	DrawExtendGraph(900, 318, 1000, 418, g_pic.Box[3], TRUE);
 	
 	ColorReset();
 	OneTimeSwitch();

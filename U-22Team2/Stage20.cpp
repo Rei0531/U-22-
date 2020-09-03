@@ -92,14 +92,9 @@ int Stage20(void) {			//マップ画像の描画
 	Change(gim.CC_SwitchColor);
 	//色反映する箱________________________________________________
 
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box[0], TRUE);	//1
-	DrawExtendGraph(500, 468, 600, 568, g_pic.Box[0], TRUE);	//2
+	DrawExtendGraph(500, 568, 600, 668, g_pic.Box[3], TRUE);	//1
+	DrawExtendGraph(500, 468, 600, 568, g_pic.Box[3], TRUE);	//2
 
-
-	//箱の枠線__________________________________________
-	ColorReset();
-	DrawBox(500, 568, 600, 668, GetColor(3, 3, 3), FALSE);
-	DrawBox(500, 468, 600, 568, GetColor(3, 3, 3), FALSE);
 
 	Change(YELLOW);
 	DrawExtendGraph(400, 568, 500, 668, g_pic.Box[0], TRUE);

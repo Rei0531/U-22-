@@ -129,9 +129,10 @@ int Map(void) {			//マップ画像の描画____________________________________________
 			Change((i + ColorMove) % 7);//スポイトするたびに色が変わる
 			DrawRotaGraph(75 + i * 45, 720, 0.3, 0, g_pic.Nokori[i], TRUE, FALSE);
 		}
+		//残り回数の数字
 		Change(g_Player.Interact % 7);
-		DrawRotaGraph(340, 720, 0.3, 0, g_pic.Nokori_Num[g_Player.Interact / 10 % 10], TRUE, FALSE);
-		DrawRotaGraph(380, 720, 0.3, 0, g_pic.Nokori_Num[g_Player.Interact % 10], TRUE, FALSE);
+		DrawRotaGraph(360, 720, 0.3, 0, g_pic.Nokori_Num[g_Player.Interact / 10 % 10], TRUE, FALSE);
+		DrawRotaGraph(405, 720, 0.3, 0, g_pic.Nokori_Num[g_Player.Interact % 10], TRUE, FALSE);
 		ColorReset();
 		//**********************************************
 		//現在のステージ表示***********************************************************

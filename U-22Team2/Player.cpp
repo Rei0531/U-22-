@@ -87,18 +87,18 @@ int PlayerDraw(void) {
 		g_Object.PixelColor3 = GetPointColor(g_Player.PickUpPixel, g_Player.PickUpPixely - 5);
 		g_Object.PixelColor4 = GetPointColor(g_Player.PickUpPixel + Px1, g_Player.PickUpPixely - 5);
 		//指先の取得した色で優先順位で色を取る
-		if (g_Object.PixelColor1 != WHITE)g_Object.PixelColor = g_Object.PixelColor1;
-		if (g_Object.PixelColor4 != WHITE)g_Object.PixelColor = g_Object.PixelColor4;
-		if (g_Object.PixelColor2 != WHITE)g_Object.PixelColor = g_Object.PixelColor2;
-		if (g_Object.PixelColor3 != WHITE)g_Object.PixelColor = g_Object.PixelColor3;
+		if (g_Object.PixelColor1 != WHITE && g_Object.PixelColor1 != NONCOLOR)g_Object.PixelColor = g_Object.PixelColor1;
+		if (g_Object.PixelColor4 != WHITE && g_Object.PixelColor2 != NONCOLOR)g_Object.PixelColor = g_Object.PixelColor4;
+		if (g_Object.PixelColor2 != WHITE && g_Object.PixelColor3 != NONCOLOR)g_Object.PixelColor = g_Object.PixelColor2;
+		if (g_Object.PixelColor3 != WHITE && g_Object.PixelColor4 != NONCOLOR)g_Object.PixelColor = g_Object.PixelColor3;
 	}
 
 
 	//スポイトの手を表示させるかの判断式
 	if (g_Object.PixelColor != WHITE && g_Object.PixelColor != NONCOLOR && g_Object.PixelColor != BLACK && g_Player.Interact > 0 &&
 		g_Object.PixelColor != g_Player.NowColor && g_Object.PixelColor != MOVE && g_Player.PLAYER_MOVEBOX_PUSH == FALSE && g_Player.PLAYER_MOVEBOX_PULL == FALSE &&
-		(!((g_Door.x - 5 < g_Player.PickUpPixel && g_Door.w + 5 > g_Player.PickUpPixel) &&
-			(g_Door.y < g_Player.PickUpPixely && g_Door.h > g_Player.PickUpPixely)))) {//取得する場所の色が白じゃないとき描画
+		(!((g_Door.x - 5 <= g_Player.PickUpPixel && g_Door.w + 5 >= g_Player.PickUpPixel) &&
+			(g_Door.y <= g_Player.PickUpPixely && g_Door.h+2 >= g_Player.PickUpPixely)))) {//取得する場所の色が白じゃないとき描画
 
 			//スポイトの手が上下するアニメーション処理______________
 		anicnt++;
@@ -414,7 +414,7 @@ int PlayerDraw(void) {
 	//DrawBox(Hit_R_x + 110 - 5, Hit_UnderLR_y - 5, Hit_R_x + 110 + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
 	//DrawBox(Hit_L_x - 110 - 5, Hit_UnderLR_y - 5, Hit_L_x - 110 + 5, Hit_UnderLR_y + 5, 0xfe00fe, FALSE);	//動かせる箱の黒い壁判定
 
-	DrawBox(Hit_L_x, Hit_UpLR_y, Hit_R_x, Hit_UnderLR_y,0xff00ff,FALSE);
+	//DrawBox(Hit_L_x, Hit_UpLR_y, Hit_R_x, Hit_UnderLR_y,0xff00ff,FALSE);
 
 
 	if (g_Player.PLAYER_MENU == TRUE) {

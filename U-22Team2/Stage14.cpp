@@ -68,17 +68,19 @@ int Stage14(void) {			//マップ画像の描画
 
 	Shower();		//塗りつぶしシャワーの処理
 
-	frontMoveBox(BLUE, 400, 568);
-	frontMoveBox(BLUE, 400, 468);
 
-	frontMoveBox(YELLOW, 550, 568);
-	frontMoveBox(YELLOW, 550, 468);
 
 
 	Door();			//ステージゴール処理
 	Lock();
 
 	DoorRotationBox(2);
+
+	frontMoveBox(BLUE, 400, 568);
+	frontMoveBox(BLUE, 400, 468);
+
+	frontMoveBox(YELLOW, 550, 568);
+	frontMoveBox(YELLOW, 550, 468);
 
 	Change(NONCOLOR);
 	DrawRotaGraph(400, 100, 1.0, 0, g_pic.LvUPtxt, TRUE);

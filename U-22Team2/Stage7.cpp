@@ -49,16 +49,10 @@ int Stage7(void) {			//マップ画像の描画
 	gim.CC_SwitchColor = CC_Switch(g_Player.NowColor, 140, 578);//一時変数に関数からの戻り値を格納する
 	Change(gim.CC_SwitchColor);
 	//色反映する箱________________________________________________
-	DrawExtendGraph(340, 568, 440, 668, g_pic.Box[0], TRUE);
-	DrawExtendGraph(340, 468, 440, 568, g_pic.Box[0], TRUE);
-	DrawExtendGraph(740, 568, 840, 668, g_pic.Box[0], TRUE);
-	DrawExtendGraph(740, 468, 840, 568, g_pic.Box[0], TRUE);
-	//箱の枠線__________________________________________
-	ColorReset();
-	DrawBox(340, 568, 440, 668, GetColor(3, 3, 3), FALSE);
-	DrawBox(340, 468, 440, 568, GetColor(3, 3, 3), FALSE);
-	DrawBox(740, 568, 840, 668, GetColor(3, 3, 3), FALSE);
-	DrawBox(740, 468, 840, 568, GetColor(3, 3, 3), FALSE);
+	DrawExtendGraph(340, 568, 440, 668, g_pic.Box[3], TRUE);
+	DrawExtendGraph(340, 468, 440, 568, g_pic.Box[3], TRUE);
+	DrawExtendGraph(740, 568, 840, 668, g_pic.Box[3], TRUE);
+	DrawExtendGraph(740, 468, 840, 568, g_pic.Box[3], TRUE);
 
 	//色ブロック描画
 	Change(RED);
