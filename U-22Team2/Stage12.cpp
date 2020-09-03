@@ -82,7 +82,7 @@ int Stage12(void) {			//マップ画像の描画
 	DrawExtendGraph(900, 468, 1000, 568, g_pic.Box[0], TRUE);	//2
 
 	//ギミック説明描画
-	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.All_text[9], TRUE, FALSE);
+	DrawRotaGraph(900, 110, 1.5, 0, g_pic.All_text[9], TRUE, FALSE);
 
 
 	kaihuku(gim.item_x, gim.item_y);

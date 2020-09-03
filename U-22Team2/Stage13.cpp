@@ -73,7 +73,7 @@ int Stage13(void) {			//マップ画像の描画
 	DrawExtendGraph(900, 368, 1000, 468, g_pic.Box[0], TRUE);	//2
 
 	//ギミック説明描画
-	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.All_text[11], TRUE, FALSE);
+	DrawRotaGraph(900, 110, 1.5, 0, g_pic.All_text[11], TRUE, FALSE);
 
 
 	ChangeBlock();	//変形するオブジェクトの関数

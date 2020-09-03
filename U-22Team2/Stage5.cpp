@@ -96,7 +96,7 @@ int Stage5(void) {			//マップ画像の描画
 
 	//ギミック説明描画
 	Change(BLUE);
-	DrawRotaGraph(1024, 74, 1.0, 0, g_pic.All_text[6], TRUE, FALSE);
+	DrawRotaGraph(900, 110, 1.5, 0, g_pic.All_text[6], TRUE, FALSE);
 
 	//DrawFormatString(0, 400, 0x000000, "g_SwitchFlag = %d", g_SwitchFlag);
 	Door();			//ステージゴール処理
