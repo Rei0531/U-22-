@@ -147,8 +147,11 @@ void Stage_Draw() {
 
 int StageSelect(void) {
     //DrawRotaGraph(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2, 1.0, 0, g_pic.Title, TRUE, FALSE); //ƒ^ƒCƒgƒ‹‰æ‘œ•`‰æ
+  
     DrawBox(0,0,1280,768,0xffffff,TRUE);//”’‚¢”wŒi
-    Stage_Update();
+    if (stage_decision_flg == 0) {
+        Stage_Update();
+    }
     Stage_Draw();
     Stage_Decision();
 
