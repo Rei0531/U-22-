@@ -47,6 +47,7 @@ typedef enum {
     Stage_Num,        //本項目の数
 } Stageselect;
 
+
 static int NowStage = Stage_1;    //現在の選択状態(初期はゲーム選択中)
 
 int StageSelect();

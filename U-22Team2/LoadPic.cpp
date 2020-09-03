@@ -50,6 +50,8 @@ int LoadPictue(void) {		//画像の読み込み
 
 	if (LoadDivGraph("image/Box_All.png", 4, 4, 1, 150, 150, g_pic.Box) == -1) return -1;//すべての箱
 
+	if ((g_pic.SelectClear = LoadGraph("image/Select_Txt_Clear.PNG")) == -1)return -1;//セレクト画面のクリアした時の左上についてるやつ
+
 	if ((g_pic.Pin = LoadGraph("image/Pin.png")) == -1)return -1;//ピン挿したところ
 
 	if ((g_pic.Pin2 = LoadGraph("image/Pin2.png")) == -1)return -1;//残り回数の表示のピン

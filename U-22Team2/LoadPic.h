@@ -41,6 +41,8 @@ public:
 
 	int GoalTxt[3];			//ゴール時の選択項目
 
+	int SelectClear;		//セレクト画面のステージクリアしたのわかりやすくするやつ
+
 
 	int Select_Back;	//セレクト画面の選択中のやつ
 

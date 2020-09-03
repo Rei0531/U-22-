@@ -21,6 +21,7 @@ Object g_Object;
 extern Controller g_Pad;
 extern Player g_Player;
 extern  int GameState= GAME_TITLE;
+extern bool ClearStage[30] = {};//クリアしたステージを格納
 extern MapCoordinate g_MapC;
 extern Sound g_Snd;
 

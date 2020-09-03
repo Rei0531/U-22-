@@ -15,6 +15,9 @@ extern image g_pic;
 extern Controller g_Pad;
 extern MapCoordinate g_MapC;
 
+extern bool ClearStage[30];
+
+
 bool //二度押し防止
 DOWN = FALSE,//下キー
 UP = FALSE,//上キー
@@ -132,17 +135,22 @@ void Stage_Draw() {
 
     DrawRotaGraph(268 + x * 168, 76 + y * 156, 1.5, anicnt, g_pic.Select_Back, TRUE, FALSE);//虹色の背景
 
+    int c = 0;
     //ステージのびょうが　
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             DrawBox(218 + j * 168, 26 + i * 156, 318 + j * 168, 126 + i * 156, 0xffffff, TRUE);//白い四角
             DrawBox(218 + j * 168, 26 + i * 156, 318 + j * 168, 126 + i * 156, 0x000000 , FALSE);//枠線
             DrawRotaGraph(268 + j * 168, 76 + i * 156,0.5,0, g_pic.StageNum[cnt++ % Stage_Num],TRUE,FALSE);
+            //クリアしたステージのクリア画像表示
+            if (ClearStage[c++] == TRUE)
+                DrawRotaGraph(268 + j * 168, 76 + i * 156, 1.0, 0, g_pic.SelectClear, TRUE, FALSE);
         }
     }
 
     //ステージセレクトの大きなる表示
     DrawExtendGraph(218 + x * 168, 26 + y * 156, 318 + x * 168, 126 + y * 156, g_pic.StageNum[NowStage], TRUE);
+
 }
 
 int StageSelect(void) {

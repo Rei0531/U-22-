@@ -16,6 +16,7 @@ extern LockALL g_Lock;
 extern Sound g_Snd;
 extern image g_pic;
 
+extern bool ClearStage[30];
 
 static bool LEFT = FALSE,//左キー
 RIGHT = FALSE,//右キー
@@ -25,6 +26,9 @@ static bool Sndflg = FALSE;//音再生フラグ
 
 
 int Goal(void) {
+
+    //クリアしたステージをTRUEにする
+    ClearStage[g_MapC.StageNumber-1] = TRUE;
 
 	Goal_Update();
 	Goal_Draw();
