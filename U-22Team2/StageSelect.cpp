@@ -33,6 +33,11 @@ int HtPflg = 1;
 int stage_decision_flg = 0;	//ステージセレクト決定フラグ
 int anicount = 0;			//演出の時間関係の変数
 
+static int ColorMove = 0;//スポイトするたび色が変わる変数
+static int CircleRcnt = 0;//円の半径のカウント
+static int CircleRcnt2 = -200;//円の半径のカウント2
+static int CircleRcntMax = 1100;//円の半径のカウント
+
 void Stage_Update() {
 
     //if (CheckSoundMem(g_Snd.MenuOpen) == 0 && Sndflg == FALSE) {
@@ -124,7 +129,34 @@ void Stage_Draw() {
         x = NowStage % 5,
         y = NowStage / 5;
 
+
+
+
     anicnt += 0.02;//虹色の光回転
+
+    //拡大していく円**********************************************
+    if (stage_decision_flg == 0) {
+        static int
+            CircleX = SCREEN_WIDHT / 2,
+            CircleY = SCREEN_HEIGHT / 2;
+        CircleRcnt = CircleRcntMax > CircleRcnt ? CircleRcnt += 5 : CircleRcnt = 0;
+        CircleRcnt2 = CircleRcntMax > CircleRcnt2 ? CircleRcnt2 += 5 : CircleRcnt2 = 0;
+
+        if (CircleRcnt == 0) {
+            ColorMove++;
+            CircleX = GetRand(SCREEN_WIDHT);
+            CircleY = GetRand(SCREEN_HEIGHT);
+        }
+
+        SetDrawBlendMode(DX_BLENDMODE_ALPHA, 200);//描画ブレンドモードをアルファブレンドにする
+        Change(ColorMove % 7);//セレクト画面を動かすごとに色が変わる
+        DrawCircle(CircleX, CircleY, CircleRcnt, 0xffffff, TRUE, TRUE);
+        Change(WHITE);//セレクト画面を動かすごとに色が変わる
+        DrawCircle(CircleX, CircleY, CircleRcnt2, 0xffffff, TRUE, TRUE);
+        SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);	//描画ブレンドモードをノーブレンドにする
+        ColorReset();
+    }
+    //***********************************************************
 
     //static int r = 0, g = 0, b = 0;
     //if (FreamCnt % 60 == 0) {
