@@ -63,28 +63,21 @@ int Stage9(void) {			//マップ画像の描画
 	Change(NONCOLOR);
 	DrawBox(0, 268, 1300, 368, GetColor(255, 255, 255), TRUE);
 	ColorReset();
-	//DrawExtendGraph(168, 168, 268, 268, g_pic.Warp_Area, TRUE);//ワープ用画像
-	//DrawExtendGraph(368, 568, 468, 668, g_pic.Warp_Area, TRUE);//ワープ用画像
-	//DrawExtendGraph(868, 168, 968, 268, g_pic.Warp_Area, TRUE);//ワープ用画像
 
 	Change(RED);
-	/*DrawExtendGraph(150, 568, 250, 668, g_pic.Box, TRUE);
-	DrawExtendGraph(150, 468, 250, 568, g_pic.Box, TRUE);*/
 	DrawExtendGraph(450, 68, 550, 168, g_pic.Box[0], TRUE);
 	DrawExtendGraph(450, 168, 550, 268, g_pic.Box[0], TRUE);
 
 	Change(BLUE);
 	DrawExtendGraph(650, 68, 750, 168, g_pic.Box[0], TRUE);
 	DrawExtendGraph(650, 168, 750, 268, g_pic.Box[0], TRUE);
-	/*DrawExtendGraph(500, 468, 600, 568, g_pic.Box, TRUE);
-	DrawExtendGraph(500, 568, 600, 668, g_pic.Box, TRUE);*/
-
+	
 	Change(LIGHTBLUE);
 	DrawExtendGraph(250, 68, 350, 168, g_pic.Box[0], TRUE);
 	DrawExtendGraph(250, 168, 350, 268, g_pic.Box[0], TRUE);
 	ColorReset();
 	Warp(125,175,125,575);
-	Warp2(900, 175, 250, 575);
+	Warp2(900, 175, 850, 575);
 
 	//ギミック説明描画
 	Change2(GREEN);
