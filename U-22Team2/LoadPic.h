@@ -19,7 +19,10 @@ public:
 	int All_text[12];	//全ステージのギミック説明
 	int Box_text;		//ステージ２のギミック説明
 	int How_to_play_background;//遊び方説明の背景
-	int How_to_play[4];	//遊び方説明
+	int How_to_play[3];		//遊び方説明（旧）
+	int Tutorial_text[12];	//遊び方説明
+	int Tutorial_pic[12];	//遊び方説明画像
+	int asobikata;		//～遊び方～
 	int NextPage;		//次のページ
 	int BackPage;		//前のページ
 	int EndPage;		//閉じる

@@ -15,7 +15,10 @@ int LoadPictue(void) {		//画像の読み込み
 	if (LoadDivGraph("image/Stage1Txt_ALL.png", 2, 2, 1, 512, 256, g_pic.Stage1Txt) == -1) return -1;//ステージ1のチュートリアル分割画像
 	
 	if ((g_pic.How_to_play_background = LoadGraph("image/How_to_play_background.png")) == -1) return -1;//遊び方説明の背景画像
-	if (LoadDivGraph("image/How_to_play.png", 3, 3, 1, 512, 256, g_pic.How_to_play) == -1)return -1;//遊び方説明分割画像
+	if ((g_pic.asobikata = LoadGraph("image/asobikata.png")) == -1) return -1;//～遊び方～　の画像
+	if (LoadDivGraph("image/How_to_play.png", 12, 6, 2, 256, 128, g_pic.How_to_play) == -1)return -1;//遊び方説明分割画像
+	if (LoadDivGraph("image/Tutorial_text.png", 12, 6, 2, 256, 128, g_pic.Tutorial_text) == -1)return -1;//遊び方説明文字画像
+	if (LoadDivGraph("image/Tutorial_pic.png", 12, 6, 2, 256, 256, g_pic.Tutorial_pic) == -1)return -1;//遊び方説明分割画像
 	if ((g_pic.StartBotan = LoadGraph("image/STARTBotan.png")) == -1)return-1;//スタートボタン画像
 	if ((g_pic.NextPage = LoadGraph("image/NextPage.png")) == -1) return -1;//次のページ画像
 	if ((g_pic.BackPage = LoadGraph("image/BackPage.png")) == -1)return -1;	//前のページ画像
