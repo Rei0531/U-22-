@@ -88,7 +88,7 @@ int SlideBlock(int SlaColor)
 	}
 
 	Change(SlaColor);
-	DrawExtendGraph(gim.SliObjx1 + gim.move_x, gim.SliObjy1, gim.SliObjx2 + gim.move_x, gim.SliObjy2, g_pic.Box[0], TRUE);//“®‚­°
+	DrawExtendGraph(gim.SliObjx1 + gim.move_x, gim.SliObjy1, gim.SliObjx2 + gim.move_x, gim.SliObjy2, g_pic.Box[4], TRUE);//“®‚­°
 
 	if ((g_Player.x + 15 >= gim.SliObjx1 + gim.move_x) && (g_Player.x - 15 <= gim.SliObjx2 + gim.move_x) &&
 		(g_Player.Hit_Under == g_Player.NowColor && g_Player.NowColor == SlaColor)) {

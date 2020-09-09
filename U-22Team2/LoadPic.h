@@ -54,7 +54,7 @@ public:
 	int Select_Back;	//セレクト画面の選択中のやつ
 
 
-	int Box[4];//色々なボックス
+	int Box[5];//色々なボックス
 	//int Box;//オブジェクトの木の箱
 	//int Box_Move;//動く箱
 	//int Box_Rot;//ローテーションするボックス
