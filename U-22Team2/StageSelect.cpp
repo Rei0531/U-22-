@@ -7,6 +7,7 @@
 #include "StageSelect.h"
 #include "Map.h"
 #include "Color.h"
+#include "Color.h"
 
 
 extern Sound g_Snd;
@@ -121,18 +122,27 @@ void Stage_Update() {
 }
 void Stage_Draw() {
     static int MenuX = 634, MenuY = 200;
-    static double anicnt = 0;//虹色光回転カウント
+    static double anicnt = 0.05;//回転カウント
+    static double anicntMax = 5.0;//回転カウント最大値
+    static double anicnt2 = anicntMax;//逆回転カウント
     static int FreamCnt = 0;
     static int BoxX = 0;//選択カーソルのプラスする量の位置;
+    static int Color = 9;//色チェンジ用一時変数
     int cnt = 0;
     int
         x = NowStage % 5,
         y = NowStage / 5;
 
 
+    anicnt += 0.05; 
+    anicnt2 -= 0.1;
 
-
-    anicnt += 0.02;//虹色の光回転
+    if (anicnt > anicntMax) {
+        anicnt = 0.05;
+    }
+    if (anicnt2 < 0.0) {
+        anicnt2 = anicntMax;
+    }
 
     //拡大していく円**********************************************
     if (stage_decision_flg == 0) {
@@ -165,7 +175,12 @@ void Stage_Draw() {
     //    b = GetRand(255);
     //}
 
-    DrawRotaGraph(268 + x * 168, 76 + y * 156, 1.5, anicnt, g_pic.Select_Back, TRUE, FALSE);//虹色の背景
+    if (FreamCnt++ % 60 == 0)
+        Color = GetRand(6);
+
+    Change(Color);
+    DrawRotaGraph(268 + x * 168, 76 + y * 156, 1.2, anicnt* anicnt2, g_pic.WhiteBox, TRUE, FALSE);//回転する箱
+    ColorReset();
 
     int c = 0;
     //ステージのびょうが　
@@ -182,6 +197,9 @@ void Stage_Draw() {
 
     //ステージセレクトの大きなる表示
     DrawExtendGraph(218 + x * 168, 26 + y * 156, 318 + x * 168, 126 + y * 156, g_pic.StageNum[NowStage], TRUE);
+
+   // DrawRotaGraph(SCREEN_WIDHT/2, SCREEN_HEIGHT - 50,0.5,0,g_pic.Select_Txt,TRUE,FALSE);// ステージを選んでください
+    DrawRotaGraph(100, SCREEN_HEIGHT/2, 0.7, 0, g_pic.Select_Char, TRUE, FALSE);// ステージを選んでください
 
 }
 

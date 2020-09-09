@@ -46,6 +46,10 @@ public:
 
 	int SelectClear;		//セレクト画面のステージクリアしたのわかりやすくするやつ
 
+	int Select_Txt;		//ステージを選んでください
+	int Select_Char;	//ステージを選んでください
+
+	int WhiteBox;		//ステージセレクトの回転する箱
 
 	int Select_Back;	//セレクト画面の選択中のやつ
 

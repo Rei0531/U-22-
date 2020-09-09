@@ -38,6 +38,7 @@ void DoorRotationBox(int Rot_sum) {
 	if (g_Lock.clearflg == TRUE || g_Player.InitFlag == TRUE || g_Player.PLAYER_RESET == TRUE) {
 		Move_Rotation = 0.0;//ローテーション画像の移動量をリセットする
 		g_Player.PLAYER_RESET = FALSE;
+		Rot_Circle = 0.0;
 	}
 
 	//ローテーションする数に合わせて描画する数を決める

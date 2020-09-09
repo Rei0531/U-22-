@@ -10,10 +10,14 @@ int LoadPictue(void) {		//画像の読み込み
 	if (LoadDivGraph("image/Title_name.png", 13, 13, 1, 128, 128 , g_pic.TitleName) == -1) return -1;//タイトル名の文字分割画像
 	if ((g_pic.StageClear = LoadGraph("image/Stageclear.png")) == -1)return -1;//ステージクリア画面
 	if (LoadDivGraph("image/Goal.Txt.PNG", 3, 1, 3, 1144, 341, g_pic.GoalTxt) == -1) return -1;//クリア後の文字分割画像
-	if (LoadDivGraph("image/TitleChar.png", 3, 1, 3, 759, 94, g_pic.TitleChar) == -1) return -1;//タイトルの文字分割画像
+	if (LoadDivGraph("image/TitleChar.png", 3, 1, 3, 850, 94, g_pic.TitleChar) == -1) return -1;//タイトルの文字分割画像
 
 	if (LoadDivGraph("image/Stage1Txt_ALL.png", 2, 2, 1, 512, 256, g_pic.Stage1Txt) == -1) return -1;//ステージ1のチュートリアル分割画像
-	
+
+	if ((g_pic.Select_Txt = LoadGraph("image/Select_Txt.png")) == -1)return -1;//ステージを選んでください
+	if ((g_pic.Select_Char = LoadGraph("image/Select_Char.PNG")) == -1)return -1;//ステージセレクト左縦
+	if ((g_pic.WhiteBox = LoadGraph("image/WhiteBox.png")) == -1)return -1;//ステージセレクトの回転する箱
+
 	if ((g_pic.How_to_play_background = LoadGraph("image/How_to_play_background.png")) == -1) return -1;//遊び方説明の背景画像
 	if ((g_pic.asobikata = LoadGraph("image/asobikata.png")) == -1) return -1;//～遊び方～　の画像
 	if (LoadDivGraph("image/How_to_play.png", 3, 3, 1, 512, 256, g_pic.How_to_play) == -1)return -1;//遊び方説明分割画像

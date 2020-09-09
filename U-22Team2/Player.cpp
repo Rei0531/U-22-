@@ -390,8 +390,9 @@ int PlayerDraw(void) {
 	//重なった場合の注意表示
 	if (g_Player.Hit_Up == g_Player.NowColor) {
 		g_Player.PLAYER_MOVEOK = FALSE;//動けない状態のフラグにする
-		DrawString(450, 698, "大変だ！オブジェクトと重なってしまった！", 0xff0000);
-		DrawString(470, 718, "STARTボタンを押してRESETしよう", 0xffffff);
+		DrawBox(440,300,840,370,0x000000,TRUE);
+		DrawString(475, 320, "大変だ！オブジェクトと重なってしまった！", 0xff0000);
+		DrawString(495, 340, "STARTボタンを押してRESETしよう", 0xffffff);
 	}
 	else {
 		g_Player.PLAYER_MOVEOK = TRUE;//動ける状態のフラグにする

@@ -87,7 +87,7 @@ void Title_Draw() {
     SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);	//描画ブレンドモードをノーブレンドにする
     ColorReset();
     //***********************************************************
-    static int MenuX = 634, MenuY = 200;
+    static int MenuX = 640, MenuY = 200;
     static int BoxX = 0;//選択カーソルのプラスする量の位置;
     DrawRotaGraph(MenuX, SELECT_Y,0.5,0,g_pic.TitleChar[0],TRUE,FALSE);
     DrawRotaGraph(MenuX, THANKS_Y, 0.5, 0, g_pic.TitleChar[1], TRUE, FALSE);
