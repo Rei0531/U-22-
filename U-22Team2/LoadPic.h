@@ -76,6 +76,8 @@ public:
 	int ChengObjectmark[4]; //
 
 	int item;	//スポイト回復アイテム
+
+	int yazirusi;	//矢印
 };
 
 int LoadPictue(void);	//関数の定義

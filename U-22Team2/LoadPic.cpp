@@ -16,7 +16,7 @@ int LoadPictue(void) {		//画像の読み込み
 	
 	if ((g_pic.How_to_play_background = LoadGraph("image/How_to_play_background.png")) == -1) return -1;//遊び方説明の背景画像
 	if ((g_pic.asobikata = LoadGraph("image/asobikata.png")) == -1) return -1;//～遊び方～　の画像
-	if (LoadDivGraph("image/How_to_play.png", 12, 6, 2, 256, 128, g_pic.How_to_play) == -1)return -1;//遊び方説明分割画像
+	if (LoadDivGraph("image/How_to_play.png", 3, 3, 1, 512, 256, g_pic.How_to_play) == -1)return -1;//遊び方説明分割画像
 	if (LoadDivGraph("image/Tutorial_text.png", 12, 6, 2, 256, 128, g_pic.Tutorial_text) == -1)return -1;//遊び方説明文字画像
 	if (LoadDivGraph("image/Tutorial_pic.png", 12, 6, 2, 256, 256, g_pic.Tutorial_pic) == -1)return -1;//遊び方説明分割画像
 	if ((g_pic.StartBotan = LoadGraph("image/STARTBotan.png")) == -1)return-1;//スタートボタン画像
@@ -80,6 +80,8 @@ int LoadPictue(void) {		//画像の読み込み
 	if (LoadDivGraph("image/ChangeObject_sirusi.png", 4, 4, 1, 75, 75, g_pic.ChengObjectmark) == -1) return -1;//変形するオブジェクト　矢印
 
 	if ((g_pic.item = LoadGraph("image/kaihuku.png")) == -1)return-1;//スポイト回復アイテム
+
+	if ((g_pic.yazirusi = LoadGraph("image/yazirusi.png")) == -1) return-1;//矢印画像
 
 	return 0;
 }

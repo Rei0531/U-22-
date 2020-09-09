@@ -48,7 +48,7 @@ void Stage_Update() {
     if (g_Pad.KEY_RIGHT == TRUE && RIGHT == FALSE && HtPflg > 0) HtPflg++;  //ウィンドウを開いてる時に→で次のページへ
     if (g_Pad.KEY_LEFT == TRUE && LEFT == FALSE && HtPflg > 1) HtPflg--;    //ウィンドウを開いてる時に←で前のページへ
 
-    if (HtPflg > 3) HtPflg = 0;     //４ページ目で閉じる
+    if (HtPflg > 7) HtPflg = 0;     //７ページ目で閉じる
 
     if (HtPflg == 0) {//ウィンドウが開いてない時に移動可能
 
@@ -197,25 +197,79 @@ int StageSelect(void) {
 
     if (HtPflg > 0) DrawExtendGraph(235, 90, 1045, 678, g_pic.How_to_play_background, TRUE);   //背景サイズ X=610 Y=776
 
+
+
     switch(HtPflg) {//ウィンドウページ
+
         case 1://１ページ目
-            DrawRotaGraph(680, 384, 1.2, 0, g_pic.How_to_play[0], TRUE, FALSE);
+            DrawRotaGraph(680, 384, 1.2, 0, g_pic.asobikata, TRUE, FALSE);
             DrawRotaGraph(800, 550, 1.0, 0, g_pic.NextPage, TRUE);
+            DrawFormatString(600, 200, GetColor(0,0,0), "１/ ７ページ");
             break;
         case 2://２ページ目
-            DrawRotaGraph(680, 384, 1.2, 0, g_pic.How_to_play[1], TRUE, FALSE);
+            DrawRotaGraph(480, 384, 0.8, 0, g_pic.Tutorial_pic[0], TRUE, FALSE);
+            DrawRotaGraph(830, 384, 0.8, 0, g_pic.Tutorial_pic[1], TRUE, FALSE);
+            DrawRotaGraph(480, 250, 1.0, 0, g_pic.Tutorial_text[0], TRUE);
+            DrawRotaGraph(830, 250, 1.0, 0, g_pic.Tutorial_text[1], TRUE);
+            DrawRotaGraph(655, 384, 0.5, 0, g_pic.yazirusi, TRUE,TRUE);
             DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
             DrawRotaGraph(800, 550, 1.0, 0, g_pic.NextPage, TRUE);
+            DrawFormatString(600, 200, GetColor(0, 0, 0), "２/ ７ページ");
             break;
         case 3://３ページ目
-            DrawRotaGraph(680, 384, 1.2, 0, g_pic.How_to_play[2], TRUE, FALSE);
+            DrawRotaGraph(480, 384, 0.8, 0, g_pic.Tutorial_pic[2], TRUE, FALSE);
+            DrawRotaGraph(830, 384, 0.8, 0, g_pic.Tutorial_pic[3], TRUE, FALSE);
+            DrawRotaGraph(500, 250, 1.0, 0, g_pic.Tutorial_text[2], TRUE);
+            DrawRotaGraph(830, 250, 1.0, 0, g_pic.Tutorial_text[3], TRUE);
+            DrawRotaGraph(655, 384, 0.5, 0, g_pic.yazirusi, TRUE, TRUE);
+            DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
+            DrawRotaGraph(800, 550, 1.0, 0, g_pic.NextPage, TRUE);
+            DrawFormatString(600, 200, GetColor(0, 0, 0), "３/ ７ページ");
+            break;
+        case 4:
+            DrawRotaGraph(480, 384, 0.8, 0, g_pic.Tutorial_pic[4], TRUE, FALSE);
+            DrawRotaGraph(830, 304, 0.4, 0, g_pic.Tutorial_pic[5], TRUE, FALSE);
+            DrawRotaGraph(830, 474, 0.4, 0, g_pic.Tutorial_pic[6], TRUE, FALSE);
+            DrawRotaGraph(500, 250, 1.0, 0, g_pic.Tutorial_text[4], TRUE);
+            DrawRotaGraph(830, 400, 1.0, 0, g_pic.Tutorial_text[5], TRUE);
+            DrawRotaGraph(655, 384, 0.5, 0, g_pic.yazirusi, TRUE, TRUE);
+            DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
+            DrawRotaGraph(800, 550, 1.0, 0, g_pic.NextPage, TRUE);
+            DrawFormatString(600, 200, GetColor(0, 0, 0), "４/ ７ページ");
+            break;
+        case 5:
+            DrawRotaGraph(480, 384, 0.8, 0, g_pic.Tutorial_pic[7], TRUE, FALSE);
+            DrawRotaGraph(500, 250, 1.0, 0, g_pic.Tutorial_text[6], TRUE);
+            DrawRotaGraph(830, 250, 1.0, 0, g_pic.Tutorial_text[7], TRUE);
+            DrawRotaGraph(655, 384, 0.5, 0, g_pic.yazirusi, TRUE, TRUE);
+            DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
+            DrawRotaGraph(800, 550, 1.0, 0, g_pic.NextPage, TRUE);
+            DrawFormatString(600, 200, GetColor(0, 0, 0), "５/ ７ページ");
+            break;
+        case 6:
+            DrawRotaGraph(480, 384, 0.8, 0, g_pic.Tutorial_pic[8], TRUE, FALSE);
+            DrawRotaGraph(830, 384, 0.8, 0, g_pic.Tutorial_pic[9], TRUE, FALSE);
+            DrawRotaGraph(500, 250, 1.0, 0, g_pic.Tutorial_text[8], TRUE);
+            DrawRotaGraph(830, 250, 1.0, 0, g_pic.Tutorial_text[9], TRUE);
+            DrawRotaGraph(655, 384, 0.5, 0, g_pic.yazirusi, TRUE, TRUE);
+            DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
+            DrawRotaGraph(800, 550, 1.0, 0, g_pic.NextPage, TRUE);
+            DrawFormatString(600, 200, GetColor(0, 0, 0), "６/ ７ページ");
+            break;
+        case 7:
+            DrawRotaGraph(480, 384, 0.8, 0, g_pic.Tutorial_pic[10], TRUE, FALSE);
+            DrawRotaGraph(830, 384, 0.8, 0, g_pic.Tutorial_pic[11], TRUE, FALSE);
+            DrawRotaGraph(500, 250, 1.0, 0, g_pic.Tutorial_text[10], TRUE);
+            DrawRotaGraph(830, 250, 1.0, 0, g_pic.Tutorial_text[11], TRUE);
+            DrawRotaGraph(655, 384, 0.5, 0, g_pic.yazirusi, TRUE, TRUE);
             DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
             DrawRotaGraph(800, 550, 1.0, 0, g_pic.EndPage, TRUE);
+            DrawFormatString(600, 200, GetColor(0, 0, 0), "７/ ７ページ");
             break;
-        /*case 4://４ページ目
-            DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[3], TRUE, FALSE);
-            DrawRotaGraph(750, 600, 1.0, 0, g_pic.EndPage, TRUE);
-            break;*/
+       // case 4://４ページ目
+            //DrawRotaGraph(640, 384, 1.0, 0, g_pic.How_to_play[3], TRUE, FALSE);
+            //DrawRotaGraph(750, 600, 1.0, 0, g_pic.EndPage, TRUE);
+            //break;
     }
 
     DrawFormatString(1080, 50, GetColor(0,0,0),"STARTボタンでゲーム説明");
