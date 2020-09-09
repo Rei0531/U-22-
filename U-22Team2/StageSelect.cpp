@@ -256,8 +256,9 @@ int StageSelect(void) {
             DrawFormatString(600, 200, GetColor(0, 0, 0), "ÇS/ ÇVÉyÅ[ÉW");
             break;
         case 5:
-            DrawRotaGraph(480, 384, 0.8, 0, g_pic.Tutorial_pic[7], TRUE, FALSE);
-            DrawRotaGraph(500, 250, 1.0, 0, g_pic.Tutorial_text[6], TRUE);
+            DrawRotaGraph(480, 424, 0.8, 0, g_pic.Tutorial_pic[7], TRUE, FALSE);
+            DrawRotaGraph(830, 364, 0.2, 0, g_pic.StageClear, TRUE, FALSE);
+            DrawRotaGraph(500, 280, 1.0, 0, g_pic.Tutorial_text[6], TRUE);
             DrawRotaGraph(830, 250, 1.0, 0, g_pic.Tutorial_text[7], TRUE);
             DrawRotaGraph(655, 384, 0.5, 0, g_pic.yazirusi, TRUE, TRUE);
             DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
@@ -267,7 +268,7 @@ int StageSelect(void) {
         case 6:
             DrawRotaGraph(480, 384, 0.8, 0, g_pic.Tutorial_pic[8], TRUE, FALSE);
             DrawRotaGraph(830, 384, 0.8, 0, g_pic.Tutorial_pic[9], TRUE, FALSE);
-            DrawRotaGraph(500, 250, 1.0, 0, g_pic.Tutorial_text[8], TRUE);
+            DrawRotaGraph(520, 250, 1.0, 0, g_pic.Tutorial_text[8], TRUE);
             DrawRotaGraph(830, 250, 1.0, 0, g_pic.Tutorial_text[9], TRUE);
             DrawRotaGraph(655, 384, 0.5, 0, g_pic.yazirusi, TRUE, TRUE);
             DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
@@ -275,9 +276,9 @@ int StageSelect(void) {
             DrawFormatString(600, 200, GetColor(0, 0, 0), "ÇU/ ÇVÉyÅ[ÉW");
             break;
         case 7:
-            DrawRotaGraph(480, 384, 0.8, 0, g_pic.Tutorial_pic[10], TRUE, FALSE);
-            DrawRotaGraph(830, 384, 0.8, 0, g_pic.Tutorial_pic[11], TRUE, FALSE);
-            DrawRotaGraph(500, 250, 1.0, 0, g_pic.Tutorial_text[10], TRUE);
+            DrawRotaGraph(480, 404, 0.8, 0, g_pic.Tutorial_pic[10], TRUE, FALSE);
+            DrawRotaGraph(830, 404, 0.8, 0, g_pic.Tutorial_pic[11], TRUE, FALSE);
+            DrawRotaGraph(500, 270, 1.0, 0, g_pic.Tutorial_text[10], TRUE);
             DrawRotaGraph(830, 250, 1.0, 0, g_pic.Tutorial_text[11], TRUE);
             DrawRotaGraph(655, 384, 0.5, 0, g_pic.yazirusi, TRUE, TRUE);
             DrawRotaGraph(600, 555, 1.0, 0, g_pic.BackPage, TRUE);
