@@ -5,6 +5,7 @@
 #include "Lock.h"
 #include"Player.h"
 #include "Menu.h"
+#include "LoadSound.h"
 
 extern MapCoordinate g_MapC;
 extern Controller g_Pad;
@@ -13,6 +14,7 @@ image g_pic;
 extern Controller g_Pad;
 extern LockALL g_Lock;
 extern Player g_Player;
+extern Sound g_Snd;
 
 int Map(void) {			//マップ画像の描画___________________________________________________________________________________________________________________
 
@@ -140,6 +142,10 @@ int Map(void) {			//マップ画像の描画____________________________________________
 		DrawRotaGraph(1210, 720, 0.3, 0, g_pic.Nokori_Num[g_MapC.StageNumber / 10 % 10], TRUE, FALSE);
 		DrawRotaGraph(1250, 720, 0.3, 0, g_pic.Nokori_Num[g_MapC.StageNumber % 10], TRUE, FALSE);
 		//**********************************************************************
+	}
+	if (g_Player.InitFlag == TRUE || g_Player.PLAYER_RESET == TRUE) {
+		StopSoundMem(g_Snd.Shower);
+		StopSoundMem(g_Snd.ChangeBlockPlay);
 	}
 
 
