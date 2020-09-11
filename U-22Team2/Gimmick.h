@@ -133,7 +133,7 @@ int Shower(void);		//塗りつぶしシャワーの処理
 int Shower2(int k);
 int Lever(void);		//レバーの処理
 int SlideBlock(int SlaColor);	//動く床の処理
-int SlideBlock2(int k);	//動く床の処理
+int SlideBlock2(int k, int x,int y);	//動く床の処理
 int CC_Switch(int Color, int x,int y);	//プレイヤーの押した色を反映するスイッチの処理//引数：押した時点のプレイヤーの色を渡す
 int OneTimeSwitch(void); //一度限りのスイッチ
 int Bomb(void);			//ボックス破壊の爆弾

@@ -61,6 +61,22 @@ void Stage6Init() {
 	gim.GetObjy2 = gim.GetObjy1 + 100,
 	gim.move_max = 100;
 
+	//スライドする床2の用の変数_______＿＿＿＿
+
+	gim.flg[0] = 0;
+	gim.flg[1] = 0;
+
+	gim.q2_color[0] = RED2;
+	gim.q2_x[0] = 750;
+	gim.q2_y[0] = 518;
+
+	gim.q2_color[1] = RED2;
+	gim.q2_x[1] = 900;
+	gim.q2_y[1] = 200;
+
+	gim.q2_move_x[0] = 880;
+	gim.q2_move_x[1] = 350;
+
 	SlideColor = RED;//スイッチから―の初期化
 }
 
@@ -79,12 +95,17 @@ int Stage6(void) {			//マップ画像の描画
 	//DrawExtendGraph(380, 568, 480, 668, g_pic.Box, TRUE);//障害ブロック
 	DrawExtendGraph(880, 568, 980, 668, g_pic.Box[0], TRUE);//障害ブロック
 	DrawExtendGraph(880, 468, 980, 568, g_pic.Box[0], TRUE);//障害ブロック
+	DrawExtendGraph(250, 568, 350, 668, g_pic.Box[0], TRUE);//障害ブロック
 
 	//ギミック説明描画
 	DrawRotaGraph(900, 110, 1.5, 0, g_pic.All_text[8], TRUE, FALSE);
 
 
-	SlideBlock(SlideColor);//動くブロックの方向と、乗ったプレイヤーを動かす処理
+	//SlideBlock(SlideColor);//動くブロックの方向と、乗ったプレイヤーを動かす処理
+
+
+	SlideBlock2(1,150,150);
+
 	Door();			//ステージゴール処理
 	Lock();
 
@@ -103,3 +124,4 @@ int Stage6(void) {			//マップ画像の描画
 
 	return 0;
 }
+

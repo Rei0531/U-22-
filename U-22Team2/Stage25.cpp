@@ -122,7 +122,7 @@ int Stage25(void) {			//マップ画像の描画
 	Lock();
 
 	Shower2(2);
-	SlideBlock2(2);
+	SlideBlock2(2,200,50);
 	kaihuku(gim.item_x, gim.item_y);		//回復アイテム
 
 	DoorRotationBox(4);
@@ -143,7 +143,7 @@ int Stage25(void) {			//マップ画像の描画
 
 
 
-int SlideBlock2(int k)
+int SlideBlock2(int k,int x,int y)
 {
 
 
@@ -153,11 +153,11 @@ int SlideBlock2(int k)
 
 
 		//________________________________描画処理
-		gim.q2_w[i] = gim.q2_x[i] + 200;
-		gim.q2_h[i] = gim.q2_y[i] + 50;
+		gim.q2_w[i] = gim.q2_x[i] + x;
+		gim.q2_h[i] = gim.q2_y[i] + y;
 
 		Change(gim.q2_color[i]);
-		DrawExtendGraph(gim.q2_x[i], gim.q2_y[i], gim.q2_w[i], gim.q2_h[i], g_pic.Box[0], TRUE);//動く床	
+		DrawExtendGraph(gim.q2_x[i], gim.q2_y[i], gim.q2_w[i], gim.q2_h[i], g_pic.Box[4], TRUE);//動く床	
 
 
 		//________________________________移動処理

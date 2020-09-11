@@ -78,6 +78,22 @@ void Stage22Init() {
 
 	gim.SwitchColor = BLUE2;		//レバーの色の初期化
 
+	//スライドする床2の用の変数_______＿＿＿＿
+
+	gim.flg[0] = 0;
+	gim.flg[1] = 0;
+
+	gim.q2_color[0] = RED2;
+	gim.q2_x[0] = 750;
+	gim.q2_y[0] = 320;
+
+	gim.q2_color[1] = RED2;
+	gim.q2_x[1] = 900;
+	gim.q2_y[1] = 200;
+
+	gim.q2_move_x[0] = 1080;
+	gim.q2_move_x[1] = 300;
+
 	for (int i = 0; g_Lock.n[g_MapC.StageNumber - 1] > i; i++) {
 		g_Lock.color[g_MapC.StageNumber - 1][i] = g_Lock.colorback[g_MapC.StageNumber - 1][i];
 	}
@@ -109,9 +125,13 @@ int Stage22(void) {			//マップ画像の描画
 	DrawExtendGraph(350, 568, 450, 668, g_pic.Box[0], TRUE);
 	MoveBox(BLUE, 750, 568);
 	MoveBox(BLUE, 750, 468);
+	Change(RED);
+	DrawExtendGraph(1180, 270, 1280, 370, g_pic.Box[0], TRUE);
 
 	//動く床処理___________________________________________________________________________________________________
-	SlideBlock(SlideColor);
+	//SlideBlock(SlideColor);
+
+	SlideBlock2(1, 150, 50);
 
 	//シャワー処理___________________________________________________________________________________________________
 	Shower();
